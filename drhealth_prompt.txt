@@ -1,0 +1,82 @@
+<USER_REQUEST>
+Use this below contents and create a project page. This project page will be opened when the view case study button is clicked in the featured projects section under the "Translating Research into the Dr.Health App Design". Use one idea per section. Reuse the same footer which used in the home page for this page as well.
+
+Dr.Health - UX/UI Design Case Study
+Translating Research Insights on Preventive Healthcare into App Design
+
+Tags: UX/UI Design · Mobile App · Research-Led Design · Healthcare
+
+SECTION 1 - Hero
+Project Label
+UX/UI Design · Mobile App · Case Study
+Headline
+Translating Research Insights on Preventive Healthcare into App Design
+Sub-headline
+Dr.Health is a research-led mobile experience designed to empower urban Indians to take
+proactive control of their health — built on validated user problems, driven by
+evidence-based design decisions, and tested with real users.
+Project Stats Bar
+2 Features Designed End-to-End2 User Personas Tested11 Hi-Fi Screens4 Design Principles Applied
+
+SECTION 2 — From Research to Design
+Section Label
+Where This Design Came From
+Body
+This project doesn't begin with wireframes. It begins with 187 research participants, 3
+surveys, 14 interviews, and 18 validated user problems uncovered in the UX research phase.
+From those 18 problems, the design phase focused on a specific business case: Higher
+Healthcare Expenses — the domain where preventive design intervention could deliver the
+most measurable impact. Two user problems within that domain were prioritized for the
+design phase, each directly traceable to validated research findings.
+Every layout decision, interaction pattern, and design principle applied in this project
+has a reason grounded in what users actually said, felt, and struggled with.
+→ Read the full research behind this project: [View Research Case Study]
+
+SECTION 3 — Business Case & Problem Focus
+Section Label
+What the Design Was Built to Solve
+Business Case
+Focus Area: Higher Healthcare Expenses
+The design phase was scoped around s
+<truncated 15990 bytes>
+ous Professional
+
+What Users Appreciated
+On the Progress Tracker (Flow A — Screen 05)
+
+"The screen has a sleek, modern look that's easy on the eyes. Finding my achievements,
+points, and badges is effortless, thanks to the intuitive layout. The trophies, badges,
+and points add a fun, rewarding touch, making progress feel exciting. Plus, every
+activity is clearly listed with its time and date, so I always know exactly where I stand."
+
+On the Mental Health Services Dashboard (Flow B — Screen 01)
+
+"The screen is simple and easy to navigate, making it accessible even for those who
+aren't tech-savvy. The features align well with my health and fitness goals, and it's
+great to have all this essential information in one place. Plus, being able to share
+progress and update goals directly from this screen keeps me more engaged and motivated
+to stay on track."
+
+
+What Users Flagged for Improvement
+These three friction points were identified during testing and fed back into the design
+iteration cycle:
+1. Graph Legibility on the Progress Tracker
+The graph showing points earned lacked a legend or contextual labels — users couldn't
+interpret it at a glance.
+Design response: A legend and axis labels were added to the progress graph to resolve
+ambiguity without adding visual clutter.
+2. Goal Customization Depth
+Users wanted the ability to customize the types of goals and activities displayed based
+on their personal routines — the default set felt too generic.
+Design response: A "Customize Goals" option was surfaced on the Progress Tracker screen,
+allowing users to add, remove, and reorder activity types.
+3. In-App Goal Notifications
+Adding notifications or reminders for reaching goals and earning points was flagged as
+a missing engagement layer.
+Design response: Achievement notifications were added as a configurable option within
+the Motivational Reminders settings — linked to the existing customization flow.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-05-23T17:00:22+05:30.
+</ADDITIONAL_METADATA>

@@ -1,0 +1,150 @@
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  .theme {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+  }
+  :root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+  }
+  .dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+  }
+  * {
+    border-color: var(--border);
+    outline-color: var(--ring);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    background-color: #080810;
+    font-family: "Google Sans", "Product Sans", var(--font-body), system-ui, -apple-system, sans-serif;
+  }
+  html {
+    background-color: #080810;
+    font-family: "Google Sans", "Product Sans", var(--font-body), system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+  
+  /* Apply Manrope to headings */
+  h1, h2, h3, h4, h5, h6, .font-bold, .font-black, .font-semibold {
+    font-family: var(--font-heading), system-ui, sans-serif !important;
+  }
+
+  /* Responsive base font size to make text extremely legible on larger displays */
+  @media (min-width: 1200px) {
+    html {
+      font-size: 17px;
+    }
+  }
+  @media (min-width: 1600px) {
+    html {
+      font-size: 18px;
+    }
+  }
+  @media (min-width: 2000px) {
+    html {
+      font-size: 20px;
+    }
+  }
+
+  /* Premium Hover Button Glow Effects */
+  .glow-btn-primary {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 0 rgba(0, 102, 255, 0);
+  }
+  .glow-btn-primary:hover {
+    box-shadow: 0 0 25px rgba(0, 102, 255, 0.45), 0 0 50px rgba(204, 99, 255, 0.25);
+    transform: translateY(-2px) scale(1.02);
+  }
+  .glow-btn-secondary {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+  .glow-btn-secondary:hover {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15), 0 0 50px rgba(0, 102, 255, 0.1);
+    transform: translateY(-2px) scale(1.02);
+    border-color: rgba(0, 102, 255, 0.5);
+  }
+  .glow-btn-white {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+  .glow-btn-white:hover {
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.35), 0 0 70px rgba(0, 102, 255, 0.25);
+    transform: translateY(-2px) scale(1.02);
+  }
+}
