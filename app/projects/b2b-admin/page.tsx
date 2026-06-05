@@ -67,7 +67,7 @@ export default function B2BAdminCaseStudy() {
   };
 
   return (
-    <main className="bg-[#080810] min-h-screen text-[#fafafa] selection:bg-[#0066ff]/30 overflow-x-hidden font-sans">
+    <main className="bg-[#080810] min-h-screen text-[#fafafa] selection:bg-[#0066ff]/30 overflow-x-hidden">
       <CustomCursor />
 
       {/* Navigation */}
@@ -90,7 +90,7 @@ export default function B2BAdminCaseStudy() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: customEase }}
-          className="text-[#0066ff] text-[12px] font-bold tracking-[0.2em] mb-6 uppercase flex items-center gap-2"
+          className="text-[#0066ff] text-tag-1 mb-6 flex items-center gap-2"
         >
           <span>Enterprise SaaS</span> &middot; <span>Admin Panel</span> &middot; <span>UX Case Study</span>
         </motion.div>
@@ -99,7 +99,7 @@ export default function B2BAdminCaseStudy() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1, ease: customEase }}
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-8 max-w-5xl bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-[#8888aa]"
+          className="text-h1 leading-tight mb-8 max-w-5xl bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-[#8888aa]"
         >
           Redesigning the B2B Admin Control Center
         </motion.h1>
@@ -108,7 +108,7 @@ export default function B2BAdminCaseStudy() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: customEase }}
-          className="text-[#8888aa] text-lg md:text-2xl leading-relaxed max-w-3xl mb-16"
+          className="text-[#8888aa] text-body-lg max-w-3xl mb-16"
         >
           Transforming a flat, scroll-heavy settings page into a structured, navigable admin
           experience; across 8 feature categories and 76 interaction states.
@@ -132,7 +132,7 @@ export default function B2BAdminCaseStudy() {
               This project is presented under non-disclosure agreement (NDA). The product name, branding details, and private configurations have been anonymized.
             </p>
           </div>
-          <div className="absolute top-2 right-4 px-2 py-0.5 rounded bg-[#0066ff]/10 border border-[#0066ff]/20 text-[9px] font-mono tracking-widest text-[#0066ff]">
+          <div className="absolute top-2 right-4 px-2 py-0.5 rounded bg-[#0066ff]/10 border border-[#0066ff]/20 text-[9px] tracking-widest text-[#0066ff]">
             SECURE ACCESS
           </div>
         </motion.div>
@@ -146,7 +146,7 @@ export default function B2BAdminCaseStudy() {
         >
           <img src="/images/b2b-admin/hero.png" alt="B2B Admin Control Center Mockup Redesign" className="w-full h-full object-cover opacity-80 group-hover:scale-[1.02] transition-transform duration-[1200ms] ease-out" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-[#080810]/20 to-transparent opacity-80 pointer-events-none" />
-          <div className="absolute bottom-6 right-8 text-[#8888aa] text-xs font-mono tracking-widest bg-black/40 px-3 py-1.5 rounded-full border border-white/5 backdrop-blur-md">
+          <div className="absolute bottom-6 right-8 text-[#8888aa] text-xs tracking-widest bg-black/40 px-3 py-1.5 rounded-full border border-white/5 backdrop-blur-md">
             HI-FI DESIGN &middot; TWO-PANEL SYSTEM
           </div>
         </motion.div>
@@ -166,7 +166,7 @@ export default function B2BAdminCaseStudy() {
             { num: "ReactJS", label: "Migration Platform" },
           ].map((stat, i) => (
             <div key={i} className="bg-[#080810]/80 p-8 flex flex-col gap-2 hover:bg-[#0066ff]/5 transition-colors duration-300">
-              <span className="text-3xl md:text-4xl font-extrabold text-white">{stat.num}</span>
+              <span className="text-h2 text-white">{stat.num}</span>
               <span className="text-xs md:text-sm text-[#8888aa]">{stat.label}</span>
             </div>
           ))}
@@ -183,8 +183,8 @@ export default function B2BAdminCaseStudy() {
             transition={{ duration: 0.8, ease: customEase }}
             className="md:col-span-4"
           >
-            <div className="text-[#0066ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Project Context</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight sticky top-32">
+            <div className="text-[#0066ff] text-tag-1 mb-4">Project Context</div>
+            <h2 className="text-h2 text-white leading-tight sticky top-32">
               What This Product Does and Who It Serves
             </h2>
           </motion.div>
@@ -194,7 +194,7 @@ export default function B2BAdminCaseStudy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1, ease: customEase }}
-            className="md:col-span-8 text-[#8888aa] text-lg md:text-xl leading-relaxed space-y-6"
+            className="md:col-span-8 text-[#8888aa] text-body-lg space-y-6"
           >
             <p>
               The product is a B2B SaaS admin panel used by companies to manage their field workforce
@@ -222,8 +222,8 @@ export default function B2BAdminCaseStudy() {
                 { title: "Primary Users", detail: "Company Admins managing Field Employees" },
               ].map((item, idx) => (
                 <div key={idx} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors">
-                  <h4 className="text-[#0066ff] font-bold text-xs uppercase tracking-wider mb-2">{item.title}</h4>
-                  <p className="text-white/80 text-sm leading-relaxed font-medium">{item.detail}</p>
+                  <h4 className="text-[#0066ff] font-bold text-tag-3 tracking-wider mb-2">{item.title}</h4>
+                  <p className="text-white/80 text-body-sm font-medium">{item.detail}</p>
                 </div>
               ))}
             </div>
@@ -241,8 +241,8 @@ export default function B2BAdminCaseStudy() {
             transition={{ duration: 0.8, ease: customEase }}
             className="md:col-span-4"
           >
-            <div className="text-[#0066ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">The Trigger</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight sticky top-32">
+            <div className="text-[#0066ff] text-tag-1 mb-4">The Trigger</div>
+            <h2 className="text-h2 text-white leading-tight sticky top-32">
               Why This Redesign Happened When It Did
             </h2>
           </motion.div>
@@ -252,7 +252,7 @@ export default function B2BAdminCaseStudy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1, ease: customEase }}
-            className="md:col-span-8 text-[#8888aa] text-lg md:text-xl leading-relaxed space-y-6"
+            className="md:col-span-8 text-[#8888aa] text-body-lg space-y-6"
           >
             <p>
               The company was migrating the entire platform from AngularJS to ReactJS; a
@@ -277,13 +277,13 @@ export default function B2BAdminCaseStudy() {
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-center">
                 <div className="p-4 rounded-xl bg-red-950/20 border border-red-500/20 text-center">
-                  <div className="text-[#ff5555] font-mono text-xs mb-1 font-bold">LEGACY BASE</div>
+                  <div className="text-[#ff5555] text-xs mb-1 font-bold">LEGACY BASE</div>
                   <div className="text-white font-bold text-lg">AngularJS</div>
                   <div className="text-xs text-[#8888aa] mt-2">End-of-life tech, slow loading, flat content structures</div>
                 </div>
-                <div className="text-center text-[#8888aa] font-mono text-xl">&rarr;</div>
+                <div className="text-center text-[#8888aa] text-xl">&rarr;</div>
                 <div className="p-4 rounded-xl bg-blue-950/20 border border-[#0066ff]/20 text-center">
-                  <div className="text-[#0066ff] font-mono text-xs mb-1 font-bold">FUTURE-READY BASE</div>
+                  <div className="text-[#0066ff] text-xs mb-1 font-bold">FUTURE-READY BASE</div>
                   <div className="text-white font-bold text-lg">ReactJS + Custom IA</div>
                   <div className="text-xs text-[#8888aa] mt-2">Modern framework, highly scalable, structured two-panel layout</div>
                 </div>
@@ -305,9 +305,9 @@ export default function B2BAdminCaseStudy() {
           transition={{ duration: 0.8, ease: customEase }}
           className="text-center mb-16 max-w-3xl mx-auto"
         >
-          <div className="text-[#0066ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">The Problem</div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">A Settings Page That Had Grown Without a Plan</h2>
-          <p className="text-[#8888aa] text-lg leading-relaxed">
+          <div className="text-[#0066ff] text-tag-1 mb-4">The Problem</div>
+          <h2 className="text-h2 text-white mb-6">A Settings Page That Had Grown Without a Plan</h2>
+          <p className="text-[#8888aa] text-body-lg">
             The existing Company Settings module had accumulated features incrementally over time;
             each addition made sense in isolation, but no one had stepped back to look at the whole.
             The result was a single, continuously scrolling page where every setting lived at the
@@ -364,11 +364,11 @@ export default function B2BAdminCaseStudy() {
             >
               <div>
                 <div className="flex justify-between items-start mb-6">
-                  <span className="font-mono text-xs font-bold text-[#0066ff] bg-[#0066ff]/10 px-3 py-1 rounded-full">{pain.num}</span>
+                  <span className="text-tag-2 text-[#0066ff] bg-[#0066ff]/10 px-3 py-1 rounded-full">{pain.num}</span>
                   <i className={`ti ${pain.icon} text-2xl text-[#8888aa] group-hover:text-[#0066ff] transition-colors`} />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">{pain.title}</h3>
-                <h4 className="text-xs font-semibold text-[#0066ff] uppercase tracking-wider mb-4">{pain.highlight}</h4>
+                <h4 className="text-tag-2 text-[#0066ff] mb-4">{pain.highlight}</h4>
                 <p className="text-sm text-[#8888aa] leading-relaxed">{pain.body}</p>
               </div>
             </motion.div>
@@ -385,8 +385,8 @@ export default function B2BAdminCaseStudy() {
           transition={{ duration: 0.8, ease: customEase }}
           className="mb-16"
         >
-          <div className="text-[#0066ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Before & After</div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">The Transformation at a Glance</h2>
+          <div className="text-[#0066ff] text-tag-1 mb-4">Before & After</div>
+          <h2 className="text-h2 text-white mb-6">The Transformation at a Glance</h2>
           <p className="text-[#8888aa] text-lg max-w-2xl leading-relaxed">
             Comparing the legacy, friction-heavy operational layout with the structured, highly scalable system designed for the React implementation.
           </p>
@@ -444,10 +444,10 @@ export default function B2BAdminCaseStudy() {
                 <tr key={idx} className="group hover:bg-white/[0.02] transition-colors">
                   <td className="p-6 font-bold text-white whitespace-nowrap">{row.dim}</td>
                   <td className="p-6 text-[#8888aa] text-xs leading-relaxed group-hover:text-red-300 transition-colors">
-                    <span className="inline-block mr-2 text-red-500 font-mono">&#10005;</span> {row.before}
+                    <span className="inline-block mr-2 text-red-500">&#10005;</span> {row.before}
                   </td>
                   <td className="p-6 text-white text-xs leading-relaxed group-hover:text-blue-100 transition-colors bg-[#0066ff]/[0.01] group-hover:bg-[#0066ff]/[0.03]">
-                    <span className="inline-block mr-2 text-[#0066ff] font-mono">&#10003;</span> {row.after}
+                    <span className="inline-block mr-2 text-[#0066ff]">&#10003;</span> {row.after}
                   </td>
                 </tr>
               ))}
@@ -457,7 +457,7 @@ export default function B2BAdminCaseStudy() {
 
         {/* Custom Interactive Before/After Slider */}
         <div className="mt-20 space-y-6 border-t border-white/5 pt-16">
-          <h3 className="text-xl md:text-3xl font-bold text-white text-center flex items-center justify-center gap-3">
+          <h3 className="text-h3 text-white text-center flex items-center justify-center gap-3">
             <i className="ti ti-arrows-left-right text-[#0066ff] text-2xl" />
             Interactive Layout Comparison Slider
           </h3>
@@ -473,7 +473,7 @@ export default function B2BAdminCaseStudy() {
                 alt="Before Redesign - Legacy AngularJS layout" 
                 className="w-full h-full object-cover opacity-70"
               />
-              <div className="absolute top-4 left-4 bg-red-950/85 border border-red-500/20 text-red-400 text-[10px] font-mono tracking-widest px-3 py-1.5 rounded-full backdrop-blur-md">
+              <div className="absolute top-4 left-4 bg-red-950/85 border border-red-500/20 text-red-400 text-tag-1 px-3 py-1.5 rounded-full backdrop-blur-md">
                 BEFORE: SINGLE-SCROLL SPRAWL
               </div>
             </div>
@@ -488,7 +488,7 @@ export default function B2BAdminCaseStudy() {
                 alt="After Redesign - Structured ReactJS Layout" 
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-4 right-4 bg-blue-950/85 border border-[#0066ff]/20 text-[#0066ff] text-[10px] font-mono tracking-widest px-3 py-1.5 rounded-full backdrop-blur-md">
+              <div className="absolute top-4 right-4 bg-blue-950/85 border border-[#0066ff]/20 text-[#0066ff] text-tag-1 px-3 py-1.5 rounded-full backdrop-blur-md">
                 AFTER: TWO-PANEL SYSTEM
               </div>
             </div>
@@ -524,7 +524,7 @@ export default function B2BAdminCaseStudy() {
               <div className="w-8 h-8 rounded-lg bg-red-950/20 text-red-500 flex items-center justify-center border border-red-500/20">
                 <i className="ti ti-circle-x text-lg" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white">Before Redesign: Legacy Screens Showcase</h3>
+              <h3 className="text-h3 text-white">Before Redesign: Legacy Screens Showcase</h3>
             </div>
             <p className="text-sm text-[#8888aa] leading-relaxed">
               Prior to structural intervention, all configuration rules were thrown together onto a single page, resulting in massive operational risk.
@@ -563,7 +563,7 @@ export default function B2BAdminCaseStudy() {
               <div className="w-8 h-8 rounded-lg bg-blue-950/20 text-[#0066ff] flex items-center justify-center border border-[#0066ff]/20">
                 <i className="ti ti-circle-check text-lg" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white">After Redesign: Redesigned Screens Showcase</h3>
+              <h3 className="text-h3 text-white">After Redesign: Redesigned Screens Showcase</h3>
             </div>
             <p className="text-sm text-[#8888aa] leading-relaxed">
               Reconstructed in ReactJS with persistent two-panel IA, standardized alignments, inline helpers, and progressive disclosure overlays.
@@ -609,8 +609,8 @@ export default function B2BAdminCaseStudy() {
             transition={{ duration: 0.8, ease: customEase }}
             className="md:col-span-4"
           >
-            <div className="text-[#0066ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">The Approach</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight sticky top-32">
+            <div className="text-[#0066ff] text-tag-1 mb-4">The Approach</div>
+            <h2 className="text-h2 text-white leading-tight sticky top-32">
               Starting from Requirements, Not Assumptions
             </h2>
           </motion.div>
@@ -620,7 +620,7 @@ export default function B2BAdminCaseStudy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1, ease: customEase }}
-            className="md:col-span-8 text-[#8888aa] text-lg md:text-xl leading-relaxed space-y-8"
+            className="md:col-span-8 text-[#8888aa] text-body-lg space-y-8"
           >
             <p>
               The brief arrived as a plain Word document; a flat list of settings and their expected
@@ -638,7 +638,7 @@ export default function B2BAdminCaseStudy() {
                   <i className="ti ti-users text-xl" />
                 </div>
                 <h4 className="text-white font-bold text-sm mb-2">Stakeholder Discussions</h4>
-                <p className="text-xs text-[#8888aa] leading-relaxed">
+                <p className="text-body-sm text-[#8888aa]">
                   Sat with the Product Manager and Director of Engineering & Operations to understand mental models.
                   Identified which features admins configure together, which settings need immediate sub-configuration
                   upon enabling, and which ones are touched once and never revisited.
@@ -650,7 +650,7 @@ export default function B2BAdminCaseStudy() {
                   <i className="ti ti-search text-xl" />
                 </div>
                 <h4 className="text-white font-bold text-sm mb-2">Pattern Research</h4>
-                <p className="text-xs text-[#8888aa] leading-relaxed">
+                <p className="text-body-sm text-[#8888aa]">
                   Studied enterprise admin panel design patterns across SaaS products with comparable complexity;
                   analyzing how they handled navigation, progressive disclosure, and configuration depth without
                   overwhelming the user. The goal was to understand *why* patterns exist.
@@ -663,13 +663,13 @@ export default function B2BAdminCaseStudy() {
               <img src="/images/b2b-admin/approach.png" alt="UX Architecture Mapping Whiteboard" className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-[1000ms]" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-transparent to-transparent" />
               <div className="absolute bottom-4 left-6">
-                <span className="text-[10px] font-mono tracking-widest text-[#0066ff] uppercase bg-[#0066ff]/10 px-2 py-1 rounded">RESEARCH PIPELINE</span>
+                <span className="text-tag-1 text-[#0066ff] bg-[#0066ff]/10 px-2 py-1 rounded">RESEARCH PIPELINE</span>
               </div>
             </div>
 
             <div className="p-8 rounded-3xl bg-[rgba(0,102,255,0.03)] border border-[#0066ff]/20">
-              <div className="text-xs font-mono font-bold text-[#0066ff] uppercase tracking-wider mb-2">The Pivotal Insight</div>
-              <p className="text-white text-base md:text-lg leading-relaxed font-semibold">
+              <div className="text-tag-2 text-[#0066ff] mb-2">The Pivotal Insight</div>
+              <p className="text-white text-body-lg font-semibold">
                 Once the eight operational domains were identified, the architectural decision became clear.
                 The settings didn&apos;t need better visual styling on a scroll page; they needed a navigation
                 system that reflected the mental model of the admin using them.
@@ -685,31 +685,31 @@ export default function B2BAdminCaseStudy() {
           {/* Sidebar Copy */}
           <div className="lg:col-span-4 space-y-8">
             <div>
-              <div className="text-[#0066ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Interactive Showcase</div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">The Architecture & Patterns in Action</h2>
-              <p className="text-[#8888aa] text-sm leading-relaxed mb-6">
+              <div className="text-[#0066ff] text-tag-1 mb-4">Interactive Showcase</div>
+              <h2 className="text-h2 text-white mb-6">The Architecture & Patterns in Action</h2>
+              <p className="text-[#8888aa] text-body-sm mb-6">
                 Instead of a single endless scroll, we introduced a persistent two-panel layout: a left nav listing all eight operational domains, and a right content panel showing only the active category.
               </p>
             </div>
 
             <div className="space-y-4">
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <h4 className="text-white font-bold text-xs uppercase mb-1">Pattern 01: Progressive Disclosure</h4>
-                <p className="text-xs text-[#8888aa] leading-relaxed">
+                <h4 className="text-white font-bold text-tag-3 mb-1">Pattern 01: Progressive Disclosure</h4>
+                <p className="text-body-sm text-[#8888aa]">
                   Default state is clean: a label, description, and toggle. Turning on **Auto-Logout** expands detailed configuration parameters dynamically inline.
                 </p>
               </div>
 
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <h4 className="text-white font-bold text-xs uppercase mb-1">Pattern 02: Always-Visible Helper Text</h4>
-                <p className="text-xs text-[#8888aa] leading-relaxed">
+                <h4 className="text-white font-bold text-tag-3 mb-1">Pattern 02: Always-Visible Helper Text</h4>
+                <p className="text-body-sm text-[#8888aa]">
                   Every setting carries its description directly beneath its title. Check **Fake Location Alerts** to see description visible at the point of decision before checking.
                 </p>
               </div>
 
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <h4 className="text-white font-bold text-xs uppercase mb-1">Pattern 03: Contextual Side Panel</h4>
-                <p className="text-xs text-[#8888aa] leading-relaxed">
+                <h4 className="text-white font-bold text-tag-3 mb-1">Pattern 03: Contextual Side Panel</h4>
+                <p className="text-body-sm text-[#8888aa]">
                   Deep settings (e.g. **Travel Reimbursements**) are layered using a slide-out panel, protecting the rhythm of the primary page.
                 </p>
               </div>
@@ -726,9 +726,9 @@ export default function B2BAdminCaseStudy() {
                   <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
                   <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
                   <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
-                  <span className="text-[11px] font-mono text-[#8888aa] ml-4">admin-settings-v2.tsx</span>
+                  <span className="text-[11px] text-[#8888aa] ml-4">admin-settings-v2.tsx</span>
                 </div>
-                <div className="px-3 py-1 rounded bg-[#0066ff]/20 text-[#0066ff] text-[10px] font-mono tracking-widest font-bold">
+                <div className="px-3 py-1 rounded bg-[#0066ff]/20 text-[#0066ff] text-[10px] tracking-widest font-bold">
                   LIVE INTERACTIVE SANDBOX
                 </div>
               </div>
@@ -739,7 +739,7 @@ export default function B2BAdminCaseStudy() {
                 {/* Left Panel - Navigation (Persistent List) */}
                 <div className="w-full md:w-2/5 bg-[#0e0e1a] border-r border-white/5 p-4 flex flex-col justify-between shrink-0">
                   <div className="space-y-1.5">
-                    <div className="text-[9px] font-mono text-[#8888aa] uppercase tracking-wider px-3 mb-3">
+                    <div className="text-[9px] text-[#8888aa] uppercase tracking-wider px-3 mb-3">
                       Settings Category Map
                     </div>
                     {categories.map((cat) => (
@@ -781,7 +781,7 @@ export default function B2BAdminCaseStudy() {
                     {activeCategory === "auto-logout" && (
                       <div className="space-y-5">
                         <div className="pb-3 border-b border-white/5">
-                          <div className="text-[#0066ff] text-[9px] font-mono uppercase tracking-wider mb-1">Active Category</div>
+                          <div className="text-[#0066ff] text-tag-1 mb-1">Active Category</div>
                           <h3 className="text-lg font-bold text-white">Session Auto-Logout</h3>
                         </div>
 
@@ -791,9 +791,9 @@ export default function B2BAdminCaseStudy() {
                             <div>
                               <h4 className="text-white font-bold text-sm flex items-center gap-2">
                                 Auto Logout Inactive Users
-                                <span className="text-[9px] font-mono bg-[#0066ff]/20 text-[#0066ff] px-2 py-0.5 rounded font-normal">PATTERN 01</span>
+                                <span className="text-[9px] bg-[#0066ff]/20 text-[#0066ff] px-2 py-0.5 rounded font-normal">PATTERN 01</span>
                               </h4>
-                              <p className="text-xs text-[#8888aa] leading-relaxed mt-1">
+                              <p className="text-body-sm text-[#8888aa] mt-1">
                                 Automatically log field staff out of the companion mobile app after a prolonged period of inactivity.
                               </p>
                             </div>
@@ -862,7 +862,7 @@ export default function B2BAdminCaseStudy() {
                     {activeCategory === "fake-location" && (
                       <div className="space-y-5">
                         <div className="pb-3 border-b border-white/5">
-                          <div className="text-[#0066ff] text-[9px] font-mono uppercase tracking-wider mb-1">Active Category</div>
+                          <div className="text-[#0066ff] text-tag-1 mb-1">Active Category</div>
                           <h3 className="text-lg font-bold text-white">Fake Location Alerts</h3>
                         </div>
 
@@ -872,7 +872,7 @@ export default function B2BAdminCaseStudy() {
                             <div>
                               <h4 className="text-white font-bold text-sm flex items-center gap-2">
                                 Flag GPS Spoofing Applications
-                                <span className="text-[9px] font-mono bg-[#0066ff]/20 text-[#0066ff] px-2 py-0.5 rounded font-normal">PATTERN 02</span>
+                                <span className="text-[9px] bg-[#0066ff]/20 text-[#0066ff] px-2 py-0.5 rounded font-normal">PATTERN 02</span>
                               </h4>
                               {/* ALWAYS VISIBLE HELPER TEXT */}
                               <p className="text-xs text-blue-100 font-medium leading-relaxed mt-1.5 p-3 rounded bg-blue-950/20 border border-[#0066ff]/20">
@@ -903,7 +903,7 @@ export default function B2BAdminCaseStudy() {
                     {activeCategory === "reimbursement" && (
                       <div className="space-y-5">
                         <div className="pb-3 border-b border-white/5">
-                          <div className="text-[#0066ff] text-[9px] font-mono uppercase tracking-wider mb-1">Active Category</div>
+                          <div className="text-[#0066ff] text-tag-1 mb-1">Active Category</div>
                           <h3 className="text-lg font-bold text-white">Travel Reimbursements</h3>
                         </div>
 
@@ -913,7 +913,7 @@ export default function B2BAdminCaseStudy() {
                           </div>
                           <div>
                             <h4 className="text-white font-bold text-sm">Complex Configuration Layer</h4>
-                            <p className="text-xs text-[#8888aa] leading-relaxed mt-1 max-w-sm mx-auto">
+                            <p className="text-body-sm text-[#8888aa] mt-1 max-w-sm mx-auto">
                               Reimbursement calculations contain multi-tier transport definitions, rate settings, and custom approval logs. Open the side panel to manage.
                             </p>
                           </div>
@@ -967,7 +967,7 @@ export default function B2BAdminCaseStudy() {
                       {/* Side Panel Header */}
                       <div className="flex items-center justify-between pb-4 border-b border-white/5 mb-6">
                         <div>
-                          <div className="text-[#0066ff] text-[9px] font-mono uppercase tracking-wider mb-1">Contextual Config Layer &middot; PATTERN 03</div>
+                          <div className="text-[#0066ff] text-tag-1 mb-1">Contextual Config Layer &middot; PATTERN 03</div>
                           <h3 className="text-base font-bold text-white">Configure Transport Reimbursement</h3>
                         </div>
                         <button 
@@ -978,7 +978,7 @@ export default function B2BAdminCaseStudy() {
                         </button>
                       </div>
 
-                      <p className="text-xs text-[#8888aa] leading-relaxed mb-6">
+                      <p className="text-body-sm text-[#8888aa] mb-6">
                         Define global per-kilometer reimbursement levels for employee transit. Toggling a type off silences claims for that transport class.
                       </p>
 
@@ -1005,7 +1005,7 @@ export default function B2BAdminCaseStudy() {
                                 type="text"
                                 value={`INR ${trans.rate}`}
                                 disabled
-                                className="w-20 bg-[#121222] border border-white/10 rounded px-2 py-1 text-right text-xs font-mono text-white/80"
+                                className="w-20 bg-[#121222] border border-white/10 rounded px-2 py-1 text-right text-xs text-white/80"
                               />
                             </div>
                           </div>
@@ -1051,7 +1051,7 @@ export default function B2BAdminCaseStudy() {
                       <h4 className="text-white font-bold text-sm">Add Custom Transport Class</h4>
                       <form onSubmit={handleAddTransport} className="space-y-3">
                         <div>
-                          <label className="block text-[9px] font-mono text-[#8888aa] uppercase mb-1">Transit Class Name</label>
+                          <label className="block text-[9px] text-[#8888aa] uppercase mb-1">Transit Class Name</label>
                           <input 
                             type="text" 
                             placeholder="e.g. Electric Scooter" 
@@ -1062,7 +1062,7 @@ export default function B2BAdminCaseStudy() {
                           />
                         </div>
                         <div>
-                          <label className="block text-[9px] font-mono text-[#8888aa] uppercase mb-1">Rate per Kilometer (INR)</label>
+                          <label className="block text-[9px] text-[#8888aa] uppercase mb-1">Rate per Kilometer (INR)</label>
                           <input 
                             type="number" 
                             step="0.01" 
@@ -1109,8 +1109,8 @@ export default function B2BAdminCaseStudy() {
             transition={{ duration: 0.8, ease: customEase }}
             className="md:col-span-4"
           >
-            <div className="text-[#0066ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">The Full Scope</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight sticky top-32">
+            <div className="text-[#0066ff] text-tag-1 mb-4">The Full Scope</div>
+            <h2 className="text-h2 text-white leading-tight sticky top-32">
               76 Screens. 8 Categories. One Consistent System. Solo.
             </h2>
           </motion.div>
@@ -1120,7 +1120,7 @@ export default function B2BAdminCaseStudy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1, ease: customEase }}
-            className="md:col-span-8 text-[#8888aa] text-lg md:text-xl leading-relaxed space-y-6"
+            className="md:col-span-8 text-[#8888aa] text-body-lg space-y-6"
           >
             <p>
               Every category was designed end-to-end. Not just the default state; the enabled state,
@@ -1146,11 +1146,11 @@ export default function B2BAdminCaseStudy() {
               ].map((item, idx) => (
                 <div key={idx} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 flex gap-4">
                   <div className="w-8 h-8 rounded-lg bg-[#0066ff]/10 text-[#0066ff] flex items-center justify-center shrink-0 border border-[#0066ff]/20">
-                    <span className="font-mono text-xs font-bold">{idx + 1}</span>
+                    <span className="text-xs font-bold">{idx + 1}</span>
                   </div>
                   <div>
                     <h4 className="text-white font-bold text-sm mb-1">{item.title}</h4>
-                    <p className="text-xs text-[#8888aa] leading-relaxed">{item.detail}</p>
+                    <p className="text-body-sm text-[#8888aa]">{item.detail}</p>
                   </div>
                 </div>
               ))}
@@ -1172,9 +1172,9 @@ export default function B2BAdminCaseStudy() {
           transition={{ duration: 0.8, ease: customEase }}
           className="text-center mb-16 max-w-3xl mx-auto"
         >
-          <div className="text-[#0066ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Outcomes</div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">What the Redesign Delivered</h2>
-          <p className="text-[#8888aa] text-lg leading-relaxed">
+          <div className="text-[#0066ff] text-tag-1 mb-4">Outcomes</div>
+          <h2 className="text-h2 text-white mb-6">What the Redesign Delivered</h2>
+          <p className="text-[#8888aa] text-body-lg">
             Tangible design improvements that bridged the gap between complex settings and developer-ready code.
           </p>
         </motion.div>
@@ -1238,9 +1238,9 @@ export default function B2BAdminCaseStudy() {
 
           <div className="relative z-10 max-w-4xl mx-auto">
             <div className="text-[#0066ff] text-[11px] font-bold tracking-[0.2em] mb-6 uppercase text-center">Reflection</div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-10 text-center">What This Project Taught Me About Enterprise UX</h2>
+            <h2 className="text-h2 text-white mb-10 text-center">What This Project Taught Me About Enterprise UX</h2>
 
-            <div className="text-[#8888aa] text-lg md:text-xl leading-relaxed space-y-6">
+            <div className="text-[#8888aa] text-body-lg space-y-6">
               <p>
                 The biggest design challenge wasn&apos;t any individual screen; it was establishing a system
                 that could hold together across 76 states without feeling repetitive or fragile.

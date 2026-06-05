@@ -42,7 +42,7 @@ export default function CTAFooter() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.2, ease: customEase }}
-          className="flex flex-col gap-4 text-center max-w-2xl text-[#8888aa] text-base md:text-lg leading-relaxed mb-16"
+          className="flex flex-col gap-4 text-center max-w-2xl text-[#8888aa] text-body-lg mb-16"
         >
           <p>
             If you&apos;re building something with real structural complexity and need a designer who can own the research, lead the IA, and deliver clean; I&apos;d like to hear about it.
@@ -59,7 +59,7 @@ export default function CTAFooter() {
         >
           {/* Card 1: Get in Touch */}
           <div className="bg-[rgba(48,46,97,0.18)] hover:bg-[rgba(48,46,97,0.22)] border border-white/5 hover:border-white/12 p-8 md:p-10 rounded-[36px] flex flex-col gap-6 transition-all duration-500 text-left">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+            <h3 className="text-h3 text-white mb-2">
               Get in Touch
             </h3>
             
@@ -73,7 +73,7 @@ export default function CTAFooter() {
                   <i className="ti ti-mail text-xl transition-transform duration-300 group-hover:scale-110" />
                 </div>
                 <div className="flex flex-col gap-0.5 min-w-0 flex-1">
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#8888aa] font-mono truncate">Email</span>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#8888aa] truncate">Email</span>
                   <span className="text-white text-base md:text-lg font-bold group-hover:text-[#00ffb7] transition-colors truncate block w-full">
                     moorthyr06@gmail.com
                   </span>
@@ -89,7 +89,7 @@ export default function CTAFooter() {
                   <i className="ti ti-phone text-xl transition-transform duration-300 group-hover:scale-110" />
                 </div>
                 <div className="flex flex-col gap-0.5 min-w-0 flex-1">
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#8888aa] font-mono truncate">Phone</span>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#8888aa] truncate">Phone</span>
                   <span className="text-white text-base md:text-lg font-bold group-hover:text-[#00ffb7] transition-colors truncate block w-full">
                     +91 98403 25802
                   </span>
@@ -104,7 +104,7 @@ export default function CTAFooter() {
                   <i className="ti ti-map-pin text-xl" />
                 </div>
                 <div className="flex flex-col gap-0.5 min-w-0 flex-1">
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#8888aa] font-mono truncate">Location</span>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#8888aa] truncate">Location</span>
                   <span className="text-white text-base md:text-lg font-bold truncate block w-full">
                     Chennai, India
                   </span>
@@ -115,7 +115,7 @@ export default function CTAFooter() {
 
           {/* Card 2: Connect Online */}
           <div className="bg-[rgba(48,46,97,0.18)] hover:bg-[rgba(48,46,97,0.22)] border border-white/5 hover:border-white/12 p-8 md:p-10 rounded-[36px] flex flex-col gap-6 transition-all duration-500 text-left">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+            <h3 className="text-h3 text-white mb-2">
               Connect Online
             </h3>
             
@@ -131,7 +131,7 @@ export default function CTAFooter() {
                   <i className="ti ti-brand-linkedin text-xl transition-transform duration-300 group-hover:scale-110" />
                 </div>
                 <div className="flex flex-col gap-0.5 min-w-0 flex-1">
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#8888aa] font-mono truncate">LinkedIn</span>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#8888aa] truncate">LinkedIn</span>
                   <span className="text-white text-base md:text-lg font-bold group-hover:text-[#00ffb7] transition-colors truncate block w-full">
                     linkedin.com/in/nram-uxd/
                   </span>
@@ -149,7 +149,7 @@ export default function CTAFooter() {
                   <i className="ti ti-brand-behance text-xl transition-transform duration-300 group-hover:scale-110" />
                 </div>
                 <div className="flex flex-col gap-0.5 min-w-0 flex-1">
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#8888aa] font-mono truncate">Behance</span>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#8888aa] truncate">Behance</span>
                   <span className="text-white text-base md:text-lg font-bold group-hover:text-[#00ffb7] transition-colors truncate block w-full">
                     behance.net/ramamoorthy
                   </span>
@@ -166,7 +166,7 @@ export default function CTAFooter() {
                   <i className="ti ti-download text-xl transition-transform duration-300 group-hover:scale-110" />
                 </div>
                 <div className="flex flex-col gap-0.5 min-w-0 flex-1">
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#8888aa] font-mono truncate">Resume</span>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#8888aa] truncate">Resume</span>
                   <span className="text-white text-base md:text-lg font-bold group-hover:text-[#00ffb7] transition-colors truncate block w-full">
                     Download PDF
                   </span>

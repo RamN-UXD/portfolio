@@ -62,7 +62,7 @@ export default function FeaturedProjects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: customEase }}
-            className="text-[#0066ff] text-[12px] font-bold tracking-[0.2em] mb-4 uppercase"
+            className="text-[#0066ff] text-tag-1 mb-4"
           >
             Selected Work
           </motion.div>
@@ -71,7 +71,7 @@ export default function FeaturedProjects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.1, ease: customEase }}
-            className="text-4xl md:text-6xl font-bold text-[#fafafa] leading-tight"
+            className="text-h1 text-[#fafafa] leading-tight"
           >
             Featured <br />
             <span className="text-[#8888aa]">Projects.</span>

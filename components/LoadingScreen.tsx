@@ -78,7 +78,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
             opacity: phase === 3 ? 0 : 1,
           }}
           transition={{ duration: phase === 3 ? 0.4 : 0.8, ease: customEase }}
-          className="font-serif italic text-6xl text-[#fafafa] mb-8"
+          className="italic text-6xl text-[#fafafa] mb-8"
         >
           RN
         </motion.div>

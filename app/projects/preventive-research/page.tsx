@@ -157,7 +157,7 @@ export default function PreventiveResearchCaseStudy() {
   const feat = features[activeFeature];
 
   return (
-    <main className="bg-[#080810] min-h-screen text-[#fafafa] selection:bg-[#cc63ff]/30 overflow-x-hidden font-sans">
+    <main className="bg-[#080810] min-h-screen text-[#fafafa] selection:bg-[#cc63ff]/30 overflow-x-hidden">
       <CustomCursor />
 
       {/* ── Navigation ─────────────────────────────────────────────── */}
@@ -200,7 +200,7 @@ export default function PreventiveResearchCaseStudy() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1, ease: customEase }}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6"
+          className="text-h1 text-white leading-[1.05] tracking-tight mb-6"
         >
           End-to-End UX Research on{" "}
           <span style={{ color: PURPLE }}>Preventive Healthcare</span>{" "}
@@ -212,7 +212,7 @@ export default function PreventiveResearchCaseStudy() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: customEase }}
-          className="text-[#8888aa] text-lg md:text-xl leading-relaxed max-w-3xl mb-14"
+          className="text-[#8888aa] text-body-lg max-w-3xl mb-14"
         >
           A research-led investigation into why urban Indians fail to adopt preventive health habits —
           conducted across 3 surveys, 14 in-depth interviews, and 187 participants.
@@ -237,7 +237,7 @@ export default function PreventiveResearchCaseStudy() {
               key={i}
               className="flex flex-col items-center justify-center py-5 px-4 rounded-2xl bg-white/4 border border-white/8 text-center"
             >
-              <span className="text-3xl font-extrabold text-white mb-1" style={{ color: i === 4 ? PURPLE : undefined }}>
+              <span className="text-h4 text-white mb-1" style={{ color: i === 4 ? PURPLE : undefined }}>
                 {stat.value}
               </span>
               <span className="text-[11px] uppercase tracking-widest text-[#8888aa] font-semibold">{stat.label}</span>
@@ -311,8 +311,8 @@ export default function PreventiveResearchCaseStudy() {
         >
           {/* Left: Problem Worth Solving */}
           <div>
-            <div className="text-[#cc63ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Section 02 — Context</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+            <div className="text-[#cc63ff] text-tag-1 mb-4">Section 02 — Context</div>
+            <h2 className="text-h2 text-white mb-6 leading-tight">
               The Problem Worth Solving
             </h2>
             <p className="text-[#8888aa] leading-relaxed mb-6">
@@ -326,7 +326,7 @@ export default function PreventiveResearchCaseStudy() {
             </p>
             <div className="p-5 rounded-2xl border border-[#cc63ff]/20 bg-[#cc63ff]/5">
               <p className="text-[#cc63ff] text-sm font-semibold mb-1">Research Mandate</p>
-              <p className="text-white/80 text-sm leading-relaxed">
+              <p className="text-white/80 text-body-sm">
                 Conduct end-to-end UX research to surface validated, evidence-backed user problems that can directly
                 govern product feature design — replacing assumptions with data.
               </p>
@@ -335,7 +335,7 @@ export default function PreventiveResearchCaseStudy() {
 
           {/* Right: Three Driving Questions */}
           <div>
-            <div className="text-[#cc63ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Three Driving Questions</div>
+            <div className="text-[#cc63ff] text-tag-1 mb-4">Three Driving Questions</div>
             <div className="flex flex-col gap-4">
               {[
                 {
@@ -375,8 +375,8 @@ export default function PreventiveResearchCaseStudy() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
         >
-          <div className="text-[#cc63ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Section 03 — Problem Scale</div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 03 — Problem Scale</div>
+          <h2 className="text-h2 text-white mb-4 leading-tight">
             This Isn&apos;t a Niche Problem
           </h2>
           <p className="text-[#8888aa] max-w-2xl mb-12">
@@ -455,8 +455,8 @@ export default function PreventiveResearchCaseStudy() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
         >
-          <div className="text-[#cc63ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Section 04 — Methodology</div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 04 — Methodology</div>
+          <h2 className="text-h2 text-white mb-4 leading-tight">
             A Three-Phase Research Architecture
           </h2>
           <p className="text-[#8888aa] max-w-2xl mb-12">
@@ -533,8 +533,8 @@ export default function PreventiveResearchCaseStudy() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
         >
-          <div className="text-[#cc63ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Interactive Widget</div>
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Thematic Coding Sandbox</h3>
+          <div className="text-[#cc63ff] text-tag-1 mb-4">Interactive Widget</div>
+          <h3 className="text-h2 text-white mb-3">Thematic Coding Sandbox</h3>
           <p className="text-[#8888aa] mb-8 max-w-xl">
             Click any participant quote below to see how a UX researcher synthethizes raw text into 
             emotional sentiment tags, validated problem domains, and product feature opportunities.
@@ -646,8 +646,8 @@ export default function PreventiveResearchCaseStudy() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
         >
-          <div className="text-[#cc63ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Section 05 — Key Findings</div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">5 Core Research Insights</h2>
+          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 05 — Key Findings</div>
+          <h2 className="text-h2 text-white mb-4 leading-tight">5 Core Research Insights</h2>
           <p className="text-[#8888aa] max-w-2xl mb-12">
             After synthesizing data from 187 participants and 14 interviews, five dominant themes emerged with statistical significance.
           </p>
@@ -719,7 +719,7 @@ export default function PreventiveResearchCaseStudy() {
                 </div>
                 <div className="h-px w-full bg-white/8 group-hover:bg-white/15 transition-colors" />
                 <h3 className="text-white font-bold text-lg">{f.title}</h3>
-                <p className="text-[#8888aa] text-sm leading-relaxed">{f.insight}</p>
+                <p className="text-[#8888aa] text-body-sm">{f.insight}</p>
               </motion.div>
             ))}
           </div>
@@ -734,8 +734,8 @@ export default function PreventiveResearchCaseStudy() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
         >
-          <div className="text-[#cc63ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Section 06 — User Persona</div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">The Research-Validated Persona</h2>
+          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 06 — User Persona</div>
+          <h2 className="text-h2 text-white mb-4 leading-tight">The Research-Validated Persona</h2>
           <p className="text-[#8888aa] max-w-2xl mb-12">
             Synthesized from interview data and survey responses — not created from assumptions.
           </p>
@@ -813,7 +813,7 @@ export default function PreventiveResearchCaseStudy() {
                           }`}>
                             {item.severity}
                           </div>
-                          <p className="text-white/80 text-sm leading-relaxed">{item.friction}</p>
+                          <p className="text-white/80 text-body-sm">{item.friction}</p>
                         </div>
                       ))}
                     </div>
@@ -834,7 +834,7 @@ export default function PreventiveResearchCaseStudy() {
                           <span className="flex-shrink-0 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-[#cc63ff]/15 text-[#cc63ff] border border-[#cc63ff]/30 mt-0.5">
                             {item.emotion}
                           </span>
-                          <p className="text-white/80 text-sm leading-relaxed">{item.driver}</p>
+                          <p className="text-white/80 text-body-sm">{item.driver}</p>
                         </div>
                       ))}
                     </div>
@@ -856,7 +856,7 @@ export default function PreventiveResearchCaseStudy() {
                             style={{ backgroundColor: PURPLE }}>
                             {i + 1}
                           </div>
-                          <p className="text-white/80 text-sm leading-relaxed">{goal}</p>
+                          <p className="text-white/80 text-body-sm">{goal}</p>
                         </div>
                       ))}
                     </div>
@@ -876,8 +876,8 @@ export default function PreventiveResearchCaseStudy() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
         >
-          <div className="text-[#cc63ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Section 07 — Validated Problems</div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">18 Validated Problem Statements</h2>
+          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 07 — Validated Problems</div>
+          <h2 className="text-h2 text-white mb-4 leading-tight">18 Validated Problem Statements</h2>
           <p className="text-[#8888aa] max-w-2xl mb-12">
             Every statement below is grounded in direct user data. They are organized across the 3 core problem domains
             identified through thematic coding.
@@ -934,7 +934,7 @@ export default function PreventiveResearchCaseStudy() {
                                 style={{ color: meta.color, borderColor: meta.color + "40", backgroundColor: meta.color + "12" }}>
                                 {p.id}
                               </span>
-                              <p className="text-white/80 text-sm leading-relaxed">{p.statement}</p>
+                              <p className="text-white/80 text-body-sm">{p.statement}</p>
                             </div>
                           ))}
                         </div>
@@ -956,8 +956,8 @@ export default function PreventiveResearchCaseStudy() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
         >
-          <div className="text-[#cc63ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Section 08 — Feature Pipeline</div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">From Research to Features</h2>
+          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 08 — Feature Pipeline</div>
+          <h2 className="text-h2 text-white mb-4 leading-tight">From Research to Features</h2>
           <p className="text-[#8888aa] max-w-2xl mb-10">
             Each validated problem statement was mapped to a product feature with a full design pipeline:
             the linked problem, user goal, interaction flow, developer notes, and success metrics.
@@ -992,7 +992,7 @@ export default function PreventiveResearchCaseStudy() {
               <div className="flex flex-col gap-5">
                 <div className="p-5 rounded-2xl bg-red-500/8 border border-red-500/20">
                   <div className="text-[10px] uppercase tracking-widest text-red-400 font-bold mb-2">Linked Problem</div>
-                  <p className="text-white/80 text-sm leading-relaxed">{feat.linkedProblem}</p>
+                  <p className="text-white/80 text-body-sm">{feat.linkedProblem}</p>
                 </div>
                 <div className="p-5 rounded-2xl bg-[#cc63ff]/8 border border-[#cc63ff]/20">
                   <div className="text-[10px] uppercase tracking-widest text-[#cc63ff] font-bold mb-2">User Goal</div>
@@ -1019,7 +1019,7 @@ export default function PreventiveResearchCaseStudy() {
                 {/* Developer Notes */}
                 <div>
                   <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-bold mb-3">Developer CRUD Notes</div>
-                  <div className="rounded-2xl bg-[#0e0e1a] border border-white/8 p-4 font-mono text-xs">
+                  <div className="rounded-2xl bg-[#0e0e1a] border border-white/8 p-4 text-xs">
                     {feat.crudNotes.map((note, i) => (
                       <div key={i} className={i > 0 ? "mt-2 pt-2 border-t border-white/5" : ""}>
                         <span className="text-[#cc63ff]">{note.split("—")[0]}</span>
@@ -1067,8 +1067,8 @@ export default function PreventiveResearchCaseStudy() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
         >
-          <div className="text-[#cc63ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Section 09 — Outcomes</div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">Research that Governed Design</h2>
+          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 09 — Outcomes</div>
+          <h2 className="text-h2 text-white mb-4 leading-tight">Research that Governed Design</h2>
           <p className="text-[#8888aa] max-w-2xl mb-12">
             This research did not end with a report. Every validated problem, persona insight, and feature opportunity
             was directly translated into the design of the Dr.Health mobile application.
@@ -1112,7 +1112,7 @@ export default function PreventiveResearchCaseStudy() {
                 <div className="text-3xl flex-shrink-0 mt-1">{item.icon}</div>
                 <div>
                   <h3 className="font-bold text-white mb-2" style={{ color: item.color }}>{item.title}</h3>
-                  <p className="text-[#8888aa] text-sm leading-relaxed">{item.body}</p>
+                  <p className="text-[#8888aa] text-body-sm">{item.body}</p>
                 </div>
               </motion.div>
             ))}
@@ -1142,8 +1142,8 @@ export default function PreventiveResearchCaseStudy() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
         >
-          <div className="text-[#cc63ff] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Section 10 — Product Goals</div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">3 Business-Critical Target Goals</h2>
+          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 10 — Product Goals</div>
+          <h2 className="text-h2 text-white mb-4 leading-tight">3 Business-Critical Target Goals</h2>
           <p className="text-[#8888aa] max-w-2xl mb-12">
             These goals emerged from the intersection of validated user needs, market opportunity data, and business viability assessment.
           </p>
@@ -1182,7 +1182,7 @@ export default function PreventiveResearchCaseStudy() {
               >
                 <div className="text-5xl font-black opacity-15" style={{ color: item.color }}>{item.num}</div>
                 <h3 className="text-xl font-bold" style={{ color: item.color }}>{item.goal}</h3>
-                <p className="text-[#8888aa] text-sm leading-relaxed flex-1">{item.description}</p>
+                <p className="text-[#8888aa] text-body-sm flex-1">{item.description}</p>
                 <div className="p-3 rounded-xl bg-white/4 border border-white/8">
                   <p className="text-xs font-semibold" style={{ color: item.color }}>📊 {item.kpi}</p>
                 </div>
@@ -1206,7 +1206,7 @@ export default function PreventiveResearchCaseStudy() {
           {/* Large quote */}
           <div className="relative max-w-4xl mx-auto">
             <div className="text-[100px] md:text-[140px] font-black leading-none opacity-5 text-white absolute -top-8 left-0 select-none pointer-events-none">&ldquo;</div>
-            <blockquote className="relative z-10 text-2xl md:text-4xl font-light text-white leading-relaxed italic text-center px-8 md:px-16">
+            <blockquote className="relative z-10 text-h3 font-light text-white leading-relaxed italic text-center px-8 md:px-16">
               Good research doesn&apos;t just uncover problems.
               <span className="block mt-3 text-[#cc63ff] font-medium not-italic">
                 It earns the right to solve them.

@@ -50,7 +50,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: customEase }}
-            className="text-[#0066ff] text-[12px] font-bold tracking-[0.2em] mb-4 uppercase"
+            className="text-[#0066ff] text-tag-1 mb-4"
           >
             About
           </motion.div>
@@ -61,14 +61,14 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.1, ease: customEase }}
-            className="text-4xl md:text-6xl font-bold text-[#fafafa] leading-tight mb-10 tracking-tight"
+            className="text-h1 text-[#fafafa] leading-tight mb-10 tracking-tight"
           >
             Identity, Approach, <br />
             <span className="text-[#8888aa]">Intent.</span>
           </motion.h2>
 
           {/* Narrative Body Paragraphs Stack */}
-          <div className="flex flex-col gap-6 text-[#8888aa] text-base md:text-lg leading-relaxed font-normal max-w-2xl">
+          <div className="flex flex-col gap-6 text-[#8888aa] text-body-lg font-normal max-w-2xl">
             {paragraphs.map((para, idx) => (
               <motion.p
                 key={idx}

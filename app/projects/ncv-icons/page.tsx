@@ -128,17 +128,17 @@ export default function NCVIconSystem() {
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#0066ff] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: customEase }}
-          className="text-[#ff6b00] text-[12px] font-bold tracking-[0.2em] mb-6 uppercase">
+          className="text-[#ff6b00] text-tag-1 mb-6">
           Iconography &middot; Design Systems &middot; Case Study
         </motion.div>
 
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.1, ease: customEase }}
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-8 max-w-5xl">
+          className="text-h1 leading-tight mb-8 max-w-5xl">
           Building a Cohesive Icon System for Net Carbon Vision
         </motion.h1>
 
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2, ease: customEase }}
-          className="text-[#8888aa] text-lg md:text-2xl leading-relaxed max-w-3xl mb-16">
+          className="text-[#8888aa] text-body-lg max-w-3xl mb-16">
           55 custom line icons; designed from scratch, built on a structured grid system, and delivered as production-ready SVG assets that unify the visual language of an entire enterprise sustainability website.
         </motion.p>
 
@@ -165,7 +165,7 @@ export default function NCVIconSystem() {
               </motion.div>
             ))}
           </div>
-          <div className="absolute bottom-6 right-8 text-[#8888aa] text-xs font-mono tracking-widest">55 CUSTOM ICONS · 64×64 PX · SVG</div>
+          <div className="absolute bottom-6 right-8 text-[#8888aa] text-xs tracking-widest">55 CUSTOM ICONS · 64×64 PX · SVG</div>
         </motion.div>
 
         {/* Stats Bar */}
@@ -178,7 +178,7 @@ export default function NCVIconSystem() {
             { num: "5", label: "Website Sections Covered" },
           ].map((stat, i) => (
             <div key={i} className="bg-[#080810] px-8 py-8 flex flex-col gap-2">
-              <span className="text-3xl md:text-4xl font-bold text-white">{stat.num}</span>
+              <span className="text-h2 text-white">{stat.num}</span>
               <span className="text-sm text-[#8888aa]">{stat.label}</span>
             </div>
           ))}
@@ -190,20 +190,20 @@ export default function NCVIconSystem() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             transition={{ duration: 0.8, ease: customEase }} className="md:col-span-4">
-            <div className="text-[#ff6b00] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">The Problem</div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight sticky top-32">
+            <div className="text-[#ff6b00] text-tag-1 mb-4">The Problem</div>
+            <h2 className="text-h2 text-white leading-tight sticky top-32">
               What Was Broken Before This System Existed
             </h2>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1, ease: customEase }} className="md:col-span-8 space-y-6">
-            <p className="text-[#8888aa] text-lg md:text-xl leading-relaxed">
+            <p className="text-[#8888aa] text-body-lg">
               When I joined the Net Carbon Vision website project, the iconography situation was a common one in fast-moving product teams: icons had been sourced, adapted, and added incrementally as sections were built; without a governing system.
             </p>
-            <p className="text-[#8888aa] text-lg md:text-xl leading-relaxed">
+            <p className="text-[#8888aa] text-body-lg">
               The result was visual inconsistency across the board. Icons varied in stroke weight, proportion, and geometric balance. Some felt heavy, others too thin. Nothing felt like it belonged to the same family.
             </p>
-            <p className="text-white text-lg md:text-xl leading-relaxed font-medium">
+            <p className="text-white text-body-lg font-medium">
               The fix wasn&apos;t to replace individual problem icons. The fix was to build a system from scratch that every current and future icon would conform to.
             </p>
 
@@ -226,8 +226,8 @@ export default function NCVIconSystem() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto bg-white/[0.02] rounded-[40px] border border-white/5 my-12">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }} className="mb-14">
-          <div className="text-[#ff6b00] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Design Specifications</div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">The Technical Framework</h2>
+          <div className="text-[#ff6b00] text-tag-1 mb-4">Design Specifications</div>
+          <h2 className="text-h2 text-white mb-6">The Technical Framework</h2>
           <p className="text-[#8888aa] text-lg max-w-2xl leading-relaxed">
             These specifications were defined upfront, not discovered during execution. Every one of the 55 icons was built within this framework.
           </p>
@@ -240,9 +240,9 @@ export default function NCVIconSystem() {
           {/* Grid diagram */}
           <div className="shrink-0 w-64 h-64 relative">
             <div className="absolute inset-0 rounded-2xl border-2 border-[#ff6b00]/30 flex items-center justify-center">
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[#ff6b00] text-[10px] font-mono">64px</div>
+              <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[#ff6b00] text-[10px]">64px</div>
               <div className="w-[80%] h-[80%] rounded-xl border-2 border-[#ff6b00]/60 flex items-center justify-center">
-                <div className="absolute top-[10%] left-1/2 -translate-x-1/2 text-[#ff6b00]/60 text-[9px] font-mono">56px · 8px radius</div>
+                <div className="absolute top-[10%] left-1/2 -translate-x-1/2 text-[#ff6b00]/60 text-[9px]">56px · 8px radius</div>
                 <svg viewBox="0 0 64 64" className="w-16 h-16 stroke-white/80" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d={icons[0].path} />
                 </svg>
@@ -271,7 +271,7 @@ export default function NCVIconSystem() {
                 {specRows.map((row, i) => (
                   <tr key={i}>
                     <td className="p-4 font-bold text-[#ff6b00] whitespace-nowrap">{row.spec}</td>
-                    <td className="p-4 text-white font-mono text-xs">{row.detail}</td>
+                    <td className="p-4 text-white text-xs">{row.detail}</td>
                     <td className="p-4 text-[#8888aa] text-xs leading-relaxed">{row.why}</td>
                   </tr>
                 ))}
@@ -285,9 +285,9 @@ export default function NCVIconSystem() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }} className="text-center mb-16 max-w-3xl mx-auto">
-          <div className="text-[#ff6b00] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Process</div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">The Four-Stage Process</h2>
-          <p className="text-[#8888aa] text-lg leading-relaxed">From Scattered to Systematic</p>
+          <div className="text-[#ff6b00] text-tag-1 mb-4">Process</div>
+          <h2 className="text-h2 text-white mb-6">The Four-Stage Process</h2>
+          <p className="text-[#8888aa] text-body-lg">From Scattered to Systematic</p>
         </motion.div>
 
         {/* Process image */}
@@ -297,7 +297,7 @@ export default function NCVIconSystem() {
           <img src="/images/ncv-process.png" alt="Icon design process" className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-out" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-[#080810]/30 to-transparent" />
           <div className="absolute bottom-8 left-8">
-            <div className="text-[#ff6b00] text-xs font-mono tracking-widest mb-1">ADOBE ILLUSTRATOR · 64×64 ARTBOARD</div>
+            <div className="text-[#ff6b00] text-xs tracking-widest mb-1">ADOBE ILLUSTRATOR · 64×64 ARTBOARD</div>
             <div className="text-white font-bold text-xl">Icon Construction Process</div>
           </div>
         </motion.div>
@@ -313,14 +313,14 @@ export default function NCVIconSystem() {
                   <i className={`ti ${stage.icon} text-xl text-[#ff6b00]`} />
                 </div>
                 <div>
-                  <div className="text-[#ff6b00] font-mono text-xs mb-1">Stage {stage.num}</div>
+                  <div className="text-[#ff6b00] text-xs mb-1">Stage {stage.num}</div>
                   <h3 className="text-white font-bold text-lg">{stage.label}</h3>
                   <p className="text-[#8888aa] text-sm">{stage.sub}</p>
                 </div>
               </div>
-              <p className="text-[#8888aa] text-sm leading-relaxed">{stage.body}</p>
+              <p className="text-[#8888aa] text-body-sm">{stage.body}</p>
               <div className="bg-[#ff6b00]/10 border border-[#ff6b00]/10 p-4 rounded-2xl text-sm">
-                <strong className="text-[#ff6b00] block mb-1 text-xs uppercase tracking-wider">Output</strong>
+                <strong className="text-[#ff6b00] block mb-1 text-tag-3 tracking-wider">Output</strong>
                 <p className="text-white/80 text-xs leading-relaxed">{stage.output}</p>
               </div>
             </motion.div>
@@ -332,8 +332,8 @@ export default function NCVIconSystem() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto bg-white/[0.02] rounded-[40px] border border-white/5 my-12">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }} className="mb-16">
-          <div className="text-[#ff6b00] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">The Icon System</div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">What 55 Icons Covers</h2>
+          <div className="text-[#ff6b00] text-tag-1 mb-4">The Icon System</div>
+          <h2 className="text-h2 text-white mb-6">What 55 Icons Covers</h2>
           <p className="text-[#8888aa] text-lg max-w-2xl leading-relaxed">
             The complete icon set spans every major section of the Net Carbon Vision website, providing a unified visual language from the first navigation element to the last company page detail.
           </p>
@@ -394,8 +394,8 @@ export default function NCVIconSystem() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }} className="text-center mb-16 max-w-3xl mx-auto">
-          <div className="text-[#ff6b00] text-[11px] font-bold tracking-[0.2em] mb-4 uppercase">Designed Outcomes</div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">What the System Delivered</h2>
+          <div className="text-[#ff6b00] text-tag-1 mb-4">Designed Outcomes</div>
+          <h2 className="text-h2 text-white mb-6">What the System Delivered</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -410,7 +410,7 @@ export default function NCVIconSystem() {
                 <i className={`ti ${item.icon} text-2xl text-[#ff6b00]`} />
               </div>
               <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
-              <p className="text-[#8888aa] text-sm leading-relaxed">{item.body}</p>
+              <p className="text-[#8888aa] text-body-sm">{item.body}</p>
             </motion.div>
           ))}
         </div>
@@ -427,9 +427,9 @@ export default function NCVIconSystem() {
 
           <div className="relative z-10 max-w-3xl mx-auto text-center">
             <div className="text-[#ff6b00] text-[11px] font-bold tracking-[0.2em] mb-6 uppercase">Reflection</div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-10">What This Project Reinforced</h2>
+            <h2 className="text-h2 text-white mb-10">What This Project Reinforced</h2>
 
-            <div className="text-[#8888aa] text-lg leading-relaxed space-y-6 text-left">
+            <div className="text-[#8888aa] text-body-lg space-y-6 text-left">
               <p>
                 The most valuable outcome of this project wasn&apos;t the 55 icons. It was the framework that produced them.
               </p>

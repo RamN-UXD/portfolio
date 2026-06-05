@@ -40,7 +40,7 @@ export default function DomainExpertise() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
-          className="text-[#0066ff] text-[12px] font-bold tracking-[0.2em] mb-4 uppercase"
+          className="text-[#0066ff] text-tag-1 mb-4"
         >
           Specialized Knowledge
         </motion.div>
@@ -49,7 +49,7 @@ export default function DomainExpertise() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.1, ease: customEase }}
-          className="text-4xl md:text-6xl font-bold text-[#fafafa] leading-tight"
+          className="text-h1 text-[#fafafa] leading-tight"
         >
           Where My Design Thinking <br />
           <span className="text-[#8888aa]">Runs Deep.</span>
@@ -95,11 +95,8 @@ function ExpertiseCard({
         style={{ backgroundColor: item.accent }}
       />
 
-      {/* Top Banner: Index and Icon */}
-      <div className="w-full flex justify-between items-center mb-8">
-        <span className="text-5xl font-black text-white/5 group-hover:text-white/10 transition-colors duration-500 font-mono">
-          {item.index}
-        </span>
+      {/* Top Banner: Icon */}
+      <div className="w-full flex justify-start items-center mb-8">
         <div
           className="w-12 h-12 rounded-2xl flex items-center justify-center bg-white/5 border border-white/10 text-white/80 group-hover:text-white transition-colors duration-500"
           style={{ boxShadow: `0 0 20px rgba(0, 0, 0, 0.2)` }}
@@ -118,7 +115,7 @@ function ExpertiseCard({
 
       {/* Bottom Segment: Featured Projects Showcase */}
       <div className="mt-auto pt-8 border-t border-white/5 w-full">
-        <p className="text-[11px] uppercase tracking-widest text-[#8888aa] mb-4 font-semibold">
+        <p className="text-tag-2 text-[#8888aa] mb-4">
           Featured Projects
         </p>
         <div className="flex flex-col gap-3">

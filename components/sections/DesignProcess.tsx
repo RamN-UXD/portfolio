@@ -54,11 +54,11 @@ export default function DesignProcess() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-[#0066ff] text-[12px] font-bold tracking-[0.2em] mb-4 uppercase"
+              className="text-[#0066ff] text-tag-1 mb-4"
             >
               Design Process
             </motion.div>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#fafafa] leading-tight mb-8">
+            <h2 className="text-h2 text-[#fafafa] leading-tight mb-8">
               How I Work <br />
               <span className="text-[#8888aa] text-2xl md:text-3xl font-medium mt-4 block">
                 From Ambiguity to <br />
@@ -135,7 +135,7 @@ function ProcessCard({
         />
       </div>
       <div className="my-auto flex flex-col gap-4">
-        <h3 className="text-2xl md:text-4xl font-bold text-white leading-none">
+        <h3 className="text-h2 text-white leading-none">
           {step.title}
         </h3>
         <p className="text-[#8888aa] text-sm md:text-base leading-relaxed">

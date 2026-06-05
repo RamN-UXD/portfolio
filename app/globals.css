@@ -11,10 +11,6 @@
 }
 
 @layer base {
-  .theme {
-    --font-heading: var(--font-sans);
-    --font-sans: var(--font-sans);
-  }
   :root {
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
@@ -90,35 +86,47 @@
     background-color: var(--background);
     color: var(--foreground);
     background-color: #080810;
-    font-family: "Google Sans", "Product Sans", var(--font-body), system-ui, -apple-system, sans-serif;
+    font-family: "Google Sans", sans-serif !important;
   }
   html {
     background-color: #080810;
-    font-family: "Google Sans", "Product Sans", var(--font-body), system-ui, -apple-system, sans-serif;
+    font-family: "Google Sans", sans-serif !important;
     font-size: 16px;
     scroll-behavior: smooth;
   }
   
-  /* Apply Manrope to headings */
-  h1, h2, h3, h4, h5, h6, .font-bold, .font-black, .font-semibold {
-    font-family: var(--font-heading), system-ui, sans-serif !important;
+  /* Apply Google Sans and Fluid typography base styles to headings */
+  .text-tag-1, .text-tag-2, .text-tag-3 {
+    @apply uppercase;
+  }
+  
+  h1 {
+    font-family: "Google Sans", sans-serif !important;
+    @apply text-h1;
+  }
+  h2 {
+    font-family: "Google Sans", sans-serif !important;
+    @apply text-h2;
+  }
+  h3 {
+    font-family: "Google Sans", sans-serif !important;
+    @apply text-h3;
+  }
+  h4 {
+    font-family: "Google Sans", sans-serif !important;
+    @apply text-h4;
+  }
+  h5 {
+    font-family: "Google Sans", sans-serif !important;
+    @apply text-h5;
+  }
+  h6 {
+    font-family: "Google Sans", sans-serif !important;
+    @apply text-h6;
   }
 
-  /* Responsive base font size to make text extremely legible on larger displays */
-  @media (min-width: 1200px) {
-    html {
-      font-size: 17px;
-    }
-  }
-  @media (min-width: 1600px) {
-    html {
-      font-size: 18px;
-    }
-  }
-  @media (min-width: 2000px) {
-    html {
-      font-size: 20px;
-    }
+  .font-bold, .font-black, .font-semibold, strong {
+    font-family: "Google Sans", sans-serif !important;
   }
 
   /* Premium Hover Button Glow Effects */

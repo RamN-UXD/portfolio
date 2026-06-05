@@ -31,7 +31,7 @@ export default function DrHealthCaseStudy() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: customEase }}
-          className="text-[#00ffb7] text-[12px] font-bold tracking-[0.2em] mb-6 uppercase"
+          className="text-[#00ffb7] text-tag-1 mb-6"
         >
           UX/UI Design &middot; Mobile App &middot; Case Study
         </motion.div>
@@ -40,7 +40,7 @@ export default function DrHealthCaseStudy() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1, ease: customEase }}
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-8 max-w-5xl"
+          className="text-h1 leading-tight mb-8 max-w-5xl"
         >
           Translating Research Insights on Preventive Healthcare into App Design
         </motion.h1>
@@ -49,7 +49,7 @@ export default function DrHealthCaseStudy() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: customEase }}
-          className="text-[#8888aa] text-lg md:text-2xl leading-relaxed max-w-3xl mb-16"
+          className="text-[#8888aa] text-body-lg max-w-3xl mb-16"
         >
           Dr.Health is a research-led mobile experience designed to empower urban Indians to take
           proactive control of their health; built on validated user problems, driven by
@@ -75,19 +75,19 @@ export default function DrHealthCaseStudy() {
           className="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-[32px] bg-white/[0.02] border border-white/5 backdrop-blur-sm"
         >
           <div className="flex flex-col gap-2">
-            <span className="text-3xl font-bold text-white">2</span>
+            <span className="text-h3 text-white">2</span>
             <span className="text-sm text-[#8888aa]">Features Designed End-to-End</span>
           </div>
           <div className="flex flex-col gap-2">
-            <span className="text-3xl font-bold text-white">2</span>
+            <span className="text-h3 text-white">2</span>
             <span className="text-sm text-[#8888aa]">User Personas Tested</span>
           </div>
           <div className="flex flex-col gap-2">
-            <span className="text-3xl font-bold text-white">11</span>
+            <span className="text-h3 text-white">11</span>
             <span className="text-sm text-[#8888aa]">Hi-Fi Screens</span>
           </div>
           <div className="flex flex-col gap-2">
-            <span className="text-3xl font-bold text-white">4</span>
+            <span className="text-h3 text-white">4</span>
             <span className="text-sm text-[#8888aa]">Design Principles Applied</span>
           </div>
         </motion.div>
@@ -103,7 +103,7 @@ export default function DrHealthCaseStudy() {
             transition={{ duration: 0.8, ease: customEase }}
             className="md:col-span-4"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight sticky top-32">
+            <h2 className="text-h2 text-white leading-tight sticky top-32">
               Where This Design Came From
             </h2>
           </motion.div>
@@ -113,7 +113,7 @@ export default function DrHealthCaseStudy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1, ease: customEase }}
-            className="md:col-span-8 text-[#8888aa] text-lg md:text-xl leading-relaxed space-y-6"
+            className="md:col-span-8 text-[#8888aa] text-body-lg space-y-6"
           >
             <p>
               This project doesn&apos;t begin with wireframes. It begins with 187 research participants, 3
@@ -148,7 +148,7 @@ export default function DrHealthCaseStudy() {
             transition={{ duration: 0.8, ease: customEase }}
             className="md:col-span-4"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight sticky top-32">
+            <h2 className="text-h2 text-white leading-tight sticky top-32">
               What the Design Was Built to Solve
             </h2>
           </motion.div>
@@ -163,8 +163,8 @@ export default function DrHealthCaseStudy() {
             {/* Business Case */}
             <div>
               <h3 className="text-[#00ffb7] text-[12px] font-bold tracking-[0.2em] mb-4 uppercase">Business Case Focus Area</h3>
-              <h4 className="text-2xl font-bold text-white mb-4">Higher Healthcare Expenses</h4>
-              <p className="text-[#8888aa] text-lg leading-relaxed">
+              <h4 className="text-h4 text-white mb-4">Higher Healthcare Expenses</h4>
+              <p className="text-[#8888aa] text-body-lg">
                 The design phase was scoped around solving problems that directly contribute to higher
                 healthcare expenses; addressing preventable conditions through better user experiences,
                 earlier detection, and habit-building tools.
@@ -174,7 +174,7 @@ export default function DrHealthCaseStudy() {
             {/* Problem Impacts Table */}
             <div>
               <h3 className="text-xl font-bold text-white mb-6">Problem Impacts; The 3 Prioritized Disease Areas</h3>
-              <p className="text-[#8888aa] text-lg leading-relaxed mb-6">
+              <p className="text-[#8888aa] text-body-lg mb-6">
                 From the broader set of validated problems, three critical areas were prioritized for the
                 design phase, ensuring depth of focus and actionable solutions.
               </p>
@@ -215,7 +215,7 @@ export default function DrHealthCaseStudy() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-white/5 border border-white/5 p-6 rounded-2xl">
                   <h4 className="text-white font-bold mb-3">Unhealthy Habits</h4>
-                  <p className="text-[#8888aa] text-sm leading-relaxed">
+                  <p className="text-[#8888aa] text-body-sm">
                     Fast-paced lifestyles often result in increased stress and boredom, leading to the adoption
                     of bad habits. Conflicting advice from various sources further contributes to the
                     development of unhealthy behaviors.
@@ -223,14 +223,14 @@ export default function DrHealthCaseStudy() {
                 </div>
                 <div className="bg-white/5 border border-white/5 p-6 rounded-2xl">
                   <h4 className="text-white font-bold mb-3">Late Diagnosis &amp; Treatment</h4>
-                  <p className="text-[#8888aa] text-sm leading-relaxed">
+                  <p className="text-[#8888aa] text-body-sm">
                     Reactive healthcare, caused by decentralized medical information and a lack of health
                     tracking, leads to advanced diseases.
                   </p>
                 </div>
                 <div className="bg-white/5 border border-white/5 p-6 rounded-2xl">
                   <h4 className="text-white font-bold mb-3">Higher Healthcare Expenses</h4>
-                  <p className="text-[#8888aa] text-sm leading-relaxed">
+                  <p className="text-[#8888aa] text-body-sm">
                     Treating advanced diseases is more costly than preventive care, requiring additional
                     resources and specialized interventions.
                   </p>
@@ -250,8 +250,8 @@ export default function DrHealthCaseStudy() {
           transition={{ duration: 0.8, ease: customEase }}
           className="text-center mb-16 max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Design Principles; The Foundation</h2>
-          <p className="text-[#8888aa] text-lg leading-relaxed">
+          <h2 className="text-h2 text-white mb-6">Design Principles; The Foundation</h2>
+          <p className="text-[#8888aa] text-body-lg">
             These principles were established before any interface decisions were made. Every screen in this project can be traced back to at least one of these.
           </p>
         </motion.div>
@@ -266,7 +266,7 @@ export default function DrHealthCaseStudy() {
             className="bg-[rgba(48,46,97,0.18)] border border-white/5 rounded-[32px] p-8"
           >
             <h3 className="text-xl font-bold text-[#00ffb7] mb-6">Gestalt Principles</h3>
-            <div className="space-y-6 text-[#8888aa] text-sm leading-relaxed">
+            <div className="space-y-6 text-[#8888aa] text-body-sm">
               <div>
                 <strong className="text-white block mb-1">Proximity</strong>
                 Elements such as &quot;Intelligent Time Manager&quot; and &quot;Personalized Health Plan&quot; are grouped closely, indicating they are related functions.
@@ -295,7 +295,7 @@ export default function DrHealthCaseStudy() {
             className="bg-[rgba(48,46,97,0.18)] border border-white/5 rounded-[32px] p-8"
           >
             <h3 className="text-xl font-bold text-[#00ffb7] mb-6">UX Laws</h3>
-            <div className="space-y-6 text-[#8888aa] text-sm leading-relaxed">
+            <div className="space-y-6 text-[#8888aa] text-body-sm">
               <div>
                 <strong className="text-white block mb-1">Law of Pr&auml;gnanz (Simplicity)</strong>
                 The design is simple and clean, using clear icons and minimal text. This simplicity ensures that users can quickly understand and interact.
@@ -320,7 +320,7 @@ export default function DrHealthCaseStudy() {
             className="bg-[rgba(48,46,97,0.18)] border border-white/5 rounded-[32px] p-8"
           >
             <h3 className="text-xl font-bold text-[#00ffb7] mb-6">Design Psychology</h3>
-            <div className="space-y-6 text-[#8888aa] text-sm leading-relaxed">
+            <div className="space-y-6 text-[#8888aa] text-body-sm">
               <div>
                 <strong className="text-white block mb-1">Golden Ratio</strong>
                 The golden ratio is evident in the layout, guiding the user&apos;s eye naturally through the content. The spiral overlays and grid lines show how elements are proportioned harmoniously.
@@ -383,7 +383,7 @@ export default function DrHealthCaseStudy() {
             transition={{ duration: 0.8, ease: customEase }}
             className="md:col-span-4"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight sticky top-32">
+            <h2 className="text-h2 text-white leading-tight sticky top-32">
               Why Light Mode; A Deliberate Decision
             </h2>
           </motion.div>
@@ -392,7 +392,7 @@ export default function DrHealthCaseStudy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1, ease: customEase }}
-            className="md:col-span-8 text-[#8888aa] text-lg leading-relaxed"
+            className="md:col-span-8 text-[#8888aa] text-body-lg"
           >
             <p className="mb-8">
               Before designing a single screen, the display mode was evaluated against user context,
@@ -408,7 +408,7 @@ export default function DrHealthCaseStudy() {
                 { n: "06", t: "Consistency & Standards", d: "It aligns with industry standards, offering a familiar and credible user experience." },
               ].map((item) => (
                 <div key={item.n} className="p-6 rounded-2xl bg-[rgba(48,46,97,0.18)] border border-white/5">
-                  <div className="text-[#00ffb7] font-mono text-xs mb-2">#{item.n}</div>
+                  <div className="text-[#00ffb7] text-xs mb-2">#{item.n}</div>
                   <h4 className="text-white font-bold mb-2">{item.t}</h4>
                   <p className="text-sm text-[#8888aa] leading-relaxed">{item.d}</p>
                 </div>
@@ -427,8 +427,8 @@ export default function DrHealthCaseStudy() {
           transition={{ duration: 0.8, ease: customEase }}
           className="text-center mb-16 max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">From Validated Problems to Designed Solutions</h2>
-          <p className="text-[#8888aa] text-lg leading-relaxed">
+          <h2 className="text-h2 text-white mb-6">From Validated Problems to Designed Solutions</h2>
+          <p className="text-[#8888aa] text-body-lg">
             Two features were designed end-to-end; from the validated user problem through solution point, wireframe flow, and high-fidelity screens.
           </p>
         </motion.div>
@@ -443,12 +443,12 @@ export default function DrHealthCaseStudy() {
             className="grid grid-cols-1 lg:grid-cols-12 gap-12"
           >
             <div className="lg:col-span-5 space-y-8">
-              <h3 className="text-2xl font-bold text-white border-l-4 border-[#00ffb7] pl-4">
+              <h3 className="text-h4 text-white border-l-4 border-[#00ffb7] pl-4">
                 Feature 1; Motivational Reminders &amp; Rewards
               </h3>
               <div>
                 <h4 className="text-[#ff0055] font-semibold mb-2">User Problem</h4>
-                <p className="text-[#8888aa] text-sm leading-relaxed">
+                <p className="text-[#8888aa] text-body-sm">
                   Urban users show fluctuating motivation towards fitness. Walking is often highlighted as an
                   accessible activity, but sticking to structured fitness routines consistently remains a
                   core behavioral challenge across personas.
@@ -456,7 +456,7 @@ export default function DrHealthCaseStudy() {
               </div>
               <div>
                 <h4 className="text-[#00ffb7] font-semibold mb-2">Solution Point</h4>
-                <p className="text-[#8888aa] text-sm leading-relaxed">
+                <p className="text-[#8888aa] text-body-sm">
                   The app addresses fluctuating motivation by sending contextual motivational reminders
                   and messages tied to the user&apos;s own goals. A rewards system; points and badges for
                   achieving fitness targets; creates a positive reinforcement loop that sustains engagement.
@@ -501,12 +501,12 @@ export default function DrHealthCaseStudy() {
             className="grid grid-cols-1 lg:grid-cols-12 gap-12"
           >
             <div className="lg:col-span-5 space-y-8 lg:order-2">
-              <h3 className="text-2xl font-bold text-white border-l-4 border-[#00ffb7] pl-4">
+              <h3 className="text-h4 text-white border-l-4 border-[#00ffb7] pl-4">
                 Feature 2; Mental &amp; Cardiovascular Healthcare
               </h3>
               <div>
                 <h4 className="text-[#ff0055] font-semibold mb-2">User Problem</h4>
-                <p className="text-[#8888aa] text-sm leading-relaxed">
+                <p className="text-[#8888aa] text-body-sm">
                   Urban users find it challenging to engage with mental health services, cardiovascular
                   checkups, and insurance due to personal time constraints and scheduling conflicts. The
                   barrier isn&apos;t awareness; it&apos;s accessibility and convenience.
@@ -514,7 +514,7 @@ export default function DrHealthCaseStudy() {
               </div>
               <div>
                 <h4 className="text-[#00ffb7] font-semibold mb-2">Solution Point</h4>
-                <p className="text-[#8888aa] text-sm leading-relaxed">
+                <p className="text-[#8888aa] text-body-sm">
                   The app provides a platform for users to connect with mental health professionals through
                   video calls, overcoming both geographical and time constraints. Flexible scheduling,
                   professional profiles with ratings, and in-app follow-up tools make ongoing care management practical.
@@ -560,8 +560,8 @@ export default function DrHealthCaseStudy() {
           transition={{ duration: 0.8, ease: customEase }}
           className="text-center mb-16 max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">High-Fidelity Design; Principles in Practice</h2>
-          <p className="text-[#8888aa] text-lg leading-relaxed">
+          <h2 className="text-h2 text-white mb-6">High-Fidelity Design; Principles in Practice</h2>
+          <p className="text-[#8888aa] text-body-lg">
             Each screen was designed with the Gestalt principles, UX laws, and grid system established earlier. The design rationale is documented alongside each screen.
           </p>
         </motion.div>
@@ -569,7 +569,7 @@ export default function DrHealthCaseStudy() {
         <div className="space-y-24">
           {/* Flow A */}
           <div>
-            <h3 className="text-2xl font-bold text-[#00ffb7] mb-8 text-center uppercase tracking-widest">Flow A; Motivational Reminders</h3>
+            <h3 className="text-h4 text-[#00ffb7] mb-8 text-center uppercase tracking-widest">Flow A; Motivational Reminders</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 { name: "01 — Set Fitness Goals", desc: "The screen allows users to set and save their fitness goals. This organized layout helps track progress.", rationale: "Fitts's Law applied to input field sizing. Hick's Law guided the decision to present only three goal categories to reduce decision fatigue." },
@@ -601,7 +601,7 @@ export default function DrHealthCaseStudy() {
 
           {/* Flow B */}
           <div>
-            <h3 className="text-2xl font-bold text-[#00ffb7] mb-8 text-center uppercase tracking-widest">Flow B; Healthcare Access</h3>
+            <h3 className="text-h4 text-[#00ffb7] mb-8 text-center uppercase tracking-widest">Flow B; Healthcare Access</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 { name: "01 — Mental Health Services", desc: "Tracks progress in physical activities and provides an overview of achievements to encourage mental health.", rationale: "Continuity principle applied — the layout flows from summary to detail, guiding the user from awareness into action." },
@@ -643,7 +643,7 @@ export default function DrHealthCaseStudy() {
           transition={{ duration: 0.8, ease: customEase }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">User Validation &amp; Iteration</h2>
+          <h2 className="text-h2 text-white mb-6">User Validation &amp; Iteration</h2>
           <p className="text-[#8888aa] text-lg max-w-2xl mx-auto">
             Direct feedback from moderated usability testing drove the final polish of the experience.
           </p>
@@ -658,7 +658,7 @@ export default function DrHealthCaseStudy() {
             transition={{ duration: 0.8, ease: customEase }}
             className="space-y-8"
           >
-            <h3 className="text-2xl font-bold text-white flex items-center gap-3">
+            <h3 className="text-h4 text-white flex items-center gap-3">
               <span className="w-8 h-8 rounded-full bg-[#00ffb7]/20 text-[#00ffb7] flex items-center justify-center text-sm">✓</span>
               What Users Appreciated
             </h3>
@@ -693,7 +693,7 @@ export default function DrHealthCaseStudy() {
             transition={{ duration: 0.8, ease: customEase }}
             className="space-y-8"
           >
-            <h3 className="text-2xl font-bold text-white flex items-center gap-3">
+            <h3 className="text-h4 text-white flex items-center gap-3">
               <span className="w-8 h-8 rounded-full bg-[#ff0055]/20 text-[#ff0055] flex items-center justify-center text-sm">!</span>
               What Users Flagged &amp; Iterations
             </h3>

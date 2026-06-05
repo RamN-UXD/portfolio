@@ -14,7 +14,7 @@ export default function ImpactMetrics() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
-          className="text-[#0066ff] text-[12px] font-bold tracking-[0.2em] mb-4 uppercase"
+          className="text-[#0066ff] text-tag-1 mb-4"
         >
           Measurable Impact
         </motion.div>
@@ -23,7 +23,7 @@ export default function ImpactMetrics() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.1, ease: customEase }}
-          className="text-4xl md:text-6xl font-bold text-[#fafafa] leading-tight"
+          className="text-h1 text-[#fafafa] leading-tight"
         >
           Numbers that define <br /> 
           <span className="text-[#8888aa]">product success.</span>
@@ -198,12 +198,12 @@ function MetricCard({
 
       <div className="w-full text-left flex flex-col items-start gap-2">
         <motion.div 
-          className="text-6xl md:text-8xl font-black tracking-tighter text-left"
+          className="text-h1 font-black tracking-tighter text-left"
           style={{ color: accent }}
         >
           {displayValue}
         </motion.div>
-        <h3 className="text-xl md:text-2xl font-bold text-[#fafafa] text-left">
+        <h3 className="text-h3 text-[#fafafa] text-left">
           {title}
         </h3>
       </div>

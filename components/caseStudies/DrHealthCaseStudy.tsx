@@ -75,7 +75,7 @@ function SectionTitle({ children, className = "" }: { children: React.ReactNode;
 }
 
 function SectionIntro({ children }: { children: React.ReactNode }) {
-  return <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#8888aa]">{children}</p>;
+  return <p className="mt-5 max-w-2xl text-body-lg text-[#8888aa]">{children}</p>;
 }
 
 function CaseStudySection({
@@ -199,7 +199,7 @@ export default function DrHealthCaseStudy() {
                 <h1 className="text-balance text-4xl font-bold leading-[1.08] tracking-tight text-white md:text-6xl lg:text-7xl">
                   Translating Research Insights on Preventive Healthcare into App Design
                 </h1>
-                <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#8888aa] md:text-xl">
+                <p className="mt-8 max-w-2xl text-body-lg text-[#8888aa] md:text-xl">
                   Dr.Health is a research-led mobile experience designed to empower urban Indians to take proactive control of their health — built on validated user problems, driven by evidence-based design decisions, and tested with real users.
                 </p>
               </motion.div>
@@ -265,16 +265,16 @@ export default function DrHealthCaseStudy() {
 
             <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
               <div className="space-y-6 lg:col-span-6">
-                <p className="text-lg leading-relaxed text-[#8888aa]">
+                <p className="text-body-lg text-[#8888aa]">
                   This project doesn&apos;t begin with wireframes. It begins with{" "}
                   <strong className="text-white">187 research participants, 3 surveys, 14 interviews</strong>, and{" "}
                   <strong className="text-white">18 validated user problems</strong> uncovered in the UX research phase.
                 </p>
-                <p className="text-lg leading-relaxed text-[#8888aa]">
+                <p className="text-body-lg text-[#8888aa]">
                   From those 18 problems, the design phase focused on a specific business case:{" "}
                   <strong className="text-white">Higher Healthcare Expenses</strong> — the domain where preventive design intervention could deliver the most measurable impact.
                 </p>
-                <p className="text-lg leading-relaxed text-[#8888aa]">
+                <p className="text-body-lg text-[#8888aa]">
                   Every layout decision, interaction pattern, and design principle applied in this project has a reason grounded in what users actually said, felt, and struggled with.
                 </p>
                 <a
@@ -312,7 +312,7 @@ export default function DrHealthCaseStudy() {
                 </p>
                 <h3 className="mb-4 text-2xl font-bold text-white">Focus Area</h3>
                 <p className="mb-3 text-xl font-bold text-white">Higher Healthcare Expenses</p>
-                <p className="text-sm leading-relaxed text-[#8888aa]">
+                <p className="text-body-sm text-[#8888aa]">
                   Scoped around solving problems that directly contribute to higher healthcare expenses through better user experiences.
                 </p>
               </GlassCard>
@@ -343,11 +343,11 @@ export default function DrHealthCaseStudy() {
                   </p>
                   <div className="space-y-5">
                     <div>
-                      <p className="mb-1 text-xs uppercase tracking-widest text-[#8888aa]">Financial Impact</p>
+                      <p className="mb-1 text-tag-3 tracking-widest text-[#8888aa]">Financial Impact</p>
                       <p className="font-semibold text-white">{disease.impact}</p>
                     </div>
                     <div>
-                      <p className="mb-1 text-xs uppercase tracking-widest text-[#8888aa]">Lives at Risk</p>
+                      <p className="mb-1 text-tag-3 tracking-widest text-[#8888aa]">Lives at Risk</p>
                       <p className="font-semibold text-white">{disease.lives}</p>
                     </div>
                   </div>
@@ -381,7 +381,7 @@ export default function DrHealthCaseStudy() {
                     {problem.num}
                   </span>
                   <h4 className="mb-4 text-xl font-bold text-white">{problem.title}</h4>
-                  <p className="text-sm leading-relaxed text-[#8888aa]">{problem.desc}</p>
+                  <p className="text-body-sm text-[#8888aa]">{problem.desc}</p>
                 </GlassCard>
               ))}
             </div>
@@ -469,7 +469,7 @@ export default function DrHealthCaseStudy() {
                   <GlassCard key={idx}>
                     <p className="mb-3 text-sm font-bold text-[#0066ff]">0{idx + 1}</p>
                     <p className="mb-2 font-semibold text-white">{item.benefit}</p>
-                    <p className="text-sm leading-relaxed text-[#8888aa]">{item.desc}</p>
+                    <p className="text-body-sm text-[#8888aa]">{item.desc}</p>
                   </GlassCard>
                 ))}
               </div>
@@ -514,7 +514,7 @@ export default function DrHealthCaseStudy() {
                       </div>
                       <div>
                         <p className="font-semibold text-white">{item.principle}</p>
-                        <p className="mt-1 text-sm leading-relaxed text-[#8888aa]">{item.rationale}</p>
+                        <p className="mt-1 text-body-sm text-[#8888aa]">{item.rationale}</p>
                       </div>
                     </div>
                   ))}
@@ -727,10 +727,10 @@ export default function DrHealthCaseStudy() {
                   >
                     <div className="space-y-5 lg:col-span-7">
                       <h4 className="text-xl font-bold text-white">{screen.screen}</h4>
-                      <p className="text-sm leading-relaxed text-[#8888aa]">{screen.desc}</p>
+                      <p className="text-body-sm text-[#8888aa]">{screen.desc}</p>
                       <GlassCard className="!p-6">
                         <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#0066ff]">Design Rationale</p>
-                        <p className="text-sm leading-relaxed text-[#8888aa]">{screen.rationale}</p>
+                        <p className="text-body-sm text-[#8888aa]">{screen.rationale}</p>
                       </GlassCard>
                     </div>
                     <div className="lg:col-span-5">
@@ -789,10 +789,10 @@ export default function DrHealthCaseStudy() {
                   >
                     <div className="space-y-5 lg:col-span-7">
                       <h4 className="text-xl font-bold text-white">{screen.screen}</h4>
-                      <p className="text-sm leading-relaxed text-[#8888aa]">{screen.desc}</p>
+                      <p className="text-body-sm text-[#8888aa]">{screen.desc}</p>
                       <GlassCard className="!p-6">
                         <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#cc63ff]">Design Rationale</p>
-                        <p className="text-sm leading-relaxed text-[#8888aa]">{screen.rationale}</p>
+                        <p className="text-body-sm text-[#8888aa]">{screen.rationale}</p>
                       </GlassCard>
                     </div>
                     <div className="lg:col-span-5">
@@ -893,7 +893,7 @@ export default function DrHealthCaseStudy() {
                             <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#8888aa]">
                               Problem Identified
                             </p>
-                            <p className="text-sm leading-relaxed text-[#8888aa]">{item.problem}</p>
+                            <p className="text-body-sm text-[#8888aa]">{item.problem}</p>
                           </div>
                           <div className="md:border-l md:border-white/[0.08] md:pl-10">
                             <p
@@ -902,7 +902,7 @@ export default function DrHealthCaseStudy() {
                             >
                               Design Response
                             </p>
-                            <p className="text-sm leading-relaxed text-[#8888aa]">{item.response}</p>
+                            <p className="text-body-sm text-[#8888aa]">{item.response}</p>
                           </div>
                         </div>
                       </div>

@@ -45,7 +45,7 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
-          className="text-[#0066ff] text-[12px] font-bold tracking-[0.2em] mb-4 uppercase"
+          className="text-[#0066ff] text-tag-1 mb-4"
         >
           Experience
         </motion.div>
@@ -54,7 +54,7 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.1, ease: customEase }}
-          className="text-4xl md:text-6xl font-bold text-[#fafafa] leading-tight"
+          className="text-h1 text-[#fafafa] leading-tight"
         >
           Experience That <br />
           <span className="text-[#8888aa]">Drives Outcomes.</span>
@@ -92,7 +92,7 @@ export default function Experience() {
               </p>
 
               <span 
-                className="px-4 py-2.5 rounded-2xl bg-white/5 border border-white/10 text-xs font-semibold text-white/80 font-mono inline-block mt-2"
+                className="px-4 py-2.5 rounded-2xl bg-white/5 border border-white/10 text-xs font-semibold text-white/80 inline-block mt-2"
                 dangerouslySetInnerHTML={{ __html: exp.period }}
               />
             </div>

@@ -27,7 +27,7 @@ export default function CredibilityBar() {
 
         {/* Testimonial */}
         <div className="max-w-3xl flex flex-col items-center">
-          <span className="text-[4rem] leading-none text-[#0066ff] font-serif mb-4">
+          <span className="text-[4rem] leading-none text-[#0066ff] mb-4">
             &ldquo;
           </span>
           <p className="text-[1.1rem] md:text-[1.25rem] text-[#fafafa] leading-relaxed mb-6 font-medium">
