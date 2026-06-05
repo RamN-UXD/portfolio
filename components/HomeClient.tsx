@@ -22,6 +22,13 @@ import CTAFooter from "./sections/CTAFooter";
 export default function HomeClient() {
   const [isLoaded, setIsLoaded] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  // Track scroll for the Hero Section
+  const { scrollYProgress: heroProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end end"]
+  });
 
   // We want to fade in the content sections as they scroll into view 
   // after the long sticky hero section completes.
@@ -49,9 +56,9 @@ export default function HomeClient() {
         }}
       >
         {/* IMAGE SEQUENCE HERO — FIRST SECTION (1000vh total height) */}
-        <section className="relative">
-          <ScrollyCanvas />
-          <Overlay />
+        <section ref={heroRef} className="relative">
+          <ScrollyCanvas progress={heroProgress} />
+          <Overlay progress={heroProgress} />
         </section>
 
         {/* 

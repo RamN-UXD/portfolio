@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useScroll, useMotionValueEvent, useSpring } from "framer-motion";
+import { useScroll, useMotionValueEvent, useSpring, MotionValue } from "framer-motion";
 
 const TOTAL_FRAMES = 192;
 const pad = (n: number) => String(n).padStart(3, "0");
@@ -9,8 +9,8 @@ const frames = Array.from({ length: TOTAL_FRAMES }, (_, i) =>
   `/sequence/frame_${pad(i)}_delay-0.041s.webp`
 );
 
-export default function ScrollyCanvas() {
-  const containerRef = useRef<HTMLDivElement>(null);
+export default function ScrollyCanvas({ progress }: { progress?: MotionValue<number> }) {
+  const internalRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
   const [isReady, setIsReady] = useState(false);
@@ -110,8 +110,10 @@ export default function ScrollyCanvas() {
     ctx.drawImage(img, sx, sy, sw, sh);
   };
 
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
-  const smoothProgress = useSpring(scrollYProgress, {
+  const { scrollYProgress: internalProgress } = useScroll({ target: internalRef, offset: ["start start", "end end"] });
+  const activeProgress = progress || internalProgress;
+  
+  const smoothProgress = useSpring(activeProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
@@ -129,7 +131,7 @@ export default function ScrollyCanvas() {
   });
 
   return (
-    <div ref={containerRef} className="relative h-[1000vh]">
+    <div ref={internalRef} className="relative h-[1000vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <canvas
           ref={canvasRef}

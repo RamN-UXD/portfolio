@@ -3,10 +3,12 @@
 import { useRef } from "react";
 import { useScroll, useTransform, motion, useSpring, MotionValue } from "framer-motion";
 
-export default function Overlay() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
-  const smoothProgress = useSpring(scrollYProgress, {
+export default function Overlay({ progress }: { progress?: MotionValue<number> }) {
+  const internalRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: internalProgress } = useScroll({ target: internalRef, offset: ["start start", "end end"] });
+  const activeProgress = progress || internalProgress;
+  
+  const smoothProgress = useSpring(activeProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
@@ -39,7 +41,7 @@ export default function Overlay() {
   const blocks = Array.from({ length: blockCount });
 
   return (
-    <div ref={containerRef} className="absolute inset-0 z-10 pointer-events-none">
+    <div ref={internalRef} className="absolute inset-0 z-10 pointer-events-none">
       <div className="sticky top-0 h-screen w-full flex flex-col justify-center px-6 md:px-16 overflow-hidden">
 
         {/* ── Section 1: Cinematic Split Name Slide-In Reveal ── */}
