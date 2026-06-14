@@ -17,6 +17,9 @@ export default function Overlay({ progress }: { progress?: MotionValue<number> }
   // Map progress to 0-0.85 range for the text layers
   const textProgress = useTransform(smoothProgress, [0, 0.85], [0, 1]);
 
+  // Scroll Indicator Fade Out
+  const indicatorOpacity = useTransform(textProgress, [0, 0.02], [1, 0]);
+
   /* ── Section 1 — Cinematic Slide-In Name Reveal ────────────────── */
   // Subtle slide-up masked reveal that animates on scroll
   const name1Opacity = useTransform(textProgress, [0.0, 0.08, 0.20, 0.28], [0, 1, 1, 0]);
@@ -121,6 +124,21 @@ export default function Overlay({ progress }: { progress?: MotionValue<number> }
               </a>
             </div>
           </div>
+        </motion.div>
+
+        {/* ── Scroll Indicator (Fades out immediately on scroll) ── */}
+        <motion.div
+          style={{ opacity: indicatorOpacity }}
+          className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-20"
+        >
+          <div className="w-[26px] h-[40px] rounded-[14px] border-2 border-white/20 flex justify-center items-start pt-[6px]">
+             <motion.div 
+               animate={{ y: [0, 12, 0], opacity: [1, 0.2, 1] }}
+               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+               className="w-[4px] h-[6px] bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.6)]"
+             />
+          </div>
+          <span className="text-[10px] uppercase tracking-[0.2em] text-[#8888aa] font-bold">Scroll</span>
         </motion.div>
 
         {/* ── Geometric Block Wipe (Bottom to Top) ── */}

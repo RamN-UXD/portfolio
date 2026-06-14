@@ -81,7 +81,7 @@ export default function B2BAdminCaseStudy() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-20 px-6 md:px-16 max-w-[1400px] mx-auto min-h-[85vh] flex flex-col justify-center">
+      <section className="relative pt-40 pb-20 px-6 md:px-16 max-w-[1400px] mx-auto min-h-[85vh] flex flex-col justify-center items-center text-center">
         {/* Background Radial Glow */}
         <div className="absolute top-10 right-10 w-[600px] h-[600px] bg-[#0066ff] opacity-[0.05] blur-[150px] rounded-full pointer-events-none" />
         <div className="absolute -left-10 bottom-10 w-[400px] h-[400px] bg-[#00ffff] opacity-[0.02] blur-[120px] rounded-full pointer-events-none" />
@@ -90,7 +90,7 @@ export default function B2BAdminCaseStudy() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: customEase }}
-          className="text-[#0066ff] text-tag-1 mb-6 flex items-center gap-2"
+          className="text-[#0066ff] text-tag-1 mb-6 flex items-center justify-center gap-2"
         >
           <span>Enterprise SaaS</span> &middot; <span>Admin Panel</span> &middot; <span>UX Case Study</span>
         </motion.div>
@@ -99,7 +99,7 @@ export default function B2BAdminCaseStudy() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1, ease: customEase }}
-          className="text-h1 leading-tight mb-8 max-w-5xl bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-[#8888aa]"
+          className="text-h1 leading-tight mb-8 max-w-5xl mx-auto text-center bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-[#8888aa]"
         >
           Redesigning the B2B Admin Control Center
         </motion.h1>
@@ -108,7 +108,7 @@ export default function B2BAdminCaseStudy() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: customEase }}
-          className="text-[#8888aa] text-body-lg max-w-3xl mb-16"
+          className="text-[#8888aa] text-body-lg max-w-3xl mb-16 mx-auto text-center"
         >
           Transforming a flat, scroll-heavy settings page into a structured, navigable admin
           experience; across 8 feature categories and 76 interaction states.
@@ -119,7 +119,7 @@ export default function B2BAdminCaseStudy() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.25, ease: customEase }}
-          className="relative max-w-3xl mb-12 p-5 rounded-2xl bg-white/[0.02] border border-[#0066ff]/20 backdrop-blur-sm flex items-start gap-4"
+          className="relative max-w-3xl mb-12 p-5 rounded-2xl bg-white/[0.02] border border-[#0066ff]/20 backdrop-blur-sm flex items-start gap-4 mx-auto text-left"
         >
           <div className="w-10 h-10 rounded-xl bg-[#0066ff]/10 text-[#0066ff] flex items-center justify-center shrink-0 border border-[#0066ff]/20 animate-pulse">
             <i className="ti ti-alert-triangle text-xl" />
@@ -142,13 +142,10 @@ export default function B2BAdminCaseStudy() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: customEase }}
-          className="w-full h-[350px] md:h-[550px] rounded-[40px] overflow-hidden mb-16 relative border border-white/5 group shadow-2xl shadow-[#0066ff]/5"
+          className="w-full rounded-[40px] overflow-hidden mb-16 relative border border-white/5 group shadow-2xl shadow-[#0066ff]/5"
         >
-          <img src="/images/b2b-admin/hero.png" alt="B2B Admin Control Center Mockup Redesign" className="w-full h-full object-cover opacity-80 group-hover:scale-[1.02] transition-transform duration-[1200ms] ease-out" />
+          <img src="/projects/b2b-admin/hero.png" alt="B2B Admin Control Center Mockup Redesign" className="w-full h-auto object-contain opacity-80 group-hover:scale-[1.02] transition-transform duration-[1200ms] ease-out" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-[#080810]/20 to-transparent opacity-80 pointer-events-none" />
-          <div className="absolute bottom-6 right-8 text-[#8888aa] text-xs tracking-widest bg-black/40 px-3 py-1.5 rounded-full border border-white/5 backdrop-blur-md">
-            HI-FI DESIGN &middot; TWO-PANEL SYSTEM
-          </div>
         </motion.div>
 
         {/* Project Stats Bar */}
@@ -268,7 +265,7 @@ export default function B2BAdminCaseStudy() {
               the settings experience; with a cleaner technical foundation, an expanded feature set
               coming in with the migration, and the space to do it right.
             </p>
-            
+
             {/* Tech Migration visual element */}
             <div className="p-8 rounded-3xl bg-[rgba(0,102,255,0.03)] border border-[#0066ff]/20 mt-10">
               <h4 className="text-white font-bold text-base mb-6 flex items-center gap-2">
@@ -444,10 +441,10 @@ export default function B2BAdminCaseStudy() {
                 <tr key={idx} className="group hover:bg-white/[0.02] transition-colors">
                   <td className="p-6 font-bold text-white whitespace-nowrap">{row.dim}</td>
                   <td className="p-6 text-[#8888aa] text-xs leading-relaxed group-hover:text-red-300 transition-colors">
-                    <span className="inline-block mr-2 text-red-500">&#10005;</span> {row.before}
+                    <span className="flex items-start gap-2"><span className="shrink-0 text-red-500 font-bold">&#10005;</span><span>{row.before}</span></span>
                   </td>
                   <td className="p-6 text-white text-xs leading-relaxed group-hover:text-blue-100 transition-colors bg-[#0066ff]/[0.01] group-hover:bg-[#0066ff]/[0.03]">
-                    <span className="inline-block mr-2 text-[#0066ff]">&#10003;</span> {row.after}
+                    <span className="flex items-start gap-2"><span className="shrink-0 text-[#0066ff] font-bold">&#10003;</span><span>{row.after}</span></span>
                   </td>
                 </tr>
               ))}
@@ -455,91 +452,32 @@ export default function B2BAdminCaseStudy() {
           </table>
         </motion.div>
 
-        {/* Custom Interactive Before/After Slider */}
-        <div className="mt-20 space-y-6 border-t border-white/5 pt-16">
-          <h3 className="text-h3 text-white text-center flex items-center justify-center gap-3">
-            <i className="ti ti-arrows-left-right text-[#0066ff] text-2xl" />
-            Interactive Layout Comparison Slider
-          </h3>
-          <p className="text-sm text-[#8888aa] text-center max-w-xl mx-auto leading-relaxed">
-            Drag the visual slider back and forth to inspect the transformation from the legacy, chaotic settings list to the structured, responsive two-panel system.
-          </p>
-
-          <div className="relative w-full max-w-[950px] aspect-[16/10] mx-auto rounded-[32px] overflow-hidden border border-white/10 shadow-2xl bg-[#0c0c16] group mt-8">
-            {/* Before Image (Bottom Layer) */}
-            <div className="absolute inset-0 select-none">
-              <img 
-                src="/images/b2b-admin/slider-before.png" 
-                alt="Before Redesign - Legacy AngularJS layout" 
-                className="w-full h-full object-cover opacity-70"
-              />
-              <div className="absolute top-4 left-4 bg-red-950/85 border border-red-500/20 text-red-400 text-tag-1 px-3 py-1.5 rounded-full backdrop-blur-md">
-                BEFORE: SINGLE-SCROLL SPRAWL
-              </div>
-            </div>
-
-            {/* After Image (Top Clipped Layer) */}
-            <div 
-              className="absolute inset-0 select-none pointer-events-none transition-all duration-75"
-              style={{ clipPath: `polygon(0 0, ${sliderVal}% 0, ${sliderVal}% 100%, 0 100%)` }}
-            >
-              <img 
-                src="/images/b2b-admin/slider-after.png" 
-                alt="After Redesign - Structured ReactJS Layout" 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute top-4 right-4 bg-blue-950/85 border border-[#0066ff]/20 text-[#0066ff] text-tag-1 px-3 py-1.5 rounded-full backdrop-blur-md">
-                AFTER: TWO-PANEL SYSTEM
-              </div>
-            </div>
-
-            {/* Slider Control Handle (Vertical line & handle circle) */}
-            <div 
-              className="absolute top-0 bottom-0 w-0.5 bg-white/40 pointer-events-none z-10 transition-all duration-75"
-              style={{ left: `${sliderVal}%` }}
-            >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white text-[#080810] border-4 border-[#0066ff] shadow-xl flex items-center justify-center pointer-events-none group-hover:scale-110 transition-transform duration-300">
-                <i className="ti ti-arrows-left-right text-sm font-bold text-[#0066ff]" />
-              </div>
-            </div>
-
-            {/* Stretched Invisible Range Input for Stately Smooth Dragging */}
-            <input 
-              type="range" 
-              min="0" 
-              max="100" 
-              value={sliderVal} 
-              onChange={(e) => setSliderVal(Number(e.target.value))}
-              className="absolute inset-0 opacity-0 cursor-ew-resize z-20 w-full h-full"
-            />
-          </div>
-        </div>
-
+        {/* Interactive Layout Comparison Slider Hidden */}
         {/* Grids for Before & Redesigned Screens Showcases */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-20 pt-16 border-t border-white/5">
-          
+
           {/* Legacy Screens Showcase (Before) */}
           <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-red-950/20 text-red-500 flex items-center justify-center border border-red-500/20">
-                <i className="ti ti-circle-x text-lg" />
+            <div className="flex flex-col items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-red-950/20 text-red-500 flex items-center justify-center border border-red-500/20">
+                <i className="ti ti-circle-x text-xl" />
               </div>
-              <h3 className="text-h3 text-white">Before Redesign: Legacy Screens Showcase</h3>
+              <h3 className="text-h3 text-white leading-tight">Before Redesign: Legacy Screens Showcase</h3>
             </div>
             <p className="text-sm text-[#8888aa] leading-relaxed">
               Prior to structural intervention, all configuration rules were thrown together onto a single page, resulting in massive operational risk.
             </p>
 
             <div className="rounded-3xl border border-white/5 bg-white/[0.02] p-5 group overflow-hidden">
-              <div className="w-full aspect-[16/10] overflow-hidden rounded-2xl border border-white/5 relative bg-black">
-                <img 
-                  src="/images/b2b-admin/gallery-before.png" 
-                  alt="Legacy Screens Collage" 
-                  className="w-full h-full object-cover opacity-60 group-hover:scale-[1.02] transition-transform duration-700"
+              <div className="w-full overflow-hidden rounded-2xl border border-white/5 relative">
+                <img
+                  src="/projects/b2b-admin/gallery-before.png"
+                  alt="Legacy Screens Collage"
+                  className="w-full h-auto object-contain opacity-80 group-hover:scale-[1.02] transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#080810]/80 via-transparent to-transparent pointer-events-none" />
               </div>
-              
+
               <ul className="mt-6 space-y-3.5 text-xs text-[#8888aa] px-2">
                 <li className="flex items-start gap-2.5">
                   <span className="text-red-500 font-bold leading-none">&#8226;</span>
@@ -559,26 +497,26 @@ export default function B2BAdminCaseStudy() {
 
           {/* Redesigned System Showcase (After) */}
           <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-blue-950/20 text-[#0066ff] flex items-center justify-center border border-[#0066ff]/20">
-                <i className="ti ti-circle-check text-lg" />
+            <div className="flex flex-col items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-blue-950/20 text-[#0066ff] flex items-center justify-center border border-[#0066ff]/20">
+                <i className="ti ti-circle-check text-xl" />
               </div>
-              <h3 className="text-h3 text-white">After Redesign: Redesigned Screens Showcase</h3>
+              <h3 className="text-h3 text-white leading-tight">After Redesign: Redesigned Screens Showcase</h3>
             </div>
             <p className="text-sm text-[#8888aa] leading-relaxed">
               Reconstructed in ReactJS with persistent two-panel IA, standardized alignments, inline helpers, and progressive disclosure overlays.
             </p>
 
             <div className="rounded-3xl border border-[#0066ff]/10 bg-[#0066ff]/[0.01] p-5 group overflow-hidden">
-              <div className="w-full aspect-[16/10] overflow-hidden rounded-2xl border border-white/5 relative bg-black">
-                <img 
-                  src="/images/b2b-admin/gallery-after.png" 
-                  alt="Redesigned Screens Collage" 
-                  className="w-full h-full object-cover opacity-80 group-hover:scale-[1.02] transition-transform duration-700"
+              <div className="w-full overflow-hidden rounded-2xl border border-white/5 relative">
+                <img
+                  src="/projects/b2b-admin/gallery-after.png"
+                  alt="Redesigned Screens Collage"
+                  className="w-full h-auto object-contain opacity-90 group-hover:scale-[1.02] transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#080810]/80 via-transparent to-transparent pointer-events-none" />
               </div>
-              
+
               <ul className="mt-6 space-y-3.5 text-xs text-[#8888aa] px-2">
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#0066ff] font-bold leading-none">&#8226;</span>
@@ -659,12 +597,8 @@ export default function B2BAdminCaseStudy() {
             </div>
 
             {/* Approach image mockup visual */}
-            <div className="w-full h-[280px] rounded-[24px] overflow-hidden border border-white/5 relative group mt-8">
-              <img src="/images/b2b-admin/approach.png" alt="UX Architecture Mapping Whiteboard" className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-[1000ms]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-6">
-                <span className="text-tag-1 text-[#0066ff] bg-[#0066ff]/10 px-2 py-1 rounded">RESEARCH PIPELINE</span>
-              </div>
+            <div className="w-full rounded-[24px] overflow-hidden border border-white/5 relative group mt-8 bg-[#080810]">
+              <img src="/projects/b2b-admin/approach.png" alt="UX Architecture Mapping Whiteboard" className="w-full h-auto object-contain opacity-95 group-hover:scale-[1.02] transition-transform duration-[1000ms]" />
             </div>
 
             <div className="p-8 rounded-3xl bg-[rgba(0,102,255,0.03)] border border-[#0066ff]/20">
@@ -681,421 +615,46 @@ export default function B2BAdminCaseStudy() {
 
       {/* Section 7 & 8: Interactive Showcase (The Architecture Decision & Patterns) */}
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto bg-white/[0.01] rounded-[40px] border border-white/5 my-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Sidebar Copy */}
-          <div className="lg:col-span-4 space-y-8">
-            <div>
-              <div className="text-[#0066ff] text-tag-1 mb-4">Interactive Showcase</div>
-              <h2 className="text-h2 text-white mb-6">The Architecture & Patterns in Action</h2>
-              <p className="text-[#8888aa] text-body-sm mb-6">
-                Instead of a single endless scroll, we introduced a persistent two-panel layout: a left nav listing all eight operational domains, and a right content panel showing only the active category.
+        <div className="flex flex-col gap-16">
+
+          {/* Header Text */}
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="text-[#0066ff] text-tag-1 mb-4 flex items-center justify-center">Interactive Showcase</div>
+            <h2 className="text-h2 text-white mb-6">The Architecture & Patterns in Action</h2>
+            <p className="text-[#8888aa] text-body-lg">
+              Instead of a single endless scroll, we introduced a persistent two-panel layout: a left nav listing all eight operational domains, and a right content panel showing only the active category.
+            </p>
+          </div>
+
+          {/* Full-width Image */}
+          <div className="w-full rounded-[32px] overflow-hidden border border-white/5 shadow-2xl relative bg-[#080810]">
+            <img src="/projects/b2b-admin/architecture-patterns.png" alt="Architecture Patterns" className="w-full h-auto object-contain opacity-90 hover:opacity-100 transition-opacity" />
+          </div>
+
+          {/* Pattern Cards (3 Columns) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 md:p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors">
+              <h4 className="text-white font-bold text-tag-3 mb-3">Pattern 01: Progressive Disclosure</h4>
+              <p className="text-body-sm text-[#8888aa] leading-relaxed">
+                Default state is clean: a label, description, and toggle. Turning on **Auto-Logout** expands detailed configuration parameters dynamically inline.
               </p>
             </div>
 
-            <div className="space-y-4">
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <h4 className="text-white font-bold text-tag-3 mb-1">Pattern 01: Progressive Disclosure</h4>
-                <p className="text-body-sm text-[#8888aa]">
-                  Default state is clean: a label, description, and toggle. Turning on **Auto-Logout** expands detailed configuration parameters dynamically inline.
-                </p>
-              </div>
+            <div className="p-6 md:p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors">
+              <h4 className="text-white font-bold text-tag-3 mb-3">Pattern 02: Always-Visible Helper Text</h4>
+              <p className="text-body-sm text-[#8888aa] leading-relaxed">
+                Every setting carries its description directly beneath its title. Check **Fake Location Alerts** to see description visible at the point of decision before checking.
+              </p>
+            </div>
 
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <h4 className="text-white font-bold text-tag-3 mb-1">Pattern 02: Always-Visible Helper Text</h4>
-                <p className="text-body-sm text-[#8888aa]">
-                  Every setting carries its description directly beneath its title. Check **Fake Location Alerts** to see description visible at the point of decision before checking.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <h4 className="text-white font-bold text-tag-3 mb-1">Pattern 03: Contextual Side Panel</h4>
-                <p className="text-body-sm text-[#8888aa]">
-                  Deep settings (e.g. **Travel Reimbursements**) are layered using a slide-out panel, protecting the rhythm of the primary page.
-                </p>
-              </div>
+            <div className="p-6 md:p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors">
+              <h4 className="text-white font-bold text-tag-3 mb-3">Pattern 03: Contextual Side Panel</h4>
+              <p className="text-body-sm text-[#8888aa] leading-relaxed">
+                Deep settings (e.g. **Travel Reimbursements**) are layered using a slide-out panel, protecting the rhythm of the primary page.
+              </p>
             </div>
           </div>
 
-          {/* Interactive Live Mini-Control Panel Widget */}
-          <div className="lg:col-span-8">
-            <div className="w-full rounded-3xl border border-white/10 bg-[#0c0c16] overflow-hidden shadow-2xl relative min-h-[580px]">
-              
-              {/* Header Bar */}
-              <div className="bg-[#121222] border-b border-white/10 px-6 py-4 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                  <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                  <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
-                  <span className="text-[11px] text-[#8888aa] ml-4">admin-settings-v2.tsx</span>
-                </div>
-                <div className="px-3 py-1 rounded bg-[#0066ff]/20 text-[#0066ff] text-[10px] tracking-widest font-bold">
-                  LIVE INTERACTIVE SANDBOX
-                </div>
-              </div>
-
-              {/* Control Panel Layout */}
-              <div className="flex flex-col md:flex-row min-h-[480px]">
-                
-                {/* Left Panel - Navigation (Persistent List) */}
-                <div className="w-full md:w-2/5 bg-[#0e0e1a] border-r border-white/5 p-4 flex flex-col justify-between shrink-0">
-                  <div className="space-y-1.5">
-                    <div className="text-[9px] text-[#8888aa] uppercase tracking-wider px-3 mb-3">
-                      Settings Category Map
-                    </div>
-                    {categories.map((cat) => (
-                      <button
-                        key={cat.id}
-                        onClick={() => {
-                          setActiveCategory(cat.id);
-                          if (cat.id === "reimbursement") {
-                            setIsSidePanelOpen(true);
-                          }
-                        }}
-                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-xs font-medium transition-all duration-300 ${
-                          activeCategory === cat.id
-                            ? "bg-[#0066ff]/15 text-white border-l-2 border-[#0066ff] font-semibold"
-                            : "text-[#8888aa] hover:bg-white/5 hover:text-white"
-                        }`}
-                      >
-                        <div className="flex items-center gap-2.5">
-                          <i className={`ti ${cat.icon} text-sm ${activeCategory === cat.id ? "text-[#0066ff]" : ""}`} />
-                          <span className="truncate">{cat.label}</span>
-                        </div>
-                        {cat.configured && (
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#0066ff] shrink-0" title="Configured" />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="pt-4 border-t border-white/5 text-[10px] text-[#8888aa] italic px-3">
-                    Scannable in under 2 seconds
-                  </div>
-                </div>
-
-                {/* Right Panel - Active Content */}
-                <div className="flex-1 p-6 relative overflow-hidden flex flex-col justify-between">
-                  <div className="space-y-6">
-                    
-                    {/* Active State View switcher */}
-                    {activeCategory === "auto-logout" && (
-                      <div className="space-y-5">
-                        <div className="pb-3 border-b border-white/5">
-                          <div className="text-[#0066ff] text-tag-1 mb-1">Active Category</div>
-                          <h3 className="text-lg font-bold text-white">Session Auto-Logout</h3>
-                        </div>
-
-                        {/* Setting Item with Progressive Disclosure */}
-                        <div className="bg-white/5 p-4 rounded-xl border border-white/5 space-y-4">
-                          <div className="flex items-start justify-between gap-4">
-                            <div>
-                              <h4 className="text-white font-bold text-sm flex items-center gap-2">
-                                Auto Logout Inactive Users
-                                <span className="text-[9px] bg-[#0066ff]/20 text-[#0066ff] px-2 py-0.5 rounded font-normal">PATTERN 01</span>
-                              </h4>
-                              <p className="text-body-sm text-[#8888aa] mt-1">
-                                Automatically log field staff out of the companion mobile app after a prolonged period of inactivity.
-                              </p>
-                            </div>
-                            
-                            {/* Toggle Button */}
-                            <button 
-                              onClick={() => setAutoLogoutEnabled(!autoLogoutEnabled)}
-                              className={`w-12 h-6 rounded-full p-1 transition-colors duration-300 shrink-0 ${
-                                autoLogoutEnabled ? "bg-[#0066ff]" : "bg-white/10"
-                              }`}
-                            >
-                              <div className={`w-4 h-4 rounded-full bg-white transition-transform duration-300 ${
-                                autoLogoutEnabled ? "translate-x-6" : "translate-x-0"
-                              }`} />
-                            </button>
-                          </div>
-
-                          {/* Progressive Content (Expands inline if toggle is true) */}
-                          <AnimatePresence initial={false}>
-                            {autoLogoutEnabled && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.3, ease: "easeInOut" }}
-                                className="overflow-hidden border-t border-white/5 pt-4 space-y-4"
-                              >
-                                <div className="grid grid-cols-2 gap-4">
-                                  <div>
-                                    <label className="block text-[10px] font-bold text-[#8888aa] uppercase mb-1.5">Inactivity Timeout</label>
-                                    <select 
-                                      value={logoutTime} 
-                                      onChange={(e) => setLogoutTime(e.target.value)}
-                                      className="w-full bg-[#121222] border border-white/10 rounded-lg p-2 text-xs text-white focus:outline-none focus:border-[#0066ff]"
-                                    >
-                                      <option>30 minutes</option>
-                                      <option>1 hour</option>
-                                      <option>2 hours</option>
-                                      <option>4 hours</option>
-                                    </select>
-                                  </div>
-                                  <div>
-                                    <label className="block text-[10px] font-bold text-[#8888aa] uppercase mb-1.5">Prior Notification</label>
-                                    <select 
-                                      value={remindTime} 
-                                      onChange={(e) => setRemindTime(e.target.value)}
-                                      className="w-full bg-[#121222] border border-white/10 rounded-lg p-2 text-xs text-white focus:outline-none focus:border-[#0066ff]"
-                                    >
-                                      <option>2 minutes</option>
-                                      <option>5 minutes</option>
-                                      <option>10 minutes</option>
-                                      <option>15 minutes</option>
-                                    </select>
-                                  </div>
-                                </div>
-                                <div className="p-3 rounded-lg bg-[#0066ff]/5 border border-[#0066ff]/10 text-[10px] text-[#8888aa] leading-relaxed">
-                                  <strong className="text-white">Active Rule:</strong> Employees will be prompted on their phone <span className="text-[#0066ff] font-semibold">{remindTime}</span> before logging out if no GPS coordinates change for <span className="text-[#0066ff] font-semibold">{logoutTime}</span>.
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      </div>
-                    )}
-
-                    {activeCategory === "fake-location" && (
-                      <div className="space-y-5">
-                        <div className="pb-3 border-b border-white/5">
-                          <div className="text-[#0066ff] text-tag-1 mb-1">Active Category</div>
-                          <h3 className="text-lg font-bold text-white">Fake Location Alerts</h3>
-                        </div>
-
-                        {/* Setting Item for Helper Text Pattern */}
-                        <div className="bg-white/5 p-4 rounded-xl border border-white/5 space-y-4">
-                          <div className="flex items-start justify-between gap-4">
-                            <div>
-                              <h4 className="text-white font-bold text-sm flex items-center gap-2">
-                                Flag GPS Spoofing Applications
-                                <span className="text-[9px] bg-[#0066ff]/20 text-[#0066ff] px-2 py-0.5 rounded font-normal">PATTERN 02</span>
-                              </h4>
-                              {/* ALWAYS VISIBLE HELPER TEXT */}
-                              <p className="text-xs text-blue-100 font-medium leading-relaxed mt-1.5 p-3 rounded bg-blue-950/20 border border-[#0066ff]/20">
-                                💡 <span className="text-white font-semibold">Always-Visible Helper Text:</span> Instantly registers a security infraction on the admin log and silences attendance approvals if mock coordinates software is active on the employee device.
-                              </p>
-                            </div>
-                            
-                            {/* Toggle Button */}
-                            <button 
-                              onClick={() => setFakeLocationEnabled(!fakeLocationEnabled)}
-                              className={`w-12 h-6 rounded-full p-1 transition-colors duration-300 shrink-0 ${
-                                fakeLocationEnabled ? "bg-[#0066ff]" : "bg-white/10"
-                              }`}
-                            >
-                              <div className={`w-4 h-4 rounded-full bg-white transition-transform duration-300 ${
-                                fakeLocationEnabled ? "translate-x-6" : "translate-x-0"
-                              }`} />
-                            </button>
-                          </div>
-
-                          <div className="p-3 rounded-lg bg-yellow-500/5 border border-yellow-500/20 text-[10px] text-[#8888aa] leading-relaxed">
-                            <strong className="text-white">⚠️ Operational Consequence:</strong> Enabling this setting means workforce logs will capture automatic background audits. There is no tooltip dependency; clarity is upfront.
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {activeCategory === "reimbursement" && (
-                      <div className="space-y-5">
-                        <div className="pb-3 border-b border-white/5">
-                          <div className="text-[#0066ff] text-tag-1 mb-1">Active Category</div>
-                          <h3 className="text-lg font-bold text-white">Travel Reimbursements</h3>
-                        </div>
-
-                        <div className="bg-white/5 p-5 rounded-xl border border-white/5 text-center space-y-4">
-                          <div className="w-12 h-12 rounded-full bg-[#0066ff]/10 text-[#0066ff] flex items-center justify-center mx-auto border border-[#0066ff]/20">
-                            <i className="ti ti-wallet text-2xl" />
-                          </div>
-                          <div>
-                            <h4 className="text-white font-bold text-sm">Complex Configuration Layer</h4>
-                            <p className="text-body-sm text-[#8888aa] mt-1 max-w-sm mx-auto">
-                              Reimbursement calculations contain multi-tier transport definitions, rate settings, and custom approval logs. Open the side panel to manage.
-                            </p>
-                          </div>
-
-                          <button
-                            onClick={() => setIsSidePanelOpen(true)}
-                            className="px-4 py-2 rounded-xl bg-[#0066ff] hover:bg-[#0052cc] text-white font-semibold text-xs transition-colors duration-300"
-                          >
-                            Open Contextual Side Panel &rarr;
-                          </button>
-                        </div>
-                      </div>
-                    )}
-
-                    {activeCategory !== "auto-logout" && activeCategory !== "fake-location" && activeCategory !== "reimbursement" && (
-                      <div className="space-y-5 py-8 text-center text-[#8888aa] italic text-xs">
-                        <i className="ti ti-circle-dashed text-3xl block mx-auto mb-2 text-[#8888aa]/30 animate-spin" />
-                        This category ({activeCategory.toUpperCase()}) is structured using standard parameters in the full set of 76 screens. Click Session Auto-Logout, Fake Location Alerts, or Travel Reimbursements to test the interactive UX patterns.
-                      </div>
-                    )}
-
-                  </div>
-
-                  {/* Anchored Bottom Actions */}
-                  <div className="pt-6 border-t border-white/5 flex items-center justify-end gap-3 mt-auto bg-[#0c0c16]">
-                    <span className="text-[10px] text-[#8888aa] mr-auto">
-                      💡 Anchored save position
-                    </span>
-                    <button className="px-4 py-1.5 rounded-lg border border-white/10 hover:bg-white/5 text-white font-semibold text-[11px] transition-colors duration-300">
-                      Cancel
-                    </button>
-                    <button className="px-4 py-1.5 rounded-lg bg-[#0066ff] hover:bg-[#0052cc] text-white font-semibold text-[11px] transition-colors duration-300">
-                      Save Changes
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Contextual Side Panel Overlay (Pattern 03) */}
-              <AnimatePresence>
-                {isSidePanelOpen && (
-                  <motion.div
-                    initial={{ x: "100%" }}
-                    animate={{ x: 0 }}
-                    exit={{ x: "100%" }}
-                    transition={{ duration: 0.4, ease: customEase }}
-                    className="absolute top-[52px] right-0 bottom-0 w-full md:w-3/4 bg-[#10101f] border-l border-white/15 p-6 shadow-2xl z-20 flex flex-col justify-between"
-                  >
-                    <div>
-                      {/* Side Panel Header */}
-                      <div className="flex items-center justify-between pb-4 border-b border-white/5 mb-6">
-                        <div>
-                          <div className="text-[#0066ff] text-tag-1 mb-1">Contextual Config Layer &middot; PATTERN 03</div>
-                          <h3 className="text-base font-bold text-white">Configure Transport Reimbursement</h3>
-                        </div>
-                        <button 
-                          onClick={() => setIsSidePanelOpen(false)}
-                          className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white flex items-center justify-center transition-colors"
-                        >
-                          <span className="text-lg">&times;</span>
-                        </button>
-                      </div>
-
-                      <p className="text-body-sm text-[#8888aa] mb-6">
-                        Define global per-kilometer reimbursement levels for employee transit. Toggling a type off silences claims for that transport class.
-                      </p>
-
-                      {/* Config List */}
-                      <div className="space-y-3">
-                        {transportRates.map((trans, idx) => (
-                          <div key={idx} className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
-                            <div className="flex items-center gap-3">
-                              <button 
-                                onClick={() => toggleTransportRate(idx)}
-                                className={`w-8 h-5 rounded-full p-0.5 transition-colors duration-300 ${
-                                  trans.active ? "bg-[#0066ff]" : "bg-white/10"
-                                }`}
-                              >
-                                <div className={`w-4 h-4 rounded-full bg-white transition-transform duration-300 ${
-                                  trans.active ? "translate-x-3" : "translate-x-0"
-                                }`} />
-                              </button>
-                              <span className={`text-xs font-semibold ${trans.active ? "text-white" : "text-[#8888aa] line-through"}`}>{trans.type}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className="text-[10px] text-[#8888aa]">Rate/km:</span>
-                              <input 
-                                type="text"
-                                value={`INR ${trans.rate}`}
-                                disabled
-                                className="w-20 bg-[#121222] border border-white/10 rounded px-2 py-1 text-right text-xs text-white/80"
-                              />
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      <button
-                        onClick={() => setIsNestedModalOpen(true)}
-                        className="w-full py-2.5 rounded-xl border border-dashed border-white/20 hover:border-[#0066ff]/50 hover:bg-[#0066ff]/5 text-[#8888aa] hover:text-white transition-all text-xs font-semibold mt-4"
-                      >
-                        + Add Custom Transport Type
-                      </button>
-                    </div>
-
-                    {/* Side Panel Footer */}
-                    <div className="pt-4 border-t border-white/5 flex items-center justify-end gap-2 mt-6">
-                      <button 
-                        onClick={() => setIsSidePanelOpen(false)}
-                        className="px-4 py-2 rounded-lg border border-white/10 text-white text-xs font-bold transition-all hover:bg-white/5"
-                      >
-                        Close Panel
-                      </button>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Nested Modal Popup for additions (Double-layer test) */}
-              <AnimatePresence>
-                {isNestedModalOpen && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute inset-0 bg-black/60 backdrop-blur-sm z-30 flex items-center justify-center p-6"
-                  >
-                    <motion.div
-                      initial={{ scale: 0.9, y: 20 }}
-                      animate={{ scale: 1, y: 0 }}
-                      exit={{ scale: 0.9, y: 20 }}
-                      className="w-full max-w-sm bg-[#121224] border border-white/15 rounded-2xl p-6 shadow-2xl space-y-4"
-                    >
-                      <h4 className="text-white font-bold text-sm">Add Custom Transport Class</h4>
-                      <form onSubmit={handleAddTransport} className="space-y-3">
-                        <div>
-                          <label className="block text-[9px] text-[#8888aa] uppercase mb-1">Transit Class Name</label>
-                          <input 
-                            type="text" 
-                            placeholder="e.g. Electric Scooter" 
-                            value={newTransportType}
-                            onChange={(e) => setNewTransportType(e.target.value)}
-                            required
-                            className="w-full bg-[#1c1c34] border border-white/10 rounded-lg p-2 text-xs text-white focus:outline-none focus:border-[#0066ff]"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-[9px] text-[#8888aa] uppercase mb-1">Rate per Kilometer (INR)</label>
-                          <input 
-                            type="number" 
-                            step="0.01" 
-                            placeholder="e.g. 4.50" 
-                            value={newTransportRate}
-                            onChange={(e) => setNewTransportRate(e.target.value)}
-                            required
-                            className="w-full bg-[#1c1c34] border border-white/10 rounded-lg p-2 text-xs text-white focus:outline-none focus:border-[#0066ff]"
-                          />
-                        </div>
-                        <div className="flex items-center justify-end gap-2 pt-2">
-                          <button
-                            type="button"
-                            onClick={() => setIsNestedModalOpen(false)}
-                            className="px-3 py-1.5 rounded-lg border border-white/10 text-[#8888aa] text-xs font-semibold hover:bg-white/5"
-                          >
-                            Cancel
-                          </button>
-                          <button
-                            type="submit"
-                            className="px-3 py-1.5 rounded-lg bg-[#0066ff] hover:bg-[#0052cc] text-white text-xs font-semibold"
-                          >
-                            Add Class
-                          </button>
-                        </div>
-                      </form>
-                    </motion.div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-            </div>
-          </div>
         </div>
       </section>
 
