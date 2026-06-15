@@ -1,70 +1,13 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
 import CTAFooter from "../../../components/sections/CTAFooter";
 import CustomCursor from "../../../components/CustomCursor";
 
 const customEase = [0.16, 1, 0.3, 1];
 
-// Interactive Sandbox Categories
-type CategoryId = "attendance" | "location" | "tasks" | "customers" | "reimbursement" | "fake-location" | "auto-logout" | "workforce";
-
-interface Category {
-  id: CategoryId;
-  label: string;
-  icon: string;
-  configured: boolean;
-}
-
 export default function B2BAdminCaseStudy() {
-  // Sandbox State
-  const [activeCategory, setActiveCategory] = useState<CategoryId>("auto-logout");
-  const [autoLogoutEnabled, setAutoLogoutEnabled] = useState(true);
-  const [fakeLocationEnabled, setFakeLocationEnabled] = useState(false);
-  const [logoutTime, setLogoutTime] = useState("2 hours");
-  const [remindTime, setRemindTime] = useState("10 minutes");
-  const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
-  const [isNestedModalOpen, setIsNestedModalOpen] = useState(false);
-  const [transportRates, setTransportRates] = useState([
-    { type: "Car", rate: "12.00", active: true },
-    { type: "Motorbike", rate: "5.00", active: true },
-    { type: "Bicycle", rate: "2.00", active: false },
-    { type: "Public Transit", rate: "1.50", active: true },
-  ]);
-  const [newTransportType, setNewTransportType] = useState("");
-  const [newTransportRate, setNewTransportRate] = useState("");
-  const [sliderVal, setSliderVal] = useState(50);
-
-  const categories: Category[] = [
-    { id: "attendance", label: "Attendance & Shift Rules", icon: "ti-clock", configured: true },
-    { id: "location", label: "Location & Geofencing", icon: "ti-map-pin", configured: true },
-    { id: "tasks", label: "Task Workflows", icon: "ti-list-check", configured: true },
-    { id: "customers", label: "Customer Portal Sync", icon: "ti-messages", configured: false },
-    { id: "workforce", label: "Workforce Limits", icon: "ti-users", configured: false },
-    { id: "reimbursement", label: "Travel Reimbursements", icon: "ti-wallet", configured: true },
-    { id: "fake-location", label: "Fake Location Alerts", icon: "ti-bell-ringing", configured: false },
-    { id: "auto-logout", label: "Session Auto-Logout", icon: "ti-logout", configured: true },
-  ];
-
-  const handleAddTransport = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newTransportType || !newTransportRate) return;
-    setTransportRates([
-      ...transportRates,
-      { type: newTransportType, rate: parseFloat(newTransportRate).toFixed(2), active: true }
-    ]);
-    setNewTransportType("");
-    setNewTransportRate("");
-    setIsNestedModalOpen(false);
-  };
-
-  const toggleTransportRate = (index: number) => {
-    const updated = [...transportRates];
-    updated[index].active = !updated[index].active;
-    setTransportRates(updated);
-  };
 
   return (
     <main className="bg-[#080810] min-h-screen text-[#fafafa] selection:bg-[#0066ff]/30 overflow-x-hidden">
