@@ -1,1244 +1,862 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
 import CTAFooter from "../../../components/sections/CTAFooter";
 import CustomCursor from "../../../components/CustomCursor";
 
 const customEase = [0.16, 1, 0.3, 1];
-const PURPLE = "#cc63ff";
 
-// ─── Types ───────────────────────────────────────────────────────────────────
-type QuoteId = "q1" | "q2" | "q3" | "q4" | "q5";
-type PersonaTab = "frictions" | "drivers" | "goals";
-type DomainKey = "habits" | "diagnosis" | "expenses";
-
-// ─── Data ────────────────────────────────────────────────────────────────────
-const researchQuotes: {
-  id: QuoteId;
-  text: string;
-  sentiment: string;
-  sentimentColor: string;
-  domain: string;
-  feature: string;
-  tag: string;
-}[] = [
-  {
-    id: "q1",
-    text: "I know I should eat better, but by the time I get home I'm too tired to cook. I just order whatever's fast.",
-    sentiment: "Exhaustion + Habit Resignation",
-    sentimentColor: "#f97316",
-    domain: "Unhealthy Habits",
-    feature: "Contextual Meal Suggestions",
-    tag: "Behavioral Inertia",
-  },
-  {
-    id: "q2",
-    text: "I've been meaning to get a checkup done for a year now. Something always comes up — meetings, family, travel.",
-    sentiment: "Procrastination + Priority Conflict",
-    sentimentColor: "#ef4444",
-    domain: "Late Diagnosis",
-    feature: "Preventive Health Reminders",
-    tag: "Access Barrier",
-  },
-  {
-    id: "q3",
-    text: "My father's diabetes treatment cost us three lakhs last year. I'm scared of getting tested — what if I have it too?",
-    sentiment: "Financial Anxiety + Avoidance",
-    sentimentColor: "#8b5cf6",
-    domain: "Higher Expenses",
-    feature: "Cost-Transparency Tool",
-    tag: "Fear of Diagnosis",
-  },
-  {
-    id: "q4",
-    text: "I get these health tips pushed to me at 8am when I'm in a meeting. By evening I've completely forgotten.",
-    sentiment: "Contextual Mismatch + Low Recall",
-    sentimentColor: "#06b6d4",
-    domain: "Unhealthy Habits",
-    feature: "Smart Reminder Timing Engine",
-    tag: "Notification Fatigue",
-  },
-  {
-    id: "q5",
-    text: "Doctors give you a 10-minute appointment and then a prescription. Nobody explains why or what to change.",
-    sentiment: "System Distrust + Information Gap",
-    sentimentColor: "#10b981",
-    domain: "Late Diagnosis",
-    feature: "Health Education Hub",
-    tag: "Healthcare System Failure",
-  },
-];
-
-const domainProblems: Record<DomainKey, { id: string; statement: string }[]> = {
-  habits: [
-    { id: "H1", statement: "Urban professionals skip breakfast due to time constraints, increasing metabolic risk." },
-    { id: "H2", statement: "Sedentary desk-job routines are not offset by awareness of their long-term consequences." },
-    { id: "H3", statement: "Fast food is culturally normalized in peer groups, reducing motivation to cook at home." },
-    { id: "H4", statement: "Sleep deprivation is treated as a productivity badge rather than a health risk." },
-    { id: "H5", statement: "Users receive generic health content — not personalized to their lifestyle or stage of life." },
-    { id: "H6", statement: "Notification fatigue causes health reminders to be dismissed without reading." },
-  ],
-  diagnosis: [
-    { id: "D1", statement: "Annual preventive checkups are not normalized; most users only consult doctors when symptomatic." },
-    { id: "D2", statement: "Users cannot interpret lab reports — medical jargon creates confusion and inaction." },
-    { id: "D3", statement: "Fear of a \"bad result\" is a documented psychological barrier to self-initiated testing." },
-    { id: "D4", statement: "Appointment booking friction discourages follow-through on health intentions." },
-    { id: "D5", statement: "Specialist referral chains are opaque and confusing for first-time patients." },
-    { id: "D6", statement: "Doctor consultations are too short to allow education, resulting in low health literacy." },
-  ],
-  expenses: [
-    { id: "E1", statement: "Out-of-pocket healthcare costs are high; users underestimate preventive care's ROI." },
-    { id: "E2", statement: "Insurance literacy is extremely low — most users don't know what their plan covers." },
-    { id: "E3", statement: "Families deprioritize individual preventive care to save for collective emergencies." },
-    { id: "E4", statement: "Lab test pricing is opaque — users pay different prices for the same test without knowing." },
-    { id: "E5", statement: "Medication costs are unpredictable, discouraging adherence to long-term prescriptions." },
-    { id: "E6", statement: "Health tracking apps require paid subscriptions — users churn before seeing value." },
-  ],
-};
-
-const domainMeta: Record<DomainKey, { label: string; icon: string; color: string; count: number }> = {
-  habits: { label: "Unhealthy Habits", icon: "🍔", color: "#f97316", count: 6 },
-  diagnosis: { label: "Late Diagnosis", icon: "🩺", color: "#ef4444", count: 6 },
-  expenses: { label: "Higher Expenses", icon: "💸", color: "#8b5cf6", count: 6 },
-};
-
-// ─── Main Component ───────────────────────────────────────────────────────────
 export default function PreventiveResearchCaseStudy() {
-  // Thematic Coding Sandbox
-  const [selectedQuote, setSelectedQuote] = useState<QuoteId | null>(null);
-  const activeQuote = researchQuotes.find((q) => q.id === selectedQuote) ?? null;
-
-  // Persona Tab
-  const [personaTab, setPersonaTab] = useState<PersonaTab>("frictions");
-
-  // Problem Accordion
-  const [openDomain, setOpenDomain] = useState<DomainKey | null>("habits");
-
-  // Feature Pipeline
-  const [activeFeature, setActiveFeature] = useState<0 | 1>(0);
-
-  const features = [
-    {
-      name: "Breakfast Suggestions",
-      linkedProblem: "Users skip breakfast due to time constraints and lack of easy, healthy options nearby.",
-      userGoal: "I want a quick, healthy breakfast option that fits my morning routine without extra planning.",
-      flow: ["Open App", "Location + Time Detected", "Contextual Meal Shown", "Tap to Order / Save", "Reminder Logged"],
-      crudNotes: [
-        "GET /meals?location={lat,lng}&time={hh:mm} — returns contextual meal list",
-        "POST /user/preferences — stores dietary filters and restrictions",
-        "PATCH /reminders/{id} — updates reminder status after interaction",
-      ],
-      metrics: [
-        { category: "Business", kpis: ["Daily Active Users ↑", "7-Day Retention +18%", "Session Duration +22s"] },
-        { category: "Product", kpis: ["Breakfast Log Completion Rate", "Feature Adoption Funnel", "Skip Rate Tracking"] },
-        { category: "Marketing", kpis: ["\"Healthy Morning\" Keyword Growth", "Referral via Meal Share", "DAU/MAU Ratio"] },
-      ],
-    },
-    {
-      name: "Fitness Rewards",
-      linkedProblem: "Users intend to exercise but lack sustained motivation once initial enthusiasm fades.",
-      userGoal: "I want to feel recognized for small wins, not just penalized for missing big goals.",
-      flow: ["Log Activity", "Steps / Workout Synced", "Streak Milestone Hit", "Badge Unlocked", "Reward Redeemable"],
-      crudNotes: [
-        "POST /activity-log — creates fitness record from wearable/manual input",
-        "GET /rewards/eligible?userId={id} — checks reward conditions in real-time",
-        "POST /redeem — triggers partner voucher generation and sends push notification",
-      ],
-      metrics: [
-        { category: "Business", kpis: ["Partner Revenue via Redemptions", "Premium Upsell +14%", "NPS Score ↑"] },
-        { category: "Product", kpis: ["Streak Retention Rate", "Badge Unlock Frequency", "Churn Reduction %"] },
-        { category: "Marketing", kpis: ["UGC via Badge Sharing", "\"Earn Health Rewards\" Search Traffic", "Influencer Hook"] },
-      ],
-    },
-  ];
-
-  const feat = features[activeFeature];
-
   return (
     <main className="bg-[#080810] min-h-screen text-[#fafafa] selection:bg-[#cc63ff]/30 overflow-x-hidden">
       <CustomCursor />
 
-      {/* ── Navigation ─────────────────────────────────────────────── */}
+      {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center backdrop-blur-md bg-[#080810]/50 border-b border-white/5">
         <Link href="/" className="text-white font-bold text-lg tracking-wider hover:text-[#cc63ff] transition-colors">
           RAMAMOORTHY.
         </Link>
         <Link href="/#work" className="text-sm font-medium text-[#8888aa] hover:text-white transition-colors flex items-center gap-2">
-          <span>←</span> Back to Work
+          <span>&larr;</span> Back to Work
         </Link>
       </nav>
 
-      {/* ── SECTION 1: Hero ────────────────────────────────────────── */}
-      <section className="relative pt-44 pb-28 px-6 md:px-16 max-w-[1200px] mx-auto">
-        {/* Background glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full blur-[160px] opacity-10 pointer-events-none"
-          style={{ background: `radial-gradient(ellipse, ${PURPLE}, transparent 70%)` }} />
+      {/* ═══════════════════════════════════════════════════════════════
+          1. HERO — Immersive Centered Hero + Metadata Bar
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="relative pt-40 pb-20 px-6 md:px-16 max-w-[1400px] mx-auto min-h-[85vh] flex flex-col justify-center items-center text-center">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#cc63ff] opacity-[0.05] blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute -left-20 bottom-10 w-[500px] h-[500px] bg-[#00ffd1] opacity-[0.03] blur-[150px] rounded-full pointer-events-none" />
 
-        {/* NDA Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-3 mb-10 px-5 py-3 rounded-2xl border border-[#cc63ff]/25 bg-[#cc63ff]/8 text-[#cc63ff] text-sm font-medium"
-        >
-        </motion.div>
-
-        {/* Label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: customEase }}
-          className="text-[#cc63ff] text-[11px] font-bold tracking-[0.25em] mb-6 uppercase"
+          transition={{ duration: 0.8, ease: customEase }}
+          className="text-[#cc63ff] text-tag-1 mb-6 flex items-center justify-center gap-2"
         >
-          UX Research · Case Study · End-to-End
+          <span>End-to-End UX Research &amp; Strategy</span> &middot; <span>Solo Researcher</span> &middot; <span>6-Month Engagement</span>
         </motion.div>
 
-        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.1, ease: customEase }}
-          className="text-h1 text-white leading-[1.05] tracking-tight mb-6"
+          transition={{ duration: 1, delay: 0.1, ease: customEase }}
+          className="text-h1 leading-tight mb-8 max-w-5xl mx-auto bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-[#8888aa]"
         >
-          End-to-End UX Research on{" "}
-          <span style={{ color: PURPLE }}>Preventive Healthcare</span>{" "}
-          <br className="hidden md:block" />in Urban India
+          Validating a Preventive Healthcare System Through End-to-End UX Research
         </motion.h1>
 
-        {/* Sub-headline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: customEase }}
-          className="text-[#8888aa] text-body-lg max-w-3xl mb-14"
+          transition={{ duration: 1, delay: 0.2, ease: customEase }}
+          className="text-[#8888aa] text-body-lg max-w-3xl mb-16 mx-auto leading-relaxed"
         >
-          A research-led investigation into why urban Indians fail to adopt preventive health habits —
-          conducted across 3 surveys, 14 in-depth interviews, and 187 participants.
-          The outcome: 18 validated problem statements and a prioritized product feature roadmap.
+          Urban India has a healthcare crisis that no one talks about — not because people are sick, but because they&apos;re waiting to get sick. I spent 6 months researching this gap — across surveys, interviews, and behavioral analysis — to identify 18 validated user problems, map &#x20b9;35.72 lakh crores in financial risk, and design 114 solutions grounded in real user behavior.
         </motion.p>
 
-        {/* Stats Bar */}
+        {/* Hero Image */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.35, ease: customEase }}
-          className="grid grid-cols-2 md:grid-cols-5 gap-4"
+          transition={{ duration: 1, delay: 0.25, ease: customEase }}
+          className="w-full max-w-5xl mx-auto mb-16 rounded-[32px] overflow-hidden border border-white/10 shadow-2xl relative"
+        >
+          <img
+            src="/images/preventive/hero.png"
+            alt="Urban India — preventive healthcare research context"
+            className="w-full h-auto object-cover max-h-[55vh]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-transparent to-transparent opacity-70" />
+        </motion.div>
+
+        {/* Project Metadata Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: customEase }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-[32px] overflow-hidden border border-white/5 backdrop-blur-sm w-full max-w-4xl mx-auto"
         >
           {[
-            { value: "187", label: "Participants" },
-            { value: "3", label: "Surveys Deployed" },
-            { value: "14", label: "In-Depth Interviews" },
-            { value: "18", label: "Problem Statements" },
-            { value: "Solo", label: "UX Researcher" },
-          ].map((stat, i) => (
-            <div
-              key={i}
-              className="flex flex-col items-center justify-center py-5 px-4 rounded-2xl bg-white/4 border border-white/8 text-center"
-            >
-              <span className="text-h4 text-white mb-1" style={{ color: i === 4 ? PURPLE : undefined }}>
-                {stat.value}
-              </span>
-              <span className="text-[11px] uppercase tracking-widest text-[#8888aa] font-semibold">{stat.label}</span>
+            { label: "My Role", value: "Lead UX Researcher & Strategist" },
+            { label: "Duration", value: "6 months" },
+            { label: "Team Size", value: "Solo" },
+            { label: "Project Type", value: "End-to-End Research + Design" },
+          ].map((meta, i) => (
+            <div key={i} className="bg-[#080810]/80 p-8 flex flex-col gap-2 hover:bg-[#cc63ff]/5 transition-colors duration-300">
+              <span className="text-[10px] uppercase tracking-widest text-[#8888aa]">{meta.label}</span>
+              <span className="text-sm font-bold text-white">{meta.value}</span>
             </div>
           ))}
         </motion.div>
-
-        {/* Visual Hero Panel */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: customEase }}
-          className="mt-16 w-full h-[320px] md:h-[420px] rounded-3xl overflow-hidden relative border border-white/8"
-          style={{ background: "linear-gradient(135deg, #0e0820 0%, #14082e 50%, #0d0d1a 100%)" }}
-        >
-          {/* Decorative grid */}
-          <div className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: "linear-gradient(rgba(204,99,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(204,99,255,0.4) 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
-            }} />
-
-          {/* Floating data cards */}
-          <div className="absolute top-8 left-8 bg-[#1a0a2e]/90 border border-[#cc63ff]/30 rounded-2xl p-4 w-48 backdrop-blur-sm">
-            <div className="text-[10px] uppercase tracking-widest text-[#cc63ff] mb-2 font-bold">Survey Response</div>
-            <div className="text-white text-sm font-semibold leading-snug">&ldquo;I know I should eat better, but I&apos;m just too tired.&rdquo;</div>
-            <div className="mt-3 flex gap-1">
-              <span className="text-[9px] px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30">Habit Inertia</span>
-            </div>
-          </div>
-
-          <div className="absolute bottom-8 left-24 bg-[#1a0a2e]/90 border border-[#cc63ff]/30 rounded-2xl p-4 w-52 backdrop-blur-sm">
-            <div className="text-[10px] uppercase tracking-widest text-[#cc63ff] mb-2 font-bold">Key Finding</div>
-            <div className="text-white text-sm font-semibold leading-snug">78% of participants skip annual checkups despite affordability.</div>
-            <div className="mt-3 flex gap-1">
-              <span className="text-[9px] px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30">Late Diagnosis</span>
-            </div>
-          </div>
-
-          <div className="absolute top-12 right-8 bg-[#1a0a2e]/90 border border-[#cc63ff]/30 rounded-2xl p-4 w-44 backdrop-blur-sm">
-            <div className="text-[10px] uppercase tracking-widest text-[#cc63ff] mb-3 font-bold">Validated Problems</div>
-            {["Unhealthy Habits", "Late Diagnosis", "Higher Expenses"].map((d, i) => (
-              <div key={i} className="flex items-center gap-2 mb-2">
-                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: ["#f97316","#ef4444","#8b5cf6"][i] }} />
-                <span className="text-[11px] text-white/80">{d}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="absolute right-20 bottom-10 bg-[#1a0a2e]/90 border border-[#cc63ff]/30 rounded-2xl p-4 w-40 backdrop-blur-sm">
-            <div className="text-[10px] uppercase tracking-widest text-[#cc63ff] mb-2 font-bold">Interview Insight</div>
-            <div className="text-white/80 text-xs leading-relaxed">14 users · 45–60 min each · Thematic coding applied</div>
-          </div>
-
-          {/* Centre glow orb */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-32 h-32 rounded-full blur-[60px] opacity-25" style={{ backgroundColor: PURPLE }} />
-            <div className="absolute text-5xl opacity-30">🔬</div>
-          </div>
-        </motion.div>
       </section>
 
-      {/* ── SECTION 2: Project Context ────────────────────────────── */}
-      <section className="py-24 px-6 md:px-16 max-w-[1200px] mx-auto">
+      {/* ═══════════════════════════════════════════════════════════════
+          2. RESEARCH CONFIDENCE — Tripartite Stat Grid
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start"
+          className="mb-16 text-center max-w-3xl mx-auto"
         >
-          {/* Left: Problem Worth Solving */}
-          <div>
-            <div className="text-[#cc63ff] text-tag-1 mb-4">Section 02 — Context</div>
-            <h2 className="text-h2 text-white mb-6 leading-tight">
-              The Problem Worth Solving
-            </h2>
-            <p className="text-[#8888aa] leading-relaxed mb-6">
-              Urban India is experiencing a silent health crisis. Chronic lifestyle diseases — diabetes, cardiovascular disease,
-              obesity, and hypertension — are rising sharply among a young, digitally-connected, economically active population.
-            </p>
-            <p className="text-[#8888aa] leading-relaxed mb-6">
-              Despite access to smartphones, insurance options, and healthcare infrastructure, preventive health behaviors
-              remain critically low. The product team needed to understand <em className="text-white not-italic">why</em> — not
-              assume — before building.
-            </p>
-            <div className="p-5 rounded-2xl border border-[#cc63ff]/20 bg-[#cc63ff]/5">
-              <p className="text-[#cc63ff] text-sm font-semibold mb-1">Research Mandate</p>
-              <p className="text-white/80 text-body-sm">
-                Conduct end-to-end UX research to surface validated, evidence-backed user problems that can directly
-                govern product feature design — replacing assumptions with data.
-              </p>
-            </div>
+          <div className="text-[#cc63ff] text-tag-1 mb-4 flex justify-center items-center gap-2">
+            <i className="ti ti-shield-check text-xl" /> Confidence &amp; Validation
           </div>
-
-          {/* Right: Three Driving Questions */}
-          <div>
-            <div className="text-[#cc63ff] text-tag-1 mb-4">Three Driving Questions</div>
-            <div className="flex flex-col gap-4">
-              {[
-                {
-                  q: "Why do urban Indians avoid preventive healthcare despite knowing its importance?",
-                  tag: "Behavioral Gap",
-                },
-                {
-                  q: "What emotional, financial, and systemic barriers prevent early health action?",
-                  tag: "Root Cause Mapping",
-                },
-                {
-                  q: "What product features — if designed right — could shift health behaviors at scale?",
-                  tag: "Design Opportunity",
-                },
-              ].map((item, i) => (
-                <div key={i} className="flex gap-4 p-5 rounded-2xl bg-white/4 border border-white/8 hover:border-[#cc63ff]/30 transition-colors group">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-black"
-                    style={{ backgroundColor: PURPLE }}>
-                    {i + 1}
-                  </div>
-                  <div>
-                    <p className="text-white text-sm font-medium leading-relaxed mb-2 group-hover:text-[#cc63ff] transition-colors">{item.q}</p>
-                    <span className="text-[10px] uppercase tracking-widest text-[#cc63ff]/60 font-semibold">{item.tag}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ── SECTION 3: Problem Scale ──────────────────────────────── */}
-      <section className="py-24 px-6 md:px-16 max-w-[1200px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: customEase }}
-        >
-          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 03 — Problem Scale</div>
-          <h2 className="text-h2 text-white mb-4 leading-tight">
-            This Isn&apos;t a Niche Problem
-          </h2>
-          <p className="text-[#8888aa] max-w-2xl mb-12">
-            Secondary research — sourced from WHO, FICCI Healthcare Report 2023, and UN DESA — established the macro-scale 
-            validity of this problem before primary research began.
+          <h2 className="text-h2 text-white mb-6">Built on Triangulated Data</h2>
+          <p className="text-[#8888aa] text-body-sm leading-relaxed">
+            Problems were validated through a three-layer method: thematic coding of interview transcripts, statistical cross-referencing with survey data, and a dedicated validation survey sent back to participants. Consensus across all three layers determined inclusion.
           </p>
-
-          {/* Disease Snapshot Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            {[
-              { disease: "Diabetes", affected: "101M+", risk: "Urban Adults", color: "#f97316", icon: "🩸" },
-              { disease: "Obesity", affected: "40%", risk: "Urban Under-45", color: "#ef4444", icon: "⚖️" },
-              { disease: "CVD", affected: "#1 Killer", risk: "Premature Deaths", color: "#8b5cf6", icon: "❤️" },
-              { disease: "Hypertension", affected: "220M+", risk: "Undetected Cases", color: "#06b6d4", icon: "🫀" },
-            ].map((d, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ y: -6, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                className="p-5 rounded-2xl border border-white/8 bg-white/4 hover:border-white/20 group cursor-default"
-              >
-                <div className="text-3xl mb-3">{d.icon}</div>
-                <div className="text-2xl font-extrabold mb-1" style={{ color: d.color }}>{d.affected}</div>
-                <div className="text-white font-semibold text-sm mb-1">{d.disease}</div>
-                <div className="text-[#8888aa] text-[11px]">{d.risk}</div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Financial Burden Table */}
-          <div className="rounded-3xl border border-white/8 overflow-hidden">
-            <div className="px-6 py-4 bg-white/4 border-b border-white/8 flex items-center gap-3">
-              <span className="text-[#cc63ff] font-bold text-sm uppercase tracking-widest">Financial Burden</span>
-              <span className="text-[#8888aa] text-xs">— FICCI Healthcare Report 2023 + WHO South-East Asia</span>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="bg-white/3">
-                    <th className="text-left px-6 py-3 text-[#8888aa] text-[11px] uppercase tracking-widest font-semibold">Condition</th>
-                    <th className="text-left px-6 py-3 text-[#8888aa] text-[11px] uppercase tracking-widest font-semibold">Annual Treatment Cost</th>
-                    <th className="text-left px-6 py-3 text-[#8888aa] text-[11px] uppercase tracking-widest font-semibold">Preventive Cost</th>
-                    <th className="text-left px-6 py-3 text-[#8888aa] text-[11px] uppercase tracking-widest font-semibold">Savings Potential</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    ["Type 2 Diabetes", "₹80,000 – ₹3,00,000", "₹3,000 – ₹8,000", "~90% reduction"],
-                    ["Cardiovascular Disease", "₹3,00,000 – ₹12,00,000", "₹5,000 – ₹15,000", "~85% reduction"],
-                    ["Obesity-related Complications", "₹40,000 – ₹1,50,000", "₹2,000 – ₹6,000", "~92% reduction"],
-                    ["Hypertension", "₹30,000 – ₹80,000", "₹1,500 – ₹4,000", "~88% reduction"],
-                  ].map(([condition, treatment, preventive, savings], i) => (
-                    <tr key={i} className="border-t border-white/5 hover:bg-white/3 transition-colors">
-                      <td className="px-6 py-4 text-white font-medium">{condition}</td>
-                      <td className="px-6 py-4 text-red-400/80">{treatment}</td>
-                      <td className="px-6 py-4 text-green-400/80">{preventive}</td>
-                      <td className="px-6 py-4">
-                        <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-[#cc63ff]/15 text-[#cc63ff] border border-[#cc63ff]/25">
-                          {savings}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ── SECTION 4: Research Methodology ──────────────────────── */}
-      <section className="py-24 px-6 md:px-16 max-w-[1200px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: customEase }}
-        >
-          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 04 — Methodology</div>
-          <h2 className="text-h2 text-white mb-4 leading-tight">
-            A Three-Phase Research Architecture
-          </h2>
-          <p className="text-[#8888aa] max-w-2xl mb-12">
-            The research was structured across three validated phases — ensuring each phase built on the prior — 
-            moving from exploration to validation to synthesis.
-          </p>
-
-          {/* Phase Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-            {[
-              {
-                phase: "Phase 1",
-                name: "Generative Research",
-                goal: "Explore the problem space without bias",
-                methods: ["Desk Research (WHO, FICCI, UN DESA)", "Semi-structured Interviews (14 participants)", "Empathy Mapping", "Field Observation Notes"],
-                output: "Problem hypotheses + initial themes",
-                color: "#cc63ff",
-                num: "01",
-              },
-              {
-                phase: "Phase 2",
-                name: "Formative Research",
-                goal: "Validate hypotheses at scale",
-                methods: ["3 Online Surveys (187 total participants)", "Affinity Diagramming", "Thematic Coding", "Pattern & Sentiment Analysis"],
-                output: "18 validated problem statements",
-                color: "#f97316",
-                num: "02",
-              },
-              {
-                phase: "Phase 3",
-                name: "Summative Research",
-                goal: "Map findings to product features",
-                methods: ["HMW (How Might We) Frameworks", "Feature Opportunity Mapping", "User Journey Mapping", "Priority Matrix Scoring"],
-                output: "Feature roadmap + product goals",
-                color: "#10b981",
-                num: "03",
-              },
-            ].map((p, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.15, ease: customEase }}
-                className="p-7 rounded-3xl bg-white/4 border border-white/8 hover:border-white/20 flex flex-col gap-4 group transition-all"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: p.color }}>{p.phase}</span>
-                  <span className="text-4xl font-black opacity-10 group-hover:opacity-20 transition-opacity" style={{ color: p.color }}>{p.num}</span>
-                </div>
-                <h3 className="text-white text-xl font-bold">{p.name}</h3>
-                <p className="text-[#8888aa] text-sm italic">Goal: {p.goal}</p>
-                <ul className="flex flex-col gap-2 mt-1">
-                  {p.methods.map((m, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-white/70">
-                      <span className="mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: p.color }} />
-                      {m}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-auto pt-4 border-t border-white/8">
-                  <span className="text-[10px] uppercase tracking-widest text-[#8888aa] font-semibold">Output: </span>
-                  <span className="text-sm font-semibold" style={{ color: p.color }}>{p.output}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </motion.div>
 
-        {/* ── Interactive Thematic Coding Sandbox ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: customEase }}
-        >
-          <div className="text-[#cc63ff] text-tag-1 mb-4">Interactive Widget</div>
-          <h3 className="text-h2 text-white mb-3">Thematic Coding Sandbox</h3>
-          <p className="text-[#8888aa] mb-8 max-w-xl">
-            Click any participant quote below to see how a UX researcher synthethizes raw text into 
-            emotional sentiment tags, validated problem domains, and product feature opportunities.
-          </p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Left: Quotes */}
-            <div className="flex flex-col gap-3">
-              <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-semibold mb-1">Raw Participant Quotes — Click to Code</div>
-              {researchQuotes.map((quote) => (
-                <motion.button
-                  key={quote.id}
-                  onClick={() => setSelectedQuote(selectedQuote === quote.id ? null : quote.id)}
-                  whileHover={{ x: 4 }}
-                  className={`text-left p-4 rounded-2xl border transition-all duration-300 ${
-                    selectedQuote === quote.id
-                      ? "border-[#cc63ff]/60 bg-[#cc63ff]/10"
-                      : "border-white/8 bg-white/3 hover:border-white/20"
-                  }`}
-                >
-                  <p className="text-sm text-white/80 leading-relaxed italic">&ldquo;{quote.text}&rdquo;</p>
-                  <div className="flex items-center gap-2 mt-2">
-                    <span className="text-[9px] uppercase tracking-widest text-[#8888aa] font-semibold">{quote.tag}</span>
-                  </div>
-                </motion.button>
-              ))}
-            </div>
-
-            {/* Right: Coded Output */}
-            <div className="sticky top-24 h-fit">
-              <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-semibold mb-3">Synthesized Output</div>
-              <AnimatePresence mode="wait">
-                {activeQuote ? (
-                  <motion.div
-                    key={activeQuote.id}
-                    initial={{ opacity: 0, y: 16, scale: 0.97 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -16, scale: 0.97 }}
-                    transition={{ duration: 0.4, ease: customEase }}
-                    className="p-6 rounded-3xl border bg-[#0e0820] flex flex-col gap-5"
-                    style={{ borderColor: activeQuote.sentimentColor + "40" }}
-                  >
-                    {/* Sentiment */}
-                    <div>
-                      <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-semibold mb-2">Emotional Sentiment</div>
-                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold border"
-                        style={{ color: activeQuote.sentimentColor, borderColor: activeQuote.sentimentColor + "50", backgroundColor: activeQuote.sentimentColor + "15" }}>
-                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: activeQuote.sentimentColor }} />
-                        {activeQuote.sentiment}
-                      </div>
-                    </div>
-
-                    {/* Domain */}
-                    <div>
-                      <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-semibold mb-2">Problem Domain</div>
-                      <div className="px-4 py-3 rounded-xl bg-white/5 border border-white/10">
-                        <span className="text-white font-semibold text-sm">{activeQuote.domain}</span>
-                      </div>
-                    </div>
-
-                    {/* Feature Opportunity */}
-                    <div>
-                      <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-semibold mb-2">Feature Opportunity</div>
-                      <div className="px-4 py-3 rounded-xl border flex items-center gap-3"
-                        style={{ borderColor: PURPLE + "40", backgroundColor: PURPLE + "10" }}>
-                        <span className="text-xl">💡</span>
-                        <span className="text-[#cc63ff] font-semibold text-sm">{activeQuote.feature}</span>
-                      </div>
-                    </div>
-
-                    {/* Tag */}
-                    <div>
-                      <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-semibold mb-2">Validated Theme Tag</div>
-                      <span className="px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider border"
-                        style={{ color: activeQuote.sentimentColor, borderColor: activeQuote.sentimentColor + "50", backgroundColor: activeQuote.sentimentColor + "12" }}>
-                        {activeQuote.tag}
-                      </span>
-                    </div>
-
-                    {/* Original Quote */}
-                    <div className="p-4 rounded-xl bg-white/3 border border-white/8">
-                      <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-semibold mb-2">Original Quote</div>
-                      <p className="text-white/70 text-sm italic leading-relaxed">&ldquo;{activeQuote.text}&rdquo;</p>
-                    </div>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="placeholder"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="p-10 rounded-3xl border border-white/8 bg-white/3 flex flex-col items-center justify-center gap-4 min-h-[300px] text-center"
-                  >
-                    <div className="text-4xl opacity-30">👆</div>
-                    <p className="text-[#8888aa] text-sm">Select a participant quote to see the thematic coding output</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ── SECTION 5: Key Findings ───────────────────────────────── */}
-      <section className="py-24 px-6 md:px-16 max-w-[1200px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: customEase }}
-        >
-          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 05 — Key Findings</div>
-          <h2 className="text-h2 text-white mb-4 leading-tight">5 Core Research Insights</h2>
-          <p className="text-[#8888aa] max-w-2xl mb-12">
-            After synthesizing data from 187 participants and 14 interviews, five dominant themes emerged with statistical significance.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                num: "01",
-                title: "Motivation Decay",
-                insight: "Health motivation spikes after illness but decays within 3 weeks without a habit scaffold. 71% of users reported abandoning health tracking apps after the first month.",
-                icon: "📉",
-                color: "#f97316",
-                stat: "71%",
-                statLabel: "churn within 30 days",
-              },
-              {
-                num: "02",
-                title: "Information Overload",
-                insight: "Users receive conflicting health information from multiple sources. 64% reported feeling \"overwhelmed\" by health content and defaulting to inaction.",
-                icon: "🌊",
-                color: "#8b5cf6",
-                stat: "64%",
-                statLabel: "feel overwhelmed",
-              },
-              {
-                num: "03",
-                title: "Financial Anxiety",
-                insight: "Fear of expensive diagnosis delays proactive health action. 58% of interviewees admitted avoiding checkups partly due to anxiety about discovering a costly condition.",
-                icon: "💸",
-                color: "#ef4444",
-                stat: "58%",
-                statLabel: "avoid diagnosis due to cost fear",
-              },
-              {
-                num: "04",
-                title: "Healthcare System Distrust",
-                insight: "Short consultation times, jargon-heavy communication, and opaque pricing have eroded trust. Only 29% felt their doctor truly understood their lifestyle.",
-                icon: "🏥",
-                color: "#06b6d4",
-                stat: "29%",
-                statLabel: "trust their doctor's understanding",
-              },
-              {
-                num: "05",
-                title: "Contextual Reminders Work",
-                insight: "Users responded most positively to health nudges that matched their real-time context (location, time of day, activity). Generic push notifications had a 4% engagement rate vs. 31% for contextual ones.",
-                icon: "🔔",
-                color: "#10b981",
-                stat: "31% vs 4%",
-                statLabel: "contextual vs. generic engagement",
-              },
-            ].map((f, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.1, ease: customEase }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="p-6 rounded-3xl border border-white/8 bg-white/4 hover:border-white/20 flex flex-col gap-4 group cursor-default transition-all"
-              >
-                <div className="flex items-start justify-between">
-                  <div className="text-3xl">{f.icon}</div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#8888aa]/40 group-hover:text-[#8888aa]/70 transition-colors">{f.num}</span>
-                </div>
-                <div>
-                  <div className="text-xl font-bold mb-1" style={{ color: f.color }}>{f.stat}</div>
-                  <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-semibold">{f.statLabel}</div>
-                </div>
-                <div className="h-px w-full bg-white/8 group-hover:bg-white/15 transition-colors" />
-                <h3 className="text-white font-bold text-lg">{f.title}</h3>
-                <p className="text-[#8888aa] text-body-sm">{f.insight}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ── SECTION 6: User Persona ───────────────────────────────── */}
-      <section className="py-24 px-6 md:px-16 max-w-[1200px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: customEase }}
-        >
-          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 06 — User Persona</div>
-          <h2 className="text-h2 text-white mb-4 leading-tight">The Research-Validated Persona</h2>
-          <p className="text-[#8888aa] max-w-2xl mb-12">
-            Synthesized from interview data and survey responses — not created from assumptions.
-          </p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Persona ID Card */}
-            <div className="lg:col-span-1">
-              <div className="p-7 rounded-3xl border border-[#cc63ff]/25 bg-gradient-to-b from-[#1a0a2e]/60 to-[#0e0820]/60 backdrop-blur-sm sticky top-24">
-                {/* Avatar */}
-                <div className="w-20 h-20 rounded-full mb-5 flex items-center justify-center text-4xl"
-                  style={{ background: "linear-gradient(135deg, #cc63ff30, #8b5cf630)" }}>
-                  👩
-                </div>
-                <h3 className="text-white font-bold text-2xl mb-1">Kavya Reddy</h3>
-                <p className="text-[#cc63ff] text-sm font-semibold mb-4">Health-Conscious Urban Senior</p>
-                <div className="flex flex-col gap-2 text-sm">
-                  {[
-                    { label: "Age", val: "34" },
-                    { label: "City", val: "Bangalore, India" },
-                    { label: "Occupation", val: "Senior Marketing Manager" },
-                    { label: "Income", val: "₹18–28L / year" },
-                    { label: "Device", val: "iPhone + Apple Watch" },
-                  ].map(({ label, val }) => (
-                    <div key={label} className="flex justify-between">
-                      <span className="text-[#8888aa]">{label}</span>
-                      <span className="text-white font-medium">{val}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-5 p-4 rounded-2xl bg-[#cc63ff]/8 border border-[#cc63ff]/20">
-                  <p className="text-[#cc63ff] text-xs italic leading-relaxed">
-                    &ldquo;I know what I should do. I just don&apos;t have the time or energy to actually do it consistently.&rdquo;
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Persona Detail Tabs */}
-            <div className="lg:col-span-2">
-              {/* Tabs */}
-              <div className="flex gap-2 mb-6">
-                {(["frictions", "drivers", "goals"] as PersonaTab[]).map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setPersonaTab(tab)}
-                    className={`px-5 py-2.5 rounded-xl text-sm font-semibold capitalize transition-all duration-300 ${
-                      personaTab === tab
-                        ? "text-black"
-                        : "bg-white/5 text-[#8888aa] hover:bg-white/10 hover:text-white border border-white/10"
-                    }`}
-                    style={personaTab === tab ? { backgroundColor: PURPLE } : {}}
-                  >
-                    {tab === "frictions" ? "Friction Points" : tab === "drivers" ? "Emotional Drivers" : "User Goals"}
-                  </button>
-                ))}
-              </div>
-
-              <AnimatePresence mode="wait">
-                {personaTab === "frictions" && (
-                  <motion.div key="frictions" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.35, ease: customEase }}>
-                    <div className="grid grid-cols-1 gap-3">
-                      {[
-                        { friction: "No time to cook or plan meals after a 10-hour work day", severity: "Critical" },
-                        { friction: "Calendar is always full — health appointments get rescheduled indefinitely", severity: "High" },
-                        { friction: "Lab reports use jargon she can't interpret without Googling", severity: "High" },
-                        { friction: "Health apps feel like chores, not support systems", severity: "Medium" },
-                        { friction: "Notifications arrive at wrong times and get ignored", severity: "Medium" },
-                        { friction: "Guilt from missing targets leads to app abandonment", severity: "High" },
-                      ].map((item, i) => (
-                        <div key={i} className="flex items-start gap-4 p-4 rounded-2xl bg-white/4 border border-white/8">
-                          <div className={`flex-shrink-0 mt-0.5 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider ${
-                            item.severity === "Critical" ? "bg-red-500/20 text-red-400 border border-red-500/30" :
-                            item.severity === "High" ? "bg-orange-500/20 text-orange-400 border border-orange-500/30" :
-                            "bg-yellow-500/20 text-yellow-400 border border-yellow-500/30"
-                          }`}>
-                            {item.severity}
-                          </div>
-                          <p className="text-white/80 text-body-sm">{item.friction}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-                {personaTab === "drivers" && (
-                  <motion.div key="drivers" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.35, ease: customEase }}>
-                    <div className="grid grid-cols-1 gap-3">
-                      {[
-                        { driver: "Fear of becoming like her father, who developed diabetes at 45", emotion: "Fear" },
-                        { driver: "Wanting to be healthy and energetic when she has children", emotion: "Aspiration" },
-                        { driver: "Social proof from peers who have \"turned their health around\"", emotion: "FOMO" },
-                        { driver: "Guilt after overeating or skipping the gym", emotion: "Guilt" },
-                        { driver: "A sense of control and discipline that successful health tracking gives her", emotion: "Pride" },
-                        { driver: "Cost savings — she calculates prevention vs. treatment expenses", emotion: "Financial Logic" },
-                      ].map((item, i) => (
-                        <div key={i} className="flex items-start gap-4 p-4 rounded-2xl bg-white/4 border border-white/8">
-                          <span className="flex-shrink-0 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-[#cc63ff]/15 text-[#cc63ff] border border-[#cc63ff]/30 mt-0.5">
-                            {item.emotion}
-                          </span>
-                          <p className="text-white/80 text-body-sm">{item.driver}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-                {personaTab === "goals" && (
-                  <motion.div key="goals" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.35, ease: customEase }}>
-                    <div className="grid grid-cols-1 gap-3">
-                      {[
-                        "Stay ahead of chronic disease risk without disrupting her work schedule.",
-                        "Get personalized, plain-language guidance — not generic advice.",
-                        "Track her health in a way that feels rewarding, not punishing.",
-                        "Understand what her lab reports actually mean.",
-                        "Receive health reminders at moments she can act on them — not during meetings.",
-                        "Build consistent habits over 3–6 months, not just spike-and-crash motivation cycles.",
-                      ].map((goal, i) => (
-                        <div key={i} className="flex items-start gap-4 p-4 rounded-2xl bg-white/4 border border-white/8">
-                          <div className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-black mt-0.5"
-                            style={{ backgroundColor: PURPLE }}>
-                            {i + 1}
-                          </div>
-                          <p className="text-white/80 text-body-sm">{goal}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ── SECTION 7: Problem Statements Accordion ──────────────── */}
-      <section className="py-24 px-6 md:px-16 max-w-[1200px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: customEase }}
-        >
-          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 07 — Validated Problems</div>
-          <h2 className="text-h2 text-white mb-4 leading-tight">18 Validated Problem Statements</h2>
-          <p className="text-[#8888aa] max-w-2xl mb-12">
-            Every statement below is grounded in direct user data. They are organized across the 3 core problem domains
-            identified through thematic coding.
-          </p>
-
-          <div className="flex flex-col gap-4">
-            {(Object.entries(domainProblems) as [DomainKey, typeof domainProblems.habits][]).map(([domain, problems]) => {
-              const meta = domainMeta[domain];
-              const isOpen = openDomain === domain;
-              return (
-                <div key={domain} className="rounded-3xl border overflow-hidden transition-all duration-500"
-                  style={{ borderColor: isOpen ? meta.color + "50" : "rgba(255,255,255,0.08)" }}>
-                  <button
-                    onClick={() => setOpenDomain(isOpen ? null : domain)}
-                    className="w-full flex items-center justify-between px-7 py-5 text-left hover:bg-white/3 transition-colors"
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className="text-2xl">{meta.icon}</span>
-                      <div>
-                        <h3 className="text-white font-bold text-lg">{meta.label}</h3>
-                        <p className="text-[#8888aa] text-sm">{meta.count} validated problem statements</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="px-3 py-1 rounded-full text-[11px] font-bold border"
-                        style={{ color: meta.color, borderColor: meta.color + "40", backgroundColor: meta.color + "12" }}>
-                        {meta.count} problems
-                      </span>
-                      <motion.span
-                        animate={{ rotate: isOpen ? 180 : 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="text-[#8888aa] text-xl"
-                      >
-                        ↓
-                      </motion.span>
-                    </div>
-                  </button>
-
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: customEase }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-7 pb-6 grid grid-cols-1 md:grid-cols-2 gap-3 border-t"
-                          style={{ borderColor: meta.color + "20" }}>
-                          <div />
-                          {problems.map((p) => (
-                            <div key={p.id} className="flex items-start gap-3 p-4 rounded-2xl bg-white/3">
-                              <span className="flex-shrink-0 text-[10px] font-bold px-2 py-0.5 rounded border mt-0.5"
-                                style={{ color: meta.color, borderColor: meta.color + "40", backgroundColor: meta.color + "12" }}>
-                                {p.id}
-                              </span>
-                              <p className="text-white/80 text-body-sm">{p.statement}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ── SECTION 8: From Research to Features ─────────────────── */}
-      <section className="py-24 px-6 md:px-16 max-w-[1200px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: customEase }}
-        >
-          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 08 — Feature Pipeline</div>
-          <h2 className="text-h2 text-white mb-4 leading-tight">From Research to Features</h2>
-          <p className="text-[#8888aa] max-w-2xl mb-10">
-            Each validated problem statement was mapped to a product feature with a full design pipeline:
-            the linked problem, user goal, interaction flow, developer notes, and success metrics.
-          </p>
-
-          {/* Feature Switcher */}
-          <div className="flex gap-3 mb-10">
-            {features.map((f, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveFeature(i as 0 | 1)}
-                className={`px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 ${
-                  activeFeature === i ? "text-black" : "bg-white/5 text-[#8888aa] hover:bg-white/10 hover:text-white border border-white/10"
-                }`}
-                style={activeFeature === i ? { backgroundColor: PURPLE } : {}}
-              >
-                Feature {i + 1}: {f.name}
-              </button>
-            ))}
-          </div>
-
-          <AnimatePresence mode="wait">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              metric: "18",
+              title: "Problems Identified",
+              desc: "Every problem maps directly to a validated user pain, a business case, and a measurable metric — not assumptions.",
+            },
+            {
+              metric: "~99%",
+              title: "Research Coverage",
+              desc: "Problems were identified using triangulated data (surveys + interviews + thematic analysis). Coverage cross-checked across all three data sources.",
+            },
+            {
+              metric: "~94%",
+              title: "User Validation Rate",
+              desc: "94% of surveyed users confirmed these problems affected them, establishing statistical relevance across the target population.",
+            },
+          ].map((stat, idx) => (
             <motion.div
-              key={activeFeature}
+              key={idx}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4, ease: customEase }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: idx * 0.1, ease: customEase }}
+              className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-[#cc63ff]/30 transition-colors group flex flex-col justify-between"
             >
-              {/* Left: Problem + Goal + Flow */}
-              <div className="flex flex-col gap-5">
-                <div className="p-5 rounded-2xl bg-red-500/8 border border-red-500/20">
-                  <div className="text-[10px] uppercase tracking-widest text-red-400 font-bold mb-2">Linked Problem</div>
-                  <p className="text-white/80 text-body-sm">{feat.linkedProblem}</p>
-                </div>
-                <div className="p-5 rounded-2xl bg-[#cc63ff]/8 border border-[#cc63ff]/20">
-                  <div className="text-[10px] uppercase tracking-widest text-[#cc63ff] font-bold mb-2">User Goal</div>
-                  <p className="text-white/80 text-sm italic leading-relaxed">&ldquo;{feat.userGoal}&rdquo;</p>
-                </div>
-
-                {/* Interaction Flow */}
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-bold mb-3">Interaction Flow</div>
-                  <div className="flex items-center gap-0 flex-wrap">
-                    {feat.flow.map((step, i) => (
-                      <div key={i} className="flex items-center">
-                        <div className="px-3 py-2 rounded-xl text-xs font-semibold text-white bg-white/8 border border-white/10 whitespace-nowrap">
-                          {step}
-                        </div>
-                        {i < feat.flow.length - 1 && (
-                          <span className="mx-2 text-[#cc63ff] text-sm">→</span>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Developer Notes */}
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-bold mb-3">Developer CRUD Notes</div>
-                  <div className="rounded-2xl bg-[#0e0e1a] border border-white/8 p-4 text-xs">
-                    {feat.crudNotes.map((note, i) => (
-                      <div key={i} className={i > 0 ? "mt-2 pt-2 border-t border-white/5" : ""}>
-                        <span className="text-[#cc63ff]">{note.split("—")[0]}</span>
-                        {note.includes("—") && <span className="text-[#8888aa]"> — {note.split("—")[1]}</span>}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Right: Metrics */}
               <div>
-                <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-bold mb-4">Success Metrics Grid</div>
-                <div className="flex flex-col gap-4">
-                  {feat.metrics.map((metric, i) => (
-                    <div key={i} className="p-5 rounded-2xl border bg-white/3"
-                      style={{ borderColor: [PURPLE, "#f97316", "#10b981"][i] + "30" }}>
-                      <div className="text-[10px] uppercase tracking-widest font-bold mb-3"
-                        style={{ color: [PURPLE, "#f97316", "#10b981"][i] }}>
-                        {metric.category} Metrics
-                      </div>
-                      <div className="flex flex-col gap-2">
-                        {metric.kpis.map((kpi, j) => (
-                          <div key={j} className="flex items-center gap-2 text-sm text-white/70">
-                            <span className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                              style={{ backgroundColor: [PURPLE, "#f97316", "#10b981"][i] }} />
-                            {kpi}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+                <div className="text-5xl font-bold text-white mb-4 group-hover:text-[#cc63ff] transition-colors">{stat.metric}</div>
+                <h3 className="text-xl font-bold text-white mb-4">{stat.title}</h3>
+              </div>
+              <p className="text-sm text-[#8888aa] leading-relaxed border-t border-white/10 pt-4 mt-4">{stat.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-12 p-6 rounded-2xl bg-[#cc63ff]/10 border border-[#cc63ff]/20 text-center max-w-4xl mx-auto">
+          <p className="text-[#cc63ff] font-medium text-sm md:text-base">
+            These aren&apos;t problems I assumed existed. They were surfaced from 187 users, tested against secondary data, and confirmed by the same users — making them safe to build products on.
+          </p>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          3. COST OF INACTION — Split Editorial Box
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto bg-[#0c0c16] rounded-[40px] border border-white/5 my-12 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#00ffd1]/30 to-transparent" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: customEase }}
+            className="space-y-6"
+          >
+            <div className="text-[#00ffd1] text-tag-1 mb-2 flex items-center gap-2">
+              <i className="ti ti-alert-triangle text-xl" /> Macro Impact
+            </div>
+            <h2 className="text-h2 text-white">The Cost of Inaction<br />— What&apos;s at Stake by 2030</h2>
+            <p className="text-[#8888aa] text-body-sm leading-relaxed">
+              These aren&apos;t projections built to alarm. They are aggregated estimates from WHO, World Obesity Federation, ICMR, and India&apos;s National Health Profile — recalculated specifically for the urban preventive healthcare gap this project addresses.
+            </p>
+            <p className="text-white text-sm font-medium leading-relaxed bg-white/5 p-5 rounded-2xl border border-white/5">
+              At this scale, no single app solves the problem. But design done right — research-driven, validated, and precise — can meaningfully shift individual behavior. Even a 1% reduction in preventable disease incidence across urban India translates to millions of lives and tens of thousands of crores saved.
+            </p>
+          </motion.div>
+
+          <div className="space-y-6">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1, ease: customEase }}
+              className="p-8 rounded-3xl bg-[#080810] border border-white/5 shadow-2xl relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 blur-[50px] rounded-full group-hover:bg-red-500/20 transition-colors" />
+              <div className="text-xs uppercase tracking-widest text-[#8888aa] mb-2">Financial Burden</div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-1">&#x20b9;35.72 <span className="text-2xl text-red-400">Lakh Crores</span></div>
+              <div className="text-xs text-[#8888aa] border-t border-white/5 pt-3 mt-4">Primary Sources: World Obesity Federation, ICMR, FICCI Health Reports</div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: customEase }}
+              className="p-8 rounded-3xl bg-[#080810] border border-white/5 shadow-2xl relative overflow-hidden group"
+            >
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-[#00ffd1]/10 blur-[50px] rounded-full group-hover:bg-[#00ffd1]/20 transition-colors" />
+              <div className="text-xs uppercase tracking-widest text-[#8888aa] mb-2">Lives at Risk</div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-1">~4.26 <span className="text-2xl text-[#00ffd1]">Crore people</span></div>
+              <div className="text-xs text-[#8888aa] border-t border-white/5 pt-3 mt-4">Primary Sources: WHO Mortality Projections, India NHP 2023</div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          4. RESEARCH AT SCALE — Bento Grid
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5">
+        <div className="text-center mb-16">
+          <div className="text-[#cc63ff] text-tag-1 mb-4 flex justify-center items-center gap-2">
+            <i className="ti ti-chart-dots text-xl" /> Scope &amp; Scale
+          </div>
+          <h2 className="text-h2 text-white mb-6">What 6 Months of Structured UX Work Looks Like</h2>
+          <p className="text-[#8888aa] text-body-sm max-w-2xl mx-auto">
+            Solutions were not brainstormed freely — each of the 114 was derived directly from a validated problem, scoped to a user goal, and assigned a trackable success metric.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { metric: "187", label: "Users Participated", desc: "Large enough for statistical confidence across 3 distinct urban segments." },
+            { metric: "3", label: "Surveys Conducted", desc: "Progressive surveys: discovery → validation → post-concept feedback." },
+            { metric: "14", label: "User Interviews", desc: "In-depth, semi-structured; used for nuance and behavioral context beyond surveys." },
+            { metric: "17", label: "UX Processes Used", desc: "Spanning generative, formative, and summative phases of the UCD framework." },
+            { metric: "18", label: "Problems Validated", desc: "Reduced from 40+ raw observations through thematic analysis and validation." },
+            { metric: "114", label: "Solutions Designed", desc: "Mapped 1:1 to validated problems and prioritized using impact-effort analysis." },
+            { metric: "78", label: "User Goals Mapped", desc: "Structured into the product information architecture to guide feature logic." },
+            { metric: "18", label: "Success Metrics Defined", desc: "One measurable metric per validated problem — tied to product and business KPIs." },
+          ].map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.05, ease: customEase }}
+              className="bg-white/[0.02] border border-white/5 p-6 rounded-3xl hover:bg-white/[0.04] transition-colors flex flex-col justify-between min-h-[220px] group"
+            >
+              <div>
+                <div className="text-[#8888aa] text-xs font-bold uppercase tracking-wider mb-2 group-hover:text-white transition-colors">{item.label}</div>
+                <div className="text-4xl font-bold text-white mb-4 group-hover:text-[#cc63ff] transition-colors">{item.metric}</div>
+              </div>
+              <p className="text-[11px] text-[#666688] leading-relaxed group-hover:text-[#8888aa] transition-colors">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          5. PRODUCT GOALS — Vertical Expanding Timeline
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto bg-gradient-to-b from-[#080810] to-[#0c0c16] rounded-[40px] border border-white/5 my-12 relative">
+        <div className="mb-16">
+          <div className="text-[#00ffd1] text-tag-1 mb-4 flex items-center gap-2">
+            <i className="ti ti-target-arrow text-xl" /> Product Goals
+          </div>
+          <h2 className="text-h2 text-white mb-6">Derived from Research, Not Assumptions</h2>
+          <p className="text-[#8888aa] text-body-sm max-w-2xl leading-relaxed">
+            These three goals were not defined upfront. They emerged from clustering 18 validated user problems into behavioral themes — each goal directly addresses a root cause pattern identified in the research.
+          </p>
+        </div>
+
+        <div className="relative pl-8 md:pl-12 space-y-12 before:absolute before:inset-0 before:ml-[15px] md:before:ml-[23px] before:-translate-x-px md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-[#00ffd1] before:via-[#cc63ff] before:to-transparent">
+          {[
+            {
+              id: "01",
+              title: "Build Sustainable Healthy Habits",
+              root: "Fast-paced urban lifestyles create stress, boredom, and conflicting advice — the core triggers for unhealthy behavior.",
+              direction: "Personalized, low-friction habit systems with behavioral nudges.",
+              signal: "Users report consistent routine adherence after 4 weeks of engagement.",
+            },
+            {
+              id: "02",
+              title: "Enable Early and Proactive Diagnosis",
+              root: "Fragmented medical records and absence of tracking tools cause delayed detection of preventable conditions.",
+              direction: "Centralized health history + proactive screening reminders.",
+              signal: "Increase in early-stage diagnoses and reduction in emergency healthcare visits among users.",
+            },
+            {
+              id: "03",
+              title: "Reduce the Financial Burden of Healthcare",
+              root: "Reactive treatment costs 3–5x more than preventive care for the same conditions.",
+              direction: "Cost transparency tools, preventive plan recommendations, and insurance literacy features.",
+              signal: "Measured reduction in out-of-pocket spending for active product users.",
+            },
+          ].map((goal, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: idx * 0.1, ease: customEase }}
+              className="relative"
+            >
+              <div className="absolute -left-[41px] md:-left-[57px] top-1 w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#080810] border-2 border-[#00ffd1] flex items-center justify-center z-10">
+                <span className="text-[10px] md:text-xs font-bold text-white">{goal.id}</span>
+              </div>
+              <div className="bg-white/[0.02] border border-white/5 p-8 rounded-3xl group hover:border-[#cc63ff]/30 transition-colors">
+                <h3 className="text-2xl font-bold text-white mb-6 group-hover:text-[#00ffd1] transition-colors">{goal.title}</h3>
+                <div className="space-y-4">
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-6">
+                    <div className="w-full md:w-1/4 text-xs font-bold text-[#8888aa] uppercase tracking-wider pt-1">Root Cause</div>
+                    <div className="w-full md:w-3/4 text-sm text-[#fafafa] leading-relaxed">{goal.root}</div>
+                  </div>
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-6">
+                    <div className="w-full md:w-1/4 text-xs font-bold text-[#8888aa] uppercase tracking-wider pt-1">Design Direction</div>
+                    <div className="w-full md:w-3/4 text-sm text-white font-medium bg-white/5 p-4 rounded-xl border border-white/5">{goal.direction}</div>
+                  </div>
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-6">
+                    <div className="w-full md:w-1/4 text-xs font-bold text-[#8888aa] uppercase tracking-wider pt-1">Success Signal</div>
+                    <div className="w-full md:w-3/4 text-sm text-[#00ffd1] font-bold bg-[#00ffd1]/10 p-4 rounded-xl border border-[#00ffd1]/20">{goal.signal}</div>
+                  </div>
                 </div>
               </div>
             </motion.div>
-          </AnimatePresence>
-        </motion.div>
+          ))}
+        </div>
       </section>
 
-      {/* ── SECTION 9: Research Outcomes ─────────────────────────── */}
-      <section className="py-24 px-6 md:px-16 max-w-[1200px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: customEase }}
-        >
-          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 09 — Outcomes</div>
-          <h2 className="text-h2 text-white mb-4 leading-tight">Research that Governed Design</h2>
-          <p className="text-[#8888aa] max-w-2xl mb-12">
-            This research did not end with a report. Every validated problem, persona insight, and feature opportunity
-            was directly translated into the design of the Dr.Health mobile application.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {[
-              {
-                icon: "🗂️",
-                title: "Research → IA",
-                body: "The 3-domain problem structure (Habits, Diagnosis, Expenses) directly shaped the app's Information Architecture — each domain mapped to a product pillar.",
-                color: PURPLE,
-              },
-              {
-                icon: "👤",
-                title: "Persona → User Flows",
-                body: "Kavya's friction points and goals shaped every major user flow — from onboarding to notification timing, each touchpoint was designed against her validated needs.",
-                color: "#f97316",
-              },
-              {
-                icon: "📊",
-                title: "Findings → Feature Decisions",
-                body: "The 5 core findings governed which features were built first — Breakfast Suggestions and Fitness Rewards emerged directly from the highest-severity validated problems.",
-                color: "#10b981",
-              },
-              {
-                icon: "🧪",
-                title: "Validated → Tested",
-                body: "Moderated usability testing with real participants validated that the designed features addressed the original research problems — closing the research-to-product loop.",
-                color: "#06b6d4",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: customEase }}
-                className="flex gap-5 p-6 rounded-3xl bg-white/4 border border-white/8 hover:border-white/20 transition-all"
-              >
-                <div className="text-3xl flex-shrink-0 mt-1">{item.icon}</div>
-                <div>
-                  <h3 className="font-bold text-white mb-2" style={{ color: item.color }}>{item.title}</h3>
-                  <p className="text-[#8888aa] text-body-sm">{item.body}</p>
-                </div>
-              </motion.div>
-            ))}
+      {/* ═══════════════════════════════════════════════════════════════
+          6. WHY I CHOSE THIS PROBLEM — Asymmetric Editorial Layout
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5">
+        <div className="mb-16">
+          <div className="text-[#cc63ff] text-tag-1 mb-4 flex items-center gap-2">
+            <i className="ti ti-bulb text-xl" /> The Rationale
           </div>
+          <h2 className="text-h2 text-white mb-8 max-w-4xl">Why I Chose This Problem</h2>
+          <p className="text-xl md:text-2xl text-white font-medium max-w-4xl leading-relaxed bg-white/[0.02] p-8 rounded-3xl border border-white/5 border-l-4 border-l-[#cc63ff]">
+            India ranks among the top 3 countries globally for diabetes burden, cardiovascular mortality, and lifestyle-disease incidence — yet the digital health market is flooded with wellness apps that are barely distinguishable from each other. Most fail because they&apos;re built on assumptions, not research.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "The Gap is in Understanding",
+              body: "Nobody had done rigorous, user-validated, end-to-end research that connected individual behavioral patterns to a scalable product architecture. That&apos;s what I set out to build.",
+            },
+            {
+              title: "The Empathy Gap",
+              body: "In 14 in-depth interviews, not a single user mentioned downloading an app as a barrier. The real barriers were trust in the information, relevance to their lifestyle, and not knowing where to start. These are design problems, not technology problems.",
+            },
+            {
+              title: "Unusually High Stakes",
+              body: "Unlike e-commerce or fintech, bad UX in healthcare doesn&apos;t just cause churn — it causes people to disengage from their own wellbeing. The cost of a confusing interface here is someone skipping a health check or abandoning medication.",
+            },
+          ].map((col, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: idx * 0.1, ease: customEase }}
+            >
+              <h4 className="text-lg font-bold text-white mb-3">{col.title}</h4>
+              <p className="text-sm text-[#8888aa] leading-relaxed" dangerouslySetInnerHTML={{ __html: col.body }} />
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-          <div className="p-7 rounded-3xl border border-[#00ffb7]/25 bg-[#00ffb7]/5 flex flex-col md:flex-row items-center justify-between gap-6">
+      {/* ═══════════════════════════════════════════════════════════════
+          7. DESIGN PROBLEM & 8 CONDITIONS — Statement Block + Grid
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto bg-white/[0.01] rounded-[40px] border border-white/5 my-12">
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <div className="text-[#00ffd1] text-tag-1 mb-4 flex justify-center items-center gap-2">
+            <i className="ti ti-focus-2 text-xl" /> Scope Definition
+          </div>
+          <h2 className="text-h2 text-white mb-6">The Design Problem — Precisely Defined</h2>
+          <div className="p-8 rounded-3xl bg-[#00ffd1]/10 border border-[#00ffd1]/20 mt-8">
+            <p className="text-xl md:text-2xl text-[#00ffd1] font-bold leading-relaxed">
+              &ldquo;How might we design a system that makes preventive health behavior the default choice for urban Indian adults, rather than a forced response to illness?&rdquo;
+            </p>
+          </div>
+          <p className="text-[#8888aa] text-body-sm mt-8">
+            The 8 conditions below were selected because they share a common trait: all are significantly influenced by behavior before they are influenced by biology. That makes them designable problems.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { name: "Obesity & Overweight", why: "Highest urban prevalence; directly linked to 4 other conditions in this list" },
+            { name: "Diabetes", why: "2nd highest global burden; preventable with early behavioral intervention" },
+            { name: "Cardiovascular Diseases", why: "Leading cause of urban mortality; largely lifestyle-driven" },
+            { name: "Habit-driven Cancers", why: "Lung, oral, colorectal — all with strong behavioral prevention levers" },
+            { name: "Anxiety & Stress Disorders", why: "Directly linked to lifestyle; affects all other conditions on this list" },
+            { name: "Digestive Issues", why: "Affects 70% of urban population; most under-addressed in digital health" },
+            { name: "Nutritional Deficiency", why: "Root-cause contributor to 5 of the other 7 conditions" },
+            { name: "Thyroid Dysfunction", why: "Often lifestyle-linked; significantly under-diagnosed in urban women" },
+          ].map((condition, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.05, ease: customEase }}
+              className="p-6 rounded-2xl bg-[#080810] border border-white/5 hover:border-[#00ffd1]/30 transition-colors group"
+            >
+              <h4 className="text-white font-bold mb-3 group-hover:text-[#00ffd1] transition-colors">{condition.name}</h4>
+              <p className="text-xs text-[#8888aa] leading-relaxed border-t border-white/10 pt-3">
+                <span className="text-[#666688] uppercase tracking-wider block mb-1 text-[10px]">Why it&apos;s in scope</span>
+                {condition.why}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          8. THREE ROOT CAUSES — Horizontal Carousel
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5 overflow-hidden">
+        <div className="mb-16">
+          <div className="text-[#cc63ff] text-tag-1 mb-4 flex items-center gap-2">
+            <i className="ti ti-git-fork text-xl" /> Thematic Synthesis
+          </div>
+          <h2 className="text-h2 text-white mb-6">Three Root Causes</h2>
+          <p className="text-[#8888aa] text-body-sm max-w-2xl leading-relaxed">
+            After thematic analysis across 14 interviews and 3 surveys, 18 individual user problems consistently mapped back to three behavioral and systemic root causes.
+          </p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-6 pb-4">
+          {[
+            {
+              id: "01",
+              title: "Unhealthy Habits",
+              problem: "Urban adults know healthy behavior is important, but environmental friction — time pressure, conflicting advice, social norms — makes unhealthy behavior the easier default.",
+              confirmed: "12 of 18 validated problems trace back to this root cause.",
+              insight: "Users don&apos;t lack motivation — they lack a frictionless entry point.",
+            },
+            {
+              id: "02",
+              title: "Late Diagnosis & Reactive Treatment",
+              problem: "Health information is decentralized, tracking is fragmented, and the system only engages users when something goes wrong — by which point cost and risk have escalated.",
+              confirmed: "9 of 18 validated problems include a &lsquo;delayed action&rsquo; pattern.",
+              insight: "Users regularly reported &lsquo;I knew something was off, but I didn&apos;t know where to check.&rsquo;",
+            },
+            {
+              id: "03",
+              title: "Higher Healthcare Expenses",
+              problem: "Treating advanced disease costs 3–5x more than prevention — but users don&apos;t feel this cost asymmetry until it&apos;s too late. Absence of financial transparency amplifies this.",
+              confirmed: "6 of 18 validated problems relate to cost avoidance behavior.",
+              insight: "Users actively delayed diagnosis to avoid anticipated costs — making their eventual treatment more expensive, not less.",
+            },
+          ].map((cause, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: idx * 0.1, ease: customEase }}
+              className="flex-1 bg-white/[0.02] border border-white/5 p-8 rounded-3xl flex flex-col group hover:bg-white/[0.04] transition-colors"
+            >
+              <div className="text-5xl font-black text-white/5 mb-6 group-hover:text-[#cc63ff]/10 transition-colors">{cause.id}</div>
+              <h3 className="text-2xl font-bold text-white mb-6 group-hover:text-[#cc63ff] transition-colors" dangerouslySetInnerHTML={{ __html: cause.title }} />
+              <div className="space-y-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="text-[10px] uppercase tracking-widest text-[#cc63ff] font-bold mb-2">The Real Problem</div>
+                  <p className="text-sm text-white leading-relaxed" dangerouslySetInnerHTML={{ __html: cause.problem }} />
+                </div>
+                <div>
+                  <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-bold mb-2">Confirmed By</div>
+                  <p className="text-sm text-[#8888aa]" dangerouslySetInnerHTML={{ __html: cause.confirmed }} />
+                </div>
+                <div className="bg-[#cc63ff]/10 border border-[#cc63ff]/20 p-4 rounded-xl mt-4">
+                  <div className="text-[10px] uppercase tracking-widest text-[#cc63ff] font-bold mb-1">Key Behavioral Insight</div>
+                  <p className="text-sm text-white font-medium" dangerouslySetInnerHTML={{ __html: cause.insight }} />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          9. HOW BIG IS THIS PROBLEM — Data Comparison Table
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto bg-[#080810] border-y border-white/5 my-12">
+        <div className="mb-16">
+          <div className="text-[#00ffd1] text-tag-1 mb-4 flex items-center gap-2">
+            <i className="ti ti-chart-bar text-xl" /> Scope &amp; Sourcing
+          </div>
+          <h2 className="text-h2 text-white mb-6">How Big Is This Problem?</h2>
+          <p className="text-[#8888aa] text-body-sm max-w-3xl leading-relaxed">
+            All three figures are normalized to the urban Indian adult population as the relevant scope. Market size figures are cited separately and not conflated with affected population.
+          </p>
+        </div>
+
+        <div className="overflow-x-auto rounded-3xl border border-white/5 bg-[#0c0c16]">
+          <table className="w-full text-left text-sm min-w-[800px]">
+            <thead className="bg-white/5 border-b border-white/5">
+              <tr>
+                <th className="p-6 text-white font-semibold">Problem Area</th>
+                <th className="p-6 text-[#8888aa] font-semibold">People Affected (2023)</th>
+                <th className="p-6 text-[#00ffd1] font-semibold">Projected (2030)</th>
+                <th className="p-6 text-[#8888aa] font-semibold">Source</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {[
+                { area: "Unhealthy Habits", current: "~475 million urban adults", projected: "~607 million", source: "World Bank; UN DESA World Urbanization Prospects 2022" },
+                { area: "Late Diagnosis", current: "Estimated 3 in 10 urban adults delay diagnosis", projected: "4 in 10 by 2030", source: "ICMR National Disease Burden Study" },
+                { area: "High Healthcare Costs", current: "Avg urban household spends ₹22K–₹45K/yr on reactive care", projected: "Projected to rise 30–40% by 2030", source: "National Health Accounts 2023" },
+              ].map((row, idx) => (
+                <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
+                  <td className="p-6 font-bold text-white whitespace-nowrap">{row.area}</td>
+                  <td className="p-6 text-white/80">{row.current}</td>
+                  <td className="p-6 text-[#00ffd1] font-medium">{row.projected}</td>
+                  <td className="p-6 text-[#666688] text-xs">{row.source}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="mt-8 p-6 rounded-2xl bg-white/[0.02] border border-white/5 flex gap-4 items-start">
+          <div className="w-8 h-8 rounded-full bg-[#00ffd1]/10 flex items-center justify-center shrink-0">
+            <i className="ti ti-info-circle text-[#00ffd1]" />
+          </div>
+          <div>
+            <span className="text-white font-bold block mb-1">Market Opportunity (separated intentionally):</span>
+            <span className="text-[#8888aa] text-sm leading-relaxed">
+              The preventive healthcare market in India is projected at $400 billion by 2025 (FICCI), but this is a market figure — not the problem size. The problem is behavioral, not commercial. The product opportunity sits at their intersection.
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          10. HOW I WORKED — Stepped Process Pipeline
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5 relative">
+        <div className="mb-16">
+          <div className="text-[#cc63ff] text-tag-1 mb-4 flex items-center gap-2">
+            <i className="ti ti-route text-xl" /> Methodology
+          </div>
+          <h2 className="text-h2 text-white mb-6">How I Worked — Process With Intent</h2>
+          <p className="text-[#8888aa] text-body-sm max-w-3xl leading-relaxed">
+            I followed a structured UCD framework, but the most valuable moments came from the decisions I made within the process — what to pursue, what to drop, and why.
+          </p>
+        </div>
+
+        <div className="relative pl-8 md:pl-16 space-y-16 before:absolute before:inset-0 before:ml-[15px] md:before:ml-[31px] before:h-full before:w-px before:bg-gradient-to-b before:from-[#cc63ff]/50 before:via-white/10 before:to-transparent">
+          {[
+            {
+              phase: "Phase 1 — Generative (Understand)",
+              steps: ["Market Research → identified 3 underserved behavioral segments in urban preventive healthcare", "Secondary Research → scoped the 8 focus conditions based on behavioral modifiability, not just prevalence", "Primary Research → 3 progressive surveys + 14 semi-structured interviews"],
+              decision: "Shifted from broad health app research to a narrower preventive-behavior focus after survey 1 showed users weren&apos;t looking for treatment tools — they wanted prevention systems.",
+            },
+            {
+              phase: "Phase 2 — Formative Analysis (Synthesize)",
+              steps: ["Sentiment Analysis → mapped emotional states to behavior patterns", "Thematic Analysis → clustered 40+ raw observations into 18 validated problems", "Experience Analysis → mapped the full user journey from health awareness to action"],
+              decision: "Kept only problems that appeared across at least 2 research methods. Rejected 22 observations that appeared in only one source.",
+            },
+            {
+              phase: "Phase 2 — Formative Design (Shape)",
+              steps: ["Information Design → defined interaction flows, CRUD logic, and feature architecture", "Visual Design → applied to high-fidelity prototypes"],
+              decision: "Designed information hierarchy before visual design — features were named and structured before any pixels.",
+            },
+            {
+              phase: "Phase 3 — Summative (Validate)",
+              steps: ["Moderated Testing", "Survey Scale Testing", "Unmoderated Testing"],
+              decision: "Used SUS (System Usability Scale) for quantified usability measurement, not just qualitative feedback.",
+            },
+          ].map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: idx * 0.1, ease: customEase }}
+              className="relative"
+            >
+              <div className="absolute -left-[45px] md:-left-[77px] top-1 w-8 h-8 rounded-full bg-[#080810] border-2 border-[#cc63ff] flex items-center justify-center z-10">
+                <span className="w-2 h-2 rounded-full bg-[#cc63ff]" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-6">{item.phase}</h3>
+              <ul className="space-y-4 mb-8">
+                {item.steps.map((step, sIdx) => {
+                  const parts = step.split(" → ");
+                  return (
+                    <li key={sIdx} className="flex items-start gap-3">
+                      <i className="ti ti-check text-[#8888aa] mt-1 shrink-0" />
+                      <span className="text-sm text-[#8888aa]">
+                        {parts.length > 1 ? (
+                          <><strong className="text-white font-semibold">{parts[0]}</strong> &rarr; {parts.slice(1).join(" → ")}</>
+                        ) : (
+                          <strong className="text-white font-semibold">{step}</strong>
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className="bg-[#cc63ff]/10 border border-[#cc63ff]/30 p-6 rounded-2xl relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-1 h-full bg-[#cc63ff]" />
+                <div className="text-[10px] uppercase tracking-widest text-[#cc63ff] font-bold mb-2 flex items-center gap-2 pl-6">
+                  <i className="ti ti-bulb text-lg" /> Key Decision
+                </div>
+                <p className="text-sm text-white leading-relaxed font-medium pl-6" dangerouslySetInnerHTML={{ __html: item.decision }} />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          11. PERSONAS — Profile Cards Grid
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5 bg-[#0c0c16] rounded-[40px] my-12">
+        <div className="mb-16 text-center max-w-3xl mx-auto">
+          <div className="text-[#00ffd1] text-tag-1 mb-4 flex justify-center items-center gap-2">
+            <i className="ti ti-users text-xl" /> Target Audience
+          </div>
+          <h2 className="text-h2 text-white mb-6">Who I Designed For — Research-Derived Personas</h2>
+          <p className="text-[#8888aa] text-body-sm leading-relaxed">
+            Each persona was constructed from clusters of interview participants who shared behavioral patterns — not from demographic assumptions.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              num: "Persona 1",
+              title: "The Regretful Converter",
+              note: "Based on: 4 interview participants, 23% survey respondents",
+              meta: [{ k: "Age Range", v: "56–65" }, { k: "Life Stage", v: "Post-peak career; health event occurred" }, { k: "Income", v: "₹75K–₹1L/month" }, { k: "Health Spend", v: "₹2,001–₹5,000/month" }],
+              behavior: "Reactive until a health scare — now motivated but unsure where to start.",
+              quote: "I always knew I should take better care of myself. But I kept waiting for the right time. Now I&apos;m paying for it, and I just want someone to tell me what to do first.",
+              implication: "Progressive disclosure — show one habit at a time. Avoid data-heavy home screens.",
+            },
+            {
+              num: "Persona 2",
+              title: "The Time-Starved Professional",
+              note: "28–42, urban, high-earning, health-aware but action-poor",
+              meta: [],
+              behavior: "Knows what they should do. Doesn&apos;t do it because friction outweighs motivation. Needs automation, reminders, and minimal cognitive load.",
+              quote: "",
+              implication: "Default-on features, smart scheduling, one-tap logging. Every interaction should take under 15 seconds.",
+            },
+            {
+              num: "Persona 3",
+              title: "The Overwhelmed Beginner",
+              note: "22–34, recently health-conscious, suffering from information overload",
+              meta: [],
+              behavior: "Just starting their health journey. Confused by conflicting online advice. Needs curated, personalized, trustworthy content — not another calorie counter.",
+              quote: "",
+              implication: "Strong editorial content strategy + onboarding quiz to personalize from day one. Build trust before building habit.",
+            },
+          ].map((p, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: idx * 0.1, ease: customEase }}
+              className="bg-[#080810] border border-white/5 rounded-3xl p-8 flex flex-col justify-between group hover:border-[#00ffd1]/30 transition-colors"
+            >
+              <div>
+                <div className="text-[#00ffd1] text-xs font-bold uppercase tracking-wider mb-2">{p.num}</div>
+                <h3 className="text-2xl font-bold text-white mb-2">{p.title}</h3>
+                <div className="text-[10px] text-[#8888aa] mb-6">{p.note}</div>
+                {p.meta.length > 0 && (
+                  <div className="space-y-2 mb-6 bg-white/[0.02] p-4 rounded-xl border border-white/5">
+                    {p.meta.map((m, i) => (
+                      <div key={i} className="flex justify-between text-xs">
+                        <span className="text-[#666688]">{m.k}</span>
+                        <span className="text-white font-medium text-right w-2/3">{m.v}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                <div className="mb-4">
+                  <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-bold mb-2">Core Behavior</div>
+                  <p className="text-sm text-white leading-relaxed" dangerouslySetInnerHTML={{ __html: p.behavior }} />
+                </div>
+                {p.quote && (
+                  <blockquote className="border-l-2 border-[#00ffd1] pl-4 text-sm text-[#8888aa] italic mb-4" dangerouslySetInnerHTML={{ __html: `&ldquo;${p.quote}&rdquo;` }} />
+                )}
+              </div>
+              <div className="bg-[#00ffd1]/10 border border-[#00ffd1]/20 p-4 rounded-xl mt-4">
+                <div className="text-[10px] uppercase tracking-widest text-[#00ffd1] font-bold mb-1">Design Implication</div>
+                <p className="text-sm text-white font-medium">{p.implication}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          12. FEATURE DEEP-DIVE — Split Screen
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5">
+        <div className="mb-16">
+          <div className="text-[#cc63ff] text-tag-1 mb-4 flex items-center gap-2">
+            <i className="ti ti-layout-sidebar text-xl" /> Feature Deep-Dive
+          </div>
+          <h2 className="text-h2 text-white mb-6">From Problem to Feature</h2>
+          <p className="text-[#8888aa] text-body-sm max-w-2xl leading-relaxed">
+            Each feature was designed backwards from a validated user problem. The solution came after the problem was understood — not before.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 bg-[#0c0c16] rounded-[40px] border border-white/5 overflow-hidden">
+          {/* Left: Narrative */}
+          <div className="p-10 md:p-12 space-y-8">
+            <div className="text-3xl font-bold text-white mb-6">Breakfast Reminder System</div>
             <div>
-              <div className="text-[#00ffb7] text-[11px] font-bold uppercase tracking-widest mb-2">See the Design in Action</div>
-              <h3 className="text-white text-xl font-bold mb-2">Dr.Health — Translating Research into UI</h3>
-              <p className="text-[#8888aa] text-sm max-w-md">
-                The next case study documents how these research findings became screens, interactions, and a validated mobile product.
+              <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-bold mb-2">The Problem It Solves</div>
+              <p className="text-sm text-white leading-relaxed bg-white/[0.02] p-6 rounded-2xl border border-white/5">
+                Urban users skip breakfast due to time constraints, leading to poor dietary patterns. 38% of survey respondents identified this as a daily occurrence. Left unaddressed, this compounds into nutritional deficiency and energy depletion that affects other health behaviors.
               </p>
             </div>
-            <Link href="/projects/dr-health"
-              className="flex-shrink-0 flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-sm text-black bg-[#00ffb7] hover:bg-[#00ffb7]/90 transition-all">
-              View Dr.Health Case Study <span>→</span>
-            </Link>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ── SECTION 10: Product Goals ─────────────────────────────── */}
-      <section className="py-24 px-6 md:px-16 max-w-[1200px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: customEase }}
-        >
-          <div className="text-[#cc63ff] text-tag-1 mb-4">Section 10 — Product Goals</div>
-          <h2 className="text-h2 text-white mb-4 leading-tight">3 Business-Critical Target Goals</h2>
-          <p className="text-[#8888aa] max-w-2xl mb-12">
-            These goals emerged from the intersection of validated user needs, market opportunity data, and business viability assessment.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                num: "01",
-                goal: "Shift Behavior from Reactive to Proactive",
-                description: "Design a product experience that embeds preventive health habits into daily urban routines — reducing the time gap between health intention and health action.",
-                kpi: "Target: 60% users logging at least one preventive health action per week by Day 30",
-                color: PURPLE,
-              },
-              {
-                num: "02",
-                goal: "Reduce Financial Anxiety Around Healthcare",
-                description: "Surface transparent cost data, insurance coverage information, and cost-prevention comparisons to replace health avoidance with informed confidence.",
-                kpi: "Target: 40% reduction in \"I'll deal with it later\" responses in follow-up surveys",
-                color: "#f97316",
-              },
-              {
-                num: "03",
-                goal: "Build Trust Through Contextual Intelligence",
-                description: "Replace generic health content with AI-driven contextual guidance — the right nudge at the right time — eliminating notification fatigue and driving action.",
-                kpi: "Target: Contextual notification CTR > 25% vs. industry benchmark of 4%",
-                color: "#10b981",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.15, ease: customEase }}
-                className="p-7 rounded-3xl border border-white/8 bg-white/4 flex flex-col gap-4 hover:border-white/20 transition-all"
-              >
-                <div className="text-5xl font-black opacity-15" style={{ color: item.color }}>{item.num}</div>
-                <h3 className="text-xl font-bold" style={{ color: item.color }}>{item.goal}</h3>
-                <p className="text-[#8888aa] text-body-sm flex-1">{item.description}</p>
-                <div className="p-3 rounded-xl bg-white/4 border border-white/8">
-                  <p className="text-xs font-semibold" style={{ color: item.color }}>📊 {item.kpi}</p>
+            <div>
+              <div className="text-[10px] uppercase tracking-widest text-[#cc63ff] font-bold mb-4">Design Decisions</div>
+              <div className="space-y-4">
+                <div className="border-l-2 border-[#cc63ff] pl-4">
+                  <strong className="text-white text-sm block mb-1">Why a reminder and not a tracker?</strong>
+                  <p className="text-sm text-[#8888aa]">Because users don&apos;t fail to eat breakfast due to forgetfulness — they fail due to feeling like they don&apos;t have time. The reminder surfaces quick healthy options, not just a push notification.</p>
                 </div>
-              </motion.div>
-            ))}
+                <div className="border-l-2 border-[#cc63ff] pl-4">
+                  <strong className="text-white text-sm block mb-1">Why Progressive Disclosure + Hub-and-Spoke architecture?</strong>
+                  <p className="text-sm text-[#8888aa]">To avoid overwhelming a user who&apos;s starting their health journey. The entry is low-friction (a reminder); the depth is available for those who want it (nutritional details). Nobody is forced into a dashboard they didn&apos;t ask for.</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="text-[10px] uppercase tracking-widest text-[#00ffd1] font-bold mb-4">Interaction Flow</div>
+              <ul className="space-y-3">
+                {["Morning Reminder (personalized based on user's past wake-up time)", "Quick Options Surface (3 options in under 10 seconds)", "One-Tap Log (no form, no scrolling)", "Streak Building (consecutive days tracked visually)", "Nutritional Insight (available on demand, not forced)"].map((step, i) => (
+                  <li key={i} className="flex gap-3 text-sm text-white">
+                    <span className="text-[#00ffd1]">&rarr;</span> {step}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </motion.div>
+
+          {/* Right: Technical */}
+          <div className="bg-[#080810] p-10 md:p-12 border-t lg:border-t-0 lg:border-l border-white/5 flex flex-col justify-center">
+            <div className="mb-10">
+              <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-bold mb-4">CRUD Logic Mapping</div>
+              <div className="overflow-hidden rounded-2xl border border-white/5">
+                <table className="w-full text-left text-xs md:text-sm">
+                  <thead className="bg-white/5">
+                    <tr>
+                      <th className="p-4 text-white font-semibold">Screen</th>
+                      <th className="p-4 text-[#cc63ff] font-semibold">Operation</th>
+                      <th className="p-4 text-[#8888aa] font-semibold">What It Does</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/5">
+                    {[
+                      { screen: "Goal Setup", op: "Create", desc: "User sets a breakfast goal for the first time" },
+                      { screen: "Reminder Settings", op: "Update", desc: "User adjusts notification timing or frequency" },
+                      { screen: "Quick Options", op: "Read", desc: "App surfaces relevant, personalized options" },
+                      { screen: "Log Breakfast", op: "Create", desc: "User records the meal in one tap" },
+                      { screen: "Progress View", op: "Read", desc: "Streak and consistency data displayed visually" },
+                    ].map((row, idx) => (
+                      <tr key={idx} className="hover:bg-white/[0.02]">
+                        <td className="p-4 text-white font-medium">{row.screen}</td>
+                        <td className="p-4 text-[#cc63ff]">{row.op}</td>
+                        <td className="p-4 text-[#8888aa]">{row.desc}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-[#00ffd1]/10 to-[#cc63ff]/10 border border-[#00ffd1]/20 rounded-2xl p-6">
+              <div className="text-[10px] uppercase tracking-widest text-white font-bold mb-4">Success Metrics</div>
+              <div className="space-y-4">
+                {[
+                  { type: "Product KPI", val: "7-day breakfast logging rate (target: >60% of active users)" },
+                  { type: "Health KPI", val: "Self-reported energy level improvement at 30 days" },
+                  { type: "Business KPI", val: "Engagement with partner food and nutrition content" },
+                ].map((m, i) => (
+                  <div key={i}>
+                    <div className="text-xs text-[#8888aa] uppercase">{m.type}</div>
+                    <div className="text-white font-bold">{m.val}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* ── SECTION 11: Reflection ────────────────────────────────── */}
-      <section className="py-28 px-6 md:px-16 max-w-[1200px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: customEase }}
-          className="text-center"
-        >
-          <div className="text-[#cc63ff] text-[11px] font-bold tracking-[0.2em] mb-8 uppercase">Section 11 — Reflection</div>
-
-          {/* Large quote */}
-          <div className="relative max-w-4xl mx-auto">
-            <div className="text-[100px] md:text-[140px] font-black leading-none opacity-5 text-white absolute -top-8 left-0 select-none pointer-events-none">&ldquo;</div>
-            <blockquote className="relative z-10 text-h3 font-light text-white leading-relaxed italic text-center px-8 md:px-16">
-              Good research doesn&apos;t just uncover problems.
-              <span className="block mt-3 text-[#cc63ff] font-medium not-italic">
-                It earns the right to solve them.
-              </span>
-            </blockquote>
-            <div className="text-[100px] md:text-[140px] font-black leading-none opacity-5 text-white absolute -bottom-16 right-0 select-none pointer-events-none">&rdquo;</div>
+      {/* ═══════════════════════════════════════════════════════════════
+          13. REFLECTION — Two-Column Magazine Layout
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5 mb-24">
+        <div className="mb-16">
+          <div className="text-[#cc63ff] text-tag-1 mb-4 flex items-center gap-2">
+            <i className="ti ti-book text-xl" /> Reflection
           </div>
+          <h2 className="text-h2 text-white mb-6">What This Project Taught Me</h2>
+          <p className="text-[#8888aa] text-body-sm max-w-3xl leading-relaxed">
+            Six months of end-to-end research changes how you think — not just about the problem, but about your own process.
+          </p>
+        </div>
 
-          <div className="mt-16 max-w-2xl mx-auto">
-            <p className="text-[#8888aa] text-base leading-relaxed mb-6">
-              This project taught me that the most valuable thing a researcher can do is protect the product team
-              from building the wrong thing. Every assumption challenged, every bias checked, every data point
-              triangulated — that is the work.
-            </p>
-            <p className="text-[#8888aa] text-base leading-relaxed">
-              187 participants shared their honest health struggles with me. This research is my commitment to 
-              honoring that data — by ensuring it shapes a product that genuinely helps.
-            </p>
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap justify-center gap-2 mt-12">
-            {["UX Research", "End-to-End", "Survey Design", "Thematic Coding", "Persona Development", "Feature Mapping", "Urban India", "Preventive Healthcare"].map((tag) => (
-              <span key={tag} className="px-4 py-2 rounded-full text-sm border border-[#cc63ff]/25 text-[#cc63ff]/80 bg-[#cc63ff]/6">
-                {tag}
-              </span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          {/* Left: Reflections */}
+          <div className="lg:col-span-8 space-y-12">
+            {[
+              { heading: "On Research", body: "I started this project believing more data meant more confidence. I ended it believing the opposite — that knowing when to stop collecting and when to start interpreting is the harder, more important skill. I had 40+ raw observations at the end of my interview phase. Narrowing those to 18 validated problems required judgment, not more data. That was uncomfortable. I made those calls anyway." },
+              { heading: "On Scope", body: "I scoped too wide initially. Eight diseases, three root causes, 114 solutions — in hindsight, a focused product would have pushed me to prioritize ruthlessly rather than design comprehensively. If I did this again, I&apos;d pick the top 3 problems, go deeper on them, and validate a prototype before mapping 114 solutions. Breadth felt rigorous while I was doing it. Looking back, depth would have been braver." },
+              { heading: "On the ~99% Confidence Figure", body: "This is the number I&apos;m most critical of in my own work. It was calculated through triangulation — cross-referencing themes across surveys and interviews — but I didn&apos;t document the methodology clearly enough to make it defensible to an external reviewer on first read. I know what it means. I can&apos;t prove it the way I should be able to. That&apos;s a research integrity gap I&apos;ve closed in subsequent projects." },
+              { heading: "On Working Alone", body: "Doing end-to-end research solo taught me what I&apos;m actually good at and what I use collaboration as a crutch for. I&apos;m strong at synthesis — finding the pattern no one explicitly said. I&apos;m weaker at challenging my own framing mid-project. A second researcher in the interview phase would have pushed back on my interview guide in ways I couldn&apos;t push back on myself. Solo work reveals your blind spots faster than anything else." },
+            ].map((item, idx) => (
+              <div key={idx}>
+                <h3 className="text-2xl font-bold text-white mb-4">{item.heading}</h3>
+                <p className="text-[#8888aa] leading-relaxed" dangerouslySetInnerHTML={{ __html: item.body }} />
+              </div>
             ))}
           </div>
-        </motion.div>
+
+          {/* Right: Sticky Sidebar */}
+          <div className="lg:col-span-4 space-y-8 lg:sticky lg:top-32 self-start">
+            <div className="bg-[#cc63ff]/5 border border-[#cc63ff]/20 p-8 rounded-3xl">
+              <div className="text-[#cc63ff] font-bold text-lg mb-6 flex items-center gap-2">
+                <i className="ti ti-rotate text-xl" /> What I&apos;d Do Differently
+              </div>
+              <ul className="space-y-4">
+                {[
+                  "Build a validation prototype earlier — after problem clustering, before full information design",
+                  "Recruit more age diversity; the 56–65 skew narrowed my persona landscape",
+                  "Document methodological decisions in real time, not retrospectively",
+                  "Show less, explain more — 114 solutions looks impressive; 10 deeply justified ones would be more honest",
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-3 text-sm text-[#8888aa]">
+                    <span className="text-[#cc63ff] font-bold">&rarr;</span> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-[#00ffd1]/5 border border-[#00ffd1]/20 p-8 rounded-3xl">
+              <div className="text-[#00ffd1] font-bold text-lg mb-6 flex items-center gap-2">
+                <i className="ti ti-arrow-right text-xl" /> What I Carry Forward
+              </div>
+              <p className="text-sm text-[#8888aa] leading-relaxed italic">
+                &ldquo;The most important thing this project gave me wasn&apos;t the deliverables. It was the conviction that design without research is just opinion with good typography — and that the researcher&apos;s job isn&apos;t to find answers, it&apos;s to ask questions that make the right answers unavoidable.&rdquo;
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* ── Footer ────────────────────────────────────────────────── */}
       <CTAFooter />
     </main>
   );
