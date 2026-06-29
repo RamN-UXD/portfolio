@@ -415,7 +415,7 @@ export default function PreventiveResearchCaseStudy() {
           </p>
         </div>
 
-        <div className="relative pl-8 md:pl-12 space-y-12 before:absolute before:inset-0 before:ml-[15px] md:before:ml-[23px] before:-translate-x-px md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-[#00ffd1] before:via-[#cc63ff] before:to-transparent">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {[
             {
               id: "01",
@@ -441,30 +441,35 @@ export default function PreventiveResearchCaseStudy() {
           ].map((goal, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: idx * 0.1, ease: customEase }}
-              className="relative"
+              className="bg-[#0c0c16] border border-white/5 p-8 md:p-10 rounded-[32px] hover:border-white/10 transition-colors group flex flex-col h-full shadow-2xl relative overflow-hidden"
             >
-              <div className="absolute -left-[41px] md:-left-[57px] top-1 w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#080810] border-2 border-[#00ffd1] flex items-center justify-center z-10">
-                <span className="text-[10px] md:text-xs font-bold text-white">{goal.id}</span>
-              </div>
-              <div className="bg-white/[0.02] border border-white/5 p-8 rounded-3xl group hover:border-[#cc63ff]/30 transition-colors">
-                <h3 className="text-2xl font-bold text-white mb-6 group-hover:text-[#00ffd1] transition-colors">{goal.title}</h3>
-                <div className="space-y-4">
-                  <div className="flex flex-col md:flex-row gap-2 md:gap-6">
-                    <div className="w-full md:w-1/4 text-xs font-bold text-[#8888aa] uppercase tracking-wider pt-1">Root Cause</div>
-                    <div className="w-full md:w-3/4 text-sm text-[#fafafa] leading-relaxed">{goal.root}</div>
+              <div className="absolute top-0 right-0 p-6 md:p-8 text-6xl font-black text-white/5 group-hover:text-[#00ffd1]/10 transition-colors pointer-events-none select-none">{goal.id}</div>
+              <h3 className="text-2xl font-bold text-white mb-8 group-hover:text-[#00ffd1] transition-colors mt-8 relative z-10 pr-8">{goal.title}</h3>
+              
+              <div className="space-y-6 flex-1 flex flex-col relative z-10">
+                <div className="flex-1">
+                  <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-bold mb-3 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#cc63ff]"></span> Root Cause
                   </div>
-                  <div className="flex flex-col md:flex-row gap-2 md:gap-6">
-                    <div className="w-full md:w-1/4 text-xs font-bold text-[#8888aa] uppercase tracking-wider pt-1">Design Direction</div>
-                    <div className="w-full md:w-3/4 text-sm text-white font-medium bg-white/5 p-4 rounded-xl border border-white/5">{goal.direction}</div>
+                  <p className="text-sm text-[#fafafa] leading-relaxed">{goal.root}</p>
+                </div>
+                
+                <div className="flex-1 border-t border-white/5 pt-6 mt-6">
+                  <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-bold mb-3 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-white/20"></span> Design Direction
                   </div>
-                  <div className="flex flex-col md:flex-row gap-2 md:gap-6">
-                    <div className="w-full md:w-1/4 text-xs font-bold text-[#8888aa] uppercase tracking-wider pt-1">Success Signal</div>
-                    <div className="w-full md:w-3/4 text-sm text-[#00ffd1] font-bold bg-[#00ffd1]/10 p-4 rounded-xl border border-[#00ffd1]/20">{goal.signal}</div>
+                  <div className="text-sm text-white font-medium leading-relaxed">{goal.direction}</div>
+                </div>
+                
+                <div className="mt-auto pt-6">
+                  <div className="text-[10px] uppercase tracking-widest text-[#00ffd1] font-bold mb-3 flex items-center gap-2">
+                    <i className="ti ti-check text-[#00ffd1]" /> Success Signal
                   </div>
+                  <div className="text-sm text-[#00ffd1] font-bold bg-[#00ffd1]/10 p-4 rounded-2xl border border-[#00ffd1]/20">{goal.signal}</div>
                 </div>
               </div>
             </motion.div>
