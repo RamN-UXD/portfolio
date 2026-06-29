@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import CTAFooter from "../../../components/sections/CTAFooter";
 import CustomCursor from "../../../components/CustomCursor";
@@ -157,6 +158,8 @@ const personaSummaryTable = [
   { persona: 'The Struggling Urbanite', barrier: 'Affordability + system access', motivation: 'High — but fragile', income: '₹30K–₹50K/month', root: 'High Costs + Late Diagnosis', priority: 'Budget-first, friction-zero', critical: 'Smart Schedule + Cost Comparison' }
 ];
 export default function PreventiveResearchCaseStudy() {
+  const [activePersona, setActivePersona] = useState(0);
+
   return (
     <main className="bg-[#080810] min-h-screen text-[#fafafa] selection:bg-[#cc63ff]/30 overflow-x-hidden">
       <CustomCursor />
@@ -780,14 +783,32 @@ export default function PreventiveResearchCaseStudy() {
           </p>
         </div>
 
-        <div className="space-y-32">
+        {/* Tabs Navigation */}
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
           {detailedPersonasData.map((p, idx) => (
-            <motion.div 
+            <button
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: customEase }}
+              onClick={() => setActivePersona(idx)}
+              className={`px-8 py-4 rounded-full font-bold text-sm transition-all duration-300 border ${
+                activePersona === idx 
+                  ? 'bg-[#cc63ff] text-white border-[#cc63ff] shadow-[0_0_30px_rgba(204,99,255,0.3)]'
+                  : 'bg-white/[0.02] text-[#8888aa] border-white/5 hover:bg-white/5 hover:text-white'
+              }`}
+            >
+              {p.num}: {p.title}
+            </button>
+          ))}
+        </div>
+
+        {/* Active Persona Content */}
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={activePersona}
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.98 }}
+              transition={{ duration: 0.4, ease: customEase }}
               className="bg-[#0c0c16] border border-white/5 rounded-[40px] overflow-hidden shadow-2xl shadow-black/50"
             >
               {/* Header block */}
@@ -795,15 +816,15 @@ export default function PreventiveResearchCaseStudy() {
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#cc63ff]/5 to-transparent pointer-events-none" />
                 <div className="relative z-10 flex flex-col md:flex-row gap-8 md:gap-16 items-start">
                   <div className="w-full md:w-1/3">
-                    <div className="text-[#00ffd1] text-xs font-bold uppercase tracking-wider mb-2">{p.num}</div>
-                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">{p.title}</h3>
+                    <div className="text-[#00ffd1] text-xs font-bold uppercase tracking-wider mb-2">{detailedPersonasData[activePersona].num}</div>
+                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">{detailedPersonasData[activePersona].title}</h3>
                     <div className="text-sm text-[#8888aa] bg-white/[0.02] p-3 rounded-lg inline-block border border-white/5">
-                      Based on: <strong className="text-white">{p.participant}</strong>
+                      Based on: <strong className="text-white">{detailedPersonasData[activePersona].participant}</strong>
                     </div>
                   </div>
                   <div className="w-full md:w-2/3">
                     <blockquote className="text-xl md:text-2xl text-white font-medium leading-relaxed italic border-l-4 border-[#cc63ff] pl-6 md:pl-8">
-                      &ldquo;{p.quote}&rdquo;
+                      &ldquo;{detailedPersonasData[activePersona].quote}&rdquo;
                     </blockquote>
                   </div>
                 </div>
@@ -818,7 +839,7 @@ export default function PreventiveResearchCaseStudy() {
                       <i className="ti ti-id text-[#cc63ff]" /> Demographics & Profile
                     </h4>
                     <div className="bg-white/[0.02] rounded-2xl border border-white/5 overflow-hidden">
-                      {p.meta.map((m, i) => (
+                      {detailedPersonasData[activePersona].meta.map((m, i) => (
                         <div key={i} className="flex flex-col sm:flex-row sm:justify-between p-4 border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors">
                           <span className="text-[#8888aa] text-sm w-full sm:w-1/2 mb-1 sm:mb-0">{m.k}</span>
                           <span className="text-white font-medium text-sm w-full sm:w-1/2 sm:text-right">{m.v}</span>
@@ -832,7 +853,7 @@ export default function PreventiveResearchCaseStudy() {
                       <i className="ti ti-alert-triangle text-[#cc63ff]" /> Core Problems
                     </h4>
                     <div className="space-y-6">
-                      {p.problems.map((prob: { title: string; desc: string; frustrations: string; motivations: string; neutral?: string }, i) => (
+                      {detailedPersonasData[activePersona].problems.map((prob: { title: string; desc: string; frustrations: string; motivations: string; neutral?: string }, i) => (
                         <div key={i} className="bg-white/[0.02] p-6 rounded-2xl border border-white/5 hover:border-white/10 transition-colors">
                           <h5 className="text-white font-bold mb-3">{i + 1}. {prob.title}</h5>
                           <p className="text-[#8888aa] text-sm leading-relaxed mb-4">{prob.desc}</p>
@@ -861,24 +882,24 @@ export default function PreventiveResearchCaseStudy() {
                 {/* Right Column: Narrative & Business */}
                 <div className="xl:col-span-7 space-y-12">
                   <div>
-                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Who {p.meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'He' : 'She'} Is</h4>
-                    <p className="text-base text-white/90 leading-relaxed bg-white/[0.01] p-6 rounded-2xl border border-white/5 hover:bg-white/[0.02] transition-colors" dangerouslySetInnerHTML={{ __html: p.who }} />
+                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Who {detailedPersonasData[activePersona].meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'He' : 'She'} Is</h4>
+                    <p className="text-base text-white/90 leading-relaxed bg-white/[0.01] p-6 rounded-2xl border border-white/5 hover:bg-white/[0.02] transition-colors" dangerouslySetInnerHTML={{ __html: detailedPersonasData[activePersona].who }} />
                   </div>
 
                   <div>
-                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">What {p.meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'He\'s' : 'She\'s'} Trying to Achieve</h4>
-                    <p className="text-base text-[#00ffd1]/90 leading-relaxed bg-[#00ffd1]/5 p-6 rounded-2xl border border-[#00ffd1]/20 border-l-4 border-l-[#00ffd1] hover:bg-[#00ffd1]/10 transition-colors" dangerouslySetInnerHTML={{ __html: p.achieve }} />
+                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">What {detailedPersonasData[activePersona].meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'He\'s' : 'She\'s'} Trying to Achieve</h4>
+                    <p className="text-base text-[#00ffd1]/90 leading-relaxed bg-[#00ffd1]/5 p-6 rounded-2xl border border-[#00ffd1]/20 border-l-4 border-l-[#00ffd1] hover:bg-[#00ffd1]/10 transition-colors" dangerouslySetInnerHTML={{ __html: detailedPersonasData[activePersona].achieve }} />
                   </div>
 
                   <div>
                     <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Business Case</h4>
-                    <p className="text-base text-white/90 leading-relaxed bg-white/[0.01] p-6 rounded-2xl border border-white/5 hover:bg-white/[0.02] transition-colors" dangerouslySetInnerHTML={{ __html: p.business }} />
+                    <p className="text-base text-white/90 leading-relaxed bg-white/[0.01] p-6 rounded-2xl border border-white/5 hover:bg-white/[0.02] transition-colors" dangerouslySetInnerHTML={{ __html: detailedPersonasData[activePersona].business }} />
                   </div>
 
                   <div>
                     <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Design Implications</h4>
                     <ul className="space-y-3 bg-white/[0.01] p-4 rounded-2xl border border-white/5">
-                      {p.implications.map((imp, i) => (
+                      {detailedPersonasData[activePersona].implications.map((imp, i) => (
                         <li key={i} className="flex items-start gap-4 p-3 rounded-xl hover:bg-white/[0.03] transition-colors">
                           <i className="ti ti-bulb text-[#cc63ff] mt-1 shrink-0 text-xl" />
                           <span className="text-sm text-white/90 leading-relaxed">{imp}</span>
@@ -888,9 +909,9 @@ export default function PreventiveResearchCaseStudy() {
                   </div>
 
                   <div>
-                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Features Designed for {p.meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'Him' : 'Her'}</h4>
+                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Features Designed for {detailedPersonasData[activePersona].meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'Him' : 'Her'}</h4>
                     <div className="flex flex-wrap gap-2 mb-6 p-6 bg-white/[0.01] rounded-2xl border border-white/5">
-                      {p.features.map((feat, i) => (
+                      {detailedPersonasData[activePersona].features.map((feat, i) => (
                         <span key={i} className="text-xs font-medium text-white bg-white/5 px-3 py-1.5 rounded-full border border-white/10 hover:border-white/20 transition-colors">
                           {feat}
                         </span>
@@ -905,12 +926,12 @@ export default function PreventiveResearchCaseStudy() {
                         </div>
                         <div className="text-sm">
                           <span className="text-[#8888aa]">Solution Flows: </span>
-                          <strong className="text-white font-medium">{p.flows}</strong>
+                          <strong className="text-white font-medium">{detailedPersonasData[activePersona].flows}</strong>
                         </div>
                       </div>
 
                       <div className="bg-[#cc63ff]/5 rounded-2xl border border-[#cc63ff]/20 overflow-hidden">
-                        {p.metrics.map((m, i) => (
+                        {detailedPersonasData[activePersona].metrics.map((m, i) => (
                           <div key={i} className="flex flex-col sm:flex-row p-4 border-b border-[#cc63ff]/10 last:border-0 hover:bg-[#cc63ff]/10 transition-colors">
                             <span className="text-[#cc63ff] font-bold uppercase tracking-wider text-xs w-full sm:w-1/4 mb-1 sm:mb-0 shrink-0 mt-0.5">{m.type}</span>
                             <span className="text-white text-sm leading-relaxed">{m.val}</span>
@@ -923,10 +944,11 @@ export default function PreventiveResearchCaseStudy() {
                 </div>
               </div>
             </motion.div>
-          ))}
+          </AnimatePresence>
         </div>
 
         {/* Persona Comparison Table */}
+
         <div className="mt-32">
           <div className="mb-12 text-center">
             <h3 className="text-2xl font-bold text-white mb-4">What These Three Personas Tell Us Together</h3>
