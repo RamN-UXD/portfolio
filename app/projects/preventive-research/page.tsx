@@ -830,118 +830,131 @@ export default function PreventiveResearchCaseStudy() {
                 </div>
               </div>
 
-              <div className="p-8 md:p-16 grid grid-cols-1 xl:grid-cols-12 gap-12 xl:gap-16">
-                
-                {/* Left Column: Demographics & Core Problems */}
-                <div className="xl:col-span-5 space-y-12">
-                  <div>
-                    <h4 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-                      <i className="ti ti-id text-[#cc63ff]" /> Demographics & Profile
-                    </h4>
-                    <div className="bg-white/[0.02] rounded-2xl border border-white/5 overflow-hidden">
-                      {detailedPersonasData[activePersona].meta.map((m, i) => (
-                        <div key={i} className="flex flex-col sm:flex-row sm:justify-between p-4 border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors">
-                          <span className="text-[#8888aa] text-sm w-full sm:w-1/2 mb-1 sm:mb-0">{m.k}</span>
-                          <span className="text-white font-medium text-sm w-full sm:w-1/2 sm:text-right">{m.v}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+              {/* Body: single-column narrative flow */}
+              <div className="p-8 md:p-14 space-y-0">
 
-                  <div>
-                    <h4 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-                      <i className="ti ti-alert-triangle text-[#cc63ff]" /> Core Problems
-                    </h4>
-                    <div className="space-y-6">
-                      {detailedPersonasData[activePersona].problems.map((prob: { title: string; desc: string; frustrations: string; motivations: string; neutral?: string }, i) => (
-                        <div key={i} className="bg-white/[0.02] p-6 rounded-2xl border border-white/5 hover:border-white/10 transition-colors">
-                          <h5 className="text-white font-bold mb-3">{i + 1}. {prob.title}</h5>
-                          <p className="text-[#8888aa] text-sm leading-relaxed mb-4">{prob.desc}</p>
-                          <div className="space-y-2 text-xs border-t border-white/10 pt-4">
-                            <div className="flex gap-2">
-                              <span className="text-[#ff4d4d] font-bold uppercase tracking-wider w-24 shrink-0 mt-0.5">Frustrations</span>
-                              <span className="text-[#dcdcaa] leading-relaxed">{prob.frustrations}</span>
-                            </div>
-                            <div className="flex gap-2">
-                              <span className="text-[#00ffd1] font-bold uppercase tracking-wider w-24 shrink-0 mt-0.5">Motivations</span>
-                              <span className="text-[#aaddcc] leading-relaxed">{prob.motivations}</span>
-                            </div>
-                            {prob.neutral && (
-                              <div className="flex gap-2">
-                                <span className="text-[#8888aa] font-bold uppercase tracking-wider w-24 shrink-0 mt-0.5">Neutral</span>
-                                <span className="text-[#8888aa] leading-relaxed">{prob.neutral}</span>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                {/* ── STEP 1 — Demographics strip ─────────────────────── */}
+                <div className="pb-10 border-b border-white/5">
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="w-6 h-6 rounded-full bg-[#cc63ff]/20 border border-[#cc63ff]/40 flex items-center justify-center text-[10px] font-black text-[#cc63ff]">1</span>
+                    <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#8888aa]">Demographics & Profile</h4>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                    {detailedPersonasData[activePersona].meta.map((m, i) => (
+                      <div key={i} className="bg-white/[0.03] border border-white/5 rounded-2xl p-4 flex flex-col gap-1">
+                        <span className="text-[10px] text-[#8888aa] uppercase tracking-wider font-semibold">{m.k}</span>
+                        <span className="text-white text-sm font-bold leading-snug">{m.v}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Right Column: Narrative & Business */}
-                <div className="xl:col-span-7 space-y-12">
-                  <div>
-                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Who {detailedPersonasData[activePersona].meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'He' : 'She'} Is</h4>
-                    <p className="text-base text-white/90 leading-relaxed bg-white/[0.01] p-6 rounded-2xl border border-white/5 hover:bg-white/[0.02] transition-colors" dangerouslySetInnerHTML={{ __html: detailedPersonasData[activePersona].who }} />
+                {/* ── STEP 2 — Who they are ────────────────────────────── */}
+                <div className="py-10 border-b border-white/5">
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="w-6 h-6 rounded-full bg-[#cc63ff]/20 border border-[#cc63ff]/40 flex items-center justify-center text-[10px] font-black text-[#cc63ff]">2</span>
+                    <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#8888aa]">Who {detailedPersonasData[activePersona].meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'He' : 'She'} Is</h4>
                   </div>
-
-                  <div>
-                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">What {detailedPersonasData[activePersona].meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'He\'s' : 'She\'s'} Trying to Achieve</h4>
-                    <p className="text-base text-[#00ffd1]/90 leading-relaxed bg-[#00ffd1]/5 p-6 rounded-2xl border border-[#00ffd1]/20 border-l-4 border-l-[#00ffd1] hover:bg-[#00ffd1]/10 transition-colors" dangerouslySetInnerHTML={{ __html: detailedPersonasData[activePersona].achieve }} />
-                  </div>
-
-                  <div>
-                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Business Case</h4>
-                    <p className="text-base text-white/90 leading-relaxed bg-white/[0.01] p-6 rounded-2xl border border-white/5 hover:bg-white/[0.02] transition-colors" dangerouslySetInnerHTML={{ __html: detailedPersonasData[activePersona].business }} />
-                  </div>
-
-                  <div>
-                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Design Implications</h4>
-                    <ul className="space-y-3 bg-white/[0.01] p-4 rounded-2xl border border-white/5">
-                      {detailedPersonasData[activePersona].implications.map((imp, i) => (
-                        <li key={i} className="flex items-start gap-4 p-3 rounded-xl hover:bg-white/[0.03] transition-colors">
-                          <i className="ti ti-bulb text-[#cc63ff] mt-1 shrink-0 text-xl" />
-                          <span className="text-sm text-white/90 leading-relaxed">{imp}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Features Designed for {detailedPersonasData[activePersona].meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'Him' : 'Her'}</h4>
-                    <div className="flex flex-wrap gap-2 mb-6 p-6 bg-white/[0.01] rounded-2xl border border-white/5">
-                      {detailedPersonasData[activePersona].features.map((feat, i) => (
-                        <span key={i} className="text-xs font-medium text-white bg-white/5 px-3 py-1.5 rounded-full border border-white/10 hover:border-white/20 transition-colors">
-                          {feat}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Solution Flows & Metrics</h4>
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3 p-4 bg-white/[0.01] rounded-2xl border border-white/5">
-                        <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                          <i className="ti ti-route text-[#8888aa]" />
-                        </div>
-                        <div className="text-sm">
-                          <span className="text-[#8888aa]">Solution Flows: </span>
-                          <strong className="text-white font-medium">{detailedPersonasData[activePersona].flows}</strong>
-                        </div>
-                      </div>
-
-                      <div className="bg-[#cc63ff]/5 rounded-2xl border border-[#cc63ff]/20 overflow-hidden">
-                        {detailedPersonasData[activePersona].metrics.map((m, i) => (
-                          <div key={i} className="flex flex-col sm:flex-row p-4 border-b border-[#cc63ff]/10 last:border-0 hover:bg-[#cc63ff]/10 transition-colors">
-                            <span className="text-[#cc63ff] font-bold uppercase tracking-wider text-xs w-full sm:w-1/4 mb-1 sm:mb-0 shrink-0 mt-0.5">{m.type}</span>
-                            <span className="text-white text-sm leading-relaxed">{m.val}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
+                  <p className="text-base text-white/90 leading-relaxed max-w-4xl" dangerouslySetInnerHTML={{ __html: detailedPersonasData[activePersona].who }} />
                 </div>
+
+                {/* ── STEP 3 — Core Problems ──────────────────────────── */}
+                <div className="py-10 border-b border-white/5">
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="w-6 h-6 rounded-full bg-[#cc63ff]/20 border border-[#cc63ff]/40 flex items-center justify-center text-[10px] font-black text-[#cc63ff]">3</span>
+                    <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#8888aa]">Core Problems</h4>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {detailedPersonasData[activePersona].problems.map((prob: { title: string; desc: string; frustrations: string; motivations: string; neutral?: string }, i) => (
+                      <div key={i} className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                        <h5 className="text-white font-bold text-base mb-3">{i + 1}. {prob.title}</h5>
+                        <p className="text-[#8888aa] text-sm leading-relaxed mb-5">{prob.desc}</p>
+                        <div className="space-y-2 text-xs border-t border-white/10 pt-4">
+                          <div className="flex gap-3">
+                            <span className="text-[#ff6b6b] font-bold uppercase tracking-wider shrink-0 w-[5.5rem]">Frustrations</span>
+                            <span className="text-[#dcdcaa] leading-relaxed">{prob.frustrations}</span>
+                          </div>
+                          <div className="flex gap-3">
+                            <span className="text-[#00ffd1] font-bold uppercase tracking-wider shrink-0 w-[5.5rem]">Motivations</span>
+                            <span className="text-[#aaddcc] leading-relaxed">{prob.motivations}</span>
+                          </div>
+                          {prob.neutral && (
+                            <div className="flex gap-3">
+                              <span className="text-[#8888aa] font-bold uppercase tracking-wider shrink-0 w-[5.5rem]">Neutral</span>
+                              <span className="text-[#8888aa] leading-relaxed">{prob.neutral}</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* ── STEP 4 — What they want to achieve ──────────────── */}
+                <div className="py-10 border-b border-white/5">
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="w-6 h-6 rounded-full bg-[#00ffd1]/20 border border-[#00ffd1]/40 flex items-center justify-center text-[10px] font-black text-[#00ffd1]">4</span>
+                    <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#8888aa]">What {detailedPersonasData[activePersona].meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'He' : 'She'}&apos;s Trying to Achieve</h4>
+                  </div>
+                  <div className="border-l-4 border-[#00ffd1] pl-6 max-w-4xl">
+                    <p className="text-base text-[#00ffd1]/90 leading-relaxed" dangerouslySetInnerHTML={{ __html: detailedPersonasData[activePersona].achieve }} />
+                  </div>
+                </div>
+
+                {/* ── STEP 5 — Business Case ──────────────────────────── */}
+                <div className="py-10 border-b border-white/5">
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="w-6 h-6 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-black text-white">5</span>
+                    <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#8888aa]">Business Case</h4>
+                  </div>
+                  <p className="text-base text-white/80 leading-relaxed max-w-4xl" dangerouslySetInnerHTML={{ __html: detailedPersonasData[activePersona].business }} />
+                </div>
+
+                {/* ── STEP 6 — Design Implications ────────────────────── */}
+                <div className="py-10 border-b border-white/5">
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="w-6 h-6 rounded-full bg-[#cc63ff]/20 border border-[#cc63ff]/40 flex items-center justify-center text-[10px] font-black text-[#cc63ff]">6</span>
+                    <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#8888aa]">Design Implications</h4>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {detailedPersonasData[activePersona].implications.map((imp, i) => (
+                      <div key={i} className="flex items-start gap-4 bg-white/[0.02] border border-white/5 rounded-2xl p-5 hover:border-white/10 transition-colors">
+                        <i className="ti ti-bulb text-[#cc63ff] shrink-0 text-lg mt-0.5" />
+                        <span className="text-sm text-white/90 leading-relaxed">{imp}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* ── STEP 7 — Features + Metrics ─────────────────────── */}
+                <div className="pt-10">
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="w-6 h-6 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-black text-white">7</span>
+                    <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#8888aa]">Features & Success Metrics</h4>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {detailedPersonasData[activePersona].features.map((feat, i) => (
+                      <span key={i} className="text-xs font-medium text-white bg-white/5 px-3 py-1.5 rounded-full border border-white/10 hover:border-white/20 transition-colors">
+                        {feat}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-3 mb-4 text-sm text-[#8888aa]">
+                    <i className="ti ti-route" />
+                    <span>Solution Flows: <strong className="text-white">{detailedPersonasData[activePersona].flows}</strong></span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    {detailedPersonasData[activePersona].metrics.map((m, i) => (
+                      <div key={i} className="bg-[#cc63ff]/5 border border-[#cc63ff]/20 rounded-2xl p-5 hover:bg-[#cc63ff]/10 transition-colors">
+                        <div className="text-[#cc63ff] font-black uppercase tracking-wider text-[10px] mb-2">{m.type}</div>
+                        <p className="text-white text-sm leading-relaxed">{m.val}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
               </div>
             </motion.div>
           </AnimatePresence>
