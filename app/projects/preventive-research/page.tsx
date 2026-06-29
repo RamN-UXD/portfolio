@@ -7,6 +7,155 @@ import CustomCursor from "../../../components/CustomCursor";
 
 const customEase = [0.16, 1, 0.3, 1];
 
+const detailedPersonasData = [
+  {
+    num: 'Persona 1',
+    title: 'Determined Urban Homemaker',
+    participant: 'Sivaprial',
+    quote: 'I want to eat healthy, but my family doesn\'t always eat what I want to eat. By the time I finish all my work at home, I have no energy left for myself.',
+    meta: [
+      { k: 'Age Range', v: '46–55' },
+      { k: 'Gender', v: 'Female' },
+      { k: 'Income', v: 'Below ₹30,000/month' },
+      { k: 'Health Budget', v: '₹501–₹1,000/month' },
+      { k: 'Monthly Health Spend', v: '₹1,001–₹5,000/month' },
+      { k: 'Residence', v: 'Single-family home, urban India' },
+      { k: 'Life Stage', v: 'Active homemaker; primary caregiver for family' }
+    ],
+    who: 'In the middle of managing a household, Sivaprial carries a quiet determination to take care of her own health — but she\'s doing it almost entirely alone. Her health goals regularly clash with her family\'s food preferences, her income limits what she can spend, and her days leave little room for herself by the time everyone else\'s needs are met. She relies on park walks for physical activity because structured fitness programs feel out of reach — not because of laziness, but because of cost and a lack of awareness about what\'s even available to her.<br/><br/>She is one of the most motivated users in this research — and one of the most underserved.',
+    problems: [
+      {
+        title: 'Nutritional Misalignment within Household',
+        desc: 'She wants to eat better, but cooking separately for herself while managing a family\'s meals is neither practical nor affordable. Her dietary goals are compromised daily — not by personal weakness, but by family circumstances that the current market of health apps completely ignores.',
+        frustrations: 'Dietary conflicts at home, compromised nutrition, healthcare struggles',
+        motivations: 'Determined to pursue her health goals, aware of preventive healthcare importance, taking gym initiative despite barriers'
+      },
+      {
+        title: 'Time Management for Physical Activity',
+        desc: 'Her day is structured around others\' needs. By the time household responsibilities are met, the motivation and energy for exercise has significantly depleted. Her current solution — walking in a nearby park — is a workaround, not a plan.',
+        frustrations: 'Time constraints, inconsistent routine, healthcare struggles',
+        motivations: 'Recognises importance of time management, committed to gym initiative'
+      },
+      {
+        title: 'Lack of Awareness and Support for Fitness Programs',
+        desc: 'She doesn\'t know what structured fitness programs exist, what they cost, or whether any of them are realistic for someone in her situation. The gap is not motivation — it is information and accessibility.',
+        frustrations: 'Time constraints, inconsistent routine, healthcare struggles',
+        motivations: 'Time management awareness, self-guided fitness interest'
+      }
+    ],
+    achieve: 'She wants to maintain a healthier lifestyle by managing her diet and fitness goals despite family constraints — through personalized diet recommendations that work around her household, family meal planning that doesn\'t force her to cook two separate meals, and progress tracking that fits her budget and time.<br/><br/>She also wants to access healthcare services on her own terms — convenient scheduling, virtual consultations when physical visits aren\'t practical, and guidance that acknowledges she\'s not starting from zero.',
+    business: 'Sivaprial represents the intersection of two validated problems: Higher Healthcare Expenses (treating advanced disease costs far more than prevention) and Unhealthy Habits (fast-paced lifestyles compounded by conflicting advice). She is a user who will benefit enormously from preventive intervention — and who the current market has almost entirely failed to design for.',
+    implications: [
+      'Family meal planning must be a first-class feature — not a premium add-on. Her dietary goal cannot be separated from her family context.',
+      'Cost-sensitive design throughout: every feature must be achievable on a ₹501–₹1,000/month health budget. No paywalled essentials.',
+      'Fitness recommendations must be accessible without a gym membership — home-based, park-based, zero-equipment options.',
+      'Content must be in plain language. She is not consuming health content through professional channels.',
+      'Trust before tools: she needs to feel that the product understands her specific situation before she will engage with any feature.'
+    ],
+    features: ['Family Meal Planner', 'Nutrition Tracker', 'Healthcare Services Directory', 'Virtual Workout Classes', 'Preventive Health Reminders', 'Smart Schedule', 'Goal Setting & Progress Tracking', 'Urban Health Tips', 'Routine Reminder', 'Time Management', 'Rewards', 'Virtual Gym', 'Self-Guided Workout Plans', 'Health Education', 'Healthcare Consultation'],
+    flows: 'Progressive Disclosure Flow · Hub-and-Spoke Flow',
+    metrics: [
+      { type: 'Business', val: 'Increase in adoption of health products by users in the ₹30K-and-below income bracket' },
+      { type: 'Product', val: 'Family meal plan feature engagement rate; 30-day retention for users in this segment' },
+      { type: 'Marketing', val: 'Conversion rate of campaigns addressing household-first health barriers' }
+    ]
+  },
+  {
+    num: 'Persona 2',
+    title: 'Health-Conscious Urban Senior',
+    participant: 'Vasudevan Kannaiyan',
+    quote: 'I regret not taking care of my health when I was younger. Now I\'m trying to learn from my mistakes — but I don\'t always know where to start.',
+    meta: [
+      { k: 'Age Range', v: '56–65' },
+      { k: 'Gender', v: 'Male' },
+      { k: 'Income', v: '₹75,001–₹1,00,000/month' },
+      { k: 'Health Budget', v: '₹2,001–₹5,000/month' },
+      { k: 'Monthly Health Spend', v: '₹1,001–₹5,000/month' },
+      { k: 'Residence', v: 'Single-family home, urban India' },
+      { k: 'Life Stage', v: 'Late career or retired; post-health-scare, now proactive' }
+    ],
+    who: 'Vasudevan spent most of his working life deprioritising his health. He knew it. He just kept waiting for the right time. That time came when it was no longer optional — a health event forced him to face the consequences of years of reactive living. Now he is genuinely motivated to change. He incorporates yoga and walking into his routine. He monitors his health through regular tests. He adjusts his diet based on the results. But he\'s doing all of this largely by trial and error, guided by whatever information he encounters rather than a structured, trustworthy system.<br/><br/>His barriers are not financial. They are not motivational. They are navigational. He does not know what to do first, what to prioritise, or who to trust.',
+    problems: [
+      {
+        title: 'Poor Dietary Habits driven by Time and Habit',
+        desc: 'Skipping breakfast is the entry point — but it signals a broader pattern. Decades of deprioritising structured nutrition have left him without the habits or systems to course-correct easily. He understands the importance now. He struggles to implement it consistently, especially on days when his schedule disrupts his routine (social gatherings, travel, irregular commitments).',
+        frustrations: 'Skipping breakfast, regret over past health neglect, dietary restrictions',
+        motivations: 'Learning from past mistakes, actively striving for better health'
+      }
+    ],
+    achieve: 'He wants to maintain a healthier lifestyle through consistent dietary habits — with personalized reminders that meet him where he is rather than overwhelming him. He needs progress tracking that shows him the cumulative impact of small improvements, a personalized diet plan that accounts for his restrictions, and a healthcare navigator that helps him understand what tests, checkups, and services he should actually be engaging with.<br/><br/>He is not looking for motivation. He has that. He is looking for a clear, trustworthy starting point and a system that helps him stay consistent.',
+    business: 'Vasudevan maps directly to the Higher Healthcare Expenses problem: the cost of treating advanced preventable disease versus the cost of early, consistent prevention. He is already spending ₹1,001–₹5,000/month on reactive healthcare. A product that shifts even part of that spend toward preventive behavior generates measurable savings — for him personally and for the healthcare system he relies on.',
+    implications: [
+      'First interaction must not be a dashboard. It must be one clear, gentle action — something he can do in the next five minutes.',
+      'Breakfast reminder is the anchor feature for this persona. Not because breakfast is the whole solution, but because it is the behavioral entry point — a small daily win that builds the foundation for larger habit change.',
+      'Progress must be visible over time. He needs to see that the last 30 days of consistent behavior have made a measurable difference. This is what sustains him through the setbacks.',
+      'Healthcare Navigator must be simple enough that he can understand it without a medical background. Dense clinical language will cause him to disengage.',
+      'Trust is built through consistency, not sophistication. No gamification, no viral features. Calm, reliable, clear.'
+    ],
+    features: ['Breakfast Reminder', 'Health History Tracker', 'Personalized Diet Plan', 'Health Improvement Tips', 'Progress Tracker', 'Healthcare Navigator'],
+    flows: 'Progressive Disclosure Flow · Hub-and-Spoke Flow',
+    metrics: [
+      { type: 'Business', val: 'Reduction in out-of-pocket reactive care spend among users in this age and income segment' },
+      { type: 'Product', val: '7-day breakfast logging consistency rate; 30-day diet plan adherence; health test reminder completion rate' },
+      { type: 'Marketing', val: 'Conversion rate of campaigns addressing regret-to-action behavioral motivation' }
+    ]
+  },
+  {
+    num: 'Persona 3',
+    title: 'The Struggling Urbanite',
+    participant: 'Raghul',
+    quote: 'I know I should take care of my health, but between work, budgeting, and everything else — it always feels like health is the thing I\'ll get to later.',
+    meta: [
+      { k: 'Age Range', v: '26–35' },
+      { k: 'Gender', v: 'Male' },
+      { k: 'Income', v: '₹30,000–₹50,000/month' },
+      { k: 'Health Budget', v: '₹501–₹1,000/month' },
+      { k: 'Monthly Health Spend', v: 'Below ₹1,000/month' },
+      { k: 'Residence', v: 'Single-family home, urban India' },
+      { k: 'Life Stage', v: 'Early-to-mid career; balancing financial pressure, work demands, and health intent' }
+    ],
+    who: 'Raghul is not indifferent to his health. He thinks about it constantly — and then deprioritises it constantly. The gap between intention and action for him is not motivational. It is structural. His income places him above poverty but below the threshold where health feels financially comfortable to prioritise. Every rupee is accounted for. Preventive healthcare — when it means clinic visits, lab tests, or paid fitness programs — sits in direct competition with rent, food, and other non-negotiable expenses.<br/><br/>On top of the money pressure, the system itself feels inaccessible. Long wait times at clinics. Confusing pricing for healthcare services. No clear sense of what\'s covered, what\'s not, or where to even start. He has tried to exercise consistently and failed — not from laziness, but because his motivation fluctuates and he has no structured plan to fall back on when it drops.<br/><br/>He is the urban Indian who the preventive health system needs to reach most urgently — and who it currently reaches least effectively.',
+    problems: [
+      {
+        title: 'Time Constraints and Fluctuating Motivation',
+        desc: 'The challenge isn\'t finding an hour to exercise. It\'s that when motivation dips — as it will, for everyone — he has no system that carries him through. He also has no one helping him find the time slots in his day where self-care is genuinely feasible.',
+        frustrations: 'Time constraints, stressful budgeting, fluctuating motivation levels',
+        motivations: 'Committed to balanced priorities despite pressures',
+        neutral: 'Aware of self-care need; recognises the demands of modern life'
+      },
+      {
+        title: 'Accessibility Barrier to Preventive Care',
+        desc: 'He perceives — correctly — that affordable, accessible preventive healthcare is hard to find. Long wait times, unclear pricing, and limited affordable options create a barrier that causes him to delay or abandon healthcare engagement entirely. This is where late diagnosis begins: not in a doctor\'s office, but in the decision not to go.',
+        frustrations: 'Limited affordable healthcare options, long wait times, perceived healthcare hurdles, preventive care concerns',
+        motivations: 'Health-first mindset when barriers are removed; committed to balanced priorities',
+        neutral: 'Aware of self-care need; navigating modern life demands'
+      }
+    ],
+    achieve: 'He wants to integrate health into his life without it costing more money or time than he actually has. Specifically: an app that finds the realistic slots in his schedule for exercise and self-care, gives him budget-friendly health and nutrition options, helps him navigate the healthcare system without getting lost or overcharged, sends reminders that keep him consistent on low-motivation days, and shows him his progress so the effort feels worthwhile.<br/><br/>He also needs cost transparency — the ability to compare healthcare service costs so he can make decisions with confidence rather than anxiety.',
+    business: 'Raghul maps to two validated root causes simultaneously: Higher Healthcare Expenses (reactive treatment is the inevitable outcome if prevention is never accessible) and Late Diagnosis and Treatment (decentralised medical information and no tracking tools mean conditions worsen silently). He is the user who cannot afford to get sick — and who is most likely to if preventive design doesn\'t reach him.',
+    implications: [
+      'Every feature must work within a ₹501–₹1,000/month health budget. Budget-conscious design is not a feature — it is the foundation.',
+      'Smart scheduling must be genuinely intelligent: not \'set your own workout time\' but \'here is when in your existing schedule there is realistic space.\' The product does the thinking for him.',
+      'Motivation architecture matters for this persona more than any other. Motivational reminders, micro-wins, and streaks carry him through low-motivation periods when willpower alone would fail.',
+      'Cost Comparison for healthcare services is a table-stakes feature — not a nice-to-have. For Raghul, not knowing what something costs means not going at all.',
+      'Healthcare Navigator must simplify the system, not explain it. He doesn\'t need to understand how the system works. He needs to know what to do next and where to go.',
+      'Reduce friction at every step. For this persona, any form that takes more than 60 seconds is a form he will abandon.'
+    ],
+    features: ['Smart Schedule', 'Budget-Friendly Wellness Tips', 'Motivation Booster', 'Priority Planner', 'Self-Care Reminder', 'Stress Management Techniques', 'Virtual Consultations', 'Cost Comparison', 'Healthcare Navigator', 'Preventive Care Reminders', 'Personalized Health Dashboard', 'Health and Lifestyle Integration', 'Self-Care Tips and Resources', 'Flexible Appointment Scheduling'],
+    flows: 'Progressive Disclosure Flow · Hub-and-Spoke Flow',
+    metrics: [
+      { type: 'Business', val: 'Increase in utilisation of preventive healthcare services among ₹30K–₹50K income segment; improvement in brand accessibility perception' },
+      { type: 'Product', val: 'Smart Schedule adoption rate; Cost Comparison feature engagement; 14-day self-care reminder streak rate' },
+      { type: 'Marketing', val: 'Conversion rate of accessibility-first campaigns; engagement rate on budget-conscious health content' }
+    ]
+  }
+];
+
+const personaSummaryTable = [
+  { persona: 'Determined Urban Homemaker', barrier: 'Family context + cost', motivation: 'High', income: 'Below ₹30K/month', root: 'Unhealthy Habits + High Costs', priority: 'Family-first, cost-sensitive', critical: 'Family Meal Planner' },
+  { persona: 'Health-Conscious Urban Senior', barrier: 'Navigation + habit', motivation: 'High', income: '₹75K–₹1L/month', root: 'High Costs', priority: 'Trust-first, one step at a time', critical: 'Breakfast Reminder' },
+  { persona: 'The Struggling Urbanite', barrier: 'Affordability + system access', motivation: 'High — but fragile', income: '₹30K–₹50K/month', root: 'High Costs + Late Diagnosis', priority: 'Budget-first, friction-zero', critical: 'Smart Schedule + Cost Comparison' }
+];
 export default function PreventiveResearchCaseStudy() {
   return (
     <main className="bg-[#080810] min-h-screen text-[#fafafa] selection:bg-[#cc63ff]/30 overflow-x-hidden">
@@ -613,88 +762,208 @@ export default function PreventiveResearchCaseStudy() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          11. PERSONAS — Profile Cards Grid
+          11. PERSONAS — Detailed Research Profiles
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5 bg-[#0c0c16] rounded-[40px] my-12">
-        <div className="mb-16 text-center max-w-3xl mx-auto">
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5 my-12">
+        <div className="mb-24 text-center max-w-4xl mx-auto">
           <div className="text-[#00ffd1] text-tag-1 mb-4 flex justify-center items-center gap-2">
             <i className="ti ti-users text-xl" /> Target Audience
           </div>
           <h2 className="text-h2 text-white mb-6">Who I Designed For — Research-Derived Personas</h2>
-          <p className="text-[#8888aa] text-body-sm leading-relaxed">
-            Each persona was constructed from clusters of interview participants who shared behavioral patterns — not from demographic assumptions.
+          <p className="text-[#8888aa] text-lg leading-relaxed">
+            Each persona below was constructed directly from interview participants and survey respondents — not invented archetypes. The demographics, problems, goals, and frustrations are sourced from real people who took part in this research. Names used are those of the actual research participants.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              num: "Persona 1",
-              title: "The Regretful Converter",
-              note: "Based on: 4 interview participants, 23% survey respondents",
-              meta: [{ k: "Age Range", v: "56–65" }, { k: "Life Stage", v: "Post-peak career; health event occurred" }, { k: "Income", v: "₹75K–₹1L/month" }, { k: "Health Spend", v: "₹2,001–₹5,000/month" }],
-              behavior: "Reactive until a health scare — now motivated but unsure where to start.",
-              quote: "I always knew I should take better care of myself. But I kept waiting for the right time. Now I&apos;m paying for it, and I just want someone to tell me what to do first.",
-              implication: "Progressive disclosure — show one habit at a time. Avoid data-heavy home screens.",
-            },
-            {
-              num: "Persona 2",
-              title: "The Time-Starved Professional",
-              note: "28–42, urban, high-earning, health-aware but action-poor",
-              meta: [],
-              behavior: "Knows what they should do. Doesn&apos;t do it because friction outweighs motivation. Needs automation, reminders, and minimal cognitive load.",
-              quote: "",
-              implication: "Default-on features, smart scheduling, one-tap logging. Every interaction should take under 15 seconds.",
-            },
-            {
-              num: "Persona 3",
-              title: "The Overwhelmed Beginner",
-              note: "22–34, recently health-conscious, suffering from information overload",
-              meta: [],
-              behavior: "Just starting their health journey. Confused by conflicting online advice. Needs curated, personalized, trustworthy content — not another calorie counter.",
-              quote: "",
-              implication: "Strong editorial content strategy + onboarding quiz to personalize from day one. Build trust before building habit.",
-            },
-          ].map((p, idx) => (
-            <motion.div
+        <div className="space-y-32">
+          {detailedPersonasData.map((p, idx) => (
+            <motion.div 
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.1, ease: customEase }}
-              className="bg-[#080810] border border-white/5 rounded-3xl p-8 flex flex-col justify-between group hover:border-[#00ffd1]/30 transition-colors"
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: customEase }}
+              className="bg-[#0c0c16] border border-white/5 rounded-[40px] overflow-hidden shadow-2xl shadow-black/50"
             >
-              <div>
-                <div className="text-[#00ffd1] text-xs font-bold uppercase tracking-wider mb-2">{p.num}</div>
-                <h3 className="text-2xl font-bold text-white mb-2">{p.title}</h3>
-                <div className="text-[10px] text-[#8888aa] mb-6">{p.note}</div>
-                {p.meta.length > 0 && (
-                  <div className="space-y-2 mb-6 bg-white/[0.02] p-4 rounded-xl border border-white/5">
-                    {p.meta.map((m, i) => (
-                      <div key={i} className="flex justify-between text-xs">
-                        <span className="text-[#666688]">{m.k}</span>
-                        <span className="text-white font-medium text-right w-2/3">{m.v}</span>
-                      </div>
-                    ))}
+              {/* Header block */}
+              <div className="bg-[#080810] p-8 md:p-16 border-b border-white/5 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#cc63ff]/5 to-transparent pointer-events-none" />
+                <div className="relative z-10 flex flex-col md:flex-row gap-8 md:gap-16 items-start">
+                  <div className="w-full md:w-1/3">
+                    <div className="text-[#00ffd1] text-xs font-bold uppercase tracking-wider mb-2">{p.num}</div>
+                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">{p.title}</h3>
+                    <div className="text-sm text-[#8888aa] bg-white/[0.02] p-3 rounded-lg inline-block border border-white/5">
+                      Based on: <strong className="text-white">{p.participant}</strong>
+                    </div>
                   </div>
-                )}
-                <div className="mb-4">
-                  <div className="text-[10px] uppercase tracking-widest text-[#8888aa] font-bold mb-2">Core Behavior</div>
-                  <p className="text-sm text-white leading-relaxed" dangerouslySetInnerHTML={{ __html: p.behavior }} />
+                  <div className="w-full md:w-2/3">
+                    <blockquote className="text-xl md:text-2xl text-white font-medium leading-relaxed italic border-l-4 border-[#cc63ff] pl-6 md:pl-8">
+                      &ldquo;{p.quote}&rdquo;
+                    </blockquote>
+                  </div>
                 </div>
-                {p.quote && (
-                  <blockquote className="border-l-2 border-[#00ffd1] pl-4 text-sm text-[#8888aa] italic mb-4" dangerouslySetInnerHTML={{ __html: `&ldquo;${p.quote}&rdquo;` }} />
-                )}
               </div>
-              <div className="bg-[#00ffd1]/10 border border-[#00ffd1]/20 p-4 rounded-xl mt-4">
-                <div className="text-[10px] uppercase tracking-widest text-[#00ffd1] font-bold mb-1">Design Implication</div>
-                <p className="text-sm text-white font-medium">{p.implication}</p>
+
+              <div className="p-8 md:p-16 grid grid-cols-1 xl:grid-cols-12 gap-12 xl:gap-16">
+                
+                {/* Left Column: Demographics & Core Problems */}
+                <div className="xl:col-span-5 space-y-12">
+                  <div>
+                    <h4 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                      <i className="ti ti-id text-[#cc63ff]" /> Demographics & Profile
+                    </h4>
+                    <div className="bg-white/[0.02] rounded-2xl border border-white/5 overflow-hidden">
+                      {p.meta.map((m, i) => (
+                        <div key={i} className="flex flex-col sm:flex-row sm:justify-between p-4 border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors">
+                          <span className="text-[#8888aa] text-sm w-full sm:w-1/2 mb-1 sm:mb-0">{m.k}</span>
+                          <span className="text-white font-medium text-sm w-full sm:w-1/2 sm:text-right">{m.v}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                      <i className="ti ti-alert-triangle text-[#cc63ff]" /> Core Problems
+                    </h4>
+                    <div className="space-y-6">
+                      {p.problems.map((prob: { title: string; desc: string; frustrations: string; motivations: string; neutral?: string }, i) => (
+                        <div key={i} className="bg-white/[0.02] p-6 rounded-2xl border border-white/5 hover:border-white/10 transition-colors">
+                          <h5 className="text-white font-bold mb-3">{i + 1}. {prob.title}</h5>
+                          <p className="text-[#8888aa] text-sm leading-relaxed mb-4">{prob.desc}</p>
+                          <div className="space-y-2 text-xs border-t border-white/10 pt-4">
+                            <div className="flex gap-2">
+                              <span className="text-[#ff4d4d] font-bold uppercase tracking-wider w-24 shrink-0 mt-0.5">Frustrations</span>
+                              <span className="text-[#dcdcaa] leading-relaxed">{prob.frustrations}</span>
+                            </div>
+                            <div className="flex gap-2">
+                              <span className="text-[#00ffd1] font-bold uppercase tracking-wider w-24 shrink-0 mt-0.5">Motivations</span>
+                              <span className="text-[#aaddcc] leading-relaxed">{prob.motivations}</span>
+                            </div>
+                            {prob.neutral && (
+                              <div className="flex gap-2">
+                                <span className="text-[#8888aa] font-bold uppercase tracking-wider w-24 shrink-0 mt-0.5">Neutral</span>
+                                <span className="text-[#8888aa] leading-relaxed">{prob.neutral}</span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Narrative & Business */}
+                <div className="xl:col-span-7 space-y-12">
+                  <div>
+                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Who {p.meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'He' : 'She'} Is</h4>
+                    <p className="text-base text-white/90 leading-relaxed bg-white/[0.01] p-6 rounded-2xl border border-white/5 hover:bg-white/[0.02] transition-colors" dangerouslySetInnerHTML={{ __html: p.who }} />
+                  </div>
+
+                  <div>
+                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">What {p.meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'He\'s' : 'She\'s'} Trying to Achieve</h4>
+                    <p className="text-base text-[#00ffd1]/90 leading-relaxed bg-[#00ffd1]/5 p-6 rounded-2xl border border-[#00ffd1]/20 border-l-4 border-l-[#00ffd1] hover:bg-[#00ffd1]/10 transition-colors" dangerouslySetInnerHTML={{ __html: p.achieve }} />
+                  </div>
+
+                  <div>
+                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Business Case</h4>
+                    <p className="text-base text-white/90 leading-relaxed bg-white/[0.01] p-6 rounded-2xl border border-white/5 hover:bg-white/[0.02] transition-colors" dangerouslySetInnerHTML={{ __html: p.business }} />
+                  </div>
+
+                  <div>
+                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Design Implications</h4>
+                    <ul className="space-y-3 bg-white/[0.01] p-4 rounded-2xl border border-white/5">
+                      {p.implications.map((imp, i) => (
+                        <li key={i} className="flex items-start gap-4 p-3 rounded-xl hover:bg-white/[0.03] transition-colors">
+                          <i className="ti ti-bulb text-[#cc63ff] mt-1 shrink-0 text-xl" />
+                          <span className="text-sm text-white/90 leading-relaxed">{imp}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Features Designed for {p.meta.find(m => m.k === 'Gender')?.v === 'Male' ? 'Him' : 'Her'}</h4>
+                    <div className="flex flex-wrap gap-2 mb-6 p-6 bg-white/[0.01] rounded-2xl border border-white/5">
+                      {p.features.map((feat, i) => (
+                        <span key={i} className="text-xs font-medium text-white bg-white/5 px-3 py-1.5 rounded-full border border-white/10 hover:border-white/20 transition-colors">
+                          {feat}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <h4 className="text-sm font-bold text-[#8888aa] uppercase tracking-widest mb-4">Solution Flows & Metrics</h4>
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3 p-4 bg-white/[0.01] rounded-2xl border border-white/5">
+                        <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+                          <i className="ti ti-route text-[#8888aa]" />
+                        </div>
+                        <div className="text-sm">
+                          <span className="text-[#8888aa]">Solution Flows: </span>
+                          <strong className="text-white font-medium">{p.flows}</strong>
+                        </div>
+                      </div>
+
+                      <div className="bg-[#cc63ff]/5 rounded-2xl border border-[#cc63ff]/20 overflow-hidden">
+                        {p.metrics.map((m, i) => (
+                          <div key={i} className="flex flex-col sm:flex-row p-4 border-b border-[#cc63ff]/10 last:border-0 hover:bg-[#cc63ff]/10 transition-colors">
+                            <span className="text-[#cc63ff] font-bold uppercase tracking-wider text-xs w-full sm:w-1/4 mb-1 sm:mb-0 shrink-0 mt-0.5">{m.type}</span>
+                            <span className="text-white text-sm leading-relaxed">{m.val}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-      </section>
 
+        {/* Persona Comparison Table */}
+        <div className="mt-32">
+          <div className="mb-12 text-center">
+            <h3 className="text-2xl font-bold text-white mb-4">What These Three Personas Tell Us Together</h3>
+            <p className="text-[#8888aa] text-sm max-w-3xl mx-auto leading-relaxed">
+              Together, these three personas cover three income brackets, two genders, three distinct life stages, and three fundamentally different barriers to preventive healthcare. No two of them need the same solution — which is precisely why they were identified as distinct research profiles rather than generalised user types.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto rounded-3xl border border-white/5 bg-[#0c0c16]">
+            <table className="w-full text-left text-sm min-w-[1000px]">
+              <thead className="bg-[#cc63ff]/10 border-b border-[#cc63ff]/20">
+                <tr>
+                  <th className="p-6 text-white font-semibold">Persona</th>
+                  <th className="p-6 text-[#cc63ff] font-semibold">Primary Barrier</th>
+                  <th className="p-6 text-[#8888aa] font-semibold">Motivation Level</th>
+                  <th className="p-6 text-[#8888aa] font-semibold">Income</th>
+                  <th className="p-6 text-[#8888aa] font-semibold">Root Cause</th>
+                  <th className="p-6 text-white font-semibold">Design Priority</th>
+                  <th className="p-6 text-[#00ffd1] font-semibold">Most Critical Feature</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5">
+                {personaSummaryTable.map((row, idx) => (
+                  <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
+                    <td className="p-6 font-bold text-white whitespace-nowrap">{row.persona}</td>
+                    <td className="p-6 text-[#cc63ff] font-medium">{row.barrier}</td>
+                    <td className="p-6 text-white/80">{row.motivation}</td>
+                    <td className="p-6 text-[#8888aa] whitespace-nowrap">{row.income}</td>
+                    <td className="p-6 text-[#8888aa]">{row.root}</td>
+                    <td className="p-6 text-white font-medium">{row.priority}</td>
+                    <td className="p-6 text-[#00ffd1] font-medium">{row.critical}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <div className="mt-8 text-center text-sm text-[#00ffd1] font-medium flex items-center justify-center gap-2">
+            <i className="ti ti-check text-lg" /> The 114 solutions in this project trace back, in some form, to one or more of these three people.
+          </div>
+        </div>
+      </section>
       {/* ═══════════════════════════════════════════════════════════════
           12. FEATURE DEEP-DIVE — Split Screen
       ═══════════════════════════════════════════════════════════════ */}
