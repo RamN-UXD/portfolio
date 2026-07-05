@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import CTAFooter from "../../../components/sections/CTAFooter";
 import CustomCursor from "../../../components/CustomCursor";
@@ -8,6 +9,8 @@ import CustomCursor from "../../../components/CustomCursor";
 const customEase = [0.16, 1, 0.3, 1];
 
 export default function DrHealthCaseStudy() {
+  const [activeFeature1Step, setActiveFeature1Step] = useState(0);
+  const [activeFeature2Step, setActiveFeature2Step] = useState(0);
   return (
     <main className="bg-[#080810] min-h-screen text-[#fafafa] selection:bg-[#00ffb7]/30">
       <CustomCursor />
@@ -164,7 +167,7 @@ export default function DrHealthCaseStudy() {
             {/* Business Case */}
             <div>
               <h3 className="text-[#00ffb7] text-[12px] font-bold tracking-[0.2em] mb-4 uppercase">Business Case Focus Area</h3>
-              <h4 className="text-h4 text-white mb-4">Higher Healthcare Expenses</h4>
+              <h3 className="text-h3 text-white mb-4">Higher Healthcare Expenses</h3>
               <p className="text-[#8888aa] text-body-lg">
                 The design phase was scoped around solving problems that directly contribute to higher
                 healthcare expenses; addressing preventable conditions through better user experiences,
@@ -174,7 +177,7 @@ export default function DrHealthCaseStudy() {
 
             {/* Problem Impacts Table */}
             <div>
-              <h3 className="text-xl font-bold text-white mb-6">Problem Impacts; The 3 Prioritized Disease Areas</h3>
+              <h3 className="text-h3 text-white mb-6">Problem Impacts; The 3 Prioritized Disease Areas</h3>
               <p className="text-[#8888aa] text-body-lg mb-6">
                 From the broader set of validated problems, three critical areas were prioritized for the
                 design phase, ensuring depth of focus and actionable solutions.
@@ -212,10 +215,10 @@ export default function DrHealthCaseStudy() {
 
             {/* Problem Statements */}
             <div>
-              <h3 className="text-xl font-bold text-white mb-6">Problem Statements</h3>
+              <h3 className="text-h3 text-white mb-6">Problem Statements</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-white/5 border border-white/5 p-6 rounded-2xl">
-                  <h4 className="text-white font-bold mb-3">Unhealthy Habits</h4>
+                  <h4 className="text-h5 text-white mb-3">Unhealthy Habits</h4>
                   <p className="text-[#8888aa] text-body-sm">
                     Fast-paced lifestyles often result in increased stress and boredom, leading to the adoption
                     of bad habits. Conflicting advice from various sources further contributes to the
@@ -223,14 +226,14 @@ export default function DrHealthCaseStudy() {
                   </p>
                 </div>
                 <div className="bg-white/5 border border-white/5 p-6 rounded-2xl">
-                  <h4 className="text-white font-bold mb-3">Late Diagnosis &amp; Treatment</h4>
+                  <h4 className="text-h5 text-white mb-3">Late Diagnosis &amp; Treatment</h4>
                   <p className="text-[#8888aa] text-body-sm">
                     Reactive healthcare, caused by decentralized medical information and a lack of health
                     tracking, leads to advanced diseases.
                   </p>
                 </div>
                 <div className="bg-white/5 border border-white/5 p-6 rounded-2xl">
-                  <h4 className="text-white font-bold mb-3">Higher Healthcare Expenses</h4>
+                  <h4 className="text-h5 text-white mb-3">Higher Healthcare Expenses</h4>
                   <p className="text-[#8888aa] text-body-sm">
                     Treating advanced diseases is more costly than preventive care, requiring additional
                     resources and specialized interventions.
@@ -266,7 +269,7 @@ export default function DrHealthCaseStudy() {
             transition={{ duration: 0.8, delay: 0.1, ease: customEase }}
             className="bg-[rgba(48,46,97,0.18)] border border-white/5 rounded-[32px] p-8"
           >
-            <h3 className="text-xl font-bold text-[#00ffb7] mb-6">Gestalt Principles</h3>
+            <h3 className="text-h4 text-[#00ffb7] mb-6">Gestalt Principles</h3>
             <div className="space-y-6 text-[#8888aa] text-body-sm">
               <div>
                 <strong className="text-white block mb-1">Proximity</strong>
@@ -295,7 +298,7 @@ export default function DrHealthCaseStudy() {
             transition={{ duration: 0.8, delay: 0.2, ease: customEase }}
             className="bg-[rgba(48,46,97,0.18)] border border-white/5 rounded-[32px] p-8"
           >
-            <h3 className="text-xl font-bold text-[#00ffb7] mb-6">UX Laws</h3>
+            <h3 className="text-h4 text-[#00ffb7] mb-6">UX Laws</h3>
             <div className="space-y-6 text-[#8888aa] text-body-sm">
               <div>
                 <strong className="text-white block mb-1">Law of Pr&auml;gnanz (Simplicity)</strong>
@@ -320,7 +323,7 @@ export default function DrHealthCaseStudy() {
             transition={{ duration: 0.8, delay: 0.3, ease: customEase }}
             className="bg-[rgba(48,46,97,0.18)] border border-white/5 rounded-[32px] p-8"
           >
-            <h3 className="text-xl font-bold text-[#00ffb7] mb-6">Design Psychology</h3>
+            <h3 className="text-h4 text-[#00ffb7] mb-6">Design Psychology</h3>
             <div className="space-y-6 text-[#8888aa] text-body-sm">
               <div>
                 <strong className="text-white block mb-1">Golden Ratio</strong>
@@ -343,7 +346,7 @@ export default function DrHealthCaseStudy() {
           className="mt-12 overflow-x-auto rounded-3xl border border-white/5 bg-white/[0.02]"
         >
           <div className="p-6 border-b border-white/5">
-            <h3 className="text-xl font-bold text-white">Rationale for Using the 4-Point Grid System</h3>
+            <h3 className="text-h4 text-white">Rationale for Using the 4-Point Grid System</h3>
           </div>
           <table className="w-full text-left text-sm">
             <thead className="bg-white/5">
@@ -410,7 +413,7 @@ export default function DrHealthCaseStudy() {
               ].map((item) => (
                 <div key={item.n} className="p-6 rounded-2xl bg-[rgba(48,46,97,0.18)] border border-white/5">
                   <div className="text-[#00ffb7] text-xs mb-2">#{item.n}</div>
-                  <h4 className="text-white font-bold mb-2">{item.t}</h4>
+                  <h4 className="text-h5 text-white mb-2">{item.t}</h4>
                   <p className="text-sm text-[#8888aa] leading-relaxed">{item.d}</p>
                 </div>
               ))}
@@ -441,37 +444,62 @@ export default function DrHealthCaseStudy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: customEase }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-12"
+            className="space-y-12"
           >
-            <div className="lg:col-span-5 space-y-8">
-              <h3 className="text-h4 text-white border-l-4 border-[#00ffb7] pl-4">
+            {/* Top context block */}
+            <div className="space-y-8 max-w-5xl">
+              <h3 className="text-h3 text-white border-l-4 border-[#00ffb7] pl-4">
                 Feature 1; Motivational Reminders &amp; Rewards
               </h3>
-              <div>
-                <h4 className="text-[#ff0055] font-semibold mb-2">User Problem</h4>
-                <p className="text-[#8888aa] text-body-sm">
-                  Urban users show fluctuating motivation towards fitness. Walking is often highlighted as an
-                  accessible activity, but sticking to structured fitness routines consistently remains a
-                  core behavioral challenge across personas.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-[#00ffb7] font-semibold mb-2">Solution Point</h4>
-                <p className="text-[#8888aa] text-body-sm">
-                  The app addresses fluctuating motivation by sending contextual motivational reminders
-                  and messages tied to the user&apos;s own goals. A rewards system; points and badges for
-                  achieving fitness targets; creates a positive reinforcement loop that sustains engagement.
-                </p>
-              </div>
-              <div className="w-full h-[280px] rounded-[24px] overflow-hidden border border-white/5 relative group">
-                <img src="/images/dr-health/feature-1.png" alt="Fitness Tracker App" className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-1000 ease-out" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-transparent to-transparent" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="text-h5 text-[#ff0055] font-semibold mb-2">User Problem</h4>
+                  <p className="text-[#8888aa] text-body-sm">
+                    Urban users show fluctuating motivation towards fitness. Walking is often highlighted as an
+                    accessible activity, but sticking to structured fitness routines consistently remains a
+                    core behavioral challenge across personas.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-h5 text-[#00ffb7] font-semibold mb-2">Solution Point</h4>
+                  <p className="text-[#8888aa] text-body-sm">
+                    The app addresses fluctuating motivation by sending contextual motivational reminders
+                    and messages tied to the user&apos;s own goals. A rewards system; points and badges for
+                    achieving fitness targets; creates a positive reinforcement loop that sustains engagement.
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="lg:col-span-7">
-              <div className="p-6 rounded-[32px] bg-[rgba(48,46,97,0.18)] border border-white/5">
-                <h4 className="text-white font-bold mb-6">Wireframe Interaction Flow</h4>
-                <div className="space-y-4">
+
+            {/* Parallel layout for Image and Interaction Flow */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              {/* Left Column: Phone Image */}
+              <div className="lg:col-span-5 sticky top-32">
+                <div className="w-full h-[500px] rounded-[32px] overflow-hidden border border-white/5 relative group bg-[#0c0c16] shadow-2xl shadow-black/50">
+                  <AnimatePresence mode="wait">
+                    <motion.img 
+                      key={activeFeature1Step}
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 0.8, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.4 }}
+                      src={`/images/dr-health/feature-1-step-${activeFeature1Step + 1}.png`}
+                      alt={`Feature 1 Step ${activeFeature1Step + 1}`} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" 
+                    />
+                  </AnimatePresence>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-transparent to-transparent pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Right Column: Interaction Flow */}
+              <div className="lg:col-span-7">
+                <div className="p-8 rounded-[40px] bg-[rgba(48,46,97,0.18)] border border-white/5">
+                  <h4 className="text-h4 text-white mb-8">Wireframe Interaction Flow</h4>
+                  <div className="space-y-3 relative">
+                    {/* Vertical connector line */}
+                    <div className="absolute left-[39px] top-8 bottom-8 w-0.5 bg-white/5 hidden md:block" />
+                    
                   {[
                     { step: "Setting Fitness Goals", desc: "The user sets their fitness goals in the app — steps walked, calories burned, hours of physical activity, etc." },
                     { step: "Enabling Motivational Reminders", desc: "The user enables the feature in the settings of the Mobile App." },
@@ -480,14 +508,37 @@ export default function DrHealthCaseStudy() {
                     { step: "Achieving Goals & Earning Rewards", desc: "When the user achieves their fitness goals, they earn points or badges in the app." },
                     { step: "Tracking Progress", desc: "The user tracks their progress in the \"Progress\" section — goals achieved, points earned, and badges won." }
                   ].map((flow, i) => (
-                    <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/5">
-                      <div className="w-8 h-8 shrink-0 rounded-full bg-[#00ffb7]/10 text-[#00ffb7] flex items-center justify-center font-bold text-xs">{i+1}</div>
-                      <div>
-                        <strong className="text-white block text-sm mb-1">{flow.step}</strong>
-                        <p className="text-[#8888aa] text-xs leading-relaxed">{flow.desc}</p>
-                      </div>
-                    </div>
-                  ))}
+                      <button 
+                        key={i} 
+                        onClick={() => setActiveFeature1Step(i)}
+                        className={`w-full text-left flex gap-5 p-5 rounded-3xl transition-all duration-300 relative z-10 ${
+                          activeFeature1Step === i 
+                            ? 'bg-[#00ffb7]/10 border border-[#00ffb7]/30 shadow-[0_0_30px_rgba(0,255,183,0.1)]' 
+                            : 'bg-transparent border border-transparent hover:bg-white/5'
+                        }`}
+                      >
+                        <div className={`w-10 h-10 shrink-0 rounded-full flex items-center justify-center font-bold text-sm transition-colors ${
+                          activeFeature1Step === i 
+                            ? 'bg-[#00ffb7] text-[#080810]' 
+                            : 'bg-white/5 text-[#8888aa]'
+                        }`}>
+                          {i+1}
+                        </div>
+                        <div className="pt-2">
+                          <strong className={`block text-base mb-2 transition-colors ${
+                            activeFeature1Step === i ? 'text-white' : 'text-white/70'
+                          }`}>
+                            {flow.step}
+                          </strong>
+                          <p className={`text-sm leading-relaxed transition-colors ${
+                            activeFeature1Step === i ? 'text-[#aaddcc]' : 'text-[#8888aa]'
+                          }`}>
+                            {flow.desc}
+                          </p>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -499,37 +550,62 @@ export default function DrHealthCaseStudy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: customEase }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-12"
+            className="space-y-12"
           >
-            <div className="lg:col-span-5 space-y-8 lg:order-2">
-              <h3 className="text-h4 text-white border-l-4 border-[#00ffb7] pl-4">
+            {/* Top context block */}
+            <div className="space-y-8 max-w-5xl">
+              <h3 className="text-h3 text-white border-l-4 border-[#00ffb7] pl-4">
                 Feature 2; Mental &amp; Cardiovascular Healthcare
               </h3>
-              <div>
-                <h4 className="text-[#ff0055] font-semibold mb-2">User Problem</h4>
-                <p className="text-[#8888aa] text-body-sm">
-                  Urban users find it challenging to engage with mental health services, cardiovascular
-                  checkups, and insurance due to personal time constraints and scheduling conflicts. The
-                  barrier isn&apos;t awareness; it&apos;s accessibility and convenience.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-[#00ffb7] font-semibold mb-2">Solution Point</h4>
-                <p className="text-[#8888aa] text-body-sm">
-                  The app provides a platform for users to connect with mental health professionals through
-                  video calls, overcoming both geographical and time constraints. Flexible scheduling,
-                  professional profiles with ratings, and in-app follow-up tools make ongoing care management practical.
-                </p>
-              </div>
-              <div className="w-full h-[280px] rounded-[24px] overflow-hidden border border-white/5 relative group">
-                <img src="/images/dr-health/feature-2.png" alt="Telehealth UI" className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-1000 ease-out" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-transparent to-transparent" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="text-h5 text-[#ff0055] font-semibold mb-2">User Problem</h4>
+                  <p className="text-[#8888aa] text-body-sm">
+                    Urban users find it challenging to engage with mental health services, cardiovascular
+                    checkups, and insurance due to personal time constraints and scheduling conflicts. The
+                    barrier isn&apos;t awareness; it&apos;s accessibility and convenience.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-h5 text-[#00ffb7] font-semibold mb-2">Solution Point</h4>
+                  <p className="text-[#8888aa] text-body-sm">
+                    The app provides a platform for users to connect with mental health professionals through
+                    video calls, overcoming both geographical and time constraints. Flexible scheduling,
+                    professional profiles with ratings, and in-app follow-up tools make ongoing care management practical.
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="lg:col-span-7 lg:order-1">
-              <div className="p-6 rounded-[32px] bg-[rgba(48,46,97,0.18)] border border-white/5">
-                <h4 className="text-white font-bold mb-6">Wireframe Interaction Flow</h4>
-                <div className="space-y-4">
+
+            {/* Parallel layout for Image and Interaction Flow */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              {/* Left Column: Phone Image (Order 2 on lg screens to alternate, or just keep left? Let's keep left for consistency since the list is long) */}
+              <div className="lg:col-span-5 sticky top-32">
+                <div className="w-full h-[500px] rounded-[32px] overflow-hidden border border-white/5 relative group bg-[#0c0c16] shadow-2xl shadow-black/50">
+                  <AnimatePresence mode="wait">
+                    <motion.img 
+                      key={activeFeature2Step}
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 0.8, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.4 }}
+                      src={`/images/dr-health/feature-2-step-${activeFeature2Step + 1}.png`}
+                      alt={`Feature 2 Step ${activeFeature2Step + 1}`} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" 
+                    />
+                  </AnimatePresence>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-transparent to-transparent pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Right Column: Interaction Flow */}
+              <div className="lg:col-span-7">
+                <div className="p-8 rounded-[40px] bg-[rgba(48,46,97,0.18)] border border-white/5">
+                  <h4 className="text-h4 text-white mb-8">Wireframe Interaction Flow</h4>
+                  <div className="space-y-3 relative">
+                    {/* Vertical connector line */}
+                    <div className="absolute left-[39px] top-8 bottom-8 w-0.5 bg-white/5 hidden md:block" />
+                    
                   {[
                     { step: "Navigate to Services", desc: "The user navigates to the mental health services section of the app through a main menu or a dashboard." },
                     { step: "Choose a Professional", desc: "The user is presented with a list of professionals and can view qualifications, expertise, and availability." },
@@ -537,18 +613,43 @@ export default function DrHealthCaseStudy() {
                     { step: "Attend the Consultation", desc: "At the scheduled time, the user attends the virtual consultation via a video call within the app." },
                     { step: "Follow-up & Continued Care", desc: "After consultation, the user can schedule follow-up appointments and track progress over time." }
                   ].map((flow, i) => (
-                    <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/5">
-                      <div className="w-8 h-8 shrink-0 rounded-full bg-[#00ffb7]/10 text-[#00ffb7] flex items-center justify-center font-bold text-xs">{i+1}</div>
-                      <div>
-                        <strong className="text-white block text-sm mb-1">{flow.step}</strong>
-                        <p className="text-[#8888aa] text-xs leading-relaxed">{flow.desc}</p>
-                      </div>
-                    </div>
-                  ))}
+                      <button 
+                        key={i} 
+                        onClick={() => setActiveFeature2Step(i)}
+                        className={`w-full text-left flex gap-5 p-5 rounded-3xl transition-all duration-300 relative z-10 ${
+                          activeFeature2Step === i 
+                            ? 'bg-[#00ffb7]/10 border border-[#00ffb7]/30 shadow-[0_0_30px_rgba(0,255,183,0.1)]' 
+                            : 'bg-transparent border border-transparent hover:bg-white/5'
+                        }`}
+                      >
+                        <div className={`w-10 h-10 shrink-0 rounded-full flex items-center justify-center font-bold text-sm transition-colors ${
+                          activeFeature2Step === i 
+                            ? 'bg-[#00ffb7] text-[#080810]' 
+                            : 'bg-white/5 text-[#8888aa]'
+                        }`}>
+                          {i+1}
+                        </div>
+                        <div className="pt-2">
+                          <strong className={`block text-base mb-2 transition-colors ${
+                            activeFeature2Step === i ? 'text-white' : 'text-white/70'
+                          }`}>
+                            {flow.step}
+                          </strong>
+                          <p className={`text-sm leading-relaxed transition-colors ${
+                            activeFeature2Step === i ? 'text-[#aaddcc]' : 'text-[#8888aa]'
+                          }`}>
+                            {flow.desc}
+                          </p>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </motion.div>
+
+
         </div>
       </section>
 
@@ -570,7 +671,7 @@ export default function DrHealthCaseStudy() {
         <div className="space-y-24">
           {/* Flow A */}
           <div>
-            <h3 className="text-h4 text-[#00ffb7] mb-8 text-center uppercase tracking-widest">Flow A; Motivational Reminders</h3>
+            <h3 className="text-h3 text-[#00ffb7] mb-8 text-center uppercase tracking-widest">Flow A; Motivational Reminders</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 { name: "01 — Set Fitness Goals", desc: "The screen allows users to set and save their fitness goals. This organized layout helps track progress.", rationale: "Fitts's Law applied to input field sizing. Hick's Law guided the decision to present only three goal categories to reduce decision fatigue." },
@@ -589,7 +690,7 @@ export default function DrHealthCaseStudy() {
                       </div>
                     </div>
                   </div>
-                  <h4 className="text-white font-bold mb-3">{screen.name}</h4>
+                  <h4 className="text-h5 text-white mb-3">{screen.name}</h4>
                   <p className="text-[#8888aa] text-xs leading-relaxed mb-4 flex-grow">{screen.desc}</p>
                   <div className="bg-[#00ffb7]/10 text-[#00ffb7] p-4 rounded-2xl text-xs leading-relaxed">
                     <strong className="block mb-1 text-white">Design Rationale:</strong>
@@ -602,7 +703,7 @@ export default function DrHealthCaseStudy() {
 
           {/* Flow B */}
           <div>
-            <h3 className="text-h4 text-[#00ffb7] mb-8 text-center uppercase tracking-widest">Flow B; Healthcare Access</h3>
+            <h3 className="text-h3 text-[#00ffb7] mb-8 text-center uppercase tracking-widest">Flow B; Healthcare Access</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 { name: "01 — Mental Health Services", desc: "Tracks progress in physical activities and provides an overview of achievements to encourage mental health.", rationale: "Continuity principle applied — the layout flows from summary to detail, guiding the user from awareness into action." },
@@ -622,7 +723,7 @@ export default function DrHealthCaseStudy() {
                       </div>
                     </div>
                   </div>
-                  <h4 className="text-white font-bold mb-3">{screen.name}</h4>
+                  <h4 className="text-h5 text-white mb-3">{screen.name}</h4>
                   <p className="text-[#8888aa] text-xs leading-relaxed mb-4 flex-grow">{screen.desc}</p>
                   <div className="bg-[#00ffb7]/10 text-[#00ffb7] p-4 rounded-2xl text-xs leading-relaxed">
                     <strong className="block mb-1 text-white">Design Rationale:</strong>
@@ -659,13 +760,13 @@ export default function DrHealthCaseStudy() {
             transition={{ duration: 0.8, ease: customEase }}
             className="space-y-8"
           >
-            <h3 className="text-h4 text-white flex items-center gap-3">
+            <h3 className="text-h3 text-white flex items-center gap-3">
               <span className="w-8 h-8 rounded-full bg-[#00ffb7]/20 text-[#00ffb7] flex items-center justify-center text-sm">✓</span>
               What Users Appreciated
             </h3>
 
             <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 hover:border-white/10 transition-colors">
-              <h4 className="text-white font-semibold mb-4">On the Progress Tracker (Flow A; Screen 05)</h4>
+              <h4 className="text-h5 text-white mb-4">On the Progress Tracker (Flow A; Screen 05)</h4>
               <blockquote className="text-[#8888aa] italic border-l-2 border-[#00ffb7] pl-4">
                 &quot;The screen has a sleek, modern look that&apos;s easy on the eyes. Finding my achievements,
                 points, and badges is effortless, thanks to the intuitive layout. The trophies, badges,
@@ -675,7 +776,7 @@ export default function DrHealthCaseStudy() {
             </div>
 
             <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 hover:border-white/10 transition-colors">
-              <h4 className="text-white font-semibold mb-4">On the Mental Health Services Dashboard (Flow B; Screen 01)</h4>
+              <h4 className="text-h5 text-white mb-4">On the Mental Health Services Dashboard (Flow B; Screen 01)</h4>
               <blockquote className="text-[#8888aa] italic border-l-2 border-[#00ffb7] pl-4">
                 &quot;The screen is simple and easy to navigate, making it accessible even for those who
                 aren&apos;t tech-savvy. The features align well with my health and fitness goals, and it&apos;s
@@ -694,14 +795,14 @@ export default function DrHealthCaseStudy() {
             transition={{ duration: 0.8, ease: customEase }}
             className="space-y-8"
           >
-            <h3 className="text-h4 text-white flex items-center gap-3">
+            <h3 className="text-h3 text-white flex items-center gap-3">
               <span className="w-8 h-8 rounded-full bg-[#ff0055]/20 text-[#ff0055] flex items-center justify-center text-sm">!</span>
               What Users Flagged &amp; Iterations
             </h3>
 
             <div className="space-y-6">
               <div className="p-8 rounded-[32px] bg-[rgba(48,46,97,0.18)] border border-white/5 hover:border-white/10 transition-colors">
-                <h4 className="text-white font-bold mb-2">1. Graph Legibility on the Progress Tracker</h4>
+                <h4 className="text-h5 text-white mb-2">1. Graph Legibility on the Progress Tracker</h4>
                 <p className="text-[#8888aa] mb-4 text-sm">
                   The graph showing points earned lacked a legend or contextual labels; users couldn&apos;t interpret it at a glance.
                 </p>
@@ -712,7 +813,7 @@ export default function DrHealthCaseStudy() {
               </div>
 
               <div className="p-8 rounded-[32px] bg-[rgba(48,46,97,0.18)] border border-white/5 hover:border-white/10 transition-colors">
-                <h4 className="text-white font-bold mb-2">2. Goal Customization Depth</h4>
+                <h4 className="text-h5 text-white mb-2">2. Goal Customization Depth</h4>
                 <p className="text-[#8888aa] mb-4 text-sm">
                   Users wanted the ability to customize the types of goals and activities displayed based on their personal routines; the default set felt too generic.
                 </p>
@@ -723,7 +824,7 @@ export default function DrHealthCaseStudy() {
               </div>
 
               <div className="p-8 rounded-[32px] bg-[rgba(48,46,97,0.18)] border border-white/5 hover:border-white/10 transition-colors">
-                <h4 className="text-white font-bold mb-2">3. In-App Goal Notifications</h4>
+                <h4 className="text-h5 text-white mb-2">3. In-App Goal Notifications</h4>
                 <p className="text-[#8888aa] mb-4 text-sm">
                   Adding notifications or reminders for reaching goals and earning points was flagged as a missing engagement layer.
                 </p>
