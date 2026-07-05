@@ -23,7 +23,7 @@ export default function DrHealthCaseStudy() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-20 px-6 md:px-16 max-w-[1400px] mx-auto min-h-[80vh] flex flex-col justify-center">
+      <section className="relative pt-40 pb-20 px-6 md:px-16 max-w-[1400px] mx-auto min-h-[80vh] flex flex-col justify-center items-center text-center">
         {/* Background Radial Glow */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#00ffb7] opacity-[0.03] blur-[150px] rounded-full pointer-events-none" />
 
@@ -40,7 +40,7 @@ export default function DrHealthCaseStudy() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1, ease: customEase }}
-          className="text-h1 leading-tight mb-8 max-w-5xl"
+          className="text-h1 leading-tight mb-8 max-w-5xl mx-auto"
         >
           Translating Research Insights on Preventive Healthcare into App Design
         </motion.h1>
@@ -49,7 +49,7 @@ export default function DrHealthCaseStudy() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: customEase }}
-          className="text-[#8888aa] text-body-lg max-w-3xl mb-16"
+          className="text-[#8888aa] text-body-lg max-w-3xl mb-16 mx-auto"
         >
           Dr.Health is a research-led mobile experience designed to empower urban Indians to take
           proactive control of their health; built on validated user problems, driven by
@@ -130,9 +130,10 @@ export default function DrHealthCaseStudy() {
               has a reason grounded in what users actually said, felt, and struggled with.
             </p>
             <div className="pt-4">
-              <a href="#" className="inline-flex items-center gap-2 text-[#00ffb7] hover:text-white transition-colors font-medium">
-                &rarr; Read the full research behind this project: [View Research Case Study]
-              </a>
+              <Link href="/projects/preventive-research" className="inline-flex items-center gap-2 text-[#00ffb7] hover:text-white transition-colors font-medium group">
+                &rarr; Read the full research behind this project:
+                <span className="underline underline-offset-4 group-hover:no-underline transition-all">View Research Case Study</span>
+              </Link>
             </div>
           </motion.div>
         </div>
