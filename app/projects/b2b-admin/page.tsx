@@ -69,7 +69,7 @@ export default function B2BAdminCaseStudy() {
           </div>
           <div>
             <h4 className="text-white font-semibold text-sm mb-1 uppercase tracking-wider flex items-center gap-2">
-              ⚠️ NDA Notice
+              NDA Notice
             </h4>
             <p className="text-[#8888aa] text-xs leading-relaxed">
               This project is presented under non-disclosure agreement (NDA). The product name, branding details, and private configurations have been anonymized.
@@ -85,9 +85,9 @@ export default function B2BAdminCaseStudy() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: customEase }}
-          className="w-full rounded-[40px] overflow-hidden mb-16 relative border border-white/5 group shadow-2xl shadow-[#0066ff]/5"
+          className="w-full h-[600px] md:h-[900px] rounded-[40px] overflow-hidden mb-16 relative border border-white/5 group shadow-2xl shadow-[#0066ff]/5 bg-[#0c0c16]/30"
         >
-          <img src="/projects/b2b-admin/hero.png" alt="B2B Admin Control Center Mockup Redesign" className="w-full h-auto object-contain opacity-80 group-hover:scale-[1.02] transition-transform duration-[1200ms] ease-out" />
+          <img src="/projects/b2b-admin/hero.png" alt="B2B Admin Control Center Mockup Redesign" className="w-full h-full object-cover object-top opacity-80 group-hover:scale-[1.02] transition-transform duration-[1200ms] ease-out" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-[#080810]/20 to-transparent opacity-80 pointer-events-none" />
         </motion.div>
 
@@ -96,7 +96,7 @@ export default function B2BAdminCaseStudy() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: customEase }}
-          className="grid grid-cols-2 md:grid-cols-5 gap-px bg-white/5 rounded-[32px] overflow-hidden border border-white/5 backdrop-blur-sm"
+          className="grid grid-cols-2 md:grid-cols-5 gap-px bg-white/5 rounded-[32px] overflow-hidden border border-white/5 backdrop-blur-sm w-full"
         >
           {[
             { num: "76", label: "Screens Designed" },
@@ -105,7 +105,7 @@ export default function B2BAdminCaseStudy() {
             { num: "Web", label: "Admin Panel" },
             { num: "ReactJS", label: "Migration Platform" },
           ].map((stat, i) => (
-            <div key={i} className="bg-[#080810]/80 p-8 flex flex-col gap-2 hover:bg-[#0066ff]/5 transition-colors duration-300">
+            <div key={i} className="bg-[#080810]/80 p-8 flex flex-col items-center justify-center gap-2 hover:bg-[#0066ff]/5 transition-colors duration-300 text-center">
               <span className="text-h2 text-white">{stat.num}</span>
               <span className="text-xs md:text-sm text-[#8888aa]">{stat.label}</span>
             </div>

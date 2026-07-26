@@ -64,10 +64,10 @@ export default function DrHealthCaseStudy() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: customEase }}
-          className="w-full h-[350px] md:h-[500px] rounded-[32px] overflow-hidden mb-12 relative border border-white/5 group"
+          className="w-full h-[600px] md:h-[900px] rounded-[40px] overflow-hidden mb-16 relative border border-white/5 group shadow-2xl shadow-[#00ffb7]/5 bg-[#0c0c16]/30"
         >
-          <img src="/images/dr-health/hero.png" alt="Dr Health Hero" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000 ease-out" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-transparent to-transparent opacity-80" />
+          <img src="/projects/dr-health/hero.png" alt="Dr Health Hero" className="w-full h-full object-cover opacity-80 group-hover:scale-[1.02] transition-transform duration-[1200ms] ease-out" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-[#080810]/20 to-transparent opacity-80 pointer-events-none" />
         </motion.div>
 
         {/* Project Stats Bar */}
@@ -75,24 +75,19 @@ export default function DrHealthCaseStudy() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: customEase }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-[32px] bg-white/[0.02] border border-white/5 backdrop-blur-sm"
+          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-[32px] overflow-hidden border border-white/5 backdrop-blur-sm w-full"
         >
-          <div className="flex flex-col gap-2">
-            <span className="text-h3 text-white">2</span>
-            <span className="text-sm text-[#8888aa]">Features Designed End-to-End</span>
-          </div>
-          <div className="flex flex-col gap-2">
-            <span className="text-h3 text-white">2</span>
-            <span className="text-sm text-[#8888aa]">User Personas Tested</span>
-          </div>
-          <div className="flex flex-col gap-2">
-            <span className="text-h3 text-white">11</span>
-            <span className="text-sm text-[#8888aa]">Hi-Fi Screens</span>
-          </div>
-          <div className="flex flex-col gap-2">
-            <span className="text-h3 text-white">4</span>
-            <span className="text-sm text-[#8888aa]">Design Principles Applied</span>
-          </div>
+          {[
+            { num: "2", label: "Features Designed" },
+            { num: "2", label: "Personas Tested" },
+            { num: "11", label: "Hi-Fi Screens" },
+            { num: "4", label: "Design Principles" },
+          ].map((stat, i) => (
+            <div key={i} className="bg-[#080810]/80 p-8 flex flex-col items-center justify-center gap-2 hover:bg-[#00ffb7]/5 transition-colors duration-300 text-center">
+              <span className="text-h2 text-white">{stat.num}</span>
+              <span className="text-xs md:text-sm text-[#8888aa]">{stat.label}</span>
+            </div>
+          ))}
         </motion.div>
       </section>
 
@@ -475,7 +470,7 @@ export default function DrHealthCaseStudy() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               {/* Left Column: Phone Image */}
               <div className="lg:col-span-5 sticky top-32">
-                <div className="w-full h-[500px] rounded-[32px] overflow-hidden border border-white/5 relative group bg-[#0c0c16] shadow-2xl shadow-black/50">
+                <div className="w-full rounded-[32px] overflow-hidden border border-white/5 relative group bg-[#0c0c16] shadow-2xl shadow-black/50">
                   <AnimatePresence mode="wait">
                     <motion.img 
                       key={activeFeature1Step}
@@ -483,12 +478,12 @@ export default function DrHealthCaseStudy() {
                       animate={{ opacity: 0.8, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.4 }}
-                      src={`/images/dr-health/feature-1-step-${activeFeature1Step + 1}.png`}
+                      src={`/projects/dr-health/feature 1 step ${activeFeature1Step + 1}.png`}
                       alt={`Feature 1 Step ${activeFeature1Step + 1}`} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" 
+                      className="w-auto h-auto max-h-[600px] mx-auto object-contain group-hover:scale-105 transition-transform duration-1000 ease-out py-8" 
                     />
                   </AnimatePresence>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-transparent to-transparent pointer-events-none" />
+                  
                 </div>
               </div>
 
@@ -581,7 +576,7 @@ export default function DrHealthCaseStudy() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               {/* Left Column: Phone Image (Order 2 on lg screens to alternate, or just keep left? Let's keep left for consistency since the list is long) */}
               <div className="lg:col-span-5 sticky top-32">
-                <div className="w-full h-[500px] rounded-[32px] overflow-hidden border border-white/5 relative group bg-[#0c0c16] shadow-2xl shadow-black/50">
+                <div className="w-full rounded-[32px] overflow-hidden border border-white/5 relative group bg-[#0c0c16] shadow-2xl shadow-black/50">
                   <AnimatePresence mode="wait">
                     <motion.img 
                       key={activeFeature2Step}
@@ -589,12 +584,12 @@ export default function DrHealthCaseStudy() {
                       animate={{ opacity: 0.8, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.4 }}
-                      src={`/images/dr-health/feature-2-step-${activeFeature2Step + 1}.png`}
+                      src={`/projects/dr-health/feature 2 step ${activeFeature2Step + 1}.png`}
                       alt={`Feature 2 Step ${activeFeature2Step + 1}`} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" 
+                      className="w-auto h-auto max-h-[600px] mx-auto object-contain group-hover:scale-105 transition-transform duration-1000 ease-out py-8" 
                     />
                   </AnimatePresence>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-transparent to-transparent pointer-events-none" />
+                  
                 </div>
               </div>
 
@@ -681,14 +676,9 @@ export default function DrHealthCaseStudy() {
                 { name: "05 — Progress Tracker", desc: "Provides a clear overview of fitness progress, including badges, activity graph, and goals.", rationale: "The Golden Ratio proportioning is visible here — creating a natural visual hierarchy. Similarity principle applied through consistent icon styles." }
               ].map((screen, i) => (
                 <div key={i} className="bg-[rgba(48,46,97,0.18)] p-6 rounded-3xl border border-white/5 flex flex-col group">
-                  <div className="w-full aspect-[9/16] rounded-2xl mb-6 border border-white/5 relative overflow-hidden bg-black/50">
-                    <img src="/images/dr-health/feature-1.png" alt={screen.name} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out grayscale group-hover:grayscale-0" style={{ objectPosition: `center ${i * 20}%` }} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#080810] to-transparent opacity-80" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white/80 border border-white/20">
-                        <i className={`ti ti-device-mobile text-3xl`} />
-                      </div>
-                    </div>
+                  <div className="w-full aspect-[9/20] rounded-2xl mb-6 border border-white/5 relative overflow-hidden bg-[#0c0c16]">
+                    <img src={`/projects/dr-health/flow a 0${i + 1}.png`} alt={screen.name} className="w-auto h-full mx-auto object-contain opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out grayscale group-hover:grayscale-0 py-4" />
+
                   </div>
                   <h4 className="text-h5 text-white mb-3">{screen.name}</h4>
                   <p className="text-[#8888aa] text-xs leading-relaxed mb-4 flex-grow">{screen.desc}</p>
@@ -714,14 +704,9 @@ export default function DrHealthCaseStudy() {
                 { name: "06 — Consultation Summary", desc: "Centralizes educational materials and scheduling for follow-up appointments after a call.", rationale: "Closure principle applied post-consultation — signals a complete interaction and presents the logical next step without forcing it." }
               ].map((screen, i) => (
                 <div key={i} className="bg-[rgba(48,46,97,0.18)] p-6 rounded-3xl border border-white/5 flex flex-col group">
-                  <div className="w-full aspect-[9/16] rounded-2xl mb-6 border border-white/5 relative overflow-hidden bg-black/50">
-                    <img src="/images/dr-health/feature-2.png" alt={screen.name} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out grayscale group-hover:grayscale-0" style={{ objectPosition: `center ${i * 15}%` }} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#080810] to-transparent opacity-80" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white/80 border border-white/20">
-                        <i className={`ti ti-heart-rate-monitor text-3xl`} />
-                      </div>
-                    </div>
+                  <div className="w-full aspect-[9/20] rounded-2xl mb-6 border border-white/5 relative overflow-hidden bg-[#0c0c16]">
+                    <img src={`/projects/dr-health/flow b 0${i + 1}.png`} alt={screen.name} className="w-auto h-full mx-auto object-contain opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out grayscale group-hover:grayscale-0 py-4" />
+
                   </div>
                   <h4 className="text-h5 text-white mb-3">{screen.name}</h4>
                   <p className="text-[#8888aa] text-xs leading-relaxed mb-4 flex-grow">{screen.desc}</p>
@@ -737,102 +722,104 @@ export default function DrHealthCaseStudy() {
       </section>
 
       {/* Testing & Validation Section */}
-      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto">
+      <section className="py-24 px-6 md:px-16 max-w-5xl mx-auto border-t border-white/5">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
-          className="text-center mb-16"
+          className="mb-16"
         >
           <h2 className="text-h2 text-white mb-6">User Validation &amp; Iteration</h2>
-          <p className="text-[#8888aa] text-lg max-w-2xl mx-auto">
+          <p className="text-[#8888aa] text-body-lg">
             Direct feedback from moderated usability testing drove the final polish of the experience.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="space-y-24">
           {/* What Users Appreciated */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: customEase }}
-            className="space-y-8"
           >
-            <h3 className="text-h3 text-white flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-[#00ffb7]/20 text-[#00ffb7] flex items-center justify-center text-sm">✓</span>
+            <h3 className="text-h3 text-white mb-8 flex items-center gap-4 border-b border-white/5 pb-4">
+              <span className="w-8 h-8 rounded-full bg-[#00ffb7]/10 text-[#00ffb7] flex items-center justify-center text-sm border border-[#00ffb7]/20">✓</span>
               What Users Appreciated
             </h3>
 
-            <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 hover:border-white/10 transition-colors">
-              <h4 className="text-h5 text-white mb-4">On the Progress Tracker (Flow A; Screen 05)</h4>
-              <blockquote className="text-[#8888aa] italic border-l-2 border-[#00ffb7] pl-4">
-                &quot;The screen has a sleek, modern look that&apos;s easy on the eyes. Finding my achievements,
-                points, and badges is effortless, thanks to the intuitive layout. The trophies, badges,
-                and points add a fun, rewarding touch, making progress feel exciting. Plus, every
-                activity is clearly listed with its time and date, so I always know exactly where I stand.&quot;
-              </blockquote>
-            </div>
+            <div className="space-y-10 pl-2">
+              <div className="pl-6 border-l-2 border-[#00ffb7]/30 relative">
+                <div className="absolute w-2 h-2 rounded-full bg-[#00ffb7] -left-[5px] top-2" />
+                <h4 className="text-h5 text-white mb-3">Progress Tracker</h4>
+                <p className="text-[#8888aa] italic leading-relaxed text-body-lg">
+                  &quot;The screen has a sleek, modern look that&apos;s easy on the eyes. Finding my achievements,
+                  points, and badges is effortless, thanks to the intuitive layout. The trophies, badges,
+                  and points add a fun, rewarding touch.&quot;
+                </p>
+              </div>
 
-            <div className="p-8 rounded-[32px] bg-white/[0.03] border border-white/5 hover:border-white/10 transition-colors">
-              <h4 className="text-h5 text-white mb-4">On the Mental Health Services Dashboard (Flow B; Screen 01)</h4>
-              <blockquote className="text-[#8888aa] italic border-l-2 border-[#00ffb7] pl-4">
-                &quot;The screen is simple and easy to navigate, making it accessible even for those who
-                aren&apos;t tech-savvy. The features align well with my health and fitness goals, and it&apos;s
-                great to have all this essential information in one place. Plus, being able to share
-                progress and update goals directly from this screen keeps me more engaged and motivated
-                to stay on track.&quot;
-              </blockquote>
+              <div className="pl-6 border-l-2 border-[#00ffb7]/30 relative">
+                <div className="absolute w-2 h-2 rounded-full bg-[#00ffb7] -left-[5px] top-2" />
+                <h4 className="text-h5 text-white mb-3">Mental Health Dashboard</h4>
+                <p className="text-[#8888aa] italic leading-relaxed text-body-lg">
+                  &quot;The screen is simple and easy to navigate, making it accessible even for those who
+                  aren&apos;t tech-savvy. The features align well with my health and fitness goals, and it&apos;s
+                  great to have all this essential information in one place.&quot;
+                </p>
+              </div>
             </div>
           </motion.div>
 
           {/* What Users Flagged for Improvement */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: customEase }}
-            className="space-y-8"
           >
-            <h3 className="text-h3 text-white flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-[#ff0055]/20 text-[#ff0055] flex items-center justify-center text-sm">!</span>
+            <h3 className="text-h3 text-white mb-8 flex items-center gap-4 border-b border-white/5 pb-4">
+              <span className="w-8 h-8 rounded-full bg-[#ff0055]/10 text-[#ff0055] flex items-center justify-center text-sm border border-[#ff0055]/20">!</span>
               What Users Flagged &amp; Iterations
             </h3>
 
-            <div className="space-y-6">
-              <div className="p-8 rounded-[32px] bg-[rgba(48,46,97,0.18)] border border-white/5 hover:border-white/10 transition-colors">
-                <h4 className="text-h5 text-white mb-2">1. Graph Legibility on the Progress Tracker</h4>
-                <p className="text-[#8888aa] mb-4 text-sm">
-                  The graph showing points earned lacked a legend or contextual labels; users couldn&apos;t interpret it at a glance.
-                </p>
-                <div className="bg-[#00ffb7]/10 text-[#00ffb7] p-4 rounded-2xl text-sm">
-                  <strong className="block mb-1 text-white">Design Response:</strong>
-                  A legend and axis labels were added to the progress graph to resolve ambiguity without adding visual clutter.
+            <div className="space-y-8 pl-2">
+              {[
+                { 
+                  title: "Graph Legibility", 
+                  problem: "The graph showing points earned lacked a legend or contextual labels; users couldn't interpret it at a glance.", 
+                  response: "A legend and axis labels were added to the progress graph to resolve ambiguity without adding visual clutter." 
+                },
+                { 
+                  title: "Goal Customization", 
+                  problem: "Users wanted the ability to customize the types of goals and activities displayed based on their personal routines.", 
+                  response: "A 'Customize Goals' option was surfaced on the Progress Tracker screen, allowing users to add, remove, and reorder activity types." 
+                },
+                { 
+                  title: "Goal Notifications", 
+                  problem: "Adding notifications or reminders for reaching goals and earning points was flagged as a missing engagement layer.", 
+                  response: "Achievement notifications were added as a configurable option within the Motivational Reminders settings." 
+                }
+              ].map((item, i) => (
+                <div key={i} className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                  <div className="md:col-span-1 pt-1 hidden md:block">
+                    <div className="w-8 h-8 rounded-full bg-[#ff0055]/10 text-[#ff0055] flex items-center justify-center text-xs font-bold font-mono">0{i+1}</div>
+                  </div>
+                  <div className="md:col-span-5 space-y-2">
+                    <h4 className="text-h5 text-white flex items-center gap-3">
+                      <span className="md:hidden w-6 h-6 rounded-full bg-[#ff0055]/10 text-[#ff0055] flex items-center justify-center text-[10px] font-bold font-mono">0{i+1}</span>
+                      {item.title}
+                    </h4>
+                    <p className="text-[#8888aa] text-sm leading-relaxed">{item.problem}</p>
+                  </div>
+                  <div className="md:col-span-6 bg-[#00ffb7]/5 p-5 rounded-2xl border border-[#00ffb7]/10 relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#00ffb7] opacity-[0.03] blur-[30px] rounded-full pointer-events-none group-hover:opacity-[0.06] transition-opacity duration-500" />
+                    <strong className="block mb-2 text-[#00ffb7] text-xs tracking-wide uppercase">Design Response</strong>
+                    <p className="text-[#aaddcc] text-sm leading-relaxed">{item.response}</p>
+                  </div>
                 </div>
-              </div>
-
-              <div className="p-8 rounded-[32px] bg-[rgba(48,46,97,0.18)] border border-white/5 hover:border-white/10 transition-colors">
-                <h4 className="text-h5 text-white mb-2">2. Goal Customization Depth</h4>
-                <p className="text-[#8888aa] mb-4 text-sm">
-                  Users wanted the ability to customize the types of goals and activities displayed based on their personal routines; the default set felt too generic.
-                </p>
-                <div className="bg-[#00ffb7]/10 text-[#00ffb7] p-4 rounded-2xl text-sm">
-                  <strong className="block mb-1 text-white">Design Response:</strong>
-                  A &quot;Customize Goals&quot; option was surfaced on the Progress Tracker screen, allowing users to add, remove, and reorder activity types.
-                </div>
-              </div>
-
-              <div className="p-8 rounded-[32px] bg-[rgba(48,46,97,0.18)] border border-white/5 hover:border-white/10 transition-colors">
-                <h4 className="text-h5 text-white mb-2">3. In-App Goal Notifications</h4>
-                <p className="text-[#8888aa] mb-4 text-sm">
-                  Adding notifications or reminders for reaching goals and earning points was flagged as a missing engagement layer.
-                </p>
-                <div className="bg-[#00ffb7]/10 text-[#00ffb7] p-4 rounded-2xl text-sm">
-                  <strong className="block mb-1 text-white">Design Response:</strong>
-                  Achievement notifications were added as a configurable option within the Motivational Reminders settings; linked to the existing customization flow.
-                </div>
-              </div>
+              ))}
             </div>
           </motion.div>
         </div>

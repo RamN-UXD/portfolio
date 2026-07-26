@@ -213,32 +213,32 @@ export default function PreventiveResearchCaseStudy() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.25, ease: customEase }}
-          className="w-full max-w-5xl mx-auto mb-16 rounded-[32px] overflow-hidden border border-white/10 shadow-2xl relative"
+          className="w-full h-[600px] md:h-[900px] rounded-[40px] overflow-hidden mb-16 relative border border-white/5 group shadow-2xl shadow-[#cc63ff]/5 bg-[#0c0c16]/30"
         >
           <img
             src="/images/preventive/hero.png"
             alt="Urban India — preventive healthcare research context"
-            className="w-full h-auto object-cover max-h-[55vh]"
+            className="w-full h-full object-cover opacity-80 group-hover:scale-[1.02] transition-transform duration-[1200ms] ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-transparent to-transparent opacity-70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-[#080810]/20 to-transparent opacity-80 pointer-events-none" />
         </motion.div>
 
-        {/* Project Metadata Bar */}
+        {/* Project Stats Bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: customEase }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-[32px] overflow-hidden border border-white/5 backdrop-blur-sm w-full max-w-4xl mx-auto"
+          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-[32px] overflow-hidden border border-white/5 backdrop-blur-sm w-full"
         >
           {[
-            { label: "My Role", value: "Lead UX Researcher & Strategist" },
-            { label: "Duration", value: "6 months" },
-            { label: "Team Size", value: "Solo" },
-            { label: "Project Type", value: "End-to-End Research + Design" },
-          ].map((meta, i) => (
-            <div key={i} className="bg-[#080810]/80 p-8 flex flex-col gap-2 hover:bg-[#cc63ff]/5 transition-colors duration-300">
-              <span className="text-[10px] uppercase tracking-widest text-[#8888aa]">{meta.label}</span>
-              <span className="text-sm font-bold text-white">{meta.value}</span>
+            { num: "18", label: "Problems Validated" },
+            { num: "35.7L Cr", label: "Risk Mapped (₹)" },
+            { num: "114", label: "Solutions Designed" },
+            { num: "Solo", label: "End-to-End UX" },
+          ].map((stat, i) => (
+            <div key={i} className="bg-[#080810]/80 p-8 flex flex-col items-center justify-center gap-2 hover:bg-[#cc63ff]/5 transition-colors duration-300 text-center">
+              <span className="text-h2 text-white">{stat.num}</span>
+              <span className="text-xs md:text-sm text-[#8888aa]">{stat.label}</span>
             </div>
           ))}
         </motion.div>

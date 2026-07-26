@@ -144,7 +144,7 @@ export default function NCVIconSystem() {
 
         {/* Hero Visual — animated icon grid */}
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3, ease: customEase }}
-          className="relative w-full h-[360px] md:h-[480px] rounded-[40px] overflow-hidden border border-white/5 bg-[rgba(48,46,97,0.10)] mb-16 group">
+          className="relative w-full h-[600px] md:h-[900px] rounded-[40px] overflow-hidden border border-white/5 bg-[rgba(48,46,97,0.10)] mb-16 group shadow-2xl shadow-[#ff6b00]/5">
           <div className="absolute inset-0 bg-gradient-to-br from-[#ff6b00]/5 via-transparent to-[#0066ff]/5" />
           <div className="absolute inset-0 grid grid-cols-5 md:grid-cols-10 gap-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
             {Array.from({ length: 60 }).map((_, i) => (
@@ -170,16 +170,16 @@ export default function NCVIconSystem() {
 
         {/* Stats Bar */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4, ease: customEase }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-[28px] overflow-hidden border border-white/5">
+          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-[32px] overflow-hidden border border-white/5 backdrop-blur-sm w-full">
           {[
             { num: "55", label: "Custom Icons" },
             { num: "64×64", label: "px Structured Artboard" },
             { num: "4", label: "Process Stages" },
             { num: "5", label: "Website Sections Covered" },
           ].map((stat, i) => (
-            <div key={i} className="bg-[#080810] px-8 py-8 flex flex-col gap-2">
+            <div key={i} className="bg-[#080810]/80 p-8 flex flex-col items-center justify-center gap-2 hover:bg-[#ff6b00]/5 transition-colors duration-300 text-center">
               <span className="text-h2 text-white">{stat.num}</span>
-              <span className="text-sm text-[#8888aa]">{stat.label}</span>
+              <span className="text-xs md:text-sm text-[#8888aa]">{stat.label}</span>
             </div>
           ))}
         </motion.div>
