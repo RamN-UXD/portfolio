@@ -7,28 +7,63 @@ import CustomCursor from "../../../components/CustomCursor";
 
 const customEase = [0.16, 1, 0.3, 1];
 
-/* ─── Inline SVG icon components (sustainability themed) ─── */
+/* ─── All 55 NCV icon assets ─── */
 const icons = [
-  { label: "Leaf",            path: "M32 8 C32 8 12 20 12 36 C12 48 22 56 32 56 C42 56 52 48 52 36 C52 20 32 8 32 8Z M32 56 L32 32 M32 32 L20 22" },
-  { label: "Sun",             path: "M32 20 A12 12 0 1 1 31.99 20Z M32 8 V12 M32 52 V56 M8 32 H12 M52 32 H56 M15 15 L18 18 M46 46 L49 49 M49 15 L46 18 M18 46 L15 49" },
-  { label: "Wind",            path: "M10 24 C20 24 40 24 50 24 C56 24 56 16 50 16 C44 16 44 24 44 24 M10 32 H52 M10 40 C20 40 36 40 44 40 C50 40 50 48 44 48 C38 48 38 40 38 40" },
-  { label: "Recycle",         path: "M32 12 L22 28 H26 C26 28 20 44 32 52 C44 44 38 28 42 28 H46 Z M22 28 L16 40 M42 28 L48 40" },
-  { label: "Factory",         path: "M10 52 H54 M10 52 V28 L22 36 V24 L34 32 V20 L46 28 V52 M18 52 V42 H26 V52 M34 52 V40 H42 V52" },
-  { label: "Globe",           path: "M32 12 A20 20 0 1 1 31.99 12Z M12 32 H52 M20 14 C20 14 26 32 20 50 M44 14 C44 14 38 32 44 50 M32 12 V52" },
-  { label: "Lightning",       path: "M36 10 L24 34 H32 L28 54 L44 26 H36 Z" },
-  { label: "Chart",           path: "M12 52 H52 M12 52 V12 M20 40 V36 M28 40 V24 M36 40 V30 M44 40 V18" },
-  { label: "Shield",          path: "M32 10 L12 20 V34 C12 44 22 52 32 56 C42 52 52 44 52 34 V20 Z M24 32 L30 38 L40 26" },
-  { label: "Target",          path: "M32 12 A20 20 0 1 1 31.99 12Z M32 20 A12 12 0 1 1 31.99 20Z M32 28 A4 4 0 1 1 31.99 28Z M32 8 V14 M32 50 V56 M8 32 H14 M50 32 H56" },
-  { label: "Cloud",           path: "M20 44 C14 44 10 40 10 35 C10 30 14 26 20 26 C20 26 22 18 30 18 C38 18 42 26 42 26 C46 26 50 30 50 35 C50 40 46 44 42 44 Z" },
-  { label: "Compass",         path: "M32 12 A20 20 0 1 1 31.99 12Z M32 12 V18 M32 46 V52 M12 32 H18 M46 32 H52 M26 26 L32 32 L38 38 M38 26 L32 32" },
-  { label: "Droplet",         path: "M32 10 C32 10 16 26 16 38 A16 16 0 0 0 48 38 C48 26 32 10 32 10Z" },
-  { label: "Grid",            path: "M14 14 H26 V26 H14 Z M38 14 H50 V26 H38 Z M14 38 H26 V50 H14 Z M38 38 H50 V50 H38 Z" },
-  { label: "Network",         path: "M20 32 A6 6 0 1 1 19.99 32Z M44 20 A6 6 0 1 1 43.99 20Z M44 44 A6 6 0 1 1 43.99 44Z M25 30 L39 23 M25 34 L39 41" },
-  { label: "Diamond",         path: "M32 12 L52 28 L32 52 L12 28 Z M12 28 H52" },
-  { label: "Hexagon",         path: "M32 10 L50 21 L50 43 L32 54 L14 43 L14 21 Z M32 10 V54 M14 21 L50 43 M50 21 L14 43" },
-  { label: "Layers",          path: "M10 32 L32 22 L54 32 L32 42 Z M10 38 L32 48 L54 38 M10 26 L32 16 L54 26" },
-  { label: "Settings",        path: "M32 22 A10 10 0 1 1 31.99 22Z M32 10 V14 M32 50 V54 M12 32 H16 M48 32 H52 M17 17 L20 20 M44 44 L47 47 M47 17 L44 20 M20 44 L17 47" },
-  { label: "Star",            path: "M32 10 L36 24 H52 L40 34 L44 48 L32 40 L20 48 L24 34 L12 24 H28 Z" },
+  { label: "Icon 1",  src: "/projects/ncv-icons/icon 1.svg" },
+  { label: "Icon 2",  src: "/projects/ncv-icons/icon 2.svg" },
+  { label: "Icon 3",  src: "/projects/ncv-icons/icon 3.svg" },
+  { label: "Icon 4",  src: "/projects/ncv-icons/icon 4.svg" },
+  { label: "Icon 5",  src: "/projects/ncv-icons/icon 5.svg" },
+  { label: "Icon 6",  src: "/projects/ncv-icons/icon 6.svg" },
+  { label: "Icon 7",  src: "/projects/ncv-icons/icon 7.svg" },
+  { label: "Icon 8",  src: "/projects/ncv-icons/icon 8.svg" },
+  { label: "Icon 9",  src: "/projects/ncv-icons/icon 9.svg" },
+  { label: "Icon 10", src: "/projects/ncv-icons/icon 10.svg" },
+  { label: "Icon 11", src: "/projects/ncv-icons/icon 11.svg" },
+  { label: "Icon 12", src: "/projects/ncv-icons/icon 12.svg" },
+  { label: "Icon 13", src: "/projects/ncv-icons/icon 13.svg" },
+  { label: "Icon 14", src: "/projects/ncv-icons/icon 14.svg" },
+  { label: "Icon 15", src: "/projects/ncv-icons/icon 15.svg" },
+  { label: "Icon 16", src: "/projects/ncv-icons/icon 16.svg" },
+  { label: "Icon 17", src: "/projects/ncv-icons/icon 17.svg" },
+  { label: "Icon 18", src: "/projects/ncv-icons/icon 18.svg" },
+  { label: "Icon 19", src: "/projects/ncv-icons/icon 19.svg" },
+  { label: "Icon 20", src: "/projects/ncv-icons/icon 20.svg" },
+  { label: "Icon 21", src: "/projects/ncv-icons/icon 21.svg" },
+  { label: "Icon 22", src: "/projects/ncv-icons/icon 22.svg" },
+  { label: "Icon 23", src: "/projects/ncv-icons/icon 23.svg" },
+  { label: "Icon 24", src: "/projects/ncv-icons/icon 24.svg" },
+  { label: "Icon 25", src: "/projects/ncv-icons/icon 25.svg" },
+  { label: "Icon 26", src: "/projects/ncv-icons/icon 26.svg" },
+  { label: "Icon 27", src: "/projects/ncv-icons/icon 27.svg" },
+  { label: "Icon 28", src: "/projects/ncv-icons/icon 28.svg" },
+  { label: "Icon 29", src: "/projects/ncv-icons/icon 29.svg" },
+  { label: "Icon 30", src: "/projects/ncv-icons/icon 30.svg" },
+  { label: "Icon 31", src: "/projects/ncv-icons/icon 31.svg" },
+  { label: "Icon 32", src: "/projects/ncv-icons/icon 32.svg" },
+  { label: "Icon 33", src: "/projects/ncv-icons/icon 33.svg" },
+  { label: "Icon 34", src: "/projects/ncv-icons/icon 34.svg" },
+  { label: "Icon 35", src: "/projects/ncv-icons/icon 35.svg" },
+  { label: "Icon 36", src: "/projects/ncv-icons/icon 36.svg" },
+  { label: "Icon 37", src: "/projects/ncv-icons/icon 37.svg" },
+  { label: "Icon 38", src: "/projects/ncv-icons/icon 38.svg" },
+  { label: "Icon 39", src: "/projects/ncv-icons/icon 39.svg" },
+  { label: "Icon 40", src: "/projects/ncv-icons/icon 40.svg" },
+  { label: "Icon 41", src: "/projects/ncv-icons/icon 41.svg" },
+  { label: "Icon 42", src: "/projects/ncv-icons/icon 42.svg" },
+  { label: "Icon 43", src: "/projects/ncv-icons/icon 43.svg" },
+  { label: "Icon 44", src: "/projects/ncv-icons/icon 44.svg" },
+  { label: "Icon 45", src: "/projects/ncv-icons/icon 45.svg" },
+  { label: "Icon 46", src: "/projects/ncv-icons/icon 46.svg" },
+  { label: "Icon 47", src: "/projects/ncv-icons/icon 47.svg" },
+  { label: "Icon 48", src: "/projects/ncv-icons/icon 48.svg" },
+  { label: "Icon 49", src: "/projects/ncv-icons/icon 49.svg" },
+  { label: "Icon 50", src: "/projects/ncv-icons/icon 50.svg" },
+  { label: "Icon 51", src: "/projects/ncv-icons/icon 51.svg" },
+  { label: "Icon 52", src: "/projects/ncv-icons/icon 52.svg" },
+  { label: "Icon 53", src: "/projects/ncv-icons/icon 53.svg" },
+  { label: "Icon 54", src: "/projects/ncv-icons/icon 54.svg" },
+  { label: "Icon 55", src: "/projects/ncv-icons/icon 55.svg" },
 ];
 
 const specRows = [
@@ -142,30 +177,11 @@ export default function NCVIconSystem() {
           55 custom line icons; designed from scratch, built on a structured grid system, and delivered as production-ready SVG assets that unify the visual language of an entire enterprise sustainability website.
         </motion.p>
 
-        {/* Hero Visual — animated icon grid */}
+        {/* Hero Visual */}
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3, ease: customEase }}
-          className="relative w-full h-[600px] md:h-[900px] rounded-[40px] overflow-hidden border border-white/5 bg-[rgba(48,46,97,0.10)] mb-16 group shadow-2xl shadow-[#ff6b00]/5">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#ff6b00]/5 via-transparent to-[#0066ff]/5" />
-          <div className="absolute inset-0 grid grid-cols-5 md:grid-cols-10 gap-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
-            {Array.from({ length: 60 }).map((_, i) => (
-              <div key={i} className="border border-white/5 aspect-square" />
-            ))}
-          </div>
-          <div className="absolute inset-0 flex flex-wrap items-center justify-center gap-6 p-8">
-            {icons.slice(0, 16).map((icon, i) => (
-              <motion.div key={i}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.4 + i * 0.05, ease: customEase }}
-                whileHover={{ scale: 1.2, y: -4 }}
-                className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 hover:border-[#ff6b00]/50 hover:bg-[#ff6b00]/10 flex items-center justify-center transition-all duration-300 group/icon cursor-default">
-                <svg viewBox="0 0 64 64" className="w-7 h-7 stroke-[#ff6b00]/70 group-hover/icon:stroke-[#ff6b00] transition-colors" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d={icon.path} />
-                </svg>
-              </motion.div>
-            ))}
-          </div>
-          <div className="absolute bottom-6 right-8 text-[#8888aa] text-xs tracking-widest">55 CUSTOM ICONS · 64×64 PX · SVG</div>
+          className="relative w-full h-[600px] md:h-[900px] rounded-[40px] overflow-hidden border border-white/5 bg-[#0c0c16]/30 mb-16 group shadow-2xl shadow-[#ff6b00]/5">
+          <img src="/projects/ncv-icons/hero.png" alt="NCV Icons Hero" className="w-full h-full object-cover opacity-80 group-hover:scale-[1.02] transition-transform duration-[1200ms] ease-out" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-[#080810]/20 to-transparent opacity-80 pointer-events-none" />
         </motion.div>
 
         {/* Stats Bar */}
@@ -342,24 +358,19 @@ export default function NCVIconSystem() {
         {/* Full icon grid */}
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1, ease: customEase }}
-          className="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-3 mb-16">
+          className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-9 gap-3 mb-16">
           {icons.map((icon, i) => (
             <motion.div key={i}
               initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.03, ease: customEase }}
-              whileHover={{ scale: 1.2, y: -4 }}
               title={icon.label}
-              className="aspect-square rounded-xl bg-white/[0.03] border border-white/5 hover:border-[#ff6b00]/40 hover:bg-[#ff6b00]/10 flex items-center justify-center cursor-default group transition-all duration-300">
-              <svg viewBox="0 0 64 64" className="w-6 h-6 stroke-white/40 group-hover:stroke-[#ff6b00] transition-colors" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d={icon.path} />
-              </svg>
+              className="relative aspect-square rounded-xl overflow-hidden cursor-default group transition-all duration-300">
+              <img
+                src={icon.src}
+                alt={icon.label}
+                className="w-full h-full object-cover rounded-xl group-hover:scale-110 transition-transform duration-300"
+              />
             </motion.div>
-          ))}
-          {/* Fill remaining spots with placeholder dots to show 55 count */}
-          {Array.from({ length: 35 }).map((_, i) => (
-            <div key={`empty-${i}`} className="aspect-square rounded-xl bg-white/[0.02] border border-white/[0.03] flex items-center justify-center">
-              <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
-            </div>
           ))}
         </motion.div>
 
