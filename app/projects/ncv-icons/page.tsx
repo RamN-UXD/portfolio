@@ -7,63 +7,62 @@ import CustomCursor from "../../../components/CustomCursor";
 
 const customEase = [0.16, 1, 0.3, 1];
 
-/* ─── All 55 NCV icon assets ─── */
+/* ─── All 54 NCV icon assets ─── */
 const icons = [
-  { label: "Icon 1",  src: "/projects/ncv-icons/icon 1.svg" },
-  { label: "Icon 2",  src: "/projects/ncv-icons/icon 2.svg" },
-  { label: "Icon 3",  src: "/projects/ncv-icons/icon 3.svg" },
-  { label: "Icon 4",  src: "/projects/ncv-icons/icon 4.svg" },
-  { label: "Icon 5",  src: "/projects/ncv-icons/icon 5.svg" },
-  { label: "Icon 6",  src: "/projects/ncv-icons/icon 6.svg" },
-  { label: "Icon 7",  src: "/projects/ncv-icons/icon 7.svg" },
-  { label: "Icon 8",  src: "/projects/ncv-icons/icon 8.svg" },
-  { label: "Icon 9",  src: "/projects/ncv-icons/icon 9.svg" },
-  { label: "Icon 10", src: "/projects/ncv-icons/icon 10.svg" },
-  { label: "Icon 11", src: "/projects/ncv-icons/icon 11.svg" },
-  { label: "Icon 12", src: "/projects/ncv-icons/icon 12.svg" },
-  { label: "Icon 13", src: "/projects/ncv-icons/icon 13.svg" },
-  { label: "Icon 14", src: "/projects/ncv-icons/icon 14.svg" },
-  { label: "Icon 15", src: "/projects/ncv-icons/icon 15.svg" },
-  { label: "Icon 16", src: "/projects/ncv-icons/icon 16.svg" },
-  { label: "Icon 17", src: "/projects/ncv-icons/icon 17.svg" },
-  { label: "Icon 18", src: "/projects/ncv-icons/icon 18.svg" },
-  { label: "Icon 19", src: "/projects/ncv-icons/icon 19.svg" },
-  { label: "Icon 20", src: "/projects/ncv-icons/icon 20.svg" },
-  { label: "Icon 21", src: "/projects/ncv-icons/icon 21.svg" },
-  { label: "Icon 22", src: "/projects/ncv-icons/icon 22.svg" },
-  { label: "Icon 23", src: "/projects/ncv-icons/icon 23.svg" },
-  { label: "Icon 24", src: "/projects/ncv-icons/icon 24.svg" },
-  { label: "Icon 25", src: "/projects/ncv-icons/icon 25.svg" },
-  { label: "Icon 26", src: "/projects/ncv-icons/icon 26.svg" },
-  { label: "Icon 27", src: "/projects/ncv-icons/icon 27.svg" },
-  { label: "Icon 28", src: "/projects/ncv-icons/icon 28.svg" },
-  { label: "Icon 29", src: "/projects/ncv-icons/icon 29.svg" },
-  { label: "Icon 30", src: "/projects/ncv-icons/icon 30.svg" },
-  { label: "Icon 31", src: "/projects/ncv-icons/icon 31.svg" },
-  { label: "Icon 32", src: "/projects/ncv-icons/icon 32.svg" },
-  { label: "Icon 33", src: "/projects/ncv-icons/icon 33.svg" },
-  { label: "Icon 34", src: "/projects/ncv-icons/icon 34.svg" },
-  { label: "Icon 35", src: "/projects/ncv-icons/icon 35.svg" },
-  { label: "Icon 36", src: "/projects/ncv-icons/icon 36.svg" },
-  { label: "Icon 37", src: "/projects/ncv-icons/icon 37.svg" },
-  { label: "Icon 38", src: "/projects/ncv-icons/icon 38.svg" },
-  { label: "Icon 39", src: "/projects/ncv-icons/icon 39.svg" },
-  { label: "Icon 40", src: "/projects/ncv-icons/icon 40.svg" },
-  { label: "Icon 41", src: "/projects/ncv-icons/icon 41.svg" },
-  { label: "Icon 42", src: "/projects/ncv-icons/icon 42.svg" },
-  { label: "Icon 43", src: "/projects/ncv-icons/icon 43.svg" },
-  { label: "Icon 44", src: "/projects/ncv-icons/icon 44.svg" },
-  { label: "Icon 45", src: "/projects/ncv-icons/icon 45.svg" },
-  { label: "Icon 46", src: "/projects/ncv-icons/icon 46.svg" },
-  { label: "Icon 47", src: "/projects/ncv-icons/icon 47.svg" },
-  { label: "Icon 48", src: "/projects/ncv-icons/icon 48.svg" },
-  { label: "Icon 49", src: "/projects/ncv-icons/icon 49.svg" },
-  { label: "Icon 50", src: "/projects/ncv-icons/icon 50.svg" },
-  { label: "Icon 51", src: "/projects/ncv-icons/icon 51.svg" },
-  { label: "Icon 52", src: "/projects/ncv-icons/icon 52.svg" },
-  { label: "Icon 53", src: "/projects/ncv-icons/icon 53.svg" },
-  { label: "Icon 54", src: "/projects/ncv-icons/icon 54.svg" },
-  { label: "Icon 55", src: "/projects/ncv-icons/icon 55.svg" },
+  { label: "Icon 1",  defaultSrc: "/projects/ncv-icons/icon 1 - default.svg",  src: "/projects/ncv-icons/icon 1.svg" },
+  { label: "Icon 2",  defaultSrc: "/projects/ncv-icons/icon 2 - default.svg",  src: "/projects/ncv-icons/icon 2.svg" },
+  { label: "Icon 3",  defaultSrc: "/projects/ncv-icons/icon 3 - default.svg",  src: "/projects/ncv-icons/icon 3.svg" },
+  { label: "Icon 4",  defaultSrc: "/projects/ncv-icons/icon 4 - default.svg",  src: "/projects/ncv-icons/icon 4.svg" },
+  { label: "Icon 5",  defaultSrc: "/projects/ncv-icons/icon 5 - default.svg",  src: "/projects/ncv-icons/icon 5.svg" },
+  { label: "Icon 6",  defaultSrc: "/projects/ncv-icons/icon 6 - default.svg",  src: "/projects/ncv-icons/icon 6.svg" },
+  { label: "Icon 7",  defaultSrc: "/projects/ncv-icons/icon 7 - default.svg",  src: "/projects/ncv-icons/icon 7.svg" },
+  { label: "Icon 8",  defaultSrc: "/projects/ncv-icons/icon 8 - default.svg",  src: "/projects/ncv-icons/icon 8.svg" },
+  { label: "Icon 9",  defaultSrc: "/projects/ncv-icons/icon 9 - default.svg",  src: "/projects/ncv-icons/icon 9.svg" },
+  { label: "Icon 10", defaultSrc: "/projects/ncv-icons/icon 10 - default.svg", src: "/projects/ncv-icons/icon 10.svg" },
+  { label: "Icon 11", defaultSrc: "/projects/ncv-icons/icon 11 - default.svg", src: "/projects/ncv-icons/icon 11.svg" },
+  { label: "Icon 12", defaultSrc: "/projects/ncv-icons/icon 12 - default.svg", src: "/projects/ncv-icons/icon 12.svg" },
+  { label: "Icon 13", defaultSrc: "/projects/ncv-icons/icon 13 - default.svg", src: "/projects/ncv-icons/icon 13.svg" },
+  { label: "Icon 14", defaultSrc: "/projects/ncv-icons/icon 14 - default.svg", src: "/projects/ncv-icons/icon 14.svg" },
+  { label: "Icon 15", defaultSrc: "/projects/ncv-icons/icon 15 - default.svg", src: "/projects/ncv-icons/icon 15.svg" },
+  { label: "Icon 16", defaultSrc: "/projects/ncv-icons/icon 16 - default.svg", src: "/projects/ncv-icons/icon 16.svg" },
+  { label: "Icon 17", defaultSrc: "/projects/ncv-icons/icon 17 - default.svg", src: "/projects/ncv-icons/icon 17.svg" },
+  { label: "Icon 18", defaultSrc: "/projects/ncv-icons/icon 18 - default.svg", src: "/projects/ncv-icons/icon 18.svg" },
+  { label: "Icon 19", defaultSrc: "/projects/ncv-icons/icon 19 - default.svg", src: "/projects/ncv-icons/icon 19.svg" },
+  { label: "Icon 20", defaultSrc: "/projects/ncv-icons/icon 20 - default.svg", src: "/projects/ncv-icons/icon 20.svg" },
+  { label: "Icon 21", defaultSrc: "/projects/ncv-icons/icon 21 - default.svg", src: "/projects/ncv-icons/icon 21.svg" },
+  { label: "Icon 22", defaultSrc: "/projects/ncv-icons/icon 22 - default.svg", src: "/projects/ncv-icons/icon 22.svg" },
+  { label: "Icon 23", defaultSrc: "/projects/ncv-icons/icon 23 - default.svg", src: "/projects/ncv-icons/icon 23.svg" },
+  { label: "Icon 24", defaultSrc: "/projects/ncv-icons/icon 24 - default.svg", src: "/projects/ncv-icons/icon 24.svg" },
+  { label: "Icon 25", defaultSrc: "/projects/ncv-icons/icon 25 - default.svg", src: "/projects/ncv-icons/icon 25.svg" },
+  { label: "Icon 27", defaultSrc: "/projects/ncv-icons/icon 27 - default.svg", src: "/projects/ncv-icons/icon 27.svg" },
+  { label: "Icon 28", defaultSrc: "/projects/ncv-icons/icon 28 - default.svg", src: "/projects/ncv-icons/icon 28.svg" },
+  { label: "Icon 29", defaultSrc: "/projects/ncv-icons/icon 29 - default.svg", src: "/projects/ncv-icons/icon 29.svg" },
+  { label: "Icon 30", defaultSrc: "/projects/ncv-icons/icon 30 - default.svg", src: "/projects/ncv-icons/icon 30.svg" },
+  { label: "Icon 31", defaultSrc: "/projects/ncv-icons/icon 31 - default.svg", src: "/projects/ncv-icons/icon 31.svg" },
+  { label: "Icon 32", defaultSrc: "/projects/ncv-icons/icon 32 - default.svg", src: "/projects/ncv-icons/icon 32.svg" },
+  { label: "Icon 33", defaultSrc: "/projects/ncv-icons/icon 33 - default.svg", src: "/projects/ncv-icons/icon 33.svg" },
+  { label: "Icon 34", defaultSrc: "/projects/ncv-icons/icon 34 - default.svg", src: "/projects/ncv-icons/icon 34.svg" },
+  { label: "Icon 35", defaultSrc: "/projects/ncv-icons/icon 35 - default.svg", src: "/projects/ncv-icons/icon 35.svg" },
+  { label: "Icon 36", defaultSrc: "/projects/ncv-icons/icon 36 - default.svg", src: "/projects/ncv-icons/icon 36.svg" },
+  { label: "Icon 37", defaultSrc: "/projects/ncv-icons/icon 37 - default.svg", src: "/projects/ncv-icons/icon 37.svg" },
+  { label: "Icon 38", defaultSrc: "/projects/ncv-icons/icon 38 - default.svg", src: "/projects/ncv-icons/icon 38.svg" },
+  { label: "Icon 39", defaultSrc: "/projects/ncv-icons/icon 39 - default.svg", src: "/projects/ncv-icons/icon 39.svg" },
+  { label: "Icon 40", defaultSrc: "/projects/ncv-icons/icon 40 - default.svg", src: "/projects/ncv-icons/icon 40.svg" },
+  { label: "Icon 41", defaultSrc: "/projects/ncv-icons/icon 41 - default.svg", src: "/projects/ncv-icons/icon 41.svg" },
+  { label: "Icon 42", defaultSrc: "/projects/ncv-icons/icon 42 - default.svg", src: "/projects/ncv-icons/icon 42.svg" },
+  { label: "Icon 43", defaultSrc: "/projects/ncv-icons/icon 43 - default.svg", src: "/projects/ncv-icons/icon 43.svg" },
+  { label: "Icon 44", defaultSrc: "/projects/ncv-icons/icon 44 - default.svg", src: "/projects/ncv-icons/icon 44.svg" },
+  { label: "Icon 45", defaultSrc: "/projects/ncv-icons/icon 45 - default.svg", src: "/projects/ncv-icons/icon 45.svg" },
+  { label: "Icon 46", defaultSrc: "/projects/ncv-icons/icon 46 - default.svg", src: "/projects/ncv-icons/icon 46.svg" },
+  { label: "Icon 47", defaultSrc: "/projects/ncv-icons/icon 47 - default.svg", src: "/projects/ncv-icons/icon 47.svg" },
+  { label: "Icon 48", defaultSrc: "/projects/ncv-icons/icon 48 - default.svg", src: "/projects/ncv-icons/icon 48.svg" },
+  { label: "Icon 49", defaultSrc: "/projects/ncv-icons/icon 49 - default.svg", src: "/projects/ncv-icons/icon 49.svg" },
+  { label: "Icon 50", defaultSrc: "/projects/ncv-icons/icon 50 - default.svg", src: "/projects/ncv-icons/icon 50.svg" },
+  { label: "Icon 51", defaultSrc: "/projects/ncv-icons/icon 51 - default.svg", src: "/projects/ncv-icons/icon 51.svg" },
+  { label: "Icon 52", defaultSrc: "/projects/ncv-icons/icon 52 - default.svg", src: "/projects/ncv-icons/icon 52.svg" },
+  { label: "Icon 53", defaultSrc: "/projects/ncv-icons/icon 53 - default.svg", src: "/projects/ncv-icons/icon 53.svg" },
+  { label: "Icon 54", defaultSrc: "/projects/ncv-icons/icon 54 - default.svg", src: "/projects/ncv-icons/icon 54.svg" },
+  { label: "Icon 55", defaultSrc: "/projects/ncv-icons/icon 55 - default.svg", src: "/projects/ncv-icons/icon 55.svg" },
 ];
 
 const specRows = [
@@ -365,10 +364,17 @@ export default function NCVIconSystem() {
               viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.03, ease: customEase }}
               title={icon.label}
               className="relative aspect-square rounded-xl overflow-hidden cursor-default group transition-all duration-300">
+              {/* Default state */}
+              <img
+                src={icon.defaultSrc}
+                alt={icon.label}
+                className="w-full h-full object-cover absolute inset-0 opacity-40 group-hover:opacity-0 transition-opacity duration-300"
+              />
+              {/* Hover state — colored gradient version */}
               <img
                 src={icon.src}
                 alt={icon.label}
-                className="w-full h-full object-cover rounded-xl group-hover:scale-110 transition-transform duration-300"
+                className="w-full h-full object-cover absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               />
             </motion.div>
           ))}
