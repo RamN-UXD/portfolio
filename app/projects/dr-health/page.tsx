@@ -825,6 +825,41 @@ export default function DrHealthCaseStudy() {
         </div>
       </section>
 
+      {/* Reflection */}
+      <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto my-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: customEase }}
+          className="relative rounded-[40px] overflow-hidden border border-white/5 p-10 md:p-16 bg-[rgba(0,255,183,0.02)]"
+        >
+          {/* Background decoration */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#00ffb7]/5 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00ffb7]/30 to-transparent" />
+
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <div className="text-[#00ffb7] text-[11px] font-bold tracking-[0.2em] mb-6 uppercase text-center">Reflection</div>
+            <h2 className="text-h2 text-white mb-10 text-center">What This Project Taught Me About Research-Led Design</h2>
+
+            <div className="text-[#8888aa] text-body-lg space-y-6">
+              <p>
+                The hardest part of this project wasn&apos;t any single screen or flow; it was staying disciplined enough to let the research actually set the boundaries of the design, not just inform it.
+              </p>
+              <p>
+                From a wide set of validated problems, this had to narrow down to three disease areas, and then to one focus — higher healthcare expense — before any wireframe got drawn. That scoping decision is what made &ldquo;Motivational Reminders and Rewards&rdquo; and &ldquo;Access to Mental and Cardiovascular Healthcare&rdquo; possible to design with real depth, instead of spreading thin across every problem the research surfaced.
+              </p>
+              <p>
+                The usability testing confirmed something I&apos;d hoped was true: when Gestalt principles, UX laws, and proportion systems like the golden ratio are used deliberately rather than instinctively, users feel it, even without naming it. They called the interface intuitive and easy to navigate. That&apos;s the payoff of designing with reasons instead of taste.
+              </p>
+              <p className="text-white font-medium border-l-4 border-[#00ffb7] pl-6 italic">
+                &ldquo;A research-led process doesn&apos;t remove judgment from the work — it just gives the judgment something to answer to.&rdquo;
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
       {/* CTA Footer */}
       <CTAFooter />
     </main>

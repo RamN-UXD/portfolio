@@ -162,17 +162,17 @@ export default function NCVIconSystem() {
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#0066ff] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: customEase }}
-          className="text-[#ff6b00] text-tag-1 mb-6">
+          className="text-[#ff6b00] text-tag-1 mb-6 text-center">
           Iconography &middot; Design Systems &middot; Case Study
         </motion.div>
 
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.1, ease: customEase }}
-          className="text-h1 leading-tight mb-8 max-w-5xl">
+          className="text-h1 leading-tight mb-8 max-w-5xl text-center mx-auto">
           Building a Cohesive Icon System for Net Carbon Vision
         </motion.h1>
 
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2, ease: customEase }}
-          className="text-[#8888aa] text-body-lg max-w-3xl mb-16">
+          className="text-[#8888aa] text-body-lg max-w-3xl mb-16 text-center mx-auto">
           55 custom line icons; designed from scratch, built on a structured grid system, and delivered as production-ready SVG assets that unify the visual language of an entire enterprise sustainability website.
         </motion.p>
 
@@ -252,24 +252,9 @@ export default function NCVIconSystem() {
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1, ease: customEase }}
           className="flex flex-col lg:flex-row gap-12 items-center mb-16">
-          {/* Grid diagram */}
-          <div className="shrink-0 w-64 h-64 relative">
-            <div className="absolute inset-0 rounded-2xl border-2 border-[#ff6b00]/30 flex items-center justify-center">
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[#ff6b00] text-[10px]">64px</div>
-              <div className="w-[80%] h-[80%] rounded-xl border-2 border-[#ff6b00]/60 flex items-center justify-center">
-                <div className="absolute top-[10%] left-1/2 -translate-x-1/2 text-[#ff6b00]/60 text-[9px]">56px · 8px radius</div>
-                <svg viewBox="0 0 64 64" className="w-16 h-16 stroke-white/80" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d={icons[0].path} />
-                </svg>
-              </div>
-            </div>
-            {/* Grid overlay lines */}
-            <div className="absolute inset-0 grid grid-cols-4 opacity-10">
-              {Array.from({ length: 4 }).map((_, i) => <div key={i} className="border-l border-[#ff6b00]" />)}
-            </div>
-            <div className="absolute inset-0 grid grid-rows-4 opacity-10">
-              {Array.from({ length: 4 }).map((_, i) => <div key={i} className="border-t border-[#ff6b00]" />)}
-            </div>
+          {/* Grid diagram image */}
+          <div className="shrink-0 w-full lg:w-[400px] h-auto relative rounded-2xl overflow-hidden border border-white/5">
+            <img src="/projects/ncv-icons/framework.png" alt="Icon framework grid" className="w-full h-auto object-cover" />
           </div>
 
           {/* Spec table */}
@@ -308,8 +293,8 @@ export default function NCVIconSystem() {
         {/* Process image */}
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.8, ease: customEase }}
-          className="w-full h-[300px] md:h-[420px] rounded-[32px] overflow-hidden border border-white/5 mb-16 relative group">
-          <img src="/images/ncv-process.png" alt="Icon design process" className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-out" />
+          className="w-full rounded-[32px] overflow-hidden border border-white/5 mb-16 relative group">
+          <img src="/projects/ncv-icons/illustrator.png" alt="Icon design process" className="w-full h-auto opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-out" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-[#080810]/30 to-transparent" />
           <div className="absolute bottom-8 left-8">
             <div className="text-[#ff6b00] text-xs tracking-widest mb-1">ADOBE ILLUSTRATOR · 64×64 ARTBOARD</div>
