@@ -450,10 +450,8 @@ export default function NCVIconSystem() {
           {/* Decorative icon strip at bottom */}
           <div className="relative z-10 flex justify-center gap-4 mt-14 flex-wrap">
             {icons.slice(0, 8).map((icon, i) => (
-              <div key={i} className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity">
-                <svg viewBox="0 0 64 64" className="w-5 h-5 stroke-[#ff6b00]" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d={icon.path} />
-                </svg>
+              <div key={i} className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity overflow-hidden p-1.5">
+                <img src={icon.defaultSrc} alt={icon.label} className="w-full h-full object-contain" />
               </div>
             ))}
           </div>
