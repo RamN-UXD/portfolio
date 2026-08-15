@@ -13,7 +13,7 @@ export default function CTAFooter() {
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto flex flex-col items-center">
-        
+
         {/* Section Label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -33,7 +33,7 @@ export default function CTAFooter() {
           transition={{ duration: 1, delay: 0.1, ease: customEase }}
           className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-[#fafafa] leading-tight text-center max-w-4xl tracking-tight mb-8"
         >
-          Open to senior UX roles
+          Open to senior UX & Product Management roles
         </motion.h2>
 
         {/* Narrative Description Body */}
@@ -45,7 +45,7 @@ export default function CTAFooter() {
           className="flex flex-col gap-4 text-center max-w-2xl text-[#8888aa] text-body-lg mb-16"
         >
           <p>
-            If you&apos;re building something with real structural complexity and need a designer who can own the research, lead the IA, and deliver clean; I&apos;d like to hear about it.
+            If you&apos;re building something with real structural complexity and need someone who can own the research, lead the IA, write the spec, and deliver clean &mdash; I&apos;d like to hear about it.
           </p>
         </motion.div>
 
@@ -62,11 +62,11 @@ export default function CTAFooter() {
             <h3 className="text-h3 text-white mb-2">
               Get in Touch
             </h3>
-            
+
             <div className="flex flex-col gap-4">
               {/* Email Link Row */}
-              <a 
-                href="mailto:moorthyr06@gmail.com" 
+              <a
+                href="mailto:moorthyr06@gmail.com"
                 className="flex items-center gap-5 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/12 hover:bg-white/10 transition-all duration-300 w-full group"
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-[#0066ff]/10 text-[#0066ff] transition-colors group-hover:bg-[#0066ff]/20">
@@ -81,8 +81,8 @@ export default function CTAFooter() {
               </a>
 
               {/* Phone Link Row */}
-              <a 
-                href="tel:+919840325802" 
+              <a
+                href="tel:+919840325802"
                 className="flex items-center gap-5 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/12 hover:bg-white/10 transition-all duration-300 w-full group"
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-[#0066ff]/10 text-[#0066ff] transition-colors group-hover:bg-[#0066ff]/20">
@@ -97,7 +97,7 @@ export default function CTAFooter() {
               </a>
 
               {/* Location Row */}
-              <div 
+              <div
                 className="flex items-center gap-5 p-4 rounded-2xl bg-white/5 border border-white/5 w-full text-left"
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-[#0066ff]/10 text-[#0066ff]">
@@ -118,12 +118,12 @@ export default function CTAFooter() {
             <h3 className="text-h3 text-white mb-2">
               Connect Online
             </h3>
-            
+
             <div className="flex flex-col gap-4">
               {/* LinkedIn Link Row */}
-              <a 
-                href="https://www.linkedin.com/in/nram-uxd/" 
-                target="_blank" 
+              <a
+                href="https://www.linkedin.com/in/nram-uxd/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-5 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/12 hover:bg-white/10 transition-all duration-300 w-full group"
               >
@@ -139,9 +139,9 @@ export default function CTAFooter() {
               </a>
 
               {/* Behance Link Row */}
-              <a 
-                href="https://www.behance.net/ramamoorthy" 
-                target="_blank" 
+              <a
+                href="https://www.behance.net/ramamoorthy"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-5 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/12 hover:bg-white/10 transition-all duration-300 w-full group"
               >
@@ -157,8 +157,8 @@ export default function CTAFooter() {
               </a>
 
               {/* Resume Download Row */}
-              <a 
-                href="/resume.pdf" 
+              <a
+                href="/resume.pdf"
                 download
                 className="flex items-center gap-5 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/12 hover:bg-white/10 transition-all duration-300 w-full group"
               >
@@ -182,7 +182,7 @@ export default function CTAFooter() {
       <div className="w-full max-w-4xl mx-auto border-t border-white/5 pt-16 mt-16 text-center">
         {/* Professional Statement */}
         <p className="text-[#8888aa] text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-10">
-          UX Designer crafting interfaces that solve real problems, scale with complexity, and ship with clarity. Always learning. Always improving.
+          UX Designer & Product Specialist crafting interfaces and specifications that solve real problems, scale with complexity, and ship with clarity. Always learning. Always improving.
         </p>
 
         {/* Symmetrical Centered Divider */}

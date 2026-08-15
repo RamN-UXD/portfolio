@@ -8,16 +8,31 @@ export default function Experience() {
   const experiences = [
     {
       company: "Net Carbon Vision",
-      role: "Digital Experience Specialist",
-      period: "Oct 2024 – Present &middot; Chennai, India",
+      role: "Specialist – Product Research & Digital Experience",
+      period: "Jun 2026 – Present &middot; Chennai, India",
       color: "#0066ff",
       bullets: [
-        "Lead end-to-end UX and interface strategy across 9 enterprise sustainability products &mdash; covering dashboards, multi-persona tools, and data visualization modules.",
-        "Designed and launched a 15+ page content-driven website &mdash; Products, Services, Verticals, Blogs, FAQs, and conversion funnels &mdash; from stakeholder brief to shipped version.",
-        "Redesigned the B2B admin control center: transformed a single scroll-heavy settings page into a structured two-panel system with 8 navigable categories and 76 annotated interaction states.",
-        "Built persona-driven UX flows for Admins, Financiers, and Field Employees in a role-based expense management platform &mdash; covering travel logging, per diem tracking, and approval workflows.",
-        "Authored audit-ready UX documentation for 5 sustainability products &mdash; supporting internal compliance reviews and cross-functional process audits.",
-        "Coordinated with data engineering teams on industrial schema transformation aligned with Apache Parquet standards &mdash; bridging design and technical delivery."
+        "Promoted to lead product research direction and cross-functional design across a 20+ person team — recognized for translating ambiguous product briefs into validated, high-fidelity UX solutions aligned to business goals.",
+        "Bridging design and engineering on the Vyxora B2B/B2C marketplace — resolving implementation gaps, optimizing user flows, and ensuring design intent is faithfully delivered end-to-end.",
+      ]
+    },
+    {
+      company: "Net Carbon Vision",
+      role: "Digital Experience Specialist",
+      period: "Oct 2024 – May 2026 &middot; Chennai, India",
+      color: "#00f2ff",
+      bullets: [
+        "Contributed to UX design across SustainOS and SustainOS ESG — enterprise sustainability dashboards, compliance tools, and data visualization.",
+        "Authored the PRD for a new Scope 3 Emissions Management Platform — defining core requirements and scope for enterprise carbon-accounting workflows.",
+        "Authored the MRD for SustainOS ESG, translating market and stakeholder requirements into a single structured specification.",
+        "Produced comprehensive audit documentation for SustainOS — covering existing screens, features, functionality, and journeys — supporting the software compliance audit.",
+        "Owned end-to-end design for Vyxora across 3 major scope pivots — from an initial seller-only mobile MVP, shipped as APK with a full walkthrough video for client sign-off, to a full multi-persona platform spanning Seller, Buyer, QC, and Admin roles.",
+        "Identified feasibility gaps in a client-submitted requirements document during discovery — preventing a misaligned build and driving a stakeholder-aligned requirements reset.",
+        "Pushed back on a request to embed 82 form fields into the mobile product creation flow — proposed and defended a mandatory/optional field split that preserved usability without losing business requirements.",
+        "Delivered 200+ screens across 4 personas and a full interactive prototype in 5 days using AI-assisted design workflows — compressing a typically weeks-long process into under a week.",
+        "Took an internal expense management platform from research through IA and hi-fi design — mapping persona-driven flows for Admins, Financiers, and Employees.",
+        "Designed the investor pitch presentation for Net Carbon Vision — helping secure external investment.",
+        "Learned and built an AI agent to monitor Net Carbon Vision's website uptime — detecting downtime, identifying failure causes, sending real-time alerts, and logging incidents.",
       ]
     },
     {
@@ -26,12 +41,12 @@ export default function Experience() {
       period: "Dec 2021 – Apr 2024 &middot; Remote",
       color: "#cc63ff",
       bullets: [
-        "Rebuilt 4 B2B SaaS interfaces end-to-end &mdash; from legacy UI audits to component-level redesign, design system creation, and structured developer handoff.",
-        "Designed and delivered 3 brand identity systems &mdash; logo, visual language, typography, color systems, and digital guidelines &mdash; from concept to client approval.",
-        "Mapped 6+ user journeys across multiple personas for role-based software products &mdash; aligning feature sets with persona-specific mental models and task flows.",
-        "Delivered 40+ responsive web pages across marketing, conversion, and product surfaces &mdash; contributing to a 2&times; increase in inbound lead generation.",
-        "Scoped and designed UX for MVPs across early-stage product engagements &mdash; balancing speed, scope, and design quality within Agile sprint cycles.",
-        "Managed design-to-development handoffs across cross-functional teams &mdash; producing annotated specs, component documentation, and design rationale for each delivery."
+        "Rebuilt Lystloc end-to-end across 5 core modules — eliminating workflows that previously required 11-15 clicks — from legacy UI audit to component-level redesign and structured developer handoff.",
+        "Designed the Lystface mobile app end-to-end — from IA through hi-fi prototyping — shaping the core navigation and interaction model for its first mobile release.",
+        "Took Lystdata from requirements gathering through lo-fi wireframes and IA, defining the product's information architecture and structure for a from-scratch B2B SaaS build.",
+        "Redesigned the B2B admin control center: transformed a single scroll-heavy settings page into a structured two-panel system with 8 navigable categories and 76 annotated interaction states.",
+        "Delivered brand identity systems for Lystloc, Lystface, Lystproof, and Mindsbeam itself — including a 15+ asset identity and responsive marketing site for Lystproof, plus logo, visual language, typography, and digital guidelines across the others.",
+        "Delivered 25+ SEO-optimized landing pages, contributing to a 2x increase in inbound lead generation.",
       ]
     }
   ];

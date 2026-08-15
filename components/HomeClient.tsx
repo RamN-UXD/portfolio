@@ -11,7 +11,6 @@ import Overlay from "./Overlay";
 
 // Section imports
 import ImpactMetrics from "./sections/ImpactMetrics";
-import DomainExpertise from "./sections/DomainExpertise";
 import FeaturedProjects from "./sections/FeaturedProjects";
 import DesignProcess from "./sections/DesignProcess";
 import About from "./sections/About";
@@ -74,7 +73,6 @@ export default function HomeClient() {
         >
           {/* Content sections */}
           <ImpactMetrics />
-          <DomainExpertise />
           <FeaturedProjects />
           <DesignProcess />
           <About />

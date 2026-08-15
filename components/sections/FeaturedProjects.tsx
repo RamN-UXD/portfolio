@@ -20,7 +20,7 @@ export default function FeaturedProjects() {
     },
     {
       id: "02",
-      title: "End-to-End UX Research on Preventive Healthcare",
+      title: "Validating Preventive Healthcare Through UX Research",
       subtitle: "No structured research existed to guide product direction for a preventive healthcare app targeting urban Indian users &mdash; design decisions were being made without validated user understanding.",
       role: "Solo UX Researcher &middot; 187 Participants &middot; 3 Surveys &middot; 14 Interviews &middot; Full Research Synthesis",
       outcome: "18 validated problem statements synthesized from real user data, mapped to a prioritized feature set grounded in WHO, FICCI, and UN DESA insights.",

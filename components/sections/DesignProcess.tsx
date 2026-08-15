@@ -20,7 +20,7 @@ export default function DesignProcess() {
     {
       id: "02",
       title: "Define",
-      desc: "Personas, journey maps, and validated problem statements tied to business cases. The output of this phase isn&apos;t wireframes; it&apos;s a shared, written understanding of what problem is actually worth solving.",
+      desc: "Personas, journey maps, and validated problem statements tied to business cases. The output of this phase isn't wireframes; it's a shared, written understanding of what problem is actually worth solving.",
       color: "#cc63ff",
     },
     {
@@ -37,14 +37,20 @@ export default function DesignProcess() {
     },
     {
       id: "05",
-      title: "Handoff",
-      desc: "Annotated specs, CRUD documentation, component-level notes, and design rationale; packaged so the team has everything they need to build it right the first time. Design doesn&apos;t end at Figma export.",
+      title: "Specify",
+      desc: "Annotated specs, CRUD documentation, component-level notes, and design rationale; packaged so the team has everything they need to build it right the first time.",
       color: "#00ff66",
+    },
+    {
+      id: "06",
+      title: "Ship",
+      desc: "UAT cycles, release coordination, and stakeholder sign-off; staying accountable through launch, not stepping away once files are delivered. If a decision needs to flex under real-world constraints, I'm still in the room.",
+      color: "#ff0077",
     },
   ];
 
   return (
-    <section ref={containerRef} className="relative h-[500vh] px-6 md:px-16">
+    <section ref={containerRef} className="relative h-[600vh] px-6 md:px-16">
       <div className="sticky top-0 h-screen flex flex-col justify-center max-w-[1400px] mx-auto overflow-hidden">
         
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 h-full py-16 lg:py-24">

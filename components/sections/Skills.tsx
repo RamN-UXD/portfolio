@@ -44,16 +44,21 @@ export default function Skills() {
       title: "Tools & Systems",
       skills: [
         "Figma",
-        "Adobe Illustrator",
+        "FigMake",
         "Framer",
         "Miro",
-        "Adobe Suite",
+        "Adobe XD",
+        "Adobe Illustrator",
+        "Adobe InDesign",
+        "Adobe Photoshop",
+        "Adobe Premier Pro",
+        "Adobe After Effects",
         "JIRA",
         "Slack",
         "Google Analytics",
-        "Gen AI-enhanced workflows"
+        "Gen AI tools"
       ],
-      proof: "55 custom icons built in Adobe Illustrator on a structured 64&times;64px grid. Portfolio site designed and published in Framer.",
+      proof: "55 custom icons built in Adobe Illustrator on a structured 64&times;64px grid. Interactive components and portfolio built across Figma and Framer.",
       accent: "#00ffb7"
     },
     {
@@ -67,8 +72,24 @@ export default function Skills() {
         "CRUD Specification",
         "Cross-functional Coordination"
       ],
-      proof: "Coordinated with data engineering teams on .dat &rarr; Apache Parquet transformation. Authored design specifications adopted directly into React implementation without revision cycles.",
+      proof: "Coordinated cross-functionally across engineering, product, and business teams. Authored design specifications adopted directly into React implementation.",
       accent: "#ff6b00"
+    },
+    {
+      id: "05",
+      title: "Product Management",
+      skills: [
+        "Product Discovery",
+        "PRD & MRD Authorship",
+        "Roadmap Planning",
+        "Backlog Management",
+        "UAT",
+        "Release Management",
+        "Product Auditing",
+        "Investor Pitch Preparation"
+      ],
+      proof: "Authored product specs, MRDs, and software audit documentation for SustainOS ESG &mdash; managing product definition, roadmap alignment, UAT, and release coordination.",
+      accent: "#ff0077"
     }
   ];
 
@@ -97,76 +118,56 @@ export default function Skills() {
         </motion.h2>
       </div>
 
-      {/* Majestic Asymmetric 2x2 Bento Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+      {/* Horizontal Strip Layout */}
+      <div className="flex flex-col divide-y divide-white/5 border border-white/5 rounded-[32px] overflow-hidden">
         {skillGroups.map((group, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: idx * 0.1, ease: customEase }}
-            whileHover={{ y: -10, transition: { duration: 0.4 } }}
-            className="relative group bg-[rgba(48,46,97,0.18)] border border-white/5 hover:border-white/15 rounded-[40px] p-8 md:p-10 flex flex-col justify-between items-start text-left min-h-[500px] overflow-hidden transition-all duration-500"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: idx * 0.08, ease: customEase }}
+            className="relative group flex flex-col md:flex-row md:items-center gap-6 md:gap-12 px-8 md:px-12 py-8 bg-[rgba(48,46,97,0.1)] hover:bg-[rgba(48,46,97,0.25)] transition-all duration-500 overflow-hidden cursor-default"
           >
-            {/* Background Accent Glow */}
-            <div 
-              className="absolute -top-32 -right-32 w-64 h-64 rounded-full blur-[100px] opacity-10 group-hover:opacity-25 transition-opacity duration-700 pointer-events-none"
+            {/* Left accent bar */}
+            <div
+              className="absolute left-0 top-0 bottom-0 w-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               style={{ backgroundColor: group.accent }}
             />
 
-            {/* Top row: Dot Indicator */}
-            <div className="w-full">
-              <div className="mb-6">
-                <div 
-                  className="w-2.5 h-2.5 rounded-full" 
-                  style={{ backgroundColor: group.accent }}
-                />
-              </div>
-              
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 tracking-tight leading-tight">
+            {/* Background glow */}
+            <div
+              className="absolute -top-20 -left-20 w-48 h-48 rounded-full blur-[80px] opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"
+              style={{ backgroundColor: group.accent }}
+            />
+
+            {/* Left: Category label */}
+            <div className="md:w-64 shrink-0 flex items-start gap-4">
+              <span
+                className="text-xs font-black tracking-[0.2em] mt-0.5 opacity-40 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ color: group.accent }}
+              >
+                {group.id}
+              </span>
+              <h3 className="text-lg md:text-xl font-bold text-white leading-snug group-hover:text-white transition-colors duration-300">
                 {group.title}
               </h3>
-
-              {/* Tag Cloud of Individual Skills */}
-              <div className="flex flex-wrap gap-2 mb-8">
-                {group.skills.map((skill, i) => (
-                  <span 
-                    key={i} 
-                    className="px-3.5 py-1.5 rounded-full text-[11px] font-semibold text-white/70 bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors duration-300"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
             </div>
 
-            {/* Bottom Segment: Case Proof Box */}
-            <div className="w-full mt-auto pt-6 border-t border-white/5">
-              <p className="text-[10px] uppercase tracking-widest text-[#8888aa] mb-2 font-bold">
-                Real-World Execution &amp; Proof
-              </p>
-              <p 
-                className="text-white/90 text-sm md:text-base leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: group.proof }}
-              />
-            </div>
-
-            {/* Progressive Bottom Highlight Line */}
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/5 overflow-hidden">
-              <motion.div 
-                initial={{ x: "-100%" }}
-                whileInView={{ x: "0%" }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: idx * 0.1 + 0.3, ease: customEase }}
-                className="h-full w-full"
-                style={{ backgroundColor: group.accent }}
-              />
+            {/* Right: Skill pills */}
+            <div className="flex flex-wrap gap-2 flex-1">
+              {group.skills.map((skill, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1.5 rounded-full text-[11px] font-semibold text-white/50 bg-white/5 border border-white/8 group-hover:text-white/80 group-hover:border-white/20 transition-all duration-300"
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </motion.div>
         ))}
       </div>
-
     </section>
   );
 }

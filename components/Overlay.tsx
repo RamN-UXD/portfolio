@@ -90,9 +90,7 @@ export default function Overlay({ progress }: { progress?: MotionValue<number> }
               What I Do
             </span>
             <p className="text-3xl md:text-5xl font-semibold leading-[1.15] text-[#fafafa]">
-              UX Designer handling{" "}
-              <span className="text-[#0066ff]">B2B</span> and{" "}
-              <span className="text-[#cc63ff]">B2C</span> Products
+              Senior UX Designer &amp; Product Specialist for Complex Systems
             </p>
           </div>
         </motion.div>
@@ -103,9 +101,8 @@ export default function Overlay({ progress }: { progress?: MotionValue<number> }
           className="absolute inset-0 flex flex-col items-start justify-center text-left px-6 md:px-16"
         >
           <div className="max-w-2xl">
-            <p className="text-xl md:text-3xl font-medium leading-snug text-[#fafafa]/85 mb-10">
-              Specializing in admin panels, workflow-heavy interfaces,
-              and research-led product design across web and mobile platforms.
+            <p className="text-lg md:text-2xl font-medium leading-relaxed text-[#fafafa]/85 mb-10">
+              Owning products end-to-end; research, IA, and high-fidelity design through PRDs, roadmap input, and shipped delivery; across enterprise SaaS, B2B/B2C marketplaces, and sustainability platforms.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pointer-events-auto w-full sm:w-auto mt-2">
               <a

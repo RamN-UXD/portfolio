@@ -31,91 +31,71 @@ export default function ImpactMetrics() {
       </div>
 
       {/* 
-        Symmetric Bento Grid Layout:
-        - Row 1 & 2: Balanced 3-column rows (col-span-4 each) for clean spacing.
-        - Row 3: Balanced 2-column row (col-span-6 each) for grounding the grid.
+        Symmetric 2x3 Bento Grid Layout:
+        - Row 1: 3 columns (col-span-4 each)
+        - Row 2: 3 columns (col-span-4 each)
       */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto">
         
-        {/* Card 1: 300+ Product Screens (Compact + Highlighted) */}
+        {/* Card 1: 300+ Product Screens */}
         <MetricCard
           className="md:col-span-4"
           number="300+"
           title="Product Screens"
-          description="Designed across enterprise dashboards, admin panels, and workflow tools; each with full interaction states, edge cases, and developer-ready annotations."
+          description="Designed across enterprise dashboards, admin panels, and workflow tools — each with full interaction states, edge cases, and developer-ready annotations."
           accent="#0066ff"
           delay={0.2}
           highlighted
         />
         
-        {/* Card 2: 40% Fewer Steps */}
+        {/* Card 2: 8x Faster Delivery With AI Tooling */}
         <MetricCard
           className="md:col-span-4"
-          number="40%"
-          title="Fewer Steps"
-          description="Reduced steps in customer-contact workflows &mdash; cutting task completion time and lowering the margin for agent error."
+          number="8x"
+          title="Faster Delivery With AI Tooling"
+          description="Designed 200+ screens across 4 personas — 3 mobile, 1 web — and built a full interactive prototype for Vyxora's marketplace platform in just 5 days, using AI-assisted design workflows to compress a typically weeks-long solo process into under a week."
           accent="#00f2ff"
           delay={0.3}
         />
         
-        {/* Card 3: 9 Enterprise Products */}
+        {/* Card 3: 7 Enterprise & Marketplace Products */}
         <MetricCard
           className="md:col-span-4"
-          number="9"
-          title="Enterprise Products"
-          description="Delivered across a multi-product sustainability suite with consistent UX architecture and brand cohesion throughout."
+          number="7"
+          title="Enterprise & Marketplace Products"
+          description="Designed across B2B SaaS platforms and a B2B/B2C marketplace — spanning full end-to-end ownership and early-stage research/IA definition, across sustainability, field operations, and expense management domains."
           accent="#ff6b00"
           delay={0.4}
         />
         
-        {/* Card 4: 11 Multi-Persona Journeys */}
+        {/* Card 4: 12 Persona-Driven Journeys Mapped */}
         <MetricCard
           className="md:col-span-4"
-          number="11"
-          title="Multi-Persona Journeys"
-          description="Mapped to reduce onboarding time and align product features with role-specific mental models &mdash; for Admins, Financiers, and Field Employees."
+          number="12"
+          title="Persona-Driven Journeys Mapped"
+          description="Aligned product flows to distinct user roles across enterprise, marketplace, and field-operations platforms — spanning Admins, Financiers, Employees, Field Employees, Operators, Sellers, Buyers, and QC — reducing onboarding friction and matching features to real mental models."
           accent="#00ff66"
           delay={0.5}
         />
         
-        {/* Card 5: 40+ High-Impact Web Pages */}
+        {/* Card 5: 2x Inbound Lead Growth */}
         <MetricCard
           className="md:col-span-4"
-          number="40+"
-          title="High-Impact Web Pages"
-          description="Designed and launched across marketing, conversion, and product surfaces &mdash; driving credibility and inbound growth."
+          number="2x"
+          title="Inbound Lead Growth"
+          description="Driven by 25+ UX-optimized landing pages and content architecture built around user intent and search behavior."
           accent="#cc63ff"
           delay={0.6}
         />
         
-        {/* Card 6: 2x Inbound Lead Growth */}
+        {/* Card 6: 3 Product Specs Authored */}
         <MetricCard
           className="md:col-span-4"
-          number="2&times;"
-          title="Inbound Lead Growth"
-          description="Driven by UX-optimized landing pages and content architecture built around user intent and search behavior."
+          number="3"
+          title="Product Specs Authored"
+          description="A PRD for a new emissions-management platform, an MRD for SustainOS ESG, and full audit documentation for SustainOS — spanning product definition, market alignment, and compliance review."
           accent="#ff0077"
           delay={0.7}
-        />
-
-        {/* Card 7: 5 Sustainability Products */}
-        <MetricCard
-          className="md:col-span-6"
-          number="5"
-          title="Sustainability Products"
-          description="Translated into audit-ready UX documentation &mdash; supporting software compliance reviews and cross-functional process audits."
-          accent="#00ffb7"
-          delay={0.8}
-        />
-
-        {/* Card 8: 4 SaaS Platforms Rebuilt */}
-        <MetricCard
-          className="md:col-span-6"
-          number="4"
-          title="SaaS Platforms Rebuilt"
-          description="End-to-end redesigns at Mindsbeam &mdash; from legacy UI audit to component-level redesign and structured developer handoff."
-          accent="#ffcc00"
-          delay={0.9}
         />
       </div>
     </section>
