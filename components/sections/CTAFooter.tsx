@@ -158,8 +158,9 @@ export default function CTAFooter() {
 
               {/* Resume Download Row */}
               <a
-                href="/resume.pdf"
-                download
+                href="https://drive.google.com/file/d/1DjLPQY683QPjHlXEheKwZjB2gpxPIsfn/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-5 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/12 hover:bg-white/10 transition-all duration-300 w-full group"
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-[#cc63ff]/10 text-[#cc63ff] transition-colors group-hover:bg-[#cc63ff]/20">
@@ -168,7 +169,7 @@ export default function CTAFooter() {
                 <div className="flex flex-col gap-0.5 min-w-0 flex-1">
                   <span className="text-[10px] uppercase font-bold tracking-widest text-[#8888aa] truncate">Resume</span>
                   <span className="text-white text-base md:text-lg font-bold group-hover:text-[#00ffb7] transition-colors truncate block w-full">
-                    Download PDF
+                    View / Download PDF
                   </span>
                 </div>
               </a>

@@ -247,7 +247,7 @@ export default function PreventiveResearchCaseStudy() {
           className="mb-16 text-center max-w-3xl mx-auto"
         >
           <div className="text-[#cc63ff] text-tag-1 mb-4 flex justify-center items-center gap-2">
-            <i className="ti ti-shield-check text-xl" /> Confidence &amp; Validation
+            Confidence &amp; Validation
           </div>
           <h2 className="text-h2 text-white mb-6">Built on Triangulated Data</h2>
           <p className="text-[#8888aa] text-body-sm leading-relaxed">
@@ -311,7 +311,7 @@ export default function PreventiveResearchCaseStudy() {
             className="space-y-6"
           >
             <div className="text-[#00ffd1] text-tag-1 mb-2 flex items-center gap-2">
-              <i className="ti ti-alert-triangle text-xl" /> Macro Impact
+              Macro Impact
             </div>
             <h2 className="text-h2 text-white">The Cost of Inaction<br />— What&apos;s at Stake by 2030</h2>
             <p className="text-[#8888aa] text-body-sm leading-relaxed">
@@ -358,7 +358,7 @@ export default function PreventiveResearchCaseStudy() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5">
         <div className="text-center mb-16">
           <div className="text-[#cc63ff] text-tag-1 mb-4 flex justify-center items-center gap-2">
-            <i className="ti ti-chart-dots text-xl" /> Scope &amp; Scale
+            Scope &amp; Scale
           </div>
           <h2 className="text-h2 text-white mb-6">What 6 Months of Structured UX Work Looks Like</h2>
           <p className="text-[#8888aa] text-body-sm max-w-2xl mx-auto">
@@ -401,7 +401,7 @@ export default function PreventiveResearchCaseStudy() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto bg-gradient-to-b from-[#080810] to-[#0c0c16] rounded-[40px] border border-white/5 my-12 relative">
         <div className="mb-16">
           <div className="text-[#00ffd1] text-tag-1 mb-4 flex items-center gap-2">
-            <i className="ti ti-target-arrow text-xl" /> Product Goals
+            Product Goals
           </div>
           <h2 className="text-h2 text-white mb-6">Derived from Research, Not Assumptions</h2>
           <p className="text-[#8888aa] text-body-sm max-w-2xl leading-relaxed">
@@ -461,7 +461,7 @@ export default function PreventiveResearchCaseStudy() {
                 
                 <div className="mt-auto pt-6">
                   <div className="text-[10px] uppercase tracking-widest text-[#00ffd1] font-bold mb-3 flex items-center gap-2">
-                    <i className="ti ti-check text-[#00ffd1]" /> Success Signal
+                    <span className="text-[#00ffd1]">✓</span> Success Signal
                   </div>
                   <div className="text-sm text-[#00ffd1] font-bold bg-[#00ffd1]/10 p-4 rounded-2xl border border-[#00ffd1]/20">{goal.signal}</div>
                 </div>
@@ -477,7 +477,7 @@ export default function PreventiveResearchCaseStudy() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5">
         <div className="mb-16">
           <div className="text-[#cc63ff] text-tag-1 mb-4 flex items-center gap-2">
-            <i className="ti ti-bulb text-xl" /> The Rationale
+            The Rationale
           </div>
           <h2 className="text-h2 text-white mb-8 max-w-4xl">Why I Chose This Problem</h2>
           <p className="text-xl md:text-2xl text-white font-medium max-w-4xl leading-relaxed bg-white/[0.02] p-8 rounded-3xl border border-white/5 border-l-4 border-l-[#cc63ff]">
@@ -519,7 +519,7 @@ export default function PreventiveResearchCaseStudy() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto bg-white/[0.01] rounded-[40px] border border-white/5 my-12">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <div className="text-[#00ffd1] text-tag-1 mb-4 flex justify-center items-center gap-2">
-            <i className="ti ti-focus-2 text-xl" /> Scope Definition
+            Scope Definition
           </div>
           <h2 className="text-h2 text-white mb-6">The Design Problem — Precisely Defined</h2>
           <div className="p-8 rounded-3xl bg-[#00ffd1]/10 border border-[#00ffd1]/20 mt-8">
@@ -567,7 +567,7 @@ export default function PreventiveResearchCaseStudy() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5 overflow-hidden">
         <div className="mb-16">
           <div className="text-[#cc63ff] text-tag-1 mb-4 flex items-center gap-2">
-            <i className="ti ti-git-fork text-xl" /> Thematic Synthesis
+            Thematic Synthesis
           </div>
           <h2 className="text-h2 text-white mb-6">Three Root Causes</h2>
           <p className="text-[#8888aa] text-body-sm max-w-2xl leading-relaxed">
@@ -634,7 +634,7 @@ export default function PreventiveResearchCaseStudy() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto bg-[#080810] border-y border-white/5 my-12">
         <div className="mb-16">
           <div className="text-[#00ffd1] text-tag-1 mb-4 flex items-center gap-2">
-            <i className="ti ti-chart-bar text-xl" /> Scope &amp; Sourcing
+            Scope &amp; Sourcing
           </div>
           <h2 className="text-h2 text-white mb-6">How Big Is This Problem?</h2>
           <p className="text-[#8888aa] text-body-sm max-w-3xl leading-relaxed">
@@ -688,7 +688,7 @@ export default function PreventiveResearchCaseStudy() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5 relative">
         <div className="mb-16">
           <div className="text-[#cc63ff] text-tag-1 mb-4 flex items-center gap-2">
-            <i className="ti ti-route text-xl" /> Methodology
+            Methodology
           </div>
           <h2 className="text-h2 text-white mb-6">How I Worked — Process With Intent</h2>
           <p className="text-[#8888aa] text-body-sm max-w-3xl leading-relaxed">
@@ -766,7 +766,7 @@ export default function PreventiveResearchCaseStudy() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5 my-12">
         <div className="mb-24 text-center max-w-4xl mx-auto">
           <div className="text-[#00ffd1] text-tag-1 mb-4 flex justify-center items-center gap-2">
-            <i className="ti ti-users text-xl" /> Target Audience
+            Target Audience
           </div>
           <h2 className="text-h2 text-white mb-6">Who I Designed For — Research-Derived Personas</h2>
           <p className="text-[#8888aa] text-lg leading-relaxed">
@@ -1001,7 +1001,7 @@ export default function PreventiveResearchCaseStudy() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5">
         <div className="mb-16">
           <div className="text-[#cc63ff] text-tag-1 mb-4 flex items-center gap-2">
-            <i className="ti ti-layout-sidebar text-xl" /> Feature Deep-Dive
+            Feature Deep-Dive
           </div>
           <h2 className="text-h2 text-white mb-6">From Problem to Feature</h2>
           <p className="text-[#8888aa] text-body-sm max-w-2xl leading-relaxed">
@@ -1101,7 +1101,7 @@ export default function PreventiveResearchCaseStudy() {
       <section className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto border-t border-white/5 mb-24">
         <div className="mb-16">
           <div className="text-[#cc63ff] text-tag-1 mb-4 flex items-center gap-2">
-            <i className="ti ti-book text-xl" /> Reflection
+            Reflection
           </div>
           <h2 className="text-h2 text-white mb-6">What This Project Taught Me</h2>
           <p className="text-[#8888aa] text-body-sm max-w-3xl leading-relaxed">
