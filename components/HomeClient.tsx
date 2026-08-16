@@ -13,7 +13,7 @@ import Overlay from "./Overlay";
 // Section imports
 import ImpactMetrics from "./sections/ImpactMetrics";
 import FeaturedProjects from "./sections/FeaturedProjects";
-import FeaturedProjectsV2 from "./sections/FeaturedProjectsV2";
+// import FeaturedProjectsV2 from "./sections/FeaturedProjectsV2"; // Hidden — work in progress
 import DesignProcess from "./sections/DesignProcess";
 import About from "./sections/About";
 import Skills from "./sections/Skills";
@@ -78,7 +78,7 @@ export default function HomeClient() {
           {/* Content sections */}
           <ImpactMetrics />
           <FeaturedProjects />
-          <FeaturedProjectsV2 />
+          {/* <FeaturedProjectsV2 /> */}{/* Hidden — work in progress */}
           <DesignProcess />
           <About />
           <Skills />
