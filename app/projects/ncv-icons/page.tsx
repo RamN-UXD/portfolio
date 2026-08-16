@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import CTAFooter from "../../../components/sections/CTAFooter";
 import CustomCursor from "../../../components/CustomCursor";
+import Navbar from "../../../components/Navbar";
 
 const customEase = [0.16, 1, 0.3, 1];
 
@@ -144,16 +144,7 @@ export default function NCVIconSystem() {
   return (
     <main className="bg-[#080810] min-h-screen text-[#fafafa] selection:bg-[#ff6b00]/30">
       <CustomCursor />
-
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center backdrop-blur-md bg-[#080810]/60 border-b border-white/5">
-        <Link href="/" className="text-white font-bold text-lg tracking-wider hover:text-[#ff6b00] transition-colors">
-          RAMAMOORTHY.
-        </Link>
-        <Link href="/#work" className="text-sm font-medium text-[#8888aa] hover:text-white transition-colors">
-          &larr; Back to Work
-        </Link>
-      </nav>
+      <Navbar />
 
       {/* ── SECTION 1: HERO ── */}
       <section className="relative pt-40 pb-20 px-6 md:px-16 max-w-[1400px] mx-auto">

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import CTAFooter from "../../../components/sections/CTAFooter";
 import CustomCursor from "../../../components/CustomCursor";
+import Navbar from "../../../components/Navbar";
 
 const customEase = [0.16, 1, 0.3, 1];
 
@@ -14,16 +15,7 @@ export default function DrHealthCaseStudy() {
   return (
     <main className="bg-[#080810] min-h-screen text-[#fafafa] selection:bg-[#00ffb7]/30">
       <CustomCursor />
-      
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center backdrop-blur-md bg-[#080810]/50 border-b border-white/5">
-        <Link href="/" className="text-white font-bold text-lg tracking-wider hover:text-[#00ffb7] transition-colors">
-          RAMAMOORTHY.
-        </Link>
-        <Link href="/#work" className="text-sm font-medium text-[#8888aa] hover:text-white transition-colors">
-          &larr; Back to Work
-        </Link>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 px-6 md:px-16 max-w-[1400px] mx-auto min-h-[80vh] flex flex-col justify-center items-center text-center">

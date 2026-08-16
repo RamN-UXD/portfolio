@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import LoadingScreen from "./LoadingScreen";
 import CustomCursor from "./CustomCursor";
+import Navbar from "./Navbar";
 
 // Phase 1 components
 import ScrollyCanvas from "./ScrollyCanvas";
@@ -12,6 +13,7 @@ import Overlay from "./Overlay";
 // Section imports
 import ImpactMetrics from "./sections/ImpactMetrics";
 import FeaturedProjects from "./sections/FeaturedProjects";
+import FeaturedProjectsV2 from "./sections/FeaturedProjectsV2";
 import DesignProcess from "./sections/DesignProcess";
 import About from "./sections/About";
 import Skills from "./sections/Skills";
@@ -54,6 +56,8 @@ export default function HomeClient() {
           pointerEvents: isLoaded ? "auto" : "none",
         }}
       >
+        <Navbar progress={scrollYProgress} />
+
         {/* IMAGE SEQUENCE HERO — FIRST SECTION (1000vh total height) */}
         <section ref={heroRef} className="relative">
           <ScrollyCanvas progress={heroProgress} />
@@ -74,6 +78,7 @@ export default function HomeClient() {
           {/* Content sections */}
           <ImpactMetrics />
           <FeaturedProjects />
+          <FeaturedProjectsV2 />
           <DesignProcess />
           <About />
           <Skills />

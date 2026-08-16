@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useSpring } from "framer-motion";
+import { motion, useSpring, AnimatePresence } from "framer-motion";
 
 export default function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
+  const [cursorText, setCursorText] = useState("");
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   // High-performance spring configuration for a buttery, responsive mouse follow
@@ -25,9 +26,17 @@ export default function CustomCursor() {
     const updateMousePosition = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       
-      // Expand cursor when hovering over interactive elements
-      const hoverElement = target.closest('[data-cursor="magnetic"], [data-cursor="hover"], a, button, [role="button"]');
-      setIsHovered(!!hoverElement);
+      // Check for custom cursor text triggers (e.g. data-cursor="open")
+      const textElement = target.closest('[data-cursor="open"], [data-cursor-text]');
+      if (textElement) {
+        setIsHovered(true);
+        setCursorText(textElement.getAttribute("data-cursor-text") || "OPEN");
+      } else {
+        // Standard hover elements
+        const hoverElement = target.closest('[data-cursor="magnetic"], [data-cursor="hover"], a, button, [role="button"]');
+        setIsHovered(!!hoverElement);
+        setCursorText("");
+      }
 
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -45,14 +54,8 @@ export default function CustomCursor() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[10000]">
-      {/* 
-        Sleek Luxury Custom Cursor
-        - mix-blend-difference: Dynamically inverts background and text colors underneath
-        - Smooth spring transition: Buttery follow motion with zero lag
-        - Interactive scaling spotlight: Magnifies elegantly on links and buttons
-      */}
       <motion.div
-        className="absolute top-0 left-0 rounded-full bg-[#fafafa] mix-blend-difference"
+        className="absolute top-0 left-0 rounded-full flex items-center justify-center pointer-events-none overflow-hidden"
         style={{
           x: cursorX,
           y: cursorY,
@@ -60,15 +63,33 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
         animate={{
-          width: isHovered ? 64 : 20,
-          height: isHovered ? 64 : 20,
+          width: cursorText ? 84 : isHovered ? 64 : 20,
+          height: cursorText ? 84 : isHovered ? 64 : 20,
+          backgroundColor: cursorText ? "rgba(255, 255, 255, 0.12)" : "#fafafa",
+          backdropFilter: cursorText ? "blur(8px)" : "none",
+          border: cursorText ? "1px solid rgba(255, 255, 255, 0.35)" : "none",
+          mixBlendMode: cursorText ? "normal" : "difference",
         }}
         transition={{
           type: "spring",
           stiffness: 400,
           damping: 28,
         }}
-      />
+      >
+        <AnimatePresence>
+          {cursorText && (
+            <motion.span
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.6 }}
+              transition={{ duration: 0.2 }}
+              className="text-[10px] font-extrabold tracking-[0.2em] text-white uppercase select-none"
+            >
+              {cursorText}
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }

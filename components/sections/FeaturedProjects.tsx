@@ -16,7 +16,7 @@ export default function FeaturedProjects() {
       tags: ["Enterprise SaaS", "Admin Panel", "B2B Web App", "Interaction Design"],
       accent: "#0066ff",
       caseStudyLink: "/projects/b2b-admin",
-      image: "https://placehold.co/800x600/0033aa/ffffff?text=B2B+Admin+Control+Center",
+      image: "/projects/b2b-admin/hero.png",
     },
     {
       id: "02",
@@ -27,7 +27,7 @@ export default function FeaturedProjects() {
       tags: ["UX Research", "Persona Development", "Mobile Research Synthesis"],
       accent: "#cc63ff",
       caseStudyLink: "/projects/preventive-research",
-      image: "https://placehold.co/800x600/6a1b9a/ffffff?text=Preventive+Healthcare+Research",
+      image: "/images/preventive/hero.png",
     },
     {
       id: "03",
@@ -38,7 +38,7 @@ export default function FeaturedProjects() {
       tags: ["Mobile App", "UI Design", "Usability Testing", "Healthcare Interaction Design"],
       accent: "#00ffb7",
       caseStudyLink: "/projects/dr-health",
-      image: "https://placehold.co/800x600/008f66/ffffff?text=Dr.Health+App+Design",
+      image: "/projects/dr-health/hero.png",
     },
     {
       id: "04",
@@ -49,7 +49,7 @@ export default function FeaturedProjects() {
       tags: ["Design Systems", "Iconography", "Visual Design", "Brand Identity", "Web"],
       accent: "#ff6b00",
       caseStudyLink: "/projects/ncv-icons",
-      image: "https://placehold.co/800x600/b34700/ffffff?text=Net+Carbon+Vision+Icons",
+      image: "/projects/ncv-icons/hero.png",
     },
   ];
 
