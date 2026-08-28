@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { useScroll, useTransform, motion, useSpring, MotionValue } from "framer-motion";
 
-export default function Overlay({ progress }: { progress?: MotionValue<number> }) {
+export default function OverlayExperiment({ progress }: { progress?: MotionValue<number> }) {
   const internalRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: internalProgress } = useScroll({ target: internalRef, offset: ["start start", "end end"] });
   const activeProgress = progress || internalProgress;
@@ -21,25 +21,23 @@ export default function Overlay({ progress }: { progress?: MotionValue<number> }
   const indicatorOpacity = useTransform(textProgress, [0, 0.02], [1, 0]);
 
   /* ── Section 1 — Cinematic Slide-In Name Reveal ────────────────── */
-  // Subtle slide-up masked reveal that animates on scroll
   const name1Opacity = useTransform(textProgress, [0.0, 0.08, 0.20, 0.28], [0, 1, 1, 0]);
   const name1Y = useTransform(textProgress, [0.0, 0.15, 0.20, 0.28], ["105%", "0%", "0%", "-105%"]);
 
   const name2Opacity = useTransform(textProgress, [0.04, 0.12, 0.20, 0.28], [0, 1, 1, 0]);
   const name2Y = useTransform(textProgress, [0.04, 0.19, 0.20, 0.28], ["105%", "0%", "0%", "-105%"]);
 
-  /* ── Section 2 — Value Prop (left) ─────────────────────────────── */
+  /* ── Section 2 — Value Prop (Centered with perfect line height) ── */
   const opacity2 = useTransform(textProgress, [0.35, 0.43, 0.57, 0.65], [0, 1, 1, 0]);
   const y2       = useTransform(textProgress, [0.35, 0.65], [50, -30]);
 
-  /* ── Section 3 — Specialization + CTAs (left, stays visible) ──── */
+  /* ── Section 3 — Specialization + CTAs (Centered) ─────────────── */
   const opacity3 = useTransform(textProgress, [0.68, 0.76], [0, 1]);
   const y3       = useTransform(textProgress, [0.68, 0.80], [50, 0]);
 
   /* ── Geometric Block Wipe (0.85 - 1.0) ─────────────────────────── */
   const wipeProgress = useTransform(smoothProgress, [0.85, 1.0], [0, 1]);
   
-  // Create 12 blocks for the wipe
   const blockCount = 12;
   const blocks = Array.from({ length: blockCount });
 
@@ -49,7 +47,7 @@ export default function Overlay({ progress }: { progress?: MotionValue<number> }
 
         {/* ── Section 1: Cinematic Split Name Slide-In Reveal ── */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-          <div className="flex flex-col items-center gap-2 md:gap-4 overflow-hidden py-4">
+          <div className="flex flex-col items-center gap-1 md:gap-3 overflow-hidden py-4">
             
             {/* First Line Container */}
             <div className="overflow-hidden py-1">
@@ -58,7 +56,7 @@ export default function Overlay({ progress }: { progress?: MotionValue<number> }
                   opacity: name1Opacity,
                   y: name1Y,
                 }}
-                className="text-5xl md:text-8xl lg:text-9xl font-bold tracking-tight text-[#fafafa] leading-none"
+                className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-[#fafafa] leading-[1.05]"
               >
                 Ramamoorthy
               </motion.h1>
@@ -71,7 +69,7 @@ export default function Overlay({ progress }: { progress?: MotionValue<number> }
                   opacity: name2Opacity,
                   y: name2Y,
                 }}
-                className="text-5xl md:text-8xl lg:text-9xl font-bold tracking-tight text-[#0066ff] leading-none"
+                className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-[#0066ff] leading-[1.05]"
               >
                 Narayanan
               </motion.h2>
@@ -105,7 +103,7 @@ export default function Overlay({ progress }: { progress?: MotionValue<number> }
             </p>
             <div className="flex flex-col sm:flex-row items-start justify-start gap-4 pointer-events-auto w-full sm:w-auto">
               <a
-                href="#work"
+                href="#showcase-reel-experiment"
                 data-cursor="magnetic"
                 className="flex justify-center items-center px-8 md:px-10 py-3.5 md:py-4 bg-[#0066ff] text-white rounded-lg font-medium text-base glow-btn-primary w-full sm:w-auto transition-transform duration-300 hover:scale-105"
               >
@@ -150,14 +148,17 @@ export default function Overlay({ progress }: { progress?: MotionValue<number> }
 }
 
 function WipeBlock({ index, progress }: { index: number; progress: MotionValue<number> }) {
-  const start = index * 0.02;
-  const end = 0.8 + (index * 0.015);
-  const y = useTransform(progress, [start, end], ["100%", "0%"]);
-  
+  const start = index * 0.05;
+  const end = Math.min(start + 0.45, 1);
+  const blockScaleY = useTransform(progress, [start, end], [0, 1]);
+
   return (
     <motion.div
-      style={{ y }}
-      className="flex-1 bg-[#080810]"
+      style={{
+        scaleY: blockScaleY,
+        transformOrigin: "bottom",
+      }}
+      className="flex-1 h-full bg-[#080810]"
     />
   );
 }

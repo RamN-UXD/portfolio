@@ -4,13 +4,11 @@ import { useRef } from "react";
 import { useRouter } from "next/navigation";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
-const customEase = [0.16, 1, 0.3, 1];
-
 const projects = [
   {
     id: "01",
     title: "ADMIN CONTROL CENTER",
-    year: "8 Categories",
+    year: "2025",
     role: "Interaction Design",
     link: "/projects/b2b-admin",
     image: "/projects/b2b-admin/hero.png",
@@ -18,24 +16,24 @@ const projects = [
   {
     id: "02",
     title: "HEALTHCARE RESEARCH",
-    year: "187 Participants",
-    role: "Persona Development",
+    year: "2024",
+    role: "UX Research & Strategy",
     link: "/projects/preventive-research",
     image: "/images/preventive/hero.png",
   },
   {
     id: "03",
     title: "DR. HEALTH APP",
-    year: "2 Core Features",
-    role: "Usability Testing",
+    year: "2024",
+    role: "Mobile Usability Testing",
     link: "/projects/dr-health",
     image: "/projects/dr-health/hero.png",
   },
   {
     id: "04",
     title: "NCV ICON SYSTEM",
-    year: "55 Custom Icons",
-    role: "Design Systems",
+    year: "2024",
+    role: "Design Systems & Icons",
     link: "/projects/ncv-icons",
     image: "/projects/ncv-icons/hero.png",
   },
@@ -157,6 +155,7 @@ function TitleRow({
   index: number;
   scrollYProgress: MotionValue<number>;
 }) {
+  // Opacity: 1.0 when active in center, ~0.10 when ghosted above or below
   const opacity = useTransform(
     scrollYProgress,
     index === 0
@@ -215,6 +214,9 @@ function TitleRow({
   );
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// 3. LEFT & RIGHT EDGE-PINNED PILLS
+// ─────────────────────────────────────────────────────────────────────────────
 // ─────────────────────────────────────────────────────────────────────────────
 // 3. LEFT & RIGHT AUTO-ADAPTIVE EDGE PILLS
 // ─────────────────────────────────────────────────────────────────────────────
@@ -344,9 +346,9 @@ function ClickTarget({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// MAIN FEATURED PROJECTS SHOWCASE COMPONENT
+// MAIN SHOWCASE SECTION COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
-export default function FeaturedProjects() {
+export default function FeaturedProjectsSliderExperiment() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -355,30 +357,7 @@ export default function FeaturedProjects() {
   });
 
   return (
-    <section id="work" className="relative w-full">
-      {/* ─── SECTION HEADER: Selected Work / Featured Projects ─── */}
-      <div className="pt-24 pb-12 px-6 md:px-16 max-w-[1400px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: customEase }}
-          className="text-[#0066ff] text-tag-1 mb-4"
-        >
-          Selected Work
-        </motion.div>
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.1, ease: customEase }}
-          className="text-h1 text-[#fafafa] leading-tight"
-        >
-          My <br />
-          <span className="text-[#8888aa]">Projects.</span>
-        </motion.h2>
-      </div>
-
+    <section id="showcase-reel-experiment" className="relative w-full">
       {/* ─── DESKTOP FULL-SCREEN REEL SLIDER (md and up) ─── */}
       <div className="hidden md:block">
         {/* Scroll Track of 450vh that pins the 100vh viewport */}
@@ -388,7 +367,19 @@ export default function FeaturedProjects() {
             {/* Click Hit Target for Full Screen with OPEN Cursor */}
             <ClickTarget scrollYProgress={scrollYProgress} />
 
-            {/* 1. MASKED IMAGES LAYER */}
+            {/* 1. SECTION TITLE (Pinned Top-Left) */}
+            <div className="absolute top-10 left-10 md:top-14 md:left-14 z-50 pointer-events-none">
+              <h6 className="text-xs md:text-sm font-semibold tracking-[0.2em] text-white/75 uppercase">
+                Things I’ve done…
+              </h6>
+            </div>
+
+            {/* 2. PROGRESS INDICATOR (Pinned Top-Right) */}
+            <div className="absolute top-10 right-10 md:top-14 md:right-14 z-50 pointer-events-none font-mono text-xs md:text-sm text-white/75 tracking-widest">
+              <span>01 &mdash; 04</span>
+            </div>
+
+            {/* 3. MASKED IMAGES LAYER (Fixed Image with Sweeping Mask) */}
             <div className="absolute inset-0 w-full h-full">
               {projects.map((project, index) => (
                 <MaskedImageSlide
@@ -400,23 +391,32 @@ export default function FeaturedProjects() {
               ))}
             </div>
 
-            {/* 2. CENTRAL VERTICAL TITLE DRUM / REEL */}
+            {/* 4. CENTRAL VERTICAL TITLE DRUM / REEL */}
             <TitleDrum scrollYProgress={scrollYProgress} />
 
-            {/* 3. LEFT & RIGHT EDGE PILLS */}
+            {/* 5. LEFT & RIGHT EDGE PILLS */}
             <EdgePills scrollYProgress={scrollYProgress} />
           </div>
         </div>
       </div>
 
-      {/* ─── MOBILE / TABLET VERTICAL STACK (Full-bleed feel with native touch) ─── */}
-      <div className="block md:hidden px-4 pb-20">
-        <div className="flex flex-col gap-6">
+      {/* ─── MOBILE / TABLET VERTICAL STACK ─── */}
+      <div className="block md:hidden">
+        <div className="px-6 pt-16 pb-8">
+          <h6 className="text-xs font-semibold tracking-[0.2em] text-white/70 uppercase mb-2">
+            Things I’ve done…
+          </h6>
+          <h2 className="text-3xl font-bold text-white tracking-tight">
+            Selected Works
+          </h2>
+        </div>
+
+        <div className="flex flex-col">
           {projects.map((project) => (
             <a
               key={project.id}
               href={project.link}
-              className="relative h-[75vh] w-full rounded-3xl overflow-hidden block group border border-white/10"
+              className="relative h-[80vh] w-full block overflow-hidden group border-b border-white/10"
             >
               <img
                 src={project.image}
@@ -432,7 +432,7 @@ export default function FeaturedProjects() {
                 </span>
                 <h3
                   style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
-                  className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight mb-2"
+                  className="text-4xl sm:text-5xl font-black text-white uppercase tracking-tight mb-2"
                 >
                   {project.title}
                 </h3>
