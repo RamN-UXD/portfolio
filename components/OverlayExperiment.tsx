@@ -87,7 +87,7 @@ export default function OverlayExperiment({ progress }: { progress?: MotionValue
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.18] lg:leading-[1.18] text-[#fafafa] tracking-tight">
               <span>Senior UX Designer &amp; Product Specialist</span>
               <br className="hidden sm:inline" />
-              <span className="text-[#8888aa] block sm:inline"> for Complex Systems</span>
+              <span className="text-[#0066ff] block sm:inline"> for Complex Systems</span>
             </h2>
           </div>
         </motion.div>
@@ -110,7 +110,7 @@ export default function OverlayExperiment({ progress }: { progress?: MotionValue
                 View My Work
               </a>
               <a
-                href="mailto:ramamoorthy@email.com"
+                href="mailto:moorthyr06@gmail.com"
                 data-cursor="magnetic"
                 className="flex justify-center items-center px-8 md:px-10 py-3.5 md:py-4 border border-white/40 sm:border-white/15 bg-white/5 sm:bg-transparent text-white rounded-lg font-medium text-base glow-btn-secondary w-full sm:w-auto transition-transform duration-300 hover:scale-105"
               >
