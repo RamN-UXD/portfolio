@@ -79,7 +79,7 @@ function MaskedImageSlide({
 
   return (
     <motion.div
-      style={{ y: outerY, zIndex: (index + 1) * 10 }}
+      style={{ y: outerY, zIndex: (index + 1) * 5 }}
       className="absolute inset-0 w-full h-full will-change-transform overflow-hidden bg-[#06060a]"
     >
       <motion.div
