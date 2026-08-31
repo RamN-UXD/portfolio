@@ -106,14 +106,6 @@ const stages = [
   },
 ];
 
-const sectionCoverage = [
-  { section: "Navigation", role: "Supports wayfinding — icons that orient users and communicate section identity at a glance.", count: "8" },
-  { section: "Products", role: "Represents distinct product offerings — each icon communicates a unique capability without relying on text alone.", count: "14" },
-  { section: "Services", role: "Differentiates service categories — icons that make a complex services portfolio scannable and intuitive.", count: "12" },
-  { section: "Verticals", role: "Communicates industry verticals — icons that quickly signal which sector content or features belong to.", count: "13" },
-  { section: "Company", role: "Supports company identity and informational pages — icons that feel professional and authoritative.", count: "8" },
-];
-
 const outcomes = [
   {
     title: "Clarity & Recognition",
@@ -355,32 +347,6 @@ export default function NCVIconSystem() {
               />
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Section coverage table */}
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2, ease: customEase }}
-          className="overflow-x-auto rounded-2xl border border-white/5">
-          <table className="w-full text-left text-sm">
-            <thead className="bg-white/5 border-b border-white/5">
-              <tr>
-                <th className="p-5 text-white font-semibold">Website Section</th>
-                <th className="p-5 text-white font-semibold">Role of Iconography</th>
-                <th className="p-5 text-white font-semibold text-right">Icons</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-white/5">
-              {sectionCoverage.map((row, i) => (
-                <tr key={i} className="group hover:bg-white/[0.02] transition-colors">
-                  <td className="p-5 font-bold text-[#ff6b00]">{row.section}</td>
-                  <td className="p-5 text-[#8888aa] text-xs leading-relaxed max-w-xs">{row.role}</td>
-                  <td className="p-5 text-right">
-                    <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#ff6b00]/10 text-[#ff6b00] border border-[#ff6b00]/20">{row.count}</span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </motion.div>
       </section>
 
