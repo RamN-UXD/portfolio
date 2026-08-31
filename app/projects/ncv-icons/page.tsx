@@ -7,7 +7,7 @@ import Navbar from "../../../components/Navbar";
 
 const customEase = [0.16, 1, 0.3, 1];
 
-/* ─── All 54 NCV icon assets ─── */
+/* ─── All 55 NCV icon assets ─── */
 const icons = [
   { label: "Icon 1",  defaultSrc: "/projects/ncv-icons/icon 1 - default.svg",  src: "/projects/ncv-icons/icon 1.svg" },
   { label: "Icon 2",  defaultSrc: "/projects/ncv-icons/icon 2 - default.svg",  src: "/projects/ncv-icons/icon 2.svg" },
@@ -34,6 +34,7 @@ const icons = [
   { label: "Icon 23", defaultSrc: "/projects/ncv-icons/icon 23 - default.svg", src: "/projects/ncv-icons/icon 23.svg" },
   { label: "Icon 24", defaultSrc: "/projects/ncv-icons/icon 24 - default.svg", src: "/projects/ncv-icons/icon 24.svg" },
   { label: "Icon 25", defaultSrc: "/projects/ncv-icons/icon 25 - default.svg", src: "/projects/ncv-icons/icon 25.svg" },
+  { label: "Icon 26", defaultSrc: "/projects/ncv-icons/icon 26 - default.svg", src: "/projects/ncv-icons/icon 26.svg" },
   { label: "Icon 27", defaultSrc: "/projects/ncv-icons/icon 27 - default.svg", src: "/projects/ncv-icons/icon 27.svg" },
   { label: "Icon 28", defaultSrc: "/projects/ncv-icons/icon 28 - default.svg", src: "/projects/ncv-icons/icon 28.svg" },
   { label: "Icon 29", defaultSrc: "/projects/ncv-icons/icon 29 - default.svg", src: "/projects/ncv-icons/icon 29.svg" },
