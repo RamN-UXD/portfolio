@@ -7,6 +7,12 @@ import { motion, AnimatePresence, MotionValue, useTransform, useMotionValue } fr
 
 const projectLinks = [
   {
+    name: "Customer Hub",
+    href: "/projects/customer-contacts",
+    tag: "Enterprise SaaS",
+    accent: "#00f0ff",
+  },
+  {
     name: "Admin Control Center",
     href: "/projects/b2b-admin",
     tag: "Enterprise SaaS",

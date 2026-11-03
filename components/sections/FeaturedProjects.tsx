@@ -9,6 +9,14 @@ const customEase = [0.16, 1, 0.3, 1];
 const projects = [
   {
     id: "01",
+    title: "CUSTOMER HUB",
+    year: "28% fewer steps",
+    role: "Workflow Redesign",
+    link: "/projects/customer-contacts",
+    image: "/projects/customer-contact/hero.png",
+  },
+  {
+    id: "02",
     title: "ADMIN CONTROL CENTER",
     year: "8 Categories",
     role: "Interaction Design",
@@ -16,7 +24,7 @@ const projects = [
     image: "/projects/b2b-admin/hero.png",
   },
   {
-    id: "02",
+    id: "03",
     title: "HEALTHCARE RESEARCH",
     year: "187 Participants",
     role: "Persona Development",
@@ -24,7 +32,7 @@ const projects = [
     image: "/images/preventive/hero.png",
   },
   {
-    id: "03",
+    id: "04",
     title: "DR. HEALTH APP",
     year: "2 Core Features",
     role: "Usability Testing",
@@ -32,7 +40,7 @@ const projects = [
     image: "/projects/dr-health/hero.png",
   },
   {
-    id: "04",
+    id: "05",
     title: "NCV ICON SYSTEM",
     year: "55 Custom Icons",
     role: "Design Systems",
@@ -60,10 +68,12 @@ function MaskedImageSlide({
     index === 0
       ? [0, 1]
       : index === 1
-      ? [0.12, 0.33]
+      ? [0.10, 0.25]
       : index === 2
-      ? [0.45, 0.66]
-      : [0.78, 0.99],
+      ? [0.35, 0.50]
+      : index === 3
+      ? [0.60, 0.75]
+      : [0.85, 1.0],
     index === 0 ? ["0%", "0%"] : ["100%", "0%"]
   );
 
@@ -72,10 +82,12 @@ function MaskedImageSlide({
     index === 0
       ? [0, 1]
       : index === 1
-      ? [0.12, 0.33]
+      ? [0.10, 0.25]
       : index === 2
-      ? [0.45, 0.66]
-      : [0.78, 0.99],
+      ? [0.35, 0.50]
+      : index === 3
+      ? [0.60, 0.75]
+      : [0.85, 1.0],
     index === 0 ? ["0%", "0%"] : ["-100%", "0%"]
   );
 
@@ -113,12 +125,13 @@ function TitleDrum({
 }) {
   const drumY = useTransform(
     scrollYProgress,
-    [0, 0.33, 0.66, 1.0],
+    [0, 0.25, 0.50, 0.75, 1.0],
     [
       `0px`,
       `-${ITEM_HEIGHT}px`,
       `-${ITEM_HEIGHT * 2}px`,
       `-${ITEM_HEIGHT * 3}px`,
+      `-${ITEM_HEIGHT * 4}px`,
     ]
   );
 
@@ -160,37 +173,45 @@ function TitleRow({
   const opacity = useTransform(
     scrollYProgress,
     index === 0
-      ? [0, 0.20, 0.33]
+      ? [0, 0.15, 0.25]
       : index === 1
-      ? [0.12, 0.33, 0.53, 0.66]
+      ? [0.10, 0.25, 0.40, 0.50]
       : index === 2
-      ? [0.45, 0.66, 0.86, 0.99]
-      : [0.78, 0.99, 1.0],
+      ? [0.35, 0.50, 0.65, 0.75]
+      : index === 3
+      ? [0.60, 0.75, 0.90, 1.00]
+      : [0.85, 1.0],
     index === 0
       ? [1, 1, 0.10]
       : index === 1
       ? [0.10, 1, 1, 0.10]
       : index === 2
       ? [0.10, 1, 1, 0.10]
-      : [0.10, 1, 1]
+      : index === 3
+      ? [0.10, 1, 1, 0.10]
+      : [0.10, 1]
   );
 
   const scale = useTransform(
     scrollYProgress,
     index === 0
-      ? [0, 0.20, 0.33]
+      ? [0, 0.15, 0.25]
       : index === 1
-      ? [0.12, 0.33, 0.53, 0.66]
+      ? [0.10, 0.25, 0.40, 0.50]
       : index === 2
-      ? [0.45, 0.66, 0.86, 0.99]
-      : [0.78, 0.99, 1.0],
+      ? [0.35, 0.50, 0.65, 0.75]
+      : index === 3
+      ? [0.60, 0.75, 0.90, 1.00]
+      : [0.85, 1.0],
     index === 0
       ? [1, 1, 0.92]
       : index === 1
       ? [0.92, 1, 1, 0.92]
       : index === 2
       ? [0.92, 1, 1, 0.92]
-      : [0.92, 1, 1]
+      : index === 3
+      ? [0.92, 1, 1, 0.92]
+      : [0.92, 1]
   );
 
   return (
@@ -272,19 +293,23 @@ function SinglePill({
   const opacity = useTransform(
     scrollYProgress,
     index === 0
-      ? [0, 0.20, 0.33]
+      ? [0, 0.15, 0.25]
       : index === 1
-      ? [0.15, 0.33, 0.53, 0.66]
+      ? [0.12, 0.25, 0.40, 0.50]
       : index === 2
-      ? [0.48, 0.66, 0.86, 0.99]
-      : [0.81, 0.99, 1.0],
+      ? [0.37, 0.50, 0.65, 0.75]
+      : index === 3
+      ? [0.62, 0.75, 0.90, 1.00]
+      : [0.87, 1.0],
     index === 0
       ? [1, 1, 0]
       : index === 1
       ? [0, 1, 1, 0]
       : index === 2
       ? [0, 1, 1, 0]
-      : [0, 1, 1]
+      : index === 3
+      ? [0, 1, 1, 0]
+      : [0, 1]
   );
 
   return (
@@ -320,10 +345,11 @@ function ClickTarget({
   const router = useRouter();
 
   const activeIndex = useTransform(scrollYProgress, (progress) => {
-    if (progress < 0.25) return 0;
-    if (progress < 0.58) return 1;
-    if (progress < 0.88) return 2;
-    return 3;
+    if (progress < 0.20) return 0;
+    if (progress < 0.45) return 1;
+    if (progress < 0.70) return 2;
+    if (progress < 0.90) return 3;
+    return 4;
   });
 
   const handleClick = () => {
@@ -381,8 +407,8 @@ export default function FeaturedProjects() {
 
       {/* ─── DESKTOP FULL-SCREEN REEL SLIDER (md and up) ─── */}
       <div className="hidden md:block">
-        {/* Scroll Track of 450vh that pins the 100vh viewport */}
-        <div ref={containerRef} className="relative h-[450vh]">
+        {/* Scroll Track of 550vh that pins the 100vh viewport */}
+        <div ref={containerRef} className="relative h-[550vh]">
           {/* Pinned 100vh Viewport */}
           <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#06060a]">
             {/* Click Hit Target for Full Screen with OPEN Cursor */}
@@ -428,7 +454,7 @@ export default function FeaturedProjects() {
 
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
                 <span className="text-[10px] font-mono tracking-widest text-[#00ffb7] uppercase mb-2">
-                  {project.id} / 04
+                  {project.id} / 05
                 </span>
                 <h3
                   style={{ fontFamily: "'Barlow Condensed', sans-serif" }}

@@ -6,6 +6,16 @@ import { useRouter } from "next/navigation";
 const projects = [
   {
     id: "01",
+    title: "CUSTOMER HUB",
+    ghost: "ADMIN CONTROL CENTER",
+    leftPill: "28% fewer steps",
+    rightPill: "Workflow Redesign",
+    accent: "#00f0ff",
+    caseStudyLink: "/projects/customer-contacts",
+    image: "/projects/customer-contact/hero.png",
+  },
+  {
+    id: "02",
     title: "ADMIN CONTROL CENTER",
     ghost: "HEALTHCARE RESEARCH",
     leftPill: "76 Screens",
@@ -15,7 +25,7 @@ const projects = [
     image: "/projects/b2b-admin/hero.png",
   },
   {
-    id: "02",
+    id: "03",
     title: "HEALTHCARE RESEARCH",
     ghost: "DR. HEALTH APP",
     leftPill: "187 Participants",
@@ -25,7 +35,7 @@ const projects = [
     image: "/images/preventive/hero.png",
   },
   {
-    id: "03",
+    id: "04",
     title: "DR. HEALTH APP",
     ghost: "NCV ICON SYSTEM",
     leftPill: "2 Core Features",
@@ -35,7 +45,7 @@ const projects = [
     image: "/projects/dr-health/hero.png",
   },
   {
-    id: "04",
+    id: "05",
     title: "NCV ICON SYSTEM",
     ghost: "ADMIN CONTROL CENTER",
     leftPill: "55 Custom Icons",
