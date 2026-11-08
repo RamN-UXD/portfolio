@@ -1,16 +1,13 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import LoadingScreen from "./LoadingScreen";
 import CustomCursor from "./CustomCursor";
 import Navbar from "./Navbar";
 
-// Phase 1 components
-import ScrollyCanvas from "./ScrollyCanvas";
-import Overlay from "./Overlay";
-
 // Section imports
+import StatementHero from "./sections/StatementHero";
 import ImpactMetrics from "./sections/ImpactMetrics";
 import FeaturedProjects from "./sections/FeaturedProjects";
 // import FeaturedProjectsV2 from "./sections/FeaturedProjectsV2"; // Hidden — work in progress
@@ -22,24 +19,6 @@ import CTAFooter from "./sections/CTAFooter";
 
 export default function HomeClient() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLDivElement>(null);
-  
-  // Track scroll for the Hero Section
-  const { scrollYProgress: heroProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end end"]
-  });
-
-  // We want to fade in the content sections as they scroll into view 
-  // after the long sticky hero section completes.
-  const { scrollYProgress } = useScroll({
-    target: contentRef,
-    offset: ["start end", "start center"]
-  });
-
-  const contentOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const contentY = useTransform(scrollYProgress, [0, 1], [100, 0]);
 
   return (
     <main className="bg-[#080810] text-[#fafafa]" style={{ overflowX: "clip" }}>
@@ -56,26 +35,13 @@ export default function HomeClient() {
           pointerEvents: isLoaded ? "auto" : "none",
         }}
       >
-        <Navbar progress={scrollYProgress} />
+        <Navbar />
 
-        {/* IMAGE SEQUENCE HERO — FIRST SECTION (1000vh total height) */}
-        <section ref={heroRef} className="relative">
-          <ScrollyCanvas progress={heroProgress} />
-          <Overlay progress={heroProgress} />
-        </section>
+        {/* HERO SECTION */}
+        <StatementHero />
 
-        {/* 
-          CONTENT SECTIONS
-          This starts after the 1000vh hero.
-          We use a motion div to slowly fade them in and slide them up
-          as the geometric wipe from the hero sticky container completes.
-        */}
-        <motion.div 
-          ref={contentRef}
-          style={{ opacity: contentOpacity, y: contentY }}
-          className="relative z-20"
-        >
-          {/* Content sections */}
+        {/* CONTENT SECTIONS */}
+        <div className="relative z-20">
           <ImpactMetrics />
           <FeaturedProjects />
           {/* <FeaturedProjectsV2 /> */}{/* Hidden — work in progress */}
@@ -84,7 +50,7 @@ export default function HomeClient() {
           <Skills />
           <Experience />
           <CTAFooter />
-        </motion.div>
+        </div>
       </div>
     </main>
   );
