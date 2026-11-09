@@ -2,24 +2,33 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Ramamoorthy N — UX Designer & Product Specialist",
+  title: "Ramamoorthy Narayanan — UX Designer & Product Specialist",
   description:
     "I turn ambiguous problems into products teams can build and users can trust. UX Design portfolio across B2B SaaS, e-commerce, and field workforce tools.",
   metadataBase: new URL("https://ramn-portfolio.vercel.app"),
   openGraph: {
-    title: "Ramamoorthy N — UX Designer & Product Specialist",
+    title: "Ramamoorthy Narayanan — UX Designer & Product Specialist",
     description:
       "I turn ambiguous problems into products teams can build and users can trust. UX Design portfolio across B2B SaaS, e-commerce, and field workforce tools.",
     url: "https://ramn-portfolio.vercel.app",
     siteName: "RamN Portfolio",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "https://ramn-portfolio.vercel.app/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ramamoorthy Narayanan — UX Designer & Product Specialist",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ramamoorthy N — UX Designer & Product Specialist",
+    title: "Ramamoorthy Narayanan — UX Designer & Product Specialist",
     description:
       "I turn ambiguous problems into products teams can build and users can trust. UX Design portfolio across B2B SaaS, e-commerce, and field workforce tools.",
+    images: ["https://ramn-portfolio.vercel.app/og-image.jpg"],
   },
 };
 
