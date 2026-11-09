@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Ramamoorthy N — UX Designer & Product Specialist";
+export const alt = "Ramamoorthy Narayanan — UX Designer & Product Specialist";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -15,229 +15,327 @@ export default async function Image() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#080810",
+          background: "#0d0d1f",
           fontFamily: "sans-serif",
           position: "relative",
           overflow: "hidden",
         }}
       >
-        {/* Background glow blobs */}
+        {/* Outer ambient glow — left blue */}
         <div
           style={{
             position: "absolute",
-            right: "-60px",
-            top: "-80px",
-            width: "520px",
-            height: "520px",
+            left: "-120px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: "500px",
+            height: "500px",
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(168,85,247,0.35) 0%, rgba(236,72,153,0.18) 50%, transparent 70%)",
-            filter: "blur(40px)",
+              "radial-gradient(circle, rgba(79,70,229,0.45) 0%, rgba(99,102,241,0.2) 40%, transparent 70%)",
+            filter: "blur(60px)",
             display: "flex",
           }}
         />
+        {/* Outer ambient glow — right pink/purple */}
         <div
           style={{
             position: "absolute",
-            left: "-100px",
-            bottom: "-100px",
-            width: "400px",
-            height: "400px",
+            right: "-120px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: "600px",
+            height: "500px",
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%)",
-            filter: "blur(50px)",
+              "radial-gradient(circle, rgba(168,85,247,0.4) 0%, rgba(236,72,153,0.25) 40%, transparent 70%)",
+            filter: "blur(70px)",
             display: "flex",
           }}
         />
 
-        {/* Card container */}
+        {/* Card */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
-            width: "520px",
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.10)",
-            borderRadius: "24px",
-            padding: "40px",
-            backdropFilter: "blur(12px)",
+            width: "580px",
+            background: "#161625",
+            border: "1px solid rgba(255,255,255,0.08)",
+            borderRadius: "28px",
+            overflow: "hidden",
+            boxShadow: "0 24px 80px rgba(0,0,0,0.6)",
           }}
         >
-          {/* Top: avatar + online */}
-          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
-            {/* Avatar circle */}
+          {/* Card top area: portrait + gradient bar */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "flex-end",
+              height: "140px",
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            {/* Gradient bar background (vertical stripes — blue to pink) */}
             <div
               style={{
-                width: "80px",
-                height: "80px",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: "flex",
+                flexDirection: "row",
+                gap: "0px",
+              }}
+            >
+              {/* Generate vertical gradient stripes */}
+              {Array.from({ length: 60 }).map((_, i) => {
+                const t = i / 59;
+                // interpolate hue: blue (240) → purple (280) → pink/red (340)
+                const hue = 240 + t * 100;
+                const saturation = 70 + t * 20;
+                const lightness = 45 + Math.sin(t * Math.PI) * 10;
+                // vary height for waveform effect
+                const heightPct =
+                  40 + Math.sin(i * 0.6 + 1) * 20 + Math.sin(i * 0.3) * 15;
+                return (
+                  <div
+                    key={i}
+                    style={{
+                      flex: 1,
+                      display: "flex",
+                      alignItems: "flex-end",
+                      height: "100%",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "100%",
+                        height: `${Math.max(20, heightPct)}%`,
+                        background: `hsl(${hue}, ${saturation}%, ${lightness}%)`,
+                        opacity: 0.85,
+                        borderRadius: "2px 2px 0 0",
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Dark fade overlay at bottom of bar */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: "60px",
+                background:
+                  "linear-gradient(to bottom, transparent, #161625)",
+                display: "flex",
+              }}
+            />
+
+            {/* Portrait circle — overlapping bottom edge */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: "-32px",
+                left: "36px",
+                width: "90px",
+                height: "90px",
                 borderRadius: "50%",
                 overflow: "hidden",
-                border: "2px solid rgba(168,85,247,0.6)",
+                border: "3px solid #161625",
                 display: "flex",
                 background: "#1a1a2e",
+                zIndex: 10,
               }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://ramn-portfolio.vercel.app/designer_portrait.jpg"
-                alt="Ramamoorthy N"
-                width={80}
-                height={80}
-                style={{ objectFit: "cover", width: "80px", height: "80px" }}
+                alt="Ramamoorthy Narayanan"
+                width={90}
+                height={90}
+                style={{
+                  objectFit: "cover",
+                  width: "90px",
+                  height: "90px",
+                }}
               />
             </div>
+          </div>
 
-            {/* Online badge */}
+          {/* Card body */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              padding: "44px 36px 36px 36px",
+              gap: "0px",
+            }}
+          >
+            {/* Name + verified badge */}
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "6px",
-                background: "rgba(255,255,255,0.06)",
-                borderRadius: "20px",
-                padding: "6px 14px",
+                gap: "10px",
               }}
             >
-              <div
+              <span
                 style={{
-                  width: "8px",
-                  height: "8px",
-                  borderRadius: "50%",
-                  background: "#4ade80",
-                  display: "flex",
+                  color: "#ffffff",
+                  fontSize: "26px",
+                  fontWeight: 700,
+                  letterSpacing: "-0.5px",
                 }}
-              />
-              <span style={{ color: "#4ade80", fontSize: "13px", fontWeight: 500 }}>
-                Available
+              >
+                Ramamoorthy Narayanan
               </span>
-            </div>
-          </div>
-
-          {/* Name & Role */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "20px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <span style={{ color: "#ffffff", fontSize: "28px", fontWeight: 700, letterSpacing: "-0.5px" }}>
-                Ramamoorthy N
-              </span>
+              {/* Verified badge */}
               <div
                 style={{
-                  width: "22px",
-                  height: "22px",
+                  width: "24px",
+                  height: "24px",
                   borderRadius: "50%",
-                  background: "linear-gradient(135deg, #a855f7, #ec4899)",
+                  background: "linear-gradient(135deg, #4f46e5, #7c3aed)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  flexShrink: 0,
                 }}
               >
-                <span style={{ color: "white", fontSize: "13px", fontWeight: 700 }}>✓</span>
+                <span
+                  style={{
+                    color: "white",
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    lineHeight: 1,
+                  }}
+                >
+                  ✓
+                </span>
               </div>
             </div>
-            <span style={{ color: "#9e9eb4", fontSize: "15px", fontWeight: 400 }}>
-              UX Designer &amp; Product Specialist
-            </span>
-          </div>
 
-          {/* Stats row */}
-          <div
-            style={{
-              display: "flex",
-              gap: "0px",
-              marginTop: "28px",
-              borderTop: "1px solid rgba(255,255,255,0.08)",
-              borderBottom: "1px solid rgba(255,255,255,0.08)",
-              paddingTop: "20px",
-              paddingBottom: "20px",
-            }}
-          >
-            {[
-              { value: "300+", label: "screens designed" },
-              { value: "7", label: "products shipped" },
-              { value: "4+", label: "years experience" },
-            ].map((stat, i) => (
-              <div
-                key={i}
-                style={{
-                  flex: 1,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none",
-                  gap: "4px",
-                }}
-              >
-                <span style={{ color: "#ffffff", fontSize: "22px", fontWeight: 700 }}>
-                  {stat.value}
-                </span>
-                <span style={{ color: "#9e9eb4", fontSize: "12px", fontWeight: 400 }}>
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA button */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginTop: "24px",
-              background: "rgba(255,255,255,0.08)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              borderRadius: "12px",
-              padding: "14px 0",
-              color: "#ffffff",
-              fontSize: "15px",
-              fontWeight: 600,
-            }}
-          >
-            View Portfolio →
-          </div>
-        </div>
-
-        {/* Right side — headline text */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "16px",
-            marginLeft: "72px",
-            maxWidth: "480px",
-          }}
-        >
-          <span style={{ color: "#9e9eb4", fontSize: "13px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            UX / Product Design Portfolio
-          </span>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <span style={{ color: "#ffffff", fontSize: "42px", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-1px" }}>
-              I turn ambiguous
-            </span>
+            {/* Role */}
             <span
               style={{
-                fontSize: "42px",
-                fontWeight: 700,
-                lineHeight: 1.15,
-                letterSpacing: "-1px",
-                background: "linear-gradient(90deg, #22d3ee, #818cf8)",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
+                color: "#9e9eb4",
+                fontSize: "15px",
+                fontWeight: 400,
+                marginTop: "6px",
               }}
             >
-              problems into
+              UX Designer &amp; Product Specialist
             </span>
-            <span style={{ color: "#ffffff", fontSize: "42px", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-1px" }}>
-              products users
-            </span>
-            <span style={{ color: "#4ade80", fontSize: "42px", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-1px" }}>
-              can trust.
-            </span>
+
+            {/* Open to work status */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                marginTop: "14px",
+              }}
+            >
+              <div
+                style={{
+                  width: "9px",
+                  height: "9px",
+                  borderRadius: "50%",
+                  background: "#4ade80",
+                  display: "flex",
+                  flexShrink: 0,
+                }}
+              />
+              <span
+                style={{
+                  color: "#4ade80",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                }}
+              >
+                Open to senior UX &amp; PM roles
+              </span>
+            </div>
+
+            {/* Stats row */}
+            <div
+              style={{
+                display: "flex",
+                marginTop: "20px",
+                background: "#1e1e30",
+                borderRadius: "14px",
+                overflow: "hidden",
+              }}
+            >
+              {[
+                { value: "300+", label: "screens designed" },
+                { value: "7", label: "products" },
+                { value: "~30%", label: "simpler workflows" },
+              ].map((stat, i) => (
+                <div
+                  key={i}
+                  style={{
+                    flex: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "16px 8px",
+                    borderRight:
+                      i < 2 ? "1px solid rgba(255,255,255,0.07)" : "none",
+                    gap: "4px",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: "#ffffff",
+                      fontSize: "20px",
+                      fontWeight: 700,
+                      letterSpacing: "-0.3px",
+                    }}
+                  >
+                    {stat.value}
+                  </span>
+                  <span
+                    style={{
+                      color: "#9e9eb4",
+                      fontSize: "12px",
+                      fontWeight: 400,
+                      textAlign: "center",
+                    }}
+                  >
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA button */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: "16px",
+                background: "#ffffff",
+                borderRadius: "12px",
+                padding: "16px 0",
+                color: "#0d0d1f",
+                fontSize: "16px",
+                fontWeight: 700,
+              }}
+            >
+              View case studies
+            </div>
           </div>
-          <span style={{ color: "#9e9eb4", fontSize: "15px", fontWeight: 400, lineHeight: 1.6 }}>
-            ramn-portfolio.vercel.app
-          </span>
         </div>
       </div>
     ),
